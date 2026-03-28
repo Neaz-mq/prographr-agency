@@ -3,14 +3,31 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
-      colors: {
-        primary: "#6C63FF",
-        dark: "#0A0A0A",
-        light: "#F9F9F9",
-      },
       fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
+        display: ['Syne', 'sans-serif'],
+        body: ['DM Sans', 'sans-serif'],
       },
+      colors: {
+        brand: {
+          black: '#0a0a0a',
+          dark: '#111111',
+          card: '#161616',
+          border: '#222222',
+          accent: '#C8FF00',
+          blue: '#4F6EF7',
+          gray: '#888888',
+          light: '#F5F5F5',
+        }
+      },
+      animation: {
+        'marquee': 'marquee 25s linear infinite',
+      },
+      keyframes: {
+        marquee: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-50%)' },
+        }
+      }
     },
   },
   plugins: [],
