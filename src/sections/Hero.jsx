@@ -10,19 +10,19 @@ const fadeUp = (delay = 0) => ({
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen overflow-hidden flex flex-col justify-center">
+    <section className="relative min-h-screen overflow-hidden flex flex-col">
 
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/BG.webp')" }}
+        style={{ backgroundImage: "url('https://res.cloudinary.com/dzi3u164c/image/upload/v1774762978/BG_dvaipu.webp')" }}
       />
 
-      {/* Optional dark overlay to deepen contrast */}
+      {/* Dark overlay */}
       <div className="absolute inset-0 bg-black/30" />
 
-      {/* Content */}
-      <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-10 flex flex-col items-center text-center pt-28 pb-24">
+      {/* Content — pt-36 clears the absolute navbar */}
+      <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-10 flex flex-col items-center text-center mt-auto mb-auto pt-36 pb-24">
 
         {/* Badge */}
         <motion.div {...fadeUp(0)} className="mb-10">

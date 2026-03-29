@@ -21,7 +21,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 px-6 md:px-10 pt-10">
+   <header className="absolute top-0 left-0 right-0 z-50 px-6 md:px-10 pt-8">
       {/* Floating Nav Container */}
       <div
         className={`max-w-7xl mx-auto transition-all duration-500 ${
