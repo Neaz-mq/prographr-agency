@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 30 },
@@ -21,16 +20,19 @@ export default function Hero() {
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-black/30" />
 
-      {/* Content — pt-36 clears the absolute navbar */}
-      <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-10 flex flex-col items-center text-center mt-auto mb-auto pt-36 pb-24">
+    
+      <div className="shrink-0" />
+
+      {/* Content — fills remaining space and centers */}
+      <div className="relative z-10 flex-1 flex flex-col items-center justify-center max-w-7xl mx-auto w-full px-6 md:px-10 pb-[100px]">
 
         {/* Badge */}
-        <motion.div {...fadeUp(0)} className="mb-10">
-          <div className="inline-flex items-center gap-2.5 bg-[#1a1a1a]/80 border border-white/10 rounded-full px-3 py-1.5 backdrop-blur-sm">
-            <span className="bg-[#E8490F] text-white text-xs font-bold px-2.5 py-0.5 rounded-full">
+        <motion.div {...fadeUp(0)} className="mb-8">
+         <div className="inline-flex items-center gap-2 bg-white/5 px-3 py-1.5 backdrop-blur-sm">
+            <span className="bg-[#FF7431] text-black text-[10px] font-bold px-2.5 py-0.5 rounded-full">
               5.00
             </span>
-            <span className="text-[#ccc] text-sm">
+            <span className="text-white text-[12px]">
               Our 2026 Design Trends Report is out
             </span>
             <ArrowRight size={13} className="text-[#ccc]" />
@@ -40,42 +42,13 @@ export default function Hero() {
         {/* Heading */}
         <motion.h1
           {...fadeUp(0.1)}
-          className="font-extrabold text-white leading-[1.08] tracking-tight"
-          style={{ fontSize: "clamp(2.8rem, 7vw, 6rem)" }}
+          className="font-bold text-white leading-[1.25] text-center justify-center"
+          style={{ fontSize: "clamp(2.2rem, 5vw, 4rem)" }}
         >
           Crafting Digital<br />
           Experiences That Define<br />
           the Future
         </motion.h1>
-
-        {/* Sub text */}
-        <motion.p
-          {...fadeUp(0.2)}
-          className="mt-6 text-[#aaa] text-base md:text-lg max-w-lg leading-relaxed"
-        >
-          We are a creative design agency helping businesses stand out with
-          modern, impactful visual solutions.
-        </motion.p>
-
-        {/* CTAs */}
-        <motion.div
-          {...fadeUp(0.3)}
-          className="mt-10 flex flex-wrap justify-center gap-4"
-        >
-          <Link
-            to="/portfolio"
-            className="group inline-flex items-center gap-2 bg-white text-[#0a0a0a] font-semibold text-sm px-7 py-3.5 rounded-full hover:bg-[#f0f0f0] transition-colors duration-300"
-          >
-            View Our Work
-            <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
-          </Link>
-          <Link
-            to="/contact"
-            className="inline-flex items-center gap-2 text-white font-semibold text-sm px-7 py-3.5 rounded-full border border-white/25 hover:border-white/60 transition-colors duration-300"
-          >
-            Start a Project
-          </Link>
-        </motion.div>
 
       </div>
     </section>
