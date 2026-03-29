@@ -9,7 +9,6 @@ const services = [
     description:
       "Logos, brand identities, and visual assets crafted to make your brand impossible to ignore.",
     tags: ["Branding", "Logo", "Print", "Social"],
-    accent: "#FF7431",
   },
   {
     number: "02",
@@ -17,7 +16,6 @@ const services = [
     description:
       "Fast, modern websites and web apps built with clean code and pixel-perfect attention to detail.",
     tags: ["React", "MERN", "UI/UX", "SEO"],
-    accent: "#4F6EF7",
   },
   {
     number: "03",
@@ -25,23 +23,26 @@ const services = [
     description:
       "Pitch decks and presentations that command the room — structured, visual, and unforgettable.",
     tags: ["Pitch Deck", "Reports", "Slides", "Data Viz"],
-    accent: "#1a1a1a",
   },
 ];
 
 export default function ServicesSection() {
   return (
-    <section className="relative z-10 bg-transparent -mt-36">
-      <div className="max-w-7xl mx-auto px-6 md:px-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <section className="relative z-10 -mt-32 pb-10 ">
+      <div className="max-w-7xl mx-auto px-6 md:px-10 ">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 ">
           {services.map((s, i) => (
             <motion.div
               key={s.number}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="group bg-[#F7F7F7] min-h-[250px] p-8 flex flex-col justify-between hover:bg-white transition-colors duration-300 cursor-pointer"
+              transition={{
+                duration: 0.6,
+                delay: i * 0.1,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className="group bg-[#F7F7F7] min-h-[220px] p-8 flex flex-col justify-between hover:bg-[#fafafa] transition-colors duration-300 cursor-pointer"
             >
               {/* Top row */}
               <div className="flex items-start justify-between mb-6">
@@ -74,7 +75,7 @@ export default function ServicesSection() {
                 {s.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="text-[10px] font-medium tracking-wide uppercase px-2.5 py-1 bg-[#ececec] text-[#555] group-hover:bg-[#f0f0f0] transition-colors"
+                    className="text-[10px] font-medium tracking-wide uppercase px-2.5 py-1 bg-[#ececec] text-[#555]"
                   >
                     {tag}
                   </span>

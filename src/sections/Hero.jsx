@@ -9,7 +9,7 @@ const fadeUp = (delay = 0) => ({
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen overflow-hidden flex flex-col">
+    <section className="relative h-[80vh] overflow-hidden flex flex-col z-0 -mt-10">
 
       {/* Background Image */}
       <div
@@ -20,14 +20,11 @@ export default function Hero() {
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-black/30" />
 
-    
-      <div className="shrink-0" />
-
-      {/* Content — fills remaining space and centers */}
-      <div className="relative z-10 flex-1 flex flex-col items-center justify-center max-w-7xl mx-auto w-full px-6 md:px-10 pb-32">
+      {/* Content */}
+      <div className="relative z-10 flex-1 flex flex-col items-center justify-center max-w-7xl mx-auto w-full px-6 md:px-10">
         {/* Badge */}
         <motion.div {...fadeUp(0)} className="mb-8">
-         <div className="inline-flex items-center gap-2 bg-white/5 px-3 py-1.5 backdrop-blur-sm">
+          <div className="inline-flex items-center gap-2 bg-white/5 px-3 py-1.5 backdrop-blur-sm">
             <span className="bg-[#FF7431] text-black text-[10px] font-bold px-2.5 py-0.5 rounded-full">
               5.00
             </span>
@@ -41,7 +38,7 @@ export default function Hero() {
         {/* Heading */}
         <motion.h1
           {...fadeUp(0.1)}
-          className="font-bold text-white leading-[1.25] text-center justify-center"
+          className="font-bold text-white leading-[1.25] text-center"
           style={{ fontSize: "clamp(2.2rem, 5vw, 4rem)" }}
         >
           Crafting Digital<br />
