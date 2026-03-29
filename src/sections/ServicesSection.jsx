@@ -1,89 +1,234 @@
-import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const services = [
+gsap.registerPlugin(ScrollTrigger);
+
+/*
+  HOW THE CUT-OFF WORKS:
+  - Hero is h-[100vh] with overflow-visible (so cards can enter its space)
+    but its background is clipped by an inner div with overflow-hidden.
+  - ServicesSection uses -mt-[half-card-height] to pull cards up so their
+    top halves sit inside the hero's visual bounds.
+  - The hero's inner overflow-hidden bg clips those card tops — creating
+    the "cut off at the hero edge" look from the reference image.
+*/
+
+const CARD_HEIGHT = 270; // visual card height
+const SHOW_AMOUNT = 130; // how many px of card peek INTO the hero (adjust this)
+
+const cards = [
+  /* 0 — Graphic Design — lime */
   {
-    number: "01",
-    title: "Graphic Design",
-    description:
-      "Logos, brand identities, and visual assets crafted to make your brand impossible to ignore.",
-    tags: ["Branding", "Logo", "Print", "Social"],
+    id: "c0",
+    cx: -155, cy: 10, w: 190, h: CARD_HEIGHT, rotate: -22, zIndex: 2,
+    from: { x: -100, y: 120, rotate: -45 },
+    render: () => (
+      <CardShell className="bg-[#C8FF00]">
+        <DotGrid color="#b8ef00" spacing={10} />
+        <div className="absolute inset-0 p-5">
+          <p className="text-[9px] font-bold tracking-[0.2em] uppercase text-black/40 mb-2">Service 01</p>
+          <p className="text-[28px] font-black leading-tight tracking-tight text-black">
+            Graphic<br />Design
+          </p>
+        </div>
+      </CardShell>
+    ),
   },
+
+  /* 1 — Web Development — dark */
   {
-    number: "02",
-    title: "Web Development",
-    description:
-      "Fast, modern websites and web apps built with clean code and pixel-perfect attention to detail.",
-    tags: ["React", "MERN", "UI/UX", "SEO"],
+    id: "c1",
+    cx: -55, cy: -15, w: 205, h: CARD_HEIGHT + 20, rotate: -8, zIndex: 4,
+    from: { x: -40, y: -130, rotate: -18 },
+    render: () => (
+      <CardShell className="bg-[#0d0d0d] shadow-[0_24px_64px_rgba(0,0,0,0.4)]">
+        <DotGrid color="#1e1e1e" spacing={13} />
+        <div className="absolute inset-0 p-5">
+          <p className="text-[9px] font-bold tracking-[0.2em] uppercase text-white/30 mb-2">Service 02</p>
+          <p className="text-[28px] font-black leading-tight tracking-tight text-white">
+            Web<br />Development
+          </p>
+          <div className="absolute top-[46%] left-5 right-5 flex flex-col gap-[7px]">
+            {[
+              { w: "68%", bg: "#FF6B6B" },
+              { w: "48%", bg: "rgba(255,255,255,0.08)" },
+              { w: "82%", bg: "rgba(255,255,255,0.08)" },
+              { w: "38%", bg: "#C8FF00" },
+              { w: "58%", bg: "rgba(255,255,255,0.08)" },
+            ].map((l, i) => (
+              <div key={i} style={{ width: l.w, height: 2, background: l.bg, borderRadius: 2 }} />
+            ))}
+          </div>
+        </div>
+      </CardShell>
+    ),
   },
+
+  /* 2 — Web Design — white */
   {
-    number: "03",
-    title: "PowerPoint Design",
-    description:
-      "Pitch decks and presentations that command the room — structured, visual, and unforgettable.",
-    tags: ["Pitch Deck", "Reports", "Slides", "Data Viz"],
+    id: "c2",
+    cx: 60, cy: -15, w: 205, h: CARD_HEIGHT + 20, rotate: 6, zIndex: 3,
+    from: { x: 40, y: -130, rotate: 16 },
+    render: () => (
+      <CardShell className="bg-[#f8f8f8] shadow-[0_20px_56px_rgba(0,0,0,0.13)]">
+        <div className="absolute inset-0 p-5">
+          <p className="text-[9px] font-bold tracking-[0.2em] uppercase text-black/25 mb-2">Service 03</p>
+          <p className="text-[28px] font-black leading-tight tracking-tight text-black">
+            Web<br />Design
+          </p>
+          <div className="absolute top-[44%] left-5 right-5">
+            <div className="w-full h-[26px] bg-[#eeeeee] rounded-md mb-2.5 flex items-center pl-2 gap-1.5">
+              {["#FF6B6B", "#C8FF00", "rgba(0,0,0,0.1)"].map((c, i) => (
+                <div key={i} className="w-1.5 h-1.5 rounded-full" style={{ background: c }} />
+              ))}
+            </div>
+            {[100, 72, 88, 52].map((w, i) => (
+              <div key={i} className="h-1 rounded-full bg-black/[0.05] mb-[7px]" style={{ width: `${w}%` }} />
+            ))}
+          </div>
+        </div>
+      </CardShell>
+    ),
+  },
+
+  /* 3 — PowerPoint Design — pink-purple gradient */
+  {
+    id: "c3",
+    cx: 165, cy: 10, w: 190, h: CARD_HEIGHT, rotate: 20, zIndex: 2,
+    from: { x: 100, y: 110, rotate: 44 },
+    render: () => (
+      <CardShell
+        className="shadow-[0_16px_48px_rgba(168,85,247,0.35)]"
+        style={{ background: "linear-gradient(145deg,#a855f7,#ec4899)" }}
+      >
+        <LinePattern color="rgba(255,255,255,0.1)" />
+        <div className="absolute inset-0 p-5">
+          <p className="text-[9px] font-bold tracking-[0.2em] uppercase text-white/50 mb-2">Service 04</p>
+          <p className="text-[28px] font-black leading-tight tracking-tight text-white">
+            PowerPoint<br />Design
+          </p>
+          <div className="absolute top-[46%] left-5 right-5 flex flex-col gap-2">
+            {[88, 62, 78, 44, 68].map((w, i) => (
+              <div
+                key={i}
+                className="rounded-full"
+                style={{ width: `${w}%`, height: 5, background: i === 0 ? "#fff" : "rgba(255,255,255,0.25)" }}
+              />
+            ))}
+          </div>
+        </div>
+      </CardShell>
+    ),
   },
 ];
 
-export default function ServicesSection() {
+/* ── card shell ─────────────────────────────────────────────── */
+function CardShell({ className = "", style = {}, children }) {
   return (
-    <section className="relative z-10 -mt-32 pb-10 ">
-      <div className="max-w-7xl mx-auto px-6 md:px-10 ">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 ">
-          {services.map((s, i) => (
-            <motion.div
-              key={s.number}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.6,
-                delay: i * 0.1,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="group bg-[#F7F7F7] min-h-[220px] p-8 flex flex-col justify-between hover:bg-[#fafafa] transition-colors duration-300 cursor-pointer"
-            >
-              {/* Top row */}
-              <div className="flex items-start justify-between mb-6">
-                <span className="text-[11px] font-semibold tracking-[0.15em] text-[#999] uppercase">
-                  {s.number}
-                </span>
-                <Link
-                  to="/services"
-                  className="w-8 h-8 rounded-full border border-[#ddd] flex items-center justify-center group-hover:bg-[#0a0a0a] group-hover:border-[#0a0a0a] transition-all duration-300"
-                >
-                  <ArrowUpRight
-                    size={14}
-                    className="text-[#999] group-hover:text-white transition-colors duration-300"
-                  />
-                </Link>
-              </div>
+    <div
+      className={`w-full h-full rounded-xl overflow-hidden relative shadow-[0_12px_40px_rgba(0,0,0,0.15)] ${className}`}
+      style={style}
+    >
+      {children}
+    </div>
+  );
+}
 
-              {/* Title */}
-              <h3 className="font-bold text-[#0a0a0a] text-xl leading-tight mb-3">
-                {s.title}
-              </h3>
+/* ── pattern helpers ────────────────────────────────────────── */
+function DotGrid({ color = "#fff", spacing = 14 }) {
+  const id = `dg-${color.replace(/[^a-z0-9]/gi, "")}${spacing}`;
+  return (
+    <svg className="absolute inset-0 w-full h-full pointer-events-none">
+      <defs>
+        <pattern id={id} x="0" y="0" width={spacing} height={spacing} patternUnits="userSpaceOnUse">
+          <circle cx={spacing / 2} cy={spacing / 2} r="1.4" fill={color} />
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill={`url(#${id})`} />
+    </svg>
+  );
+}
 
-              {/* Description */}
-              <p className="text-[#666] text-sm leading-relaxed mb-6 flex-1">
-                {s.description}
-              </p>
+function LinePattern({ color = "rgba(255,255,255,0.15)" }) {
+  const id = `lp-${color.replace(/[^a-z0-9]/gi, "")}`;
+  return (
+    <svg className="absolute inset-0 w-full h-full pointer-events-none">
+      <defs>
+        <pattern id={id} x="0" y="0" width="14" height="14" patternUnits="userSpaceOnUse">
+          <line x1="0" y1="7" x2="14" y2="7" stroke={color} strokeWidth="1.5" />
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill={`url(#${id})`} />
+    </svg>
+  );
+}
 
-              {/* Tags */}
-              <div className="flex flex-wrap gap-2">
-                {s.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="text-[10px] font-medium tracking-wide uppercase px-2.5 py-1 bg-[#ececec] text-[#555]"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-          ))}
-        </div>
+/* ── main section ───────────────────────────────────────────── */
+export default function ServicesSection() {
+  const clusterRef = useRef(null);
+  const cardRefs   = useRef([]);
+
+  useEffect(() => {
+    const els = cardRefs.current.filter(Boolean);
+
+    els.forEach((el, i) => {
+      const c = cards[i];
+      gsap.set(el, { x: c.from.x, y: c.from.y, rotation: c.from.rotate, opacity: 0 });
+    });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: clusterRef.current,
+        start: "top 95%",
+        toggleActions: "play none none none",
+      },
+    });
+
+    els.forEach((el, i) => {
+      const c = cards[i];
+      tl.to(el, { x: 0, y: 0, rotation: c.rotate, opacity: 1, duration: 1.1, ease: "expo.out" }, i * 0.09);
+    });
+
+    return () => tl.kill();
+  }, []);
+
+  return (
+    /*
+      Negative margin = CARD_HEIGHT - SHOW_AMOUNT
+      This pulls the section up so only SHOW_AMOUNT px of each card
+      sits below the hero edge — the rest is clipped by the hero's
+      inner overflow-hidden background wrapper.
+    */
+    <section
+      className="relative z-10 bg-transparent"
+      style={{ marginTop: -(CARD_HEIGHT - SHOW_AMOUNT) }}
+    >
+      {/* fan cluster */}
+      <div
+        ref={clusterRef}
+        className="relative w-full flex items-end justify-center overflow-visible z-10"
+        style={{ height: CARD_HEIGHT }}
+      >
+        {cards.map((card, i) => (
+          <div
+            key={card.id}
+            ref={el => (cardRefs.current[i] = el)}
+            className="absolute bottom-0"
+            style={{
+              left: "50%",
+              marginLeft: card.cx - card.w / 2,
+              marginBottom: card.cy,
+              width: card.w,
+              height: card.h,
+              zIndex: card.zIndex,
+              willChange: "transform",
+              transformOrigin: "50% 100%",
+            }}
+          >
+            {card.render()}
+          </div>
+        ))}
       </div>
     </section>
   );
