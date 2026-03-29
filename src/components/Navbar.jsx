@@ -36,7 +36,7 @@ export default function Navbar() {
             <img
               src="/logo.webp"
               alt="Prographr"
-              className="h-10 w-10 object-contain"
+              className="h-8 w-8 object-contain"
             />
           </Link>
 
@@ -63,7 +63,7 @@ export default function Navbar() {
 
           <Link
             to="/contact"
-            className="hidden md:inline-flex items-center px-6 py-2.5 text-sm font-semibold text-[#0a0a0a] bg-white hover:bg-[#e8e8e8] transition-colors duration-200"
+            className="hidden md:inline-flex items-center px-5 py-2 text-sm font-semibold text-[#0a0a0a] bg-white hover:bg-[#e8e8e8] transition-colors duration-200"
           >
             Let's Talk
           </Link>

@@ -24,8 +24,7 @@ export default function Hero() {
       <div className="shrink-0" />
 
       {/* Content — fills remaining space and centers */}
-      <div className="relative z-10 flex-1 flex flex-col items-center justify-center max-w-7xl mx-auto w-full px-6 md:px-10 pb-[100px]">
-
+      <div className="relative z-10 flex-1 flex flex-col items-center justify-center max-w-7xl mx-auto w-full px-6 md:px-10 pb-32">
         {/* Badge */}
         <motion.div {...fadeUp(0)} className="mb-8">
          <div className="inline-flex items-center gap-2 bg-white/5 px-3 py-1.5 backdrop-blur-sm">
