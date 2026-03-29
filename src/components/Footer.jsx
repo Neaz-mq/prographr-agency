@@ -105,7 +105,7 @@ export default function Footer() {
               href="mailto:jsmith.freelance@gmail.com"
               className="text-[#888] text-sm hover:text-white transition-colors break-all"
             >
-              jsmith.freelance@gmail.com
+              contact.prographr@gmail.com
             </a>
           </div>
         </div>
@@ -138,7 +138,7 @@ export default function Footer() {
 
           {/* Copyright */}
           <p className="text-[#0a0a0a] text-sm">
-            © 2026 All rights reserved Prographr.
+            © {new Date().getFullYear()} All rights reserved Prographr.
           </p>
 
           {/* Legal Links */}
