@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function CustomScrollbar() {
   const thumbRef = useRef(null);
@@ -6,8 +6,17 @@ export default function CustomScrollbar() {
   const isDragging = useRef(false);
   const dragStartY = useRef(0);
   const dragStartScroll = useRef(0);
+  const [isDesktop, setIsDesktop] = useState(() => window.innerWidth >= 1024);
 
   useEffect(() => {
+    const handleResize = () => setIsDesktop(window.innerWidth >= 1024);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (!isDesktop) return;
+
     const thumb = thumbRef.current;
     const track = trackRef.current;
     if (!thumb || !track) return;
@@ -17,21 +26,21 @@ export default function CustomScrollbar() {
       const scrollTop = window.scrollY;
       const scrollHeight = doc.scrollHeight - doc.clientHeight;
       const trackHeight = track.clientHeight;
-
-      const thumbHeight = Math.max(
-        (doc.clientHeight / doc.scrollHeight) * trackHeight,
-        40
+      const thumbHeight = Math.min(
+        Math.max(
+          (doc.clientHeight / doc.scrollHeight) * trackHeight,
+          20   // minimum height
+        ),
+        60     // maximum height — keeps it short like reference sites
       );
       const thumbTop =
         scrollHeight > 0
           ? (scrollTop / scrollHeight) * (trackHeight - thumbHeight)
           : 0;
-
       thumb.style.height = `${thumbHeight}px`;
       thumb.style.transform = `translateY(${thumbTop}px)`;
     };
 
-    // Mouse drag on thumb
     const onMouseDown = (e) => {
       isDragging.current = true;
       dragStartY.current = e.clientY;
@@ -46,7 +55,6 @@ export default function CustomScrollbar() {
       const trackHeight = track.clientHeight;
       const thumbHeight = thumb.clientHeight;
       const scrollHeight = doc.scrollHeight - doc.clientHeight;
-
       const delta = e.clientY - dragStartY.current;
       const scrollDelta = (delta / (trackHeight - thumbHeight)) * scrollHeight;
       window.scrollTo(0, dragStartScroll.current + scrollDelta);
@@ -57,7 +65,6 @@ export default function CustomScrollbar() {
       document.body.style.userSelect = "";
     };
 
-    // Click on track to jump
     const onTrackClick = (e) => {
       if (e.target === thumb) return;
       const doc = document.documentElement;
@@ -72,7 +79,6 @@ export default function CustomScrollbar() {
     };
 
     window.addEventListener("scroll", updateThumb, { passive: true });
-    window.addEventListener("resize", updateThumb);
     thumb.addEventListener("mousedown", onMouseDown);
     track.addEventListener("click", onTrackClick);
     window.addEventListener("mousemove", onMouseMove);
@@ -82,13 +88,14 @@ export default function CustomScrollbar() {
 
     return () => {
       window.removeEventListener("scroll", updateThumb);
-      window.removeEventListener("resize", updateThumb);
       thumb.removeEventListener("mousedown", onMouseDown);
       track.removeEventListener("click", onTrackClick);
       window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("mouseup", onMouseUp);
     };
-  }, []);
+  }, [isDesktop]);
+
+  if (!isDesktop) return null;
 
   return (
     <div
@@ -97,28 +104,28 @@ export default function CustomScrollbar() {
         position: "fixed",
         top: 0,
         right: 0,
-        width: "8px",
+        width: "4px",
         height: "100vh",
         zIndex: 9999,
-        padding: "2px",
+        padding: "1px",
       }}
     >
       <div
         ref={thumbRef}
         style={{
-          width: "4px",
+          width: "3px",
           marginLeft: "auto",
           marginRight: "auto",
           borderRadius: "999px",
-          background: "rgba(150, 150, 150, 0.4)",
+          background: "rgba(180, 180, 180, 0.5)",
           cursor: "pointer",
           transition: "background 0.2s",
         }}
         onMouseEnter={(e) =>
-          (e.currentTarget.style.background = "rgba(180, 180, 180, 0.7)")
+          (e.currentTarget.style.background = "rgba(220, 220, 220, 0.8)")
         }
         onMouseLeave={(e) =>
-          (e.currentTarget.style.background = "rgba(150, 150, 150, 0.4)")
+          (e.currentTarget.style.background = "rgba(180, 180, 180, 0.5)")
         }
       />
     </div>
