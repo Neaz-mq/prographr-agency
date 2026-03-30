@@ -10,18 +10,20 @@ const fadeUp = (delay = 0) => ({
 export default function Hero() {
   return (
     <section className="relative h-[100vh] overflow-visible flex flex-col z-0">
-
       {/* Clipping wrapper */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('https://res.cloudinary.com/dzi3u164c/image/upload/v1774762978/BG_dvaipu.webp')" }}
+          style={{
+            backgroundImage:
+              "url('https://res.cloudinary.com/dzi3u164c/image/upload/v1774762978/BG_dvaipu.webp')",
+          }}
         />
         <div className="absolute inset-0 bg-black/30" />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 flex-1 flex flex-col items-center justify-center max-w-7xl mx-auto w-full px-6 md:px-10 -top-24">
+      <div className="relative z-10 flex-1 flex flex-col items-center justify-center max-w-7xl mx-auto w-full px-6 md:px-10 lg:-top-4 md:-top-6 -top-6">
         <motion.div {...fadeUp(0)} className="mb-8">
           <div className="inline-flex items-center gap-2 bg-white/5 px-3 py-1.5 backdrop-blur-sm">
             <span className="bg-[#FF7431] text-black text-[10px] font-bold px-2.5 py-0.5 rounded-full">
@@ -36,11 +38,12 @@ export default function Hero() {
 
         <motion.h1
           {...fadeUp(0.1)}
-          className="font-bold text-white leading-[1.25] text-center"
-          style={{ fontSize: "clamp(2.2rem, 5vw, 4.5rem)" }}
+          className="font-bold text-white leading-[1.25] text-center text-[1.8rem] sm:text-[3rem] md:text-[3rem] lg:text-[4.4rem]"
         >
-          Crafting Digital<br />
-          Experiences That Define<br />
+          Crafting Digital
+          <br />
+          Experiences That Define
+          <br />
           the Future
         </motion.h1>
       </div>
