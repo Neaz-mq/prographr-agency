@@ -41,7 +41,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-20">
+          <nav className="hidden md:flex items-center lg:gap-20 md:gap-12 gap-6">
             {navLinks.map((l) => (
               <NavLink
                 key={l.to}
@@ -86,7 +86,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="max-w-6xl mx-auto mt-1 rounded-xl bg-[#111]/95 backdrop-blur-md overflow-hidden"
+            className="max-w-6xl mx-auto mt-1  bg-[#111]/95 backdrop-blur-md overflow-hidden"
           >
             <div className="px-6 py-6 flex flex-col gap-5">
               {navLinks.map((l) => (
@@ -102,7 +102,7 @@ export default function Navbar() {
               <Link
                 to="/contact"
                 onClick={() => setMobileOpen(false)}
-                className="mt-2 px-5 py-2.5 text-sm font-semibold text-[#0a0a0a] bg-white rounded-lg text-center hover:bg-[#e8e8e8] transition-colors"
+                className="mt-2 px-5 py-2.5 text-sm font-semibold text-[#0a0a0a] bg-white text-center hover:bg-[#e8e8e8] transition-colors"
               >
                 Let's Talk
               </Link>
