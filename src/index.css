@@ -6,12 +6,20 @@
 
 @layer base {
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
+  html {
+    scroll-behavior: auto;
+    overflow-x: hidden;
+    /* Hide native scrollbar on all browsers */
+    scrollbar-width: none;        /* Firefox */
+    -ms-overflow-style: none;     /* IE/Edge */
+  }
+  html::-webkit-scrollbar {
+    display: none;                /* Chrome/Safari */
+  }
   body {
     font-family: 'Inter', sans-serif;
     background-color: #ffffff;
     color: #ffffff;
-    overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
   }
   h1, h2, h3, h4, h5, h6 {
