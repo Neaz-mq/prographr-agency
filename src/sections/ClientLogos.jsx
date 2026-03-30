@@ -17,7 +17,7 @@ const LogoTrack = () => (
         <img
           src={logo.src}
           alt={logo.alt}
-          className="h-7 w-auto object-contain opacity-60 hover:opacity-90 transition-opacity duration-200 grayscale"
+          className="lg:h-7 md:h-7 h-6  w-auto object-contain opacity-60 hover:opacity-90 transition-opacity duration-200 grayscale"
         />
       </div>
     ))}
@@ -26,7 +26,7 @@ const LogoTrack = () => (
 
 export default function ClientLogos() {
   return (
-    <section className="bg-white pb-16 pt-20">
+    <section className="bg-white lg:pb-20 lg:pt-28 md:pb-20 md:pt-16 sm:pb-12 sm:pt-20 pb-12 pt-10">
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         <div
           className="relative overflow-hidden flex"

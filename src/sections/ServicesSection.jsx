@@ -178,7 +178,7 @@ function MobileCarousel() {
   const c = mobileCards[current];
 
   return (
-    <div className="pt-10 pb-10 px-6">
+    <div className="-mt-40 pb-10 px-6">
       {/* overflow-hidden prevents x animation from causing scrollbar */}
       <div className="overflow-hidden">
         <AnimatePresence mode="wait">
