@@ -4,33 +4,31 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const stats = [
-  { value: "30+", label: "Company with Work Experiences" },
-  { value: "1K+", label: "Job Completed" },
-  { value: "100%", label: "Satisfied Clients" },
-];
+// Pure CSS formula that always matches max-w-7xl (80rem=1280px) + px-10 (2.5rem=40px)
+// On screens wider than 1280px: (100vw - 1280px) / 2 + 40px
+// On narrower screens: falls back to 40px minimum
+const LEFT_INDENT = "max(40px, calc((100vw - 80rem) / 2 + 2.5rem))";
 
 export default function AboutSection() {
-  const wrapperRef   = useRef(null);
-  const sectionRef   = useRef(null);
+  const wrapperRef = useRef(null);
+  const sectionRef = useRef(null);
   const cardsWrapRef = useRef(null);
-  const headingRef   = useRef(null);
-  const [leftOffset, setLeftOffset] = useState(48);
+  const [isDesktop, setIsDesktop] = useState(() =>
+    typeof window !== "undefined" ? window.innerWidth >= 1024 : true,
+  );
 
+  // Track breakpoint
   useEffect(() => {
-    const measure = () => {
-      if (headingRef.current) {
-        setLeftOffset(headingRef.current.getBoundingClientRect().left);
-      }
-    };
-    measure();
-    window.addEventListener("resize", measure);
-    return () => window.removeEventListener("resize", measure);
+    const check = () => setIsDesktop(window.innerWidth >= 1024);
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
   }, []);
 
+  // GSAP only on desktop
   useEffect(() => {
-    const wrapper   = wrapperRef.current;
-    const section   = sectionRef.current;
+    if (!isDesktop) return;
+    const wrapper = wrapperRef.current;
+    const section = sectionRef.current;
     const cardsWrap = cardsWrapRef.current;
     if (!wrapper || !section || !cardsWrap) return;
 
@@ -39,7 +37,7 @@ export default function AboutSection() {
 
     const ctx = gsap.context(() => {
       gsap.to(cardsWrap, {
-        x: getScrollAmount,
+        x: () => getScrollAmount(),
         ease: "none",
         scrollTrigger: {
           trigger: wrapper,
@@ -48,33 +46,157 @@ export default function AboutSection() {
           start: "top top",
           end: () => `+=${Math.abs(getScrollAmount())}`,
           scrub: 1.2,
-          anticipatePin: 1,
           invalidateOnRefresh: true,
+          anticipatePin: 1,
+          onRefresh: (self) => {
+            gsap.set(cardsWrap, { x: 0 });
+            self.update();
+          },
         },
       });
     }, wrapper);
 
-    const onResize = () => ScrollTrigger.refresh();
-    window.addEventListener("resize", onResize);
+    const timer = setTimeout(() => ScrollTrigger.refresh(true), 300);
+
+    const handleResize = () => {
+      gsap.set(cardsWrap, { x: 0 });
+      ScrollTrigger.refresh(true);
+    };
+    window.addEventListener("resize", handleResize);
+
     return () => {
       ctx.revert();
-      window.removeEventListener("resize", onResize);
+      clearTimeout(timer);
+      window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [isDesktop]);
 
-  /* Height below the heading bar */
-  const bodyHeight = "calc(100vh - 168px)";
+  // ── MOBILE / TABLET layout (< 1024px) ────────────────────────────────
+  if (!isDesktop) {
+    return (
+      <section className="bg-white w-full">
+        {/* Heading */}
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 w-full">
+          <div className="pt-10 pb-8 border-b border-[#efefef]">
+            <span className="inline-block text-[9px] bg-[#F2F2F2] text-black uppercase font-bold px-3 py-1 mb-5">
+              About Us
+            </span>
+            <h2 className="text-[clamp(22px,5.5vw,32px)] font-extrabold leading-[1.4] text-[#0a0a0a] max-w-[560px]">
+              We Help Businesses Stand Out With Modern, Creative, and{" "}
+              <span className="text-[#c0c0c0]">Impactful Design Solutions</span>
+            </h2>
+          </div>
+        </div>
 
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 w-full py-8 flex flex-col gap-8 md:-mt-6 -mt-28">
+          {/* Hero image */}
+          <div
+            className="w-full overflow-hidden"
+            style={{ height: "clamp(400px, 48vw, 300px)" }}
+          >
+            <img
+              src="https://res.cloudinary.com/dzi3u164c/image/upload/v1774865116/Asset_1_qgly6y.webp"
+              alt="About Prographr"
+              className="w-full h-full object-contain"
+            />
+          </div>
+
+          {/* Body text */}
+          <div className="flex flex-col gap-3 max-w-[560px] md:-mt-6 -mt-24">
+            <p className="text-[13px] leading-[1.6] text-[#666]">
+              In today's fast-moving digital world, strong and meaningful design
+              plays a vital role in building a successful brand.
+            </p>
+            <p className="text-[13px] leading-[1.6] text-[#666]">
+              Our agency specializes in design services that help brands stand
+              out in a competitive market.
+            </p>
+          </div>
+
+          {/* B&W team image */}
+          <div
+            className="w-full overflow-hidden"
+            style={{ height: "clamp(220px, 52vw, 340px)" }}
+          >
+            <img
+              src="https://res.cloudinary.com/dzi3u164c/image/upload/v1774865534/Asset_2_g5eqsn.webp"
+              alt="We have an expert team"
+              className="w-full h-full object-cover object-bottom"
+            />
+          </div>
+
+          {/* Stats block */}
+          <div className="flex flex-col gap-5">
+            <h3 className="text-[clamp(24px,5.5vw,36px)] font-bold text-[#0a0a0a] leading-[1.25]">
+              What makes our agency different
+            </h3>
+            <div className="flex items-stretch gap-3 sm:gap-5 mt-2">
+              <div className="flex flex-col justify-center gap-1 flex-1">
+                <div className="text-[clamp(32px,8vw,44px)] font-semibold leading-none tracking-[-1px] text-[#0a0a0a]">
+                  30+
+                </div>
+                <div className="text-[11px] leading-[1.5] text-[#555]">
+                  Company with Work Experiences
+                </div>
+              </div>
+              <div className="flex-[2] bg-[#0a0a0a] px-4 sm:px-8 py-6 flex gap-5 sm:gap-24 items-center justify-center">
+                <div>
+                  <div className="text-[clamp(26px,7vw,40px)] font-semibold leading-none mb-1 tracking-[-1px] text-white">
+                    1K+
+                  </div>
+                  <div className="text-[11px] leading-[1.5] text-white">
+                    Job Completed
+                  </div>
+                </div>
+                <div>
+                  <div className="text-[clamp(26px,7vw,40px)] font-semibold leading-none mb-1 tracking-[-1px] text-white">
+                    100%
+                  </div>
+                  <div className="text-[11px] leading-[1.5] text-white">
+                    Satisfied Client
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Dark CTA card */}
+          <div
+            className="w-full overflow-hidden relative border border-[#efefef]"
+            style={{ height: "clamp(240px, 55vw, 320px)" }}
+          >
+            <img
+              src="https://res.cloudinary.com/dzi3u164c/image/upload/v1774931324/Asset_3_raki8b.webp"
+              alt="lightning"
+              className="absolute inset-0 w-full h-full object-cover object-right"
+            />
+            <div className="relative z-10 flex flex-col justify-between h-full p-7 sm:p-10">
+              <h3 className="text-[clamp(22px,5.5vw,34px)] font-extrabold text-white leading-[1.15] tracking-[-0.5px] max-w-[65%]">
+                Scroll and enjoy a new experience
+              </h3>
+              <button className="self-start inline-flex items-center gap-2 px-5 py-[9px] bg-transparent border border-white/30 rounded-full text-white/70 text-[11px] cursor-pointer transition-all hover:bg-white/10 hover:text-white">
+                Again let's go →
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  // ── DESKTOP layout (≥ 1024px) ─────────────────────────────────────────
   return (
     <div ref={wrapperRef}>
       <section
         ref={sectionRef}
-        className="bg-white w-full overflow-hidden h-screen"
+        className="bg-white w-full overflow-hidden h-screen flex flex-col"
       >
-        {/* ── Heading ── */}
-        <div className="max-w-7xl mx-auto px-6 md:px-10">
-          <div ref={headingRef} className="h-0" />
-          <div className="pt-12 pb-8 border-b border-[#efefef]">
+        {/* Heading — uses same LEFT_INDENT as left panel for perfect alignment */}
+        <div className="w-full shrink-0">
+          <div
+            className="pt-12 pb-8 border-b border-[#efefef]"
+            style={{ paddingLeft: LEFT_INDENT, paddingRight: LEFT_INDENT }}
+          >
             <span className="inline-block text-[9px] bg-[#F2F2F2] text-black uppercase font-bold px-3 py-1 mb-6">
               About Us
             </span>
@@ -87,124 +209,110 @@ export default function AboutSection() {
           </div>
         </div>
 
-        {/* ── Body row ── */}
-        <div className="flex items-start w-full" style={{ height: bodyHeight }}>
-
-          {/* ── LEFT PANEL — image card + text ── */}
-          <div
-            className="shrink-0 flex flex-col border-r border-[#efefef] pr-10 pt-10 pb-8 gap-5"
-            style={{ width: "38vw", paddingLeft: leftOffset, height: "100%" }}
-          >
-            {/* image — proportional height */}
-            <div className="shrink-0 overflow-hidden rounded-[10px]" style={{ height: "260px" }}>
+        {/* Body */}
+        <div className="flex items-stretch w-full flex-1 min-h-0 pt-4">
+          {/* LEFT PANEL — paddingLeft uses same CSS formula as heading */}
+          <div className="shrink-0 flex flex-col border-r border-[#efefef] pr-10 pt-2 pb-8 gap-5 overflow-hidden 2xl:w-[47vw] xl:w-[47vw] lg:w-[47vw] md:w-[60vw] pl-[max(40px,calc((100vw-80rem)/2+2.5rem))]">
+            <div
+              className="shrink-0 overflow-hidden"
+              style={{ height: "220px" }}
+            >
               <img
                 src="https://res.cloudinary.com/dzi3u164c/image/upload/v1774865116/Asset_1_qgly6y.webp"
                 alt="About Prographr"
                 className="w-full h-full object-cover"
               />
             </div>
-
-            {/* text below image */}
-            <div className="shrink-0 flex flex-col gap-3 pt-2">
-              <p className="text-[13px] leading-[1.85] text-[#666]">
+            <div className="shrink-0 flex flex-col gap-3">
+              <p className="text-[13px] leading-[1.5] text-[#666]">
                 In today's fast-moving digital world, strong and meaningful
-                design plays a vital role in building a successful brand. Our
-                design agency was created with one clear goal — to help businesses.
+                design plays a vital role in building a successful brand.
               </p>
-              <p className="text-[13px] leading-[1.85] text-[#666]">
-                Our agency specializes in a wide range of design services that
-                help brands stand out in a competitive market. From flyer
-                design to full digital experiences.
+              <p className="text-[13px] leading-[1.5] text-[#666]">
+                Our agency specializes in design services that help brands stand
+                out in a competitive market.
               </p>
             </div>
           </div>
 
-          {/* ── RIGHT — horizontally scrolling cards ── */}
-          <div className="flex-1 overflow-hidden relative">
+          {/* RIGHT — scrolling cards */}
+          <div className="flex-1 overflow-hidden relative min-h-0">
             <div
               ref={cardsWrapRef}
-              className="flex items-stretch h-full will-change-transform pl-6"
+              className="flex items-stretch h-full will-change-transform"
               style={{ width: "max-content" }}
             >
-
-              {/* Card 1 — full height image only, no text */}
-              <div
-                className="shrink-0 relative border-r border-[#efefef] pr-8 pl-2 pt-10 pb-8"
-                style={{ width: "380px", height: "100%" }}
-              >
-                <div className="relative w-full h-full overflow-hidden rounded-[10px]">
+              {/* Card 1 — B&W image */}
+              <div className="shrink-0 self-start border-r border-l border-[#efefef] pr-8 pl-8 pt-2 2xl:w-[30vw]  xl:w-[40vw] lg:w-[55vw]">
+                <div className="overflow-hidden object-center" style={{ height: "330px" }}>
                   <img
                     src="https://res.cloudinary.com/dzi3u164c/image/upload/v1774865534/Asset_2_g5eqsn.webp"
                     alt="We have an expert team"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover object-bottom "
                   />
-                  {/* caption overlay */}
-                  <div className="absolute bottom-0 left-0 right-0 px-4 py-3 bg-gradient-to-t from-black/60 to-transparent">
-                    <p className="text-white text-[12px] font-medium">We have a expert team</p>
+                </div>
+              </div>
+
+              {/* Card 2 — Stats */}
+              <div
+                className="shrink-0 self-stretch flex flex-col justify-start px-10 border-r border-[#efefef] pt-2"
+                style={{ width: "30vw" }}
+              >
+                <h3 className="2xl:text-[42px] xl:text-[40px] lg:text-[32px] font-bold text-[#0a0a0a] 2xl:leading-[1.4] xl:leading-[1.33] lg:leading-[1.33] mb-10 -mt-2">
+                  What makes
+                  <br />
+                  our agency different
+                </h3>
+                <div className="flex items-start gap-4 2xl:pt-8 xl:pt-8 lg:pt-24">
+                  <div className="flex-1">
+                    <div className="2xl:text-[40px] xl:text-[30px] lg:text-[20px] font-semibold leading-none mb-2 tracking-[-1px] 2xl:pt-8 xl:pt-2 lg:pt-1 text-[#0a0a0a]">
+                      30+
+                    </div>
+                    <div className="2xl:text-[12px] xl:text-[12px] lg:text-[9px] leading-[1.5] text-[#090909]">
+                      Company with Work Experiences
+                    </div>
+                  </div>
+                  <div className="flex-[2] bg-[#0a0a0a] 2xl:px-10 2xl:py-10 xl:px-6 xl:py-6 lg:px-3 lg:py-4 flex 2xl:gap-20 xl:gap-14 lg:gap-8 items-center justify-center">
+                    <div>
+                      <div className="2xl:text-[40px] xl:text-[36px] lg:text-[20px] font-semibold leading-none mb-2 tracking-[-1px] text-white">
+                        1K+
+                      </div>
+                      <div className="2xl:text-[12px] xl:text-[10px] lg:text-[10px] leading-[1.5] text-white whitespace-nowrap">
+                        Job Completed
+                      </div>
+                    </div>
+                    <div>
+                      <div className="2xl:text-[40px] xl:text-[36px] lg:text-[20px] font-semibold leading-none mb-2 tracking-[-1px] text-white">
+                        100%
+                      </div>
+                      <div className="2xl:text-[12px] xl:text-[10px] lg:text-[10px] leading-[1.5] text-white whitespace-nowrap">
+                        Satisfied Client
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              {/* Stats card */}
-              <div className="shrink-0 flex flex-col justify-center w-[400px] px-10 border-r border-[#efefef]">
-                <h3 className="text-[21px] font-bold text-[#0a0a0a] leading-[1.3] mb-10">
-                  What makes our agency different
-                </h3>
-                <div className="flex items-start gap-3">
-                  {stats.map((s, i) => (
-                    <div
-                      key={i}
-                      className={`flex-1 ${
-                        i === 1
-                          ? "bg-[#0a0a0a] rounded-xl px-[18px] py-[22px]"
-                          : ""
-                      }`}
-                    >
-                      <div
-                        className={`text-[36px] font-black leading-none mb-2 tracking-[-1px] ${
-                          i === 1 ? "text-white" : "text-[#0a0a0a]"
-                        }`}
-                      >
-                        {s.value}
-                      </div>
-                      <div
-                        className={`text-[12px] leading-[1.5] ${
-                          i === 1 ? "text-white/50" : "text-[#aaa]"
-                        }`}
-                      >
-                        {s.label}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Dark CTA card */}
-              <div className="shrink-0 relative overflow-hidden flex flex-col justify-between w-[360px] bg-[#0a0a0a] rounded-[14px] mx-6 my-6 p-10">
-                <div className="absolute -top-[60px] -right-[60px] w-[220px] h-[220px] rounded-full border border-white/[0.06]" />
-                <div className="absolute -top-[30px] -right-[30px] w-[150px] h-[150px] rounded-full border border-white/[0.09]" />
-                <div
-                  className="absolute inset-0 rounded-[14px]"
-                  style={{
-                    backgroundImage:
-                      "linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)",
-                    backgroundSize: "48px 48px",
-                  }}
+              {/* Card 3 — Dark CTA */}
+              <div
+                className="shrink-0 overflow-hidden flex flex-col justify-between w-[500px] border border-[#efefef] mx-6"
+                style={{ height: "355px", position: "relative", top: "-16px" }}
+              >
+                <img
+                  src="https://res.cloudinary.com/dzi3u164c/image/upload/v1774931324/Asset_3_raki8b.webp"
+                  alt="lightning"
+                  className="absolute inset-0 w-full h-full object-cover object-right"
                 />
-                <p className="relative z-10 text-[9px] tracking-[0.2em] text-white/[0.28] uppercase font-semibold">
-                  Experience
-                </p>
-                <div className="relative z-10">
-                  <h3 className="text-[clamp(22px,2vw,28px)] font-extrabold text-white leading-[1.18] mb-6 tracking-[-0.5px]">
+                <div className="relative z-10 flex flex-col justify-between h-full p-12">
+                  <h3 className="text-[36px] font-extrabold text-white leading-[1.15] tracking-[-0.5px] max-w-[55%]">
                     Scroll and enjoy a new experience
                   </h3>
-                  <button className="inline-flex items-center gap-2 px-6 py-[11px] bg-transparent border border-white/[0.18] rounded-full text-white/60 text-[12px] cursor-pointer transition-all hover:bg-white/[0.08] hover:text-white hover:border-white/35">
+                  <button className="self-start inline-flex items-center gap-2 px-5 py-[9px] bg-transparent border border-white/30 rounded-full text-white/70 text-[11px] cursor-pointer transition-all hover:bg-white/10 hover:text-white">
                     Again let's go →
                   </button>
                 </div>
               </div>
 
-              {/* Trailing spacer */}
               <div className="shrink-0 w-12" />
             </div>
           </div>
