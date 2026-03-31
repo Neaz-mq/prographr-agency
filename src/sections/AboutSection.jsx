@@ -243,16 +243,34 @@ export default function AboutSection() {
               style={{ width: "max-content" }}
             >
               {/* Card 1 — B&W image */}
-              <div className="shrink-0 self-start border-r border-l border-[#efefef] pr-8 pl-8 pt-2 2xl:w-[30vw]  xl:w-[40vw] lg:w-[55vw]">
-                <div className="overflow-hidden object-center" style={{ height: "330px" }}>
-                  <img
-                    src="https://res.cloudinary.com/dzi3u164c/image/upload/v1774865534/Asset_2_g5eqsn.webp"
-                    alt="We have an expert team"
-                    className="w-full h-full object-cover object-bottom "
-                  />
+              <div className="shrink-0 self-start border-r border-l border-[#efefef] pr-8 pl-8 pt-2 2xl:w-[35vw] xl:w-[45vw] lg:w-[55vw]">
+                <div className="relative" style={{ height: "350px" }}>
+                  {/* Image Container */}
+                  <div className="w-full h-full overflow-hidden">
+                    <img
+                      src="https://res.cloudinary.com/dzi3u164c/image/upload/v1774967188/photo-1556761175-b413da4baf72_iqjccn.avif"
+                      alt="We have a expert team"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+
+                  {/* Text overlay — "ex" is inside the black box, "pert team" is outside */}
+                  <div className="absolute bottom-8 left-0 flex items-center whitespace-nowrap">
+                    {/* Black box part containing the first part of the word */}
+                    <div className="bg-[#000000] py-3 pl-10">
+                      <span className="text-white text-[15px] font-normal tracking-wide">
+                        We have an ex
+                      </span>
+                    </div>
+                    {/* Overhanging part containing the rest of the word */}
+                    <div className="py-3">
+                      <span className="text-white text-[15px] font-normal tracking-wide">
+                        pert team
+                      </span>
+                    </div>
+                  </div>
                 </div>
               </div>
-
               {/* Card 2 — Stats */}
               <div
                 className="shrink-0 self-stretch flex flex-col justify-start px-10 border-r border-[#efefef] pt-2"
