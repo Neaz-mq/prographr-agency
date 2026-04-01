@@ -17,9 +17,6 @@ export default function CTA() {
               Ready to Build<br/>Something<br/>
               <span className="text-gradient">Extraordinary?</span>
             </h2>
-            <p className="mt-6 text-[#888] text-base max-w-lg mx-auto leading-relaxed">
-              Let's turn your vision into a visual experience that your audience will remember.
-            </p>
             <div className="mt-10 flex flex-wrap justify-center gap-4">
               <Link to="/contact"
                 className="group inline-flex items-center gap-2 bg-white text-[#0a0a0a] font-display font-semibold text-sm px-8 py-4 rounded-full hover:bg-[#C8FF00] transition-colors duration-300">
