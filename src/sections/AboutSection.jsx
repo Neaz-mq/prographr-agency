@@ -301,17 +301,17 @@ export default function AboutSection() {
                   <br />
                   <span className="2xl:whitespace-nowrap">our agency different</span>
                 </h3>
-                <div className="flex items-start gap-4 2xl:pt-8 xl:pt-8 lg:pt-24">
+                <div className="flex items-start gap-4 2xl:pt-8 xl:pt-8 lg:pt-20">
                   <div className="flex-1">
-                    <div className="2xl:text-[40px] xl:text-[30px] lg:text-[20px] font-semibold leading-none mb-2 tracking-[-1px] 2xl:pt-8 xl:pt-2 lg:pt-1 text-[#0a0a0a]">
+                    <div className="2xl:text-[40px] xl:text-[30px] lg:text-[20px] font-semibold leading-none mb-2 tracking-[-1px] 2xl:pt-8 xl:pt-2 lg:pt-1.5 text-[#0a0a0a]">
                       30+
                     </div>
                     <div className="2xl:text-[12px] xl:text-[12px] lg:text-[9px] leading-[1.5] text-[#090909]">
                       Company with Work Experiences
                     </div>
                   </div>
-                  <div className="flex-[2] bg-[#0a0a0a] 2xl:px-10 2xl:py-10 xl:px-6 xl:py-6 lg:px-3 lg:py-4 flex 2xl:gap-20 xl:gap-14 lg:gap-8 items-center justify-center">
-                    <div>
+                  <div className="flex-[2] bg-[#0a0a0a] 2xl:px-7 2xl:py-10 xl:px-4 xl:py-6 lg:px-2 lg:py-6 flex 2xl:gap-20 xl:gap-14 lg:gap-6 items-center justify-center">
+                    <div className="2xl:px-0 xl:px-0 lg:px-2">
                       <div className="2xl:text-[40px] xl:text-[36px] lg:text-[20px] font-semibold leading-none mb-2 tracking-[-1px] text-white">
                         1K+
                       </div>
@@ -319,7 +319,7 @@ export default function AboutSection() {
                         Job Completed
                       </div>
                     </div>
-                    <div>
+                   <div className="2xl:px-0 xl:px-0 lg:px-0">
                       <div className="2xl:text-[40px] xl:text-[36px] lg:text-[20px] font-semibold leading-none mb-2 tracking-[-1px] text-white">
                         100%
                       </div>
