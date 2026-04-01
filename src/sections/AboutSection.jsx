@@ -88,21 +88,21 @@ export default function AboutSection() {
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 w-full py-8 flex flex-col gap-8 md:-mt-6 -mt-28">
+       <div className="max-w-7xl mx-auto px-5 sm:px-8 w-full py-8 flex flex-col gap-8">
           {/* Hero image */}
           <div
             className="w-full overflow-hidden"
-            style={{ height: "clamp(400px, 48vw, 300px)" }}
+            style={{ height: "clamp(260px, 42vw, 480px)" }}
           >
             <img
               src="https://res.cloudinary.com/dzi3u164c/image/upload/v1774865116/Asset_1_qgly6y.webp"
               alt="About Prographr"
-              className="w-full h-full object-contain"
+              className="w-full h-full object-cover object-center"
             />
           </div>
 
           {/* Body text */}
-          <div className="flex flex-col gap-3 max-w-[560px] md:-mt-6 -mt-24">
+          <div className="flex flex-col gap-3 max-w-[560px]">
             <p className="text-[13px] leading-[1.6] text-[#666]">
               In today's fast-moving digital world, strong and meaningful design
               plays a vital role in building a successful brand.
@@ -112,17 +112,37 @@ export default function AboutSection() {
               out in a competitive market.
             </p>
           </div>
-
           {/* B&W team image */}
-          <div
-            className="w-full overflow-hidden"
-            style={{ height: "clamp(220px, 52vw, 340px)" }}
-          >
-            <img
-              src="https://res.cloudinary.com/dzi3u164c/image/upload/v1774865534/Asset_2_g5eqsn.webp"
-              alt="We have an expert team"
-              className="w-full h-full object-cover object-bottom"
-            />
+          <div className="w-full overflow-hidden px-0">
+            <div
+              className="relative"
+              style={{ height: "clamp(220px, 52vw, 340px)" }}
+            >
+              {/* Image Container */}
+              <div className="w-full h-full overflow-hidden">
+                <img
+                  src="https://res.cloudinary.com/dzi3u164c/image/upload/v1774967188/photo-1556761175-b413da4baf72_iqjccn.avif"
+                  alt="We have an expert team"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
+              {/* Text overlay — "ex" is inside the black box, "pert team" is outside */}
+              <div className="absolute bottom-8 left-0 flex items-center whitespace-nowrap">
+                {/* Black box part containing the first part of the word */}
+                <div className="bg-[#000000] py-3 pl-5 sm:pl-8">
+                  <span className="text-white text-[13px] sm:text-[15px] font-normal tracking-wide">
+                    We have an ex
+                  </span>
+                </div>
+                {/* Overhanging part containing the rest of the word */}
+                <div className="py-3">
+                  <span className="text-white text-[13px] sm:text-[15px] font-normal tracking-wide">
+                    pert team
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Stats block */}
@@ -244,7 +264,7 @@ export default function AboutSection() {
             >
               {/* Card 1 — B&W image */}
               <div className="shrink-0 self-start border-r border-l border-[#efefef] pr-8 pl-8 pt-2 2xl:w-[35vw] xl:w-[45vw] lg:w-[55vw]">
-                <div className="relative" style={{ height: "350px" }}>
+                <div className="relative" style={{ height: "330px" }}>
                   {/* Image Container */}
                   <div className="w-full h-full overflow-hidden">
                     <img
@@ -257,13 +277,13 @@ export default function AboutSection() {
                   {/* Text overlay — "ex" is inside the black box, "pert team" is outside */}
                   <div className="absolute bottom-8 left-0 flex items-center whitespace-nowrap">
                     {/* Black box part containing the first part of the word */}
-                    <div className="bg-[#000000] py-3 pl-10">
+                    <div className="bg-[#000000] py-2 pl-10">
                       <span className="text-white text-[15px] font-normal tracking-wide">
                         We have an ex
                       </span>
                     </div>
                     {/* Overhanging part containing the rest of the word */}
-                    <div className="py-3">
+                    <div className="py-2">
                       <span className="text-white text-[15px] font-normal tracking-wide">
                         pert team
                       </span>
