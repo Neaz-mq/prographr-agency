@@ -299,7 +299,7 @@ export default function AboutSection() {
                 <h3 className="2xl:text-[42px] xl:text-[40px] lg:text-[32px] font-bold text-[#0a0a0a] 2xl:leading-[1.4] xl:leading-[1.33] lg:leading-[1.33] mb-10 -mt-2">
                   What makes
                   <br />
-                  our agency different
+                  <span className="2xl:whitespace-nowrap">our agency different</span>
                 </h3>
                 <div className="flex items-start gap-4 2xl:pt-8 xl:pt-8 lg:pt-24">
                   <div className="flex-1">
