@@ -88,7 +88,7 @@ export default function AboutSection() {
           </div>
         </div>
 
-       <div className="max-w-7xl mx-auto px-5 sm:px-8 w-full py-8 flex flex-col gap-8">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 w-full py-8 flex flex-col gap-8">
           {/* Hero image */}
           <div
             className="w-full overflow-hidden"
@@ -183,15 +183,15 @@ export default function AboutSection() {
           {/* Dark CTA card */}
           <div
             className="w-full overflow-hidden relative border border-[#efefef]"
-            style={{ height: "clamp(240px, 55vw, 320px)" }}
+            style={{ height: "clamp(240px, 60vw, 380px)" }}
           >
             <img
               src="https://res.cloudinary.com/dzi3u164c/image/upload/v1774931324/Asset_3_raki8b.webp"
               alt="lightning"
-              className="absolute inset-0 w-full h-full object-cover object-right"
+              className="absolute inset-0 w-full h-full object-cover sm:object-[70%_center] object-right"
             />
             <div className="relative z-10 flex flex-col justify-between h-full p-7 sm:p-10">
-              <h3 className="text-[clamp(22px,5.5vw,34px)] font-extrabold text-white leading-[1.15] tracking-[-0.5px] max-w-[65%]">
+              <h3 className="text-[clamp(22px,4.5vw,34px)] font-extrabold text-white leading-[1.15] tracking-[-0.5px] sm:max-w-[50%] max-w-[65%]">
                 Scroll and enjoy a new experience
               </h3>
               <button className="self-start inline-flex items-center gap-2 px-5 py-[9px] bg-transparent border border-white/30 rounded-full text-white/70 text-[11px] cursor-pointer transition-all hover:bg-white/10 hover:text-white">
@@ -299,7 +299,9 @@ export default function AboutSection() {
                 <h3 className="2xl:text-[42px] xl:text-[40px] lg:text-[32px] font-bold text-[#0a0a0a] 2xl:leading-[1.4] xl:leading-[1.33] lg:leading-[1.33] mb-10 -mt-2">
                   What makes
                   <br />
-                  <span className="2xl:whitespace-nowrap">our agency different</span>
+                  <span className="2xl:whitespace-nowrap">
+                    our agency different
+                  </span>
                 </h3>
                 <div className="flex items-start gap-4 2xl:pt-8 xl:pt-8 lg:pt-20">
                   <div className="flex-1">
@@ -319,7 +321,7 @@ export default function AboutSection() {
                         Job Completed
                       </div>
                     </div>
-                   <div className="2xl:px-0 xl:px-0 lg:px-0">
+                    <div className="2xl:px-0 xl:px-0 lg:px-0">
                       <div className="2xl:text-[40px] xl:text-[36px] lg:text-[20px] font-semibold leading-none mb-2 tracking-[-1px] text-white">
                         100%
                       </div>
