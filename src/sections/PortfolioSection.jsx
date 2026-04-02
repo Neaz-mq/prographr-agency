@@ -21,7 +21,7 @@ const PORTFOLIO_ITEMS = [
   {
     id: 3,
     image: "https://res.cloudinary.com/dzi3u164c/image/upload/q_auto/f_auto/v1775120173/3_vykw9g.webp",
-    tags: ["React JS", "Next JS", "Shopify"],
+    tags: ["React JS", "Next JS", "MERN"],
     dark: true,
   },
   {
@@ -33,7 +33,7 @@ const PORTFOLIO_ITEMS = [
   {
     id: 5,
     image: "https://res.cloudinary.com/dzi3u164c/image/upload/q_auto/f_auto/v1775120377/5_go4zm2.webp",
-    tags: ["Product Label", "Label Design", "Roll Up Label"],
+    tags: ["Product Label", "Label Design", "Bottle Label"],
     dark: true,
   },
 ];
