@@ -189,7 +189,7 @@ export default function AboutSection() {
         >
           {/* LEFT PANEL */}
           <div
-            className="shrink-0 flex flex-col border-r border-[#efefef] pr-10 pt-2 pb-5 gap-4 overflow-hidden 2xl:w-[47vw] xl:w-[47vw] lg:w-[47vw] md:w-[60vw]"
+            className="shrink-0 flex flex-col border-r border-[#efefef] pr-10 pt-2 pb-5 gap-4 overflow-hidden 2xl:w-[52vw] xl:w-[47vw] lg:w-[47vw] md:w-[60vw]"
             style={{ paddingLeft: LEFT_INDENT }}
           >
             {/* Image height reduced from 220px → 175px to fit the shorter body */}
@@ -200,12 +200,12 @@ export default function AboutSection() {
                 className="w-full h-full object-cover"
               />
             </div>
-            <div className="shrink-0 flex flex-col gap-2">
-              <p className="text-[13px] leading-[1.5] text-[#666]">
+            <div className="shrink-0 flex flex-col gap-3">
+              <p className="text-[13px] leading-[1.6] text-[#666]">
                 In today's fast-moving digital world, strong and meaningful
                 design plays a vital role in building a successful brand.
               </p>
-              <p className="text-[13px] leading-[1.5] text-[#666]">
+              <p className="text-[13px] leading-[1.6] text-[#666]">
                 Our agency specializes in design services that help brands stand
                 out in a competitive market.
               </p>
@@ -221,7 +221,7 @@ export default function AboutSection() {
             >
               {/* Card 1 — B&W image */}
               <div className="shrink-0 self-start border-r border-l border-[#efefef] pr-8 pl-8 pt-2 2xl:w-[35vw] xl:w-[45vw] lg:w-[55vw]">
-                <div className="relative" style={{ height: "330px" }}>
+                <div className="relative" style={{ height: "350px" }}>
                   <div className="w-full h-full overflow-hidden">
                     <img
                       src="https://res.cloudinary.com/dzi3u164c/image/upload/v1774967188/photo-1556761175-b413da4baf72_iqjccn.avif"
@@ -242,26 +242,26 @@ export default function AboutSection() {
 
               {/* Card 2 — Stats */}
               <div
-                className="shrink-0 self-stretch flex flex-col justify-start px-10 border-r border-[#efefef] pt-2"
-                style={{ width: "30vw" }}
+                className="shrink-0 self-stretch flex flex-col justify-start px-10 border-r border-[#efefef] pt-2  2xl:w-[35vw] xl:w-[45vw] lg:w-[55vw]"
+                
               >
-                <h3 className="2xl:text-[42px] xl:text-[40px] lg:text-[32px] font-bold text-[#0a0a0a] 2xl:leading-[1.4] xl:leading-[1.33] lg:leading-[1.33] mb-8 -mt-2">
+                <h3 className="2xl:text-[42px] xl:text-[40px] lg:text-[36px] font-bold text-[#0a0a0a] 2xl:leading-[1.4] xl:leading-[1.33] lg:leading-[1.33] mb-8 -mt-2">
                   What makes
                   <br />
                   <span className="2xl:whitespace-nowrap">our agency different</span>
                 </h3>
-                <div className="flex items-start gap-4 2xl:pt-4 xl:pt-4 lg:pt-10">
+                <div className="flex items-start gap-4 2xl:pt-10 xl:pt-20 lg:pt-24">
                   <div className="flex-1">
-                    <div className="2xl:text-[40px] xl:text-[30px] lg:text-[20px] font-semibold leading-none mb-2 tracking-[-1px] 2xl:pt-8 xl:pt-2 lg:pt-1.5 text-[#0a0a0a]">30+</div>
+                    <div className="2xl:text-[40px] xl:text-[30px] lg:text-[28px] font-semibold leading-none mb-2 tracking-[-1px] 2xl:pt-10 xl:pt-6 lg:pt-10 text-[#0a0a0a]">30+</div>
                     <div className="2xl:text-[12px] xl:text-[12px] lg:text-[9px] leading-[1.5] text-[#090909]">Company with Work Experiences</div>
                   </div>
-                  <div className="flex-[2] bg-[#0a0a0a] 2xl:px-7 2xl:py-10 xl:px-4 xl:py-6 lg:px-2 lg:py-6 flex 2xl:gap-20 xl:gap-14 lg:gap-6 items-center justify-center">
+                  <div className="flex-[2] bg-[#0a0a0a] 2xl:px-7 2xl:py-12 xl:px-4 xl:py-10 lg:px-2 lg:py-10 flex 2xl:gap-20 xl:gap-14 lg:gap-6 items-center justify-center">
                     <div className="2xl:px-0 xl:px-0 lg:px-2">
-                      <div className="2xl:text-[40px] xl:text-[36px] lg:text-[20px] font-semibold leading-none mb-2 tracking-[-1px] text-white">1K+</div>
+                      <div className="2xl:text-[40px] xl:text-[36px] lg:text-[28px] font-semibold leading-none mb-2 tracking-[-1px] text-white">1K+</div>
                       <div className="2xl:text-[12px] xl:text-[10px] lg:text-[10px] leading-[1.5] text-white whitespace-nowrap">Job Completed</div>
                     </div>
                     <div className="2xl:px-0 xl:px-0 lg:px-0">
-                      <div className="2xl:text-[40px] xl:text-[36px] lg:text-[20px] font-semibold leading-none mb-2 tracking-[-1px] text-white">100%</div>
+                      <div className="2xl:text-[40px] xl:text-[36px] lg:text-[28px] font-semibold leading-none mb-2 tracking-[-1px] text-white">100%</div>
                       <div className="2xl:text-[12px] xl:text-[10px] lg:text-[10px] leading-[1.5] text-white whitespace-nowrap">Satisfied Client</div>
                     </div>
                   </div>
@@ -270,8 +270,8 @@ export default function AboutSection() {
 
               {/* Card 3 — Dark CTA */}
               <div
-                className="shrink-0 overflow-hidden flex flex-col justify-between w-[500px] border border-[#efefef] mx-6"
-                style={{ height: "355px", position: "relative", top: "-2px" }}
+                className="shrink-0 overflow-hidden flex flex-col justify-between 2xl:w-[26vw] xl:w-[45vw] lg:w-[55vw] border border-[#efefef] mx-6"
+                style={{ height: "360px", position: "relative", top: "-2px" }}
               >
                 <img
                   src="https://res.cloudinary.com/dzi3u164c/image/upload/v1774931324/Asset_3_raki8b.webp"
