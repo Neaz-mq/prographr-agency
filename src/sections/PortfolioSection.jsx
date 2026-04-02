@@ -114,9 +114,7 @@ export default function PortfolioSection() {
       <section className="bg-white w-full overflow-hidden">
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
           <div className="pt-6 pb-6 border-b border-[#efefef]">
-            <span className="inline-block text-[9px] bg-[#F2F2F2] text-black uppercase font-bold px-3 py-1 mb-5">
-              Portfolio
-            </span>
+            
             <h2 className="text-[clamp(28px,7vw,40px)] font-extrabold leading-[1.15] text-[#0a0a0a] tracking-[-0.5px]">
               Our Previous
               <br />
@@ -146,10 +144,9 @@ export default function PortfolioSection() {
     <section className="bg-white w-full overflow-hidden">
       {/* Heading */}
       <div
-        className="border-b border-[#efefef] pt-20 pb-5"
+        className="border-b border-[#efefef] pt-20 pb-12"
         style={{ paddingLeft: LEFT_INDENT, paddingRight: LEFT_INDENT }}
-      >
-      
+      >    
         <h2 className="text-[clamp(36px,3.8vw,58px)] font-extrabold leading-[1.1] text-[#0a0a0a] tracking-[-1.5px]">
           Our Previous
           <br />
