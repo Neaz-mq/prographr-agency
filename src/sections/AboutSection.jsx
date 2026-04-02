@@ -245,7 +245,7 @@ export default function AboutSection() {
                 className="shrink-0 self-stretch flex flex-col justify-start px-10 border-r border-[#efefef] pt-2  2xl:w-[35vw] xl:w-[45vw] lg:w-[55vw]"
                 
               >
-                <h3 className="2xl:text-[42px] xl:text-[40px] lg:text-[36px] font-bold text-[#0a0a0a] 2xl:leading-[1.4] xl:leading-[1.33] lg:leading-[1.33] mb-8 -mt-2">
+                <h3 className="2xl:text-[42px] xl:text-[40px] lg:text-[36px] font-bold text-[#0a0a0a] 2xl:leading-[1.4] xl:leading-[1.33] lg:leading-[1.4] mb-8 -mt-2">
                   What makes
                   <br />
                   <span className="2xl:whitespace-nowrap">our agency different</span>
