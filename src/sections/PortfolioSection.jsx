@@ -73,7 +73,7 @@ function PortfolioCard({ item, imgHeight }) {
         {item.tags.map((tag) => (
           <span
             key={tag}
-            className="text-[10px] text-[#555] border border-[#ddd] px-2.5 py-[5px] whitespace-nowrap leading-none"
+            className="text-[10px] text-[#555] border border-[#ddd] bg-[#F2F2F2] px-2.5 py-[5px] whitespace-nowrap leading-none"
           >
             {tag}
           </span>
@@ -97,7 +97,7 @@ export default function PortfolioSection() {
   const swiperProps = {
     modules: [Autoplay, FreeMode],
     slidesPerView: "auto",
-    spaceBetween: 8,
+    spaceBetween: 24,
     freeMode: { enabled: true, momentum: false },
     autoplay: {
       delay: 0,
@@ -146,12 +146,10 @@ export default function PortfolioSection() {
     <section className="bg-white w-full overflow-hidden">
       {/* Heading */}
       <div
-        className="border-b border-[#efefef] pt-5 pb-5"
+        className="border-b border-[#efefef] pt-20 pb-5"
         style={{ paddingLeft: LEFT_INDENT, paddingRight: LEFT_INDENT }}
       >
-        <span className="inline-block text-[9px] bg-[#F2F2F2] text-black uppercase font-bold px-3 py-1 mb-4">
-          Portfolio
-        </span>
+      
         <h2 className="text-[clamp(36px,3.8vw,58px)] font-extrabold leading-[1.1] text-[#0a0a0a] tracking-[-1.5px]">
           Our Previous
           <br />
@@ -164,7 +162,7 @@ export default function PortfolioSection() {
         {SLIDES.map((item, i) => (
           <SwiperSlide
             key={`d-${item.id}-${i}`}
-            style={{ width: "clamp(260px, 22vw, 400px)" }}
+            style={{ width: "clamp(560px, 26vw, 500px)" }}
           >
             <PortfolioCard
               item={item}
