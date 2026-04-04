@@ -111,8 +111,8 @@ export default function PortfolioSection() {
   // ── MOBILE ──────────────────────────────────────────────────────────
   if (!isDesktop) {
     return (
-      <section className="bg-white w-full overflow-hidden">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8">
+      <section className="bg-white w-full overflow-hidden mb-12">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 ">
           <div className="pt-6 pb-6 border-b border-[#efefef]">
             
             <h2 className="text-[clamp(28px,7vw,40px)] font-extrabold leading-[1.15] text-[#0a0a0a] tracking-[-0.5px]">
