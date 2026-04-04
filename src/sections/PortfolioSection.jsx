@@ -141,7 +141,7 @@ export default function PortfolioSection() {
   // Heading padding tightened (pt-10→pt-5, pb-8→pb-5) so Portfolio sits
   // flush right after the About section spacer ends — no visible gap.
   return (
-    <section className="bg-white w-full overflow-hidden">
+    <section className="bg-white w-full overflow-hidden mb-20">
       {/* Heading */}
       <div
         className="border-b border-[#efefef] pt-20 pb-12"
