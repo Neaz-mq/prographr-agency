@@ -281,7 +281,7 @@ export default function Testimonials() {
         </Swiper>
       </div>
 
-      <div className="pb-24" />
+      <div className="mb-6" />
     </section>
   );
 }
