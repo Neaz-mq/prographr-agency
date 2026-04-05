@@ -48,7 +48,7 @@ function ValueItem({ item, setImgRef, setMobileImgRef, setArrowRef, onEnter, onL
     >
       <span
         className="text-black transition-colors duration-300 group-hover:text-black/50 select-none shrink-0 flex-1 min-w-0"
-        style={{ fontSize: "clamp(16px, 2.4vw, 28px)" }}
+        style={{ fontSize: "clamp(16px, 2.4vw, 24px)" }}
       >
         {item.label}
       </span>
@@ -143,7 +143,7 @@ export default function ValueSection() {
     // ✅ position:relative is all that's needed — later DOM sibling
     // naturally paints above TechnologySection's sticky cards
     <section className="w-full bg-white" style={{ position: "relative" }}>
-      <div className="py-16 lg:py-28" style={{ paddingLeft: LEFT_INDENT, paddingRight: LEFT_INDENT }}>
+      <div className="py-14 lg:py-16" style={{ paddingLeft: LEFT_INDENT, paddingRight: LEFT_INDENT }}>
         <h2
           ref={headingRef}
           className="font-extrabold text-black leading-[1.2] tracking-[-2px] mb-10 lg:mb-20 text-[50px] md:text-[64px] lg:text-[70px]"
