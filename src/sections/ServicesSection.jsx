@@ -178,7 +178,7 @@ function MobileCarousel() {
   const c = mobileCards[current];
 
   return (
-    <div className="-mt-40 pb-10 px-10">
+    <div className="-mt-32 pb-10 px-10">
       {/* overflow-hidden prevents x animation from causing scrollbar */}
       <div className="overflow-hidden">
         <AnimatePresence mode="wait">
@@ -188,12 +188,12 @@ function MobileCarousel() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -50 }}
             transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            className={`relative w-full h-56 overflow-hidden  ${c.className}`}
+            className={`relative w-full h-52 overflow-hidden  ${c.className}`}
             style={c.style || {}}
           >
             {c.pattern === "dots" && <DotGrid color={c.patternColor} spacing={10} />}
             {c.pattern === "lines" && <LinePattern color="rgba(255,255,255,0.1)" />}
-            <div className="absolute inset-0 p-6">
+            <div className="absolute inset-0 p-8">
               <p className={`text-[10px] font-bold tracking-[0.2em] uppercase mb-3 ${c.labelColor}`}>{c.label}</p>
               <p className={`text-[30px] font-black leading-tight tracking-tight ${c.textColor}`} style={{ whiteSpace: "pre-line" }}>{c.title}</p>
             </div>
