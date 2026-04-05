@@ -85,10 +85,10 @@ export default function AboutSection() {
       <section className="bg-white w-full">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 w-full">
           <div className="pt-10 pb-8 border-b border-[#efefef]">
-            <span className="inline-block text-[9px] bg-[#F2F2F2] text-black uppercase font-bold px-3 py-1 mb-5">
+            <span className="inline-block text-[10px] bg-[#F2F2F2] text-black uppercase font-bold px-3 py-1 mb-5">
               About Us
             </span>
-            <h2 className="text-[clamp(22px,5.5vw,32px)] font-extrabold leading-[1.4] text-[#0a0a0a] max-w-[560px]">
+            <h2 className="text-[clamp(28px,5.5vw,22px)] font-extrabold leading-[1.4] text-[#0a0a0a] max-w-[660px]">
               We Help Businesses Stand Out With Modern, Creative, and{" "}
               <span className="text-[#c0c0c0]">Impactful Design Solutions</span>
             </h2>
@@ -169,10 +169,10 @@ export default function AboutSection() {
             className="pt-8 pb-5 border-b border-[#efefef]"
             style={{ paddingLeft: LEFT_INDENT, paddingRight: LEFT_INDENT }}
           >
-            <span className="inline-block text-[13px] bg-[#F2F2F2] text-black uppercase font-bold px-3 py-1 mb-4">
+            <span className="inline-block 2xl:text-[13px] xl:text-[13px] lg:text-[13px] md:text-[12px] bg-[#F2F2F2] text-black uppercase font-bold px-3 py-1 mb-4">
               About Us
             </span>
-            <h2 className="text-[clamp(36px,2.2vw,32px)] font-extrabold leading-[1.4] text-[#0a0a0a] max-w-[700px]">
+            <h2 className="2xl:text-[clamp(36px,2.2vw,32px)] xl:text-[clamp(36px,2.2vw,32px)] lg:text-[clamp(36px,2.2vw,32px)] md:text-[clamp(40px,2vw,44px)] font-extrabold leading-[1.4] text-[#0a0a0a] max-w-[700px]">
               We Help Businesses Stand Out With Modern, Creative, and{" "}
               <span className="text-[#c0c0c0]">
                 Impactful <br /> Design Solutions

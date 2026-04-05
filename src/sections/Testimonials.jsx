@@ -132,9 +132,9 @@ export default function Testimonials() {
   // ── MOBILE ────────────────────────────────────────────────────────
   if (!isDesktop) {
     return (
-      <section className="w-full bg-white overflow-hidden">
+      <section className="w-full bg-white overflow-hidden md:pt-10 pt-0">
         <div className="bg-[#0a0a0a] pb-[220px]">
-          <div className="max-w-7xl mx-auto px-5 sm:px-8 pt-16 pb-10">
+          <div className="max-w-7xl mx-auto px-5 sm:px-8 pt-20 pb-10">
 
             {/* Built to Scale heading */}
             <div className="flex items-end justify-between gap-4">

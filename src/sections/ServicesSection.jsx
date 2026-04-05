@@ -178,7 +178,7 @@ function MobileCarousel() {
   const c = mobileCards[current];
 
   return (
-    <div className="-mt-40 pb-10 px-6">
+    <div className="-mt-40 pb-10 px-10">
       {/* overflow-hidden prevents x animation from causing scrollbar */}
       <div className="overflow-hidden">
         <AnimatePresence mode="wait">
@@ -188,7 +188,7 @@ function MobileCarousel() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -50 }}
             transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            className={`relative w-full h-56 rounded-xl overflow-hidden shadow-xl ${c.className}`}
+            className={`relative w-full h-56 overflow-hidden  ${c.className}`}
             style={c.style || {}}
           >
             {c.pattern === "dots" && <DotGrid color={c.patternColor} spacing={10} />}

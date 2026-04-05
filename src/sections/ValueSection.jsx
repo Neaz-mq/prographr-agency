@@ -140,10 +140,10 @@ export default function ValueSection() {
     // ✅ position:relative is all that's needed — later DOM sibling
     // naturally paints above TechnologySection's sticky cards
     <section className="w-full bg-white" style={{ position: "relative" }}>
-      <div className="py-14 lg:py-16" style={{ paddingLeft: LEFT_INDENT, paddingRight: LEFT_INDENT }}>
+      <div className="py-12 lg:py-16" style={{ paddingLeft: LEFT_INDENT, paddingRight: LEFT_INDENT }}>
         <h2
           ref={headingRef}
-          className="font-extrabold text-black leading-[1.2] tracking-[-2px] mb-10 lg:mb-20 text-[48px] md:text-[56px] lg:text-[56px] xl:text-[60px] 2xl:text-[64px]"
+          className="font-extrabold text-black leading-[1.2] tracking-[-2px] mb-10 lg:mb-20 text-[48px] md:text-[50px] lg:text-[56px] xl:text-[60px] 2xl:text-[64px]"
         >
           What value
           <br />are you

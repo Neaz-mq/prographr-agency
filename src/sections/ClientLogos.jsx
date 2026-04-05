@@ -26,7 +26,7 @@ const LogoTrack = () => (
 
 export default function ClientLogos() {
   return (
-    <section className="bg-white lg:pb-20 lg:pt-28 md:pb-20 md:pt-16 sm:pb-12 sm:pt-20 pb-12 pt-10">
+    <section className="bg-white lg:pb-20 lg:pt-28 md:pb-14 md:pt-16 sm:pb-12 sm:pt-20 pb-12 pt-10">
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         <div
           className="relative overflow-hidden flex"
