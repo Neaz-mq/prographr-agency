@@ -169,10 +169,10 @@ export default function AboutSection() {
             className="pt-8 pb-5 border-b border-[#efefef]"
             style={{ paddingLeft: LEFT_INDENT, paddingRight: LEFT_INDENT }}
           >
-            <span className="inline-block text-[9px] bg-[#F2F2F2] text-black uppercase font-bold px-3 py-1 mb-4">
+            <span className="inline-block text-[13px] bg-[#F2F2F2] text-black uppercase font-bold px-3 py-1 mb-4">
               About Us
             </span>
-            <h2 className="text-[clamp(20px,2.2vw,32px)] font-extrabold leading-[1.4] text-[#0a0a0a] max-w-[600px]">
+            <h2 className="text-[clamp(36px,2.2vw,32px)] font-extrabold leading-[1.4] text-[#0a0a0a] max-w-[700px]">
               We Help Businesses Stand Out With Modern, Creative, and{" "}
               <span className="text-[#c0c0c0]">
                 Impactful <br /> Design Solutions

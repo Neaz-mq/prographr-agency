@@ -31,21 +31,8 @@ const ITEMS = [
 ];
 
 const ArrowIcon = () => (
-  <svg
-    width="18"
-    height="18"
-    viewBox="0 0 24 24"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    className="shrink-0"
-  >
-    <path
-      d="M7 17L17 7M17 7H7M17 7V17"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
+    <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
 
@@ -59,58 +46,27 @@ function ValueItem({ item, setImgRef, setMobileImgRef, setArrowRef, onEnter, onL
       onMouseLeave={onLeave}
       className="group relative flex items-center justify-between gap-8 py-3 lg:py-10 cursor-pointer border-b border-black/10 last:border-b-0"
     >
-      {/* Label */}
       <span
         className="text-black transition-colors duration-300 group-hover:text-black/50 select-none shrink-0 flex-1 min-w-0"
         style={{ fontSize: "clamp(16px, 2.4vw, 28px)" }}
       >
         {item.label}
       </span>
-
-      {/* Desktop Image — hidden on mobile, fixed size, right-anchored, vertically centered */}
       <div
         ref={setImgRef}
         className="absolute pointer-events-none overflow-hidden z-10 hidden lg:block"
-        style={{
-          width: `${IMG_W}px`,
-          height: `${IMG_H}px`,
-          right: "clamp(60px, 10vw, 160px)",
-          top: "50%",
-          transform: "translateY(-50%)",
-        }}
+        style={{ width: `${IMG_W}px`, height: `${IMG_H}px`, right: "clamp(60px, 10vw, 160px)", top: "50%", transform: "translateY(-50%)" }}
       >
-        <img
-          src={item.image}
-          alt={item.label}
-          className="w-full h-full object-cover object-center"
-          loading="lazy"
-        />
+        <img src={item.image} alt={item.label} className="w-full h-full object-cover object-center" loading="lazy" />
       </div>
-
-      {/* Mobile Thumbnail — visible only below lg, shown between label and arrow */}
       <div
         ref={setMobileImgRef}
         className="mobile-thumb shrink-0 overflow-hidden lg:hidden"
-        style={{
-          width: "120px",
-          height: "80px",
-          opacity: 0,
-          transform: "translateY(6px)",
-        }}
+        style={{ width: "120px", height: "80px", opacity: 0, transform: "translateY(6px)" }}
       >
-        <img
-          src={item.image}
-          alt={item.label}
-          className="w-full h-full object-cover object-center"
-          loading="lazy"
-        />
+        <img src={item.image} alt={item.label} className="w-full h-full object-cover object-center" loading="lazy" />
       </div>
-
-      {/* Arrow */}
-      <span
-        ref={setArrowRef}
-        className="text-black/30 group-hover:text-black transition-colors duration-300 shrink-0"
-      >
+      <span ref={setArrowRef} className="text-black/30 group-hover:text-black transition-colors duration-300 shrink-0">
         <ArrowIcon />
       </span>
     </div>
@@ -128,38 +84,20 @@ export default function ValueSection() {
 
   const showImage = useCallback((idx) => {
     if (tls.current[idx]) tls.current[idx].kill();
-    tls.current[idx] = gsap.to(imgNodes.current[idx], {
-      clipPath: "inset(0% 0% 0% 0%)",
-      scale: 1,
-      opacity: 1,
-      duration: 0.55,
-      ease: "power3.out",
-    });
+    tls.current[idx] = gsap.to(imgNodes.current[idx], { clipPath: "inset(0% 0% 0% 0%)", scale: 1, opacity: 1, duration: 0.55, ease: "power3.out" });
   }, []);
 
   const hideImage = useCallback((idx) => {
     if (tls.current[idx]) tls.current[idx].kill();
-    tls.current[idx] = gsap.to(imgNodes.current[idx], {
-      clipPath: "inset(100% 0% 0% 0%)",
-      scale: 1.08,
-      opacity: 0,
-      duration: 0.4,
-      ease: "power3.in",
-    });
+    tls.current[idx] = gsap.to(imgNodes.current[idx], { clipPath: "inset(100% 0% 0% 0%)", scale: 1.08, opacity: 0, duration: 0.4, ease: "power3.in" });
   }, []);
 
   const nudgeArrow = useCallback((idx, enter) => {
-    gsap.to(arrowNodes.current[idx], {
-      x: enter ? 4 : 0,
-      y: enter ? -4 : 0,
-      duration: enter ? 0.25 : 0.2,
-      ease: enter ? "power2.out" : "power2.in",
-    });
+    gsap.to(arrowNodes.current[idx], { x: enter ? 4 : 0, y: enter ? -4 : 0, duration: enter ? 0.25 : 0.2, ease: enter ? "power2.out" : "power2.in" });
   }, []);
 
   useEffect(() => {
     const isDesktop = window.innerWidth >= 1024;
-
     ITEMS.forEach((_, i) => {
       if (isDesktop) {
         gsap.set(imgNodes.current[i], {
@@ -172,108 +110,58 @@ export default function ValueSection() {
     });
 
     const ctx = gsap.context(() => {
-      gsap.from(headingRef.current, {
-        y: 40,
-        opacity: 0,
-        duration: 1,
-        ease: "power3.out",
-        delay: 0.1,
-      });
-      gsap.from(listRef.current.children, {
-        y: 24,
-        opacity: 0,
-        duration: 0.7,
-        ease: "power3.out",
-        stagger: 0.12,
-        delay: 0.35,
-      });
-
-      // Mobile thumbnails staggered entrance
+      gsap.from(headingRef.current, { y: 40, opacity: 0, duration: 1, ease: "power3.out", delay: 0.1 });
+      gsap.from(listRef.current.children, { y: 24, opacity: 0, duration: 0.7, ease: "power3.out", stagger: 0.12, delay: 0.35 });
       if (!isDesktop) {
-        gsap.to(mobileImgNodes.current, {
-          opacity: 1,
-          y: 0,
-          duration: 0.6,
-          ease: "power3.out",
-          stagger: 0.1,
-          delay: 0.55,
-        });
+        gsap.to(mobileImgNodes.current, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out", stagger: 0.1, delay: 0.55 });
       }
     });
     return () => ctx.revert();
   }, []);
 
-  const handleEnter = useCallback(
-    (idx) => {
-      if (window.innerWidth < 1024) return;
-      const prev = activeIdx.current;
-      if (prev === idx) return;
-      hideImage(prev);
-      nudgeArrow(prev, false);
-      showImage(idx);
-      nudgeArrow(idx, true);
-      activeIdx.current = idx;
-    },
-    [hideImage, showImage, nudgeArrow],
-  );
+  const handleEnter = useCallback((idx) => {
+    if (window.innerWidth < 1024) return;
+    const prev = activeIdx.current;
+    if (prev === idx) return;
+    hideImage(prev); nudgeArrow(prev, false);
+    showImage(idx);  nudgeArrow(idx, true);
+    activeIdx.current = idx;
+  }, [hideImage, showImage, nudgeArrow]);
 
-  const handleLeave = useCallback(
-    (idx) => {
-      if (window.innerWidth < 1024) return;
-      nudgeArrow(idx, false);
-    },
-    [nudgeArrow],
-  );
+  const handleLeave = useCallback((idx) => {
+    if (window.innerWidth < 1024) return;
+    nudgeArrow(idx, false);
+  }, [nudgeArrow]);
 
   const handleListLeave = useCallback(() => {
     if (window.innerWidth < 1024) return;
     const prev = activeIdx.current;
-    if (prev !== 0) {
-      hideImage(prev);
-      nudgeArrow(prev, false);
-      showImage(0);
-      activeIdx.current = 0;
-    }
+    if (prev !== 0) { hideImage(prev); nudgeArrow(prev, false); showImage(0); activeIdx.current = 0; }
   }, [hideImage, showImage, nudgeArrow]);
 
   return (
-    <section className="w-full bg-white">
-      <div
-        className="py-16 lg:py-28"
-        style={{ paddingLeft: LEFT_INDENT, paddingRight: LEFT_INDENT }}
-      >
+    // ✅ position:relative is all that's needed — later DOM sibling
+    // naturally paints above TechnologySection's sticky cards
+    <section className="w-full bg-white" style={{ position: "relative" }}>
+      <div className="py-16 lg:py-28" style={{ paddingLeft: LEFT_INDENT, paddingRight: LEFT_INDENT }}>
         <h2
           ref={headingRef}
-          className="font-extrabold text-black leading-[1.2] tracking-[-2px] mb-10 lg:mb-20 text-[50px] md:text-[74px] lg:text-[84px]"
+          className="font-extrabold text-black leading-[1.2] tracking-[-2px] mb-10 lg:mb-20 text-[50px] md:text-[64px] lg:text-[70px]"
         >
           What value
-          <br />
-          are you
-          <br />
-          getting
-          <br />
-          from us?
+          <br />are you
+          <br />getting
+          <br />from us?
         </h2>
-
-        <div
-          ref={listRef}
-          className="border-t border-black/10"
-          onMouseLeave={handleListLeave}
-        >
+        <div ref={listRef} className="border-t border-black/10" onMouseLeave={handleListLeave}>
           {ITEMS.map((item, i) => (
             <ValueItem
               key={item.id}
               item={item}
               index={i}
-              setImgRef={(el) => {
-                imgNodes.current[i] = el;
-              }}
-              setMobileImgRef={(el) => {
-                mobileImgNodes.current[i] = el;
-              }}
-              setArrowRef={(el) => {
-                arrowNodes.current[i] = el;
-              }}
+              setImgRef={(el) => { imgNodes.current[i] = el; }}
+              setMobileImgRef={(el) => { mobileImgNodes.current[i] = el; }}
+              setArrowRef={(el) => { arrowNodes.current[i] = el; }}
               onEnter={() => handleEnter(i)}
               onLeave={() => handleLeave(i)}
             />
