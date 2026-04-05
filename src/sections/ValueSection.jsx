@@ -143,7 +143,7 @@ export default function ValueSection() {
       <div className="py-14 lg:py-16" style={{ paddingLeft: LEFT_INDENT, paddingRight: LEFT_INDENT }}>
         <h2
           ref={headingRef}
-          className="font-extrabold text-black leading-[1.2] tracking-[-2px] mb-10 lg:mb-20 text-[48px] md:text-[64px] lg:text-[70px] xl:text-[60px] 2xl:text-[64px]"
+          className="font-extrabold text-black leading-[1.2] tracking-[-2px] mb-10 lg:mb-20 text-[48px] md:text-[56px] lg:text-[56px] xl:text-[60px] 2xl:text-[64px]"
         >
           What value
           <br />are you

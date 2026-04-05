@@ -281,7 +281,7 @@ export default function Testimonials() {
         </Swiper>
       </div>
 
-      <div className="2xl:mb-20 xl:mb-14 lg:mb-14" />
+      <div className="2xl:mb-20 xl:mb-14 lg:mb-12" />
     </section>
   );
 }
