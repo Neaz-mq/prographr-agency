@@ -46,10 +46,7 @@ function ValueItem({ item, setImgRef, setMobileImgRef, setArrowRef, onEnter, onL
       onMouseLeave={onLeave}
       className="group relative flex items-center justify-between gap-8 py-3 lg:py-10 cursor-pointer border-b border-black/10 last:border-b-0"
     >
-      <span
-        className="text-black transition-colors duration-300 group-hover:text-black/50 select-none shrink-0 flex-1 min-w-0"
-        style={{ fontSize: "clamp(16px, 2.4vw, 22px)" }}
-      >
+     <span className="text-black transition-colors duration-300 group-hover:text-black/50 select-none shrink-0 flex-1 min-w-0 2xl:text-[clamp(16px,2.4vw,22px)] xl:text-[clamp(16px,2.4vw,18px)] lg:text-[clamp(16px,2.4vw,18px)]">
         {item.label}
       </span>
       <div
@@ -146,7 +143,7 @@ export default function ValueSection() {
       <div className="py-14 lg:py-16" style={{ paddingLeft: LEFT_INDENT, paddingRight: LEFT_INDENT }}>
         <h2
           ref={headingRef}
-          className="font-extrabold text-black leading-[1.2] tracking-[-2px] mb-10 lg:mb-20 text-[48px] md:text-[64px] lg:text-[70px] xl:text-[70px] 2xl:text-[64px]"
+          className="font-extrabold text-black leading-[1.2] tracking-[-2px] mb-10 lg:mb-20 text-[48px] md:text-[64px] lg:text-[70px] xl:text-[60px] 2xl:text-[64px]"
         >
           What value
           <br />are you
