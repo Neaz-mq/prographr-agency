@@ -1,71 +1,113 @@
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Plus, Minus } from "lucide-react";
 
-const fadeUp = (delay=0) => ({
-  initial:{opacity:0,y:40}, whileInView:{opacity:1,y:0},
-  viewport:{once:true,margin:"-60px"}, transition:{duration:0.7,delay,ease:[0.22,1,0.36,1]}
-});
-
-const faqs = [
-  {q:"Trading Guide",a:"Our design process starts with a deep discovery session. We learn your brand, your audience, and your goals — then craft a visual strategy tailored specifically for you.",hasPreview:true},
-  {q:"Project Consultation",a:"Every project begins with a free consultation call where we align on scope, timeline, and deliverables."},
-  {q:"Project Layout Ready",a:"Once the brief is finalized, we provide a detailed project layout including milestones, deliverables, and revision rounds."},
-  {q:"Final Touch",a:"Before delivery, every project goes through our internal quality review. We obsess over every pixel, ensuring the final output exceeds client expectations."},
+const jobs = [
+  { title: "Senior Ui Ux Designer", meta: "Onsite / Full Time / Senior Level" },
+  { title: "Marketing Manager", meta: "Onsite / Full Time / Senior Level" },
+  { title: "Senior Ui Ux Designer", meta: "Onsite / Full Time / Senior Level" },
 ];
 
-function FaqItem({item,index,isOpen,toggle}) {
-  return (
-    <motion.div {...fadeUp(index*0.07)} className="border-b border-gray-200 last:border-0">
-      <button onClick={toggle} className="w-full flex items-center justify-between py-5 text-left group">
-        <div className="flex items-center gap-4">
-          {item.hasPreview && <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-600 to-indigo-600 flex-shrink-0"/>}
-          <span className="font-display font-semibold text-[#0a0a0a] text-base group-hover:text-gray-600 transition-colors">{item.q}</span>
-        </div>
-        {isOpen ? <Minus size={16} className="text-[#0a0a0a] flex-shrink-0 ml-4"/> : <Plus size={16} className="text-gray-400 flex-shrink-0 ml-4"/>}
-      </button>
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div initial={{height:0,opacity:0}} animate={{height:"auto",opacity:1}}
-            exit={{height:0,opacity:0}} transition={{duration:0.3,ease:"easeInOut"}} className="overflow-hidden">
-            <p className="pb-5 text-gray-500 text-sm leading-relaxed max-w-2xl">{item.a}</p>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.div>
-  );
-}
+const faqs = [
+  {
+    q: "What is the difference between UI and UX design?",
+    a: "UX (User Experience) design focuses on the logic, usability, and feel of the product—ensuring the journey is intuitive. UI (User Interface) design focuses on the visual touchpoints—colors, typography, and layouts—that make the product engaging and professional. We provide both to ensure your site works as beautifully as it looks.",
+  },
+  {
+    q: "Do you handle both design and development?",
+    a: "Yes. Prographr is a full-service creative agency. We handle everything from brand identity and UI/UX design to full-stack web development and deployment.",
+  },
+  {
+    q: "How long does a typical project take?",
+    a: "Project timelines vary based on scope. A landing page typically takes 1–2 weeks, while a full web application can take 4–12 weeks. We'll give you a clear timeline during the discovery call.",
+  },
+  {
+    q: "Can you redesign an existing website?",
+    a: "Absolutely. We specialize in redesigns—improving both aesthetics and performance while preserving your brand equity and SEO structure.",
+  },
+];
 
 export default function FAQ() {
-  const [openIndex,setOpenIndex] = useState(0);
-  return (
-    <section className="bg-white py-24 md:py-32">
-      <div className="max-w-7xl mx-auto px-5 md:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-          <motion.div {...fadeUp(0)}>
-            <p className="text-xs tracking-widest uppercase text-gray-400 mb-4">FAQ</p>
-            <h2 className="font-display font-extrabold text-[#0a0a0a] leading-tight" style={{fontSize:"clamp(2.2rem,4.5vw,3.8rem)"}}>
-              What value<br/>are you<br/>getting from<br/>us?
-            </h2>
-            <p className="mt-6 text-gray-500 text-sm leading-relaxed max-w-xs">We believe in transparency. Here's exactly what you get when you work with Prographr.</p>
-            <motion.div {...fadeUp(0.2)} className="mt-10 bg-[#0a0a0a] rounded-2xl p-6 flex items-center gap-4">
-              <div className="w-10 h-10 bg-[#161616] rounded-xl flex items-center justify-center flex-shrink-0">
-                <span className="font-display font-bold text-white text-sm">P</span>
-              </div>
-              <div>
-                <p className="text-white font-display font-semibold text-sm">Premium Print Templates</p>
-                <p className="text-[#888] text-xs mt-0.5">for Growing Brands</p>
-              </div>
-            </motion.div>
-          </motion.div>
+  const [openIndex, setOpenIndex] = useState(0);
 
-          <motion.div {...fadeUp(0.15)}>
-            <div className="divide-y divide-gray-200 border-t border-gray-200">
-              {faqs.map((item,i) => (
-                <FaqItem key={i} item={item} index={i} isOpen={openIndex===i} toggle={()=>setOpenIndex(openIndex===i?null:i)}/>
-              ))}
+  return (
+    <section className="bg-[#0a0a0a]">
+
+      {/* ── Careers ── */}
+      <div className="max-w-7xl mx-auto px-6 md:px-10 pt-24 pb-16 border-b border-[#1f1f1f]">
+
+        <h2
+          className="text-white font-bold text-2xl md:text-3xl leading-snug mb-10"
+          style={{ fontFamily: "'Inter', sans-serif" }}
+        >
+          Become a member of a<br />talented team
+        </h2>
+
+        <div className="flex flex-col divide-y divide-[#1f1f1f]">
+          {jobs.map((job, i) => (
+            <div
+              key={i}
+              className="flex items-center justify-between py-5 gap-4"
+            >
+              <div>
+                <p className="text-white font-semibold text-sm md:text-base leading-tight mb-1">
+                  {job.title}
+                </p>
+                <p className="text-[#555] text-xs">{job.meta}</p>
+              </div>
+              <button className="shrink-0 border border-white text-white text-xs px-4 py-2 hover:bg-white hover:text-[#0a0a0a] transition-colors duration-200 whitespace-nowrap">
+                Apply Now
+              </button>
             </div>
-          </motion.div>
+          ))}
+        </div>
+      </div>
+
+      {/* ── FAQ ── */}
+      <div className="max-w-7xl mx-auto px-6 md:px-10 pt-16 pb-24">
+
+        <h2
+          className="text-white font-black leading-none mb-12 text-[40px] md:text-[50px] lg:text-[56px] xl:text-[60px] 2xl:text-[64px]"
+          style={{
+            fontFamily: "'Inter', sans-serif",
+          }}
+        >
+          Got<br />Questions?
+        </h2>
+
+        <div className="flex flex-col divide-y divide-[#1f1f1f]">
+          {faqs.map((faq, i) => {
+            const isOpen = openIndex === i;
+            return (
+              <div key={i}>
+                <button
+                  onClick={() => setOpenIndex(isOpen ? null : i)}
+                  className="w-full flex items-center justify-between gap-6 py-5 text-left group"
+                >
+                  <span
+                    className={`text-sm md:text-lg font-medium transition-colors duration-200 ${
+                      isOpen ? "text-white" : "text-white/80 group-hover:text-white"
+                    }`}
+                    style={{ fontFamily: "'Inter', sans-serif" }}
+                  >
+                    {faq.q}
+                  </span>
+                  <span className="shrink-0 text-white text-xl leading-none w-5 text-center">
+                    {isOpen ? "−" : "+"}
+                  </span>
+                </button>
+
+                {/* Answer */}
+                <div
+                  className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                    isOpen ? "max-h-60 pb-6" : "max-h-0"
+                  }`}
+                >
+                  <p className="text-[#888] text-sm leading-relaxed">
+                    {faq.a}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
