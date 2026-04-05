@@ -269,10 +269,7 @@ export default function AboutSection() {
               </div>
 
               {/* Card 3 — Dark CTA */}
-              <div
-                className="shrink-0 overflow-hidden flex flex-col justify-between 2xl:w-[26vw] xl:w-[45vw] lg:w-[55vw] border border-[#efefef] mx-6"
-                style={{ height: "355px", position: "relative", top: "-2px" }}
-              >
+              <div className="shrink-0 overflow-hidden flex flex-col justify-between 2xl:w-[26vw] xl:w-[45vw] lg:w-[55vw] border border-[#efefef] mx-6 2xl:h-[355px] xl:h-[360px] lg:h-[360px] relative -top-0.5">
                 <img
                   src="https://res.cloudinary.com/dzi3u164c/image/upload/v1774931324/Asset_3_raki8b.webp"
                   alt="lightning"
