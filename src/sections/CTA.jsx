@@ -54,7 +54,6 @@ export default function CTA() {
           </div>
         )}
 
-        {/* Error Banner */}
         {status === "error" && (
           <div className="mb-8 px-5 py-4 bg-[#fef2f2] border border-[#fecaca] text-[#991b1b] text-sm rounded">
             ✗ Something went wrong. Please email us directly at contact.prographr@gmail.com
