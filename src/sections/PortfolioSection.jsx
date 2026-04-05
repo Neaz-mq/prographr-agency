@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, FreeMode } from "swiper/modules";
 import "swiper/css";
 
-const LEFT_INDENT = "max(40px, calc((100vw - 80rem) / 2 + 2.5rem))";
+const LEFT_INDENT = "max(40px, calc((100vw - 80rem) / 2 + 2.3rem))";
 
 const PORTFOLIO_ITEMS = [
   {
@@ -141,13 +141,13 @@ export default function PortfolioSection() {
   // Heading padding tightened (pt-10→pt-5, pb-8→pb-5) so Portfolio sits
   // flush right after the About section spacer ends — no visible gap.
   return (
-    <section className="bg-white w-full overflow-hidden mb-20">
+    <section className="bg-white w-full overflow-hidden mb-24">
       {/* Heading */}
       <div
         className="border-b border-[#efefef] pt-20 pb-12"
         style={{ paddingLeft: LEFT_INDENT, paddingRight: LEFT_INDENT }}
       >    
-        <h2 className="text-[clamp(36px,3.8vw,58px)] font-extrabold leading-[1.1] text-[#0a0a0a] tracking-[-1.5px]">
+        <h2 className="2xl:text-[clamp(36px,3.8vw,48px)] xl:text-[clamp(36px,3.8vw,58px)] lg:text-[clamp(36px,3.8vw,58px)] font-extrabold leading-[1.1] text-[#0a0a0a] tracking-[-1.5px]">
           Our Previous
           <br />
           Work
