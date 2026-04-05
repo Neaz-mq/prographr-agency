@@ -188,7 +188,7 @@ function MobileCarousel() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -50 }}
             transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            className={`relative w-full h-56 top-4 overflow-hidden  ${c.className}`}
+            className={`relative w-full h-60 top-4 overflow-hidden  ${c.className}`}
             style={c.style || {}}
           >
             {c.pattern === "dots" && <DotGrid color={c.patternColor} spacing={10} />}
