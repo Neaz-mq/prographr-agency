@@ -48,7 +48,7 @@ function ValueItem({ item, setImgRef, setMobileImgRef, setArrowRef, onEnter, onL
     >
       <span
         className="text-black transition-colors duration-300 group-hover:text-black/50 select-none shrink-0 flex-1 min-w-0"
-        style={{ fontSize: "clamp(16px, 2.4vw, 24px)" }}
+        style={{ fontSize: "clamp(16px, 2.4vw, 22px)" }}
       >
         {item.label}
       </span>
@@ -146,7 +146,7 @@ export default function ValueSection() {
       <div className="py-14 lg:py-16" style={{ paddingLeft: LEFT_INDENT, paddingRight: LEFT_INDENT }}>
         <h2
           ref={headingRef}
-          className="font-extrabold text-black leading-[1.2] tracking-[-2px] mb-10 lg:mb-20 text-[50px] md:text-[64px] lg:text-[70px]"
+          className="font-extrabold text-black leading-[1.2] tracking-[-2px] mb-10 lg:mb-20 text-[48px] md:text-[64px] lg:text-[70px] xl:text-[70px] 2xl:text-[64px]"
         >
           What value
           <br />are you

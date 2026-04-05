@@ -147,7 +147,7 @@ export default function PortfolioSection() {
         className="border-b border-[#efefef] pt-20 pb-12"
         style={{ paddingLeft: LEFT_INDENT, paddingRight: LEFT_INDENT }}
       >    
-        <h2 className="2xl:text-[clamp(36px,3.8vw,48px)] xl:text-[clamp(36px,3.8vw,58px)] lg:text-[clamp(36px,3.8vw,58px)] font-extrabold leading-[1.1] text-[#0a0a0a] tracking-[-1.5px]">
+        <h2 className="2xl:text-[clamp(36px,3.8vw,58px)] xl:text-[clamp(36px,3.8vw,58px)] lg:text-[clamp(36px,3.8vw,58px)] font-extrabold leading-[1.1] text-[#0a0a0a] tracking-[-1.5px]">
           Our Previous
           <br />
           Work
