@@ -115,7 +115,7 @@ export default function TechnologySection() {
   return (
     <section ref={containerRef} className="w-full bg-white relative">
       {/* HEADING SECTION */}
-      <div className="max-w-7xl mx-auto px-8 pt-8 lg:pt-10 pb-10 lg:pb-14 overflow-hidden relative z-10 bg-white">
+      <div className="max-w-7xl mx-auto lg:px-8 md:px-5 px-5 pt-8 lg:pt-10 pb-10 lg:pb-14 overflow-hidden relative z-10 bg-white">
         <div className="overflow-hidden"> 
           <h2
             ref={headingRef}
@@ -130,7 +130,7 @@ export default function TechnologySection() {
 
       {/* DESKTOP STACK */}
       <div className="hidden lg:block w-full">
-        <div className="max-w-7xl mx-auto px-8">
+        <div className="max-w-7xl mx-auto px-10">
           {SERVICES.map((service, i) => (
             <div
               key={service.id}
@@ -150,7 +150,7 @@ export default function TechnologySection() {
       </div>
 
       {/* MOBILE LIST */}
-      <div className="lg:hidden max-w-7xl mx-auto px-8 flex flex-col gap-3">
+      <div className="lg:hidden max-w-7xl mx-auto sm:px-8 px-5 flex flex-col gap-3">
         {SERVICES.map((service) => (
           <div key={service.id} className="relative w-full overflow-hidden" style={{ height: `${CARD_HEIGHT_PX}px`, borderRadius: "0px" }}>
             <CardInner service={service} />

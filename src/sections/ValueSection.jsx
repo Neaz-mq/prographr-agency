@@ -1,7 +1,7 @@
 import { useRef, useEffect, useCallback } from "react";
 import gsap from "gsap";
 
-const LEFT_INDENT = "max(40px, calc((100vw - 80rem) / 2 + 2rem))";
+const LEFT_INDENT = "max(36px, calc((100vw - 80rem) / 2 + 2.5rem))";
 
 const ITEMS = [
   {
