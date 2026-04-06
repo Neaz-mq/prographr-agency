@@ -1,10 +1,47 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Instagram, Linkedin, Twitter } from "lucide-react";
 
+function useSectionScroll() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  return (sectionId) => {
+    const doScroll = () => {
+      const el = document.getElementById(sectionId);
+      if (!el) return;
+      if (window.lenis) {
+        window.lenis.scrollTo(el, { offset: 0, duration: 1.2 });
+      } else {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    };
+
+    if (location.pathname !== "/") {
+      navigate("/", { state: { scrollTo: sectionId } });
+    } else {
+      setTimeout(doScroll, 50);
+    }
+  };
+}
+
 export default function Footer() {
+  const scrollToSection = useSectionScroll();
+
+  const serviceLinks = ["Graphic Design", "Brand Design", "Web Development", "Web Design", "PowerPoint Design"];
+  const quickLinks = [
+    { label: "About Us",   sectionId: "about"    },
+    { label: "Portfolio",  sectionId: "portfolio" },
+    { label: "FAQ",        sectionId: "faq"       },
+    { label: "Contact Us", sectionId: "contact"   },
+  ];
+  const infoLinks = [
+    { label: "FAQ",     sectionId: "faq"     },
+    { label: "Support", sectionId: "contact" },
+  ];
+
   return (
     <footer className="bg-[#0a0a0a]">
-      {/* Main Footer */}
+
       <div className="max-w-7xl mx-auto px-6 md:px-10 pt-12 md:pt-16 pb-10 md:pb-12">
 
         {/* Logo */}
@@ -15,29 +52,30 @@ export default function Footer() {
           </span>
         </div>
 
-        {/* Mobile Layout */}
+        {/* Mobile */}
         <div className="md:hidden flex flex-col divide-y divide-[#222]">
-
-          {/* Service */}
           <div className="py-6">
             <h4 className="text-[#666] text-[10px] uppercase tracking-[0.2em] mb-4">Service</h4>
             <ul className="grid grid-cols-2 gap-x-4 gap-y-3">
-              {["Design", "Brand Design", "Web Development", "Mobile App Design", "Software Development"].map(s => (
+              {serviceLinks.map((s) => (
                 <li key={s}>
-                  <Link to="/services" className="text-white text-sm hover:text-[#888] transition-colors">{s}</Link>
+                  <button onClick={() => scrollToSection("services")} className="text-white text-sm hover:text-[#888] transition-colors text-left bg-transparent border-none outline-none cursor-pointer">
+                    {s}
+                  </button>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Quick Links + Information side by side */}
           <div className="py-6 grid grid-cols-2 gap-x-6">
             <div>
               <h4 className="text-[#666] text-[10px] uppercase tracking-[0.2em] mb-4">Quick Links</h4>
               <ul className="space-y-3">
-                {[["About Us", "/about"], ["Portfolio", "/portfolio"], ["Career", "/contact"], ["Contact us", "/contact"]].map(([l, h]) => (
-                  <li key={l}>
-                    <Link to={h} className="text-white text-sm hover:text-[#888] transition-colors">{l}</Link>
+                {quickLinks.map(({ label, sectionId }) => (
+                  <li key={label}>
+                    <button onClick={() => scrollToSection(sectionId)} className="text-white text-sm hover:text-[#888] transition-colors text-left bg-transparent border-none outline-none cursor-pointer">
+                      {label}
+                    </button>
                   </li>
                 ))}
               </ul>
@@ -45,68 +83,69 @@ export default function Footer() {
             <div>
               <h4 className="text-[#666] text-[10px] uppercase tracking-[0.2em] mb-4">Information</h4>
               <ul className="space-y-3">
-                {[["FAQ", "/contact"], ["Support", "/contact"]].map(([l, h]) => (
-                  <li key={l}>
-                    <Link to={h} className="text-white text-sm hover:text-[#888] transition-colors">{l}</Link>
+                {infoLinks.map(({ label, sectionId }) => (
+                  <li key={label}>
+                    <button onClick={() => scrollToSection(sectionId)} className="text-white text-sm hover:text-[#888] transition-colors text-left bg-transparent border-none outline-none cursor-pointer">
+                      {label}
+                    </button>
                   </li>
                 ))}
               </ul>
             </div>
           </div>
 
-          {/* Contact */}
           <div className="py-6">
             <h4 className="text-[#666] text-[10px] uppercase tracking-[0.2em] mb-4">Contact Us</h4>
             <a href="mailto:contact.prographr@gmail.com" className="text-white text-sm hover:text-[#888] transition-colors">
               contact.prographr@gmail.com
             </a>
           </div>
-
         </div>
 
-        {/* Desktop Layout — unchanged */}
+        {/* Desktop */}
         <div className="hidden md:grid md:grid-cols-4 md:gap-0 md:divide-x md:divide-[#333]">
-
-          {/* Service */}
           <div className="md:pr-8">
             <h4 className="text-white font-semibold text-base mb-3">Service</h4>
             <div className="border-t border-[#333] mb-6" />
             <ul className="space-y-3">
-              {["Design", "Brand Design", "Web Development", "Mobile App Design", "Software Development"].map(s => (
+              {serviceLinks.map((s) => (
                 <li key={s}>
-                  <Link to="/services" className="text-[#888] text-sm hover:text-white transition-colors leading-snug">{s}</Link>
+                  <button onClick={() => scrollToSection("services")} className="text-[#888] text-sm hover:text-white transition-colors leading-snug text-left bg-transparent border-none outline-none cursor-pointer">
+                    {s}
+                  </button>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Information */}
           <div className="md:px-8">
             <h4 className="text-white font-semibold text-base mb-3">Information</h4>
             <div className="border-t border-[#333] mb-6" />
             <ul className="space-y-3">
-              {[["FAQ", "/contact"], ["Support", "/contact"]].map(([l, h]) => (
-                <li key={l}>
-                  <Link to={h} className="text-[#888] text-sm hover:text-white transition-colors">{l}</Link>
+              {infoLinks.map(({ label, sectionId }) => (
+                <li key={label}>
+                  <button onClick={() => scrollToSection(sectionId)} className="text-[#888] text-sm hover:text-white transition-colors text-left bg-transparent border-none outline-none cursor-pointer">
+                    {label}
+                  </button>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Quick Links */}
           <div className="md:px-8">
             <h4 className="text-white font-semibold text-base mb-3">Quick Links</h4>
             <div className="border-t border-[#333] mb-6" />
             <ul className="space-y-3">
-              {[["About Us", "/about"], ["Portfolio", "/portfolio"], ["Career", "/contact"], ["Contact us", "/contact"]].map(([l, h]) => (
-                <li key={l}>
-                  <Link to={h} className="text-[#888] text-sm hover:text-white transition-colors">{l}</Link>
+              {quickLinks.map(({ label, sectionId }) => (
+                <li key={label}>
+                  <button onClick={() => scrollToSection(sectionId)} className="text-[#888] text-sm hover:text-white transition-colors text-left bg-transparent border-none outline-none cursor-pointer">
+                    {label}
+                  </button>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Contact Us */}
           <div className="md:pl-8">
             <h4 className="text-white font-semibold text-base mb-3">Contact Us</h4>
             <div className="border-t border-[#333] mb-6" />
@@ -114,15 +153,13 @@ export default function Footer() {
               contact.prographr@gmail.com
             </a>
           </div>
-
         </div>
+
       </div>
 
       {/* Bottom Bar */}
       <div className="bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-10 py-5 flex flex-col sm:flex-row items-center justify-between gap-4">
-
-          {/* Social Icons */}
           <div className="flex items-center gap-3">
             {[Instagram, Linkedin, Twitter].map((Icon, i) => (
               <a key={i} href="#" className="w-8 h-8 border border-[#333] rounded-full flex items-center justify-center hover:bg-[#f0f0f0] transition-colors">
@@ -130,21 +167,17 @@ export default function Footer() {
               </a>
             ))}
           </div>
-
-          {/* Copyright */}
           <p className="text-[#0a0a0a] text-sm text-center">
             © {new Date().getFullYear()} All rights reserved Prographr.
           </p>
-
-          {/* Legal Links */}
           <div className="flex items-center gap-5">
             <Link to="#" className="text-[#0a0a0a] text-sm hover:underline">Terms</Link>
             <Link to="#" className="text-[#0a0a0a] text-sm underline underline-offset-2">Privacy</Link>
             <Link to="#" className="text-[#0a0a0a] text-sm hover:underline">Cookies</Link>
           </div>
-
         </div>
       </div>
+
     </footer>
   );
 }
