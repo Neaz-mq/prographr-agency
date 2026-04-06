@@ -19,7 +19,7 @@ export default function CTA() {
           from_email: form.email,
           message: form.message,
         },
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
       );
 
       setStatus("success");
@@ -35,15 +35,20 @@ export default function CTA() {
   return (
     <section className="bg-white">
       <div className="max-w-7xl mx-auto px-6 md:px-10 py-20 md:py-28">
-
         {/* Heading */}
         <h2
           className="text-[#0a0a0a] font-bold mb-2"
-          style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(36px, 6vw, 60px)" }}
+          style={{
+            fontFamily: "'Inter', sans-serif",
+            fontSize: "clamp(36px, 6vw, 60px)",
+          }}
         >
           Let's talk
         </h2>
-        <p className="text-[#aaa] text-sm mb-12" style={{ fontFamily: "'Inter', sans-serif" }}>
+        <p
+          className="text-[#aaa] text-sm mb-12"
+          style={{ fontFamily: "'Inter', sans-serif" }}
+        >
           Ask us anything or just say hi.,
         </p>
 
@@ -56,16 +61,19 @@ export default function CTA() {
 
         {status === "error" && (
           <div className="mb-8 px-5 py-4 bg-[#fef2f2] border border-[#fecaca] text-[#991b1b] text-sm rounded">
-            ✗ Something went wrong. Please email us directly at contact.prographr@gmail.com
+            ✗ Something went wrong. Please email us directly at
+            contact.prographr@gmail.com
           </div>
         )}
 
         {/* Form */}
-        <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-12">
-
+        <form
+          ref={formRef}
+          onSubmit={handleSubmit}
+          className="flex flex-col gap-12"
+        >
           {/* Name + Email */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-
             <div className="flex flex-col gap-3">
               <label
                 className="text-[#0a0a0a] font-semibold text-lg"
@@ -116,7 +124,7 @@ export default function CTA() {
             <textarea
               required
               rows={1}
-              placeholder="Hi there! We are looking to redesign................................"
+              placeholder="Hi there! We're looking to redesign..."
               value={form.message}
               onChange={(e) => setForm({ ...form, message: e.target.value })}
               disabled={status === "sending"}
@@ -136,7 +144,6 @@ export default function CTA() {
               {status === "sending" ? "Sending..." : "Send Now"}
             </button>
           </div>
-
         </form>
       </div>
     </section>
