@@ -293,7 +293,7 @@ function DesktopFan() {
 // ── main export ──────────────────────────────────────────────
 export default function ServicesSection() {
   return (
-    <>
+    <section id="services">
       {/* Mobile & Tablet */}
       <div className="lg:hidden bg-white">
         <MobileCarousel />
@@ -306,6 +306,6 @@ export default function ServicesSection() {
       >
         <DesktopFan />
       </div>
-    </>
+    </section>
   );
 }

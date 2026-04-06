@@ -29,7 +29,7 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
-    <section className="bg-[#0a0a0a]">
+    <section id="faq" className="bg-[#0a0a0a]">
 
       {/* ── Careers ── */}
       <div className="max-w-7xl mx-auto px-6 md:px-10 pt-24 pb-16 border-b border-[#1f1f1f]">

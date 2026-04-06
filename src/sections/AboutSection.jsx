@@ -82,7 +82,7 @@ export default function AboutSection() {
   // ── MOBILE / TABLET (< 1024px) ────────────────────────────────────────
   if (!isDesktop) {
     return (
-      <section className="bg-white w-full">
+      <section id="about" className="bg-white w-full">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 w-full">
           <div className="pt-10 pb-8 border-b border-[#efefef]">
             <span className="inline-block text-[10px] bg-[#F2F2F2] text-black uppercase font-bold px-3 py-1 mb-5">
@@ -156,7 +156,7 @@ export default function AboutSection() {
   // This eliminates the ~300px dead whitespace that was pushing Portfolio far down.
   //
   return (
-    <div ref={wrapperRef}>
+    <div id="about" ref={wrapperRef}>
       <section
         ref={sectionRef}
         className="bg-white w-full overflow-hidden flex flex-col"

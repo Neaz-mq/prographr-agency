@@ -119,7 +119,7 @@ export default function TechnologySection() {
         <div className="overflow-hidden"> 
           <h2
             ref={headingRef}
-            className="font-bold text-black leading-[1.1] tracking-[-3px] text-[40px] md:text-[50px] lg:text-[56px] xl:text-[60px] 2xl:text-[64px] uppercase"
+            className="font-bold text-black leading-[1.1] tracking-[-3px] text-[40px] md:text-[50px] lg:text-[56px] xl:text-[60px] 2xl:text-[64px]"
           >
             Technology
             <br />

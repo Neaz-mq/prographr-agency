@@ -111,7 +111,7 @@ export default function PortfolioSection() {
   // ── MOBILE ──────────────────────────────────────────────────────────
   if (!isDesktop) {
     return (
-      <section className="bg-white w-full overflow-hidden mb-12">
+      <section id="portfolio" className="bg-white w-full overflow-hidden mb-12">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 ">
           <div className="pt-10 pb-6 border-b border-[#efefef]">
             
@@ -141,13 +141,13 @@ export default function PortfolioSection() {
   // Heading padding tightened (pt-10→pt-5, pb-8→pb-5) so Portfolio sits
   // flush right after the About section spacer ends — no visible gap.
   return (
-    <section className="bg-white w-full overflow-hidden mb-24">
+    <section id="portfolio" className="bg-white w-full overflow-hidden mb-24">
       {/* Heading */}
       <div
         className="border-b border-[#efefef] 2xl:pt-20 xl:pt-20 lg:pt-20 md:pt-20 pb-12"
         style={{ paddingLeft: LEFT_INDENT, paddingRight: LEFT_INDENT }}
       >    
-        <h2 className="2xl:text-[clamp(36px,3.8vw,58px)] xl:text-[clamp(36px,3.8vw,58px)] lg:text-[clamp(36px,3.8vw,58px)] font-extrabold leading-[1.1] text-[#0a0a0a] tracking-[-1.5px]">
+        <h2 className="2xl:text-[clamp(36px,3.8vw,58px)] xl:text-[clamp(36px,3.8vw,58px)] lg:text-[clamp(36px,3.8vw,58px)] md:text-[clamp(36px,3.8vw,58px)] font-extrabold leading-[1.1] text-[#0a0a0a] tracking-[-1.5px]">
           Our Previous
           <br />
           Work

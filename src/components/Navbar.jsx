@@ -1,28 +1,85 @@
-import { useState, useEffect } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { useState, useEffect, useCallback } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
-  { label: "Services", to: "/services" },
-  { label: "Portfolio", to: "/portfolio" },
-  { label: "Process", to: "/process" },
-  { label: "Pricing", to: "/pricing" },
+  { label: "Services",  sectionId: "services"  },
+  { label: "Portfolio", sectionId: "portfolio" },
+  { label: "About",     sectionId: "about"     },
+  { label: "FAQ",       sectionId: "faq"       },
 ];
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled,      setScrolled]      = useState(false);
+  const [mobileOpen,    setMobileOpen]    = useState(false);
+  const [activeSection, setActiveSection] = useState("");
+  const navigate = useNavigate();
+  const location = useLocation();
 
+  /* ── scroll shadow ── */
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", fn);
     return () => window.removeEventListener("scroll", fn);
   }, []);
 
+  /* ── active section via IntersectionObserver ── */
+  useEffect(() => {
+    if (location.pathname !== "/") return;
+
+    const observers = navLinks.map(({ sectionId }) => {
+      const el = document.getElementById(sectionId);
+      if (!el) return null;
+      const obs = new IntersectionObserver(
+        ([entry]) => { if (entry.isIntersecting) setActiveSection(sectionId); },
+        { rootMargin: "-40% 0px -55% 0px" }
+      );
+      obs.observe(el);
+      return obs;
+    });
+
+    return () => observers.forEach((o) => o?.disconnect());
+  }, [location.pathname]);
+
+  /* ── scroll helper ── */
+  const scrollToSection = useCallback(
+    (sectionId) => {
+      setMobileOpen(false);
+
+      const doScroll = () => {
+        const el = document.getElementById(sectionId);
+        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+      };
+
+      if (location.pathname !== "/") {
+        navigate("/", { state: { scrollTo: sectionId } });
+      } else {
+        doScroll();
+      }
+    },
+    [location.pathname, navigate]
+  );
+
+  /* ── handle cross-page scroll (arriving from another route) ── */
+  useEffect(() => {
+    if (location.state?.scrollTo) {
+      const id = location.state.scrollTo;
+      const timer = setTimeout(() => {
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+        navigate("/", { replace: true, state: {} });
+      }, 350);
+      return () => clearTimeout(timer);
+    }
+  }, [location.state, navigate]);
+
+  const isHome = location.pathname === "/";
+
   return (
-   <header className="absolute top-0 left-0 right-0 z-50 px-6 md:px-10 pt-8">
-      {/* Floating Nav Container */}
+    <header className="absolute top-0 left-0 right-0 z-50 px-6 md:px-10 pt-8">
+
+      {/* ── Floating Bar ── */}
       <div
         className={`max-w-7xl mx-auto transition-all duration-500 ${
           scrolled
@@ -31,42 +88,36 @@ export default function Navbar() {
         }`}
       >
         <div className="flex items-center justify-between px-6 md:px-8 h-[68px]">
+
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <img
-              src="/logo.webp"
-              alt="Prographr"
-              className="h-8 w-8 object-contain"
-            />
+            <img src="/logo.webp" alt="Prographr" className="h-8 w-8 object-contain" />
           </Link>
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center lg:gap-20 md:gap-12 gap-6">
-            {navLinks.map((l) => (
-              <NavLink
-                key={l.to}
-                to={l.to}
-                className={({ isActive }) =>
-                  `text-sm font-medium transition-colors duration-200 ${
-                    isActive
-                      ? "text-white underline underline-offset-[5px] decoration-white/60"
-                      : "text-white/80 hover:text-white"
-                  }`
-                }
+            {navLinks.map(({ label, sectionId }) => (
+              <button
+                key={sectionId}
+                onClick={() => scrollToSection(sectionId)}
+                className={`text-sm font-medium transition-colors duration-200 cursor-pointer bg-transparent border-none outline-none ${
+                  isHome && activeSection === sectionId
+                    ? "text-white underline underline-offset-[5px] decoration-white/60"
+                    : "text-white/80 hover:text-white"
+                }`}
               >
-                {l.label}
-              </NavLink>
+                {label}
+              </button>
             ))}
           </nav>
 
-          {/* CTA */}
-
-          <Link
-            to="/contact"
+          {/* Let's Talk — scrolls to CTA form */}
+          <button
+            onClick={() => scrollToSection("contact")}
             className="hidden md:inline-flex items-center px-5 py-2 text-sm font-semibold text-[#0a0a0a] bg-white hover:bg-[#e8e8e8] transition-colors duration-200"
           >
             Let's Talk
-          </Link>
+          </button>
 
           {/* Mobile Toggle */}
           <button
@@ -78,7 +129,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* ── Mobile Menu ── */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
@@ -86,26 +137,30 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="max-w-6xl mx-auto mt-1  bg-[#111]/95 backdrop-blur-md overflow-hidden"
+            className="max-w-6xl mx-auto mt-1 bg-[#111]/95 backdrop-blur-md overflow-hidden"
           >
             <div className="px-6 py-6 flex flex-col gap-5">
-              {navLinks.map((l) => (
-                <NavLink
-                  key={l.to}
-                  to={l.to}
-                  onClick={() => setMobileOpen(false)}
-                  className="text-white/70 hover:text-white text-base font-medium transition-colors"
+              {navLinks.map(({ label, sectionId }) => (
+                <button
+                  key={sectionId}
+                  onClick={() => scrollToSection(sectionId)}
+                  className={`text-left bg-transparent border-none outline-none text-base font-medium transition-colors cursor-pointer ${
+                    isHome && activeSection === sectionId
+                      ? "text-white"
+                      : "text-white/70 hover:text-white"
+                  }`}
                 >
-                  {l.label}
-                </NavLink>
+                  {label}
+                </button>
               ))}
-              <Link
-                to="/contact"
-                onClick={() => setMobileOpen(false)}
+
+              {/* Let's Talk — scrolls to CTA form */}
+              <button
+                onClick={() => scrollToSection("contact")}
                 className="mt-2 px-5 py-2.5 text-sm font-semibold text-[#0a0a0a] bg-white text-center hover:bg-[#e8e8e8] transition-colors"
               >
                 Let's Talk
-              </Link>
+              </button>
             </div>
           </motion.div>
         )}
