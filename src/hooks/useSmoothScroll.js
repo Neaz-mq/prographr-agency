@@ -14,6 +14,9 @@ export default function useSmoothScroll() {
       smoothTouch: false,
     });
 
+    // Expose globally so Navbar can call lenis.scrollTo()
+    window.lenis = lenis;
+
     // Sync Lenis with GSAP ScrollTrigger
     lenis.on("scroll", ScrollTrigger.update);
 
@@ -26,6 +29,7 @@ export default function useSmoothScroll() {
     return () => {
       lenis.destroy();
       gsap.ticker.remove(lenis.raf);
+      window.lenis = null;
     };
   }, []);
 }

@@ -10,6 +10,17 @@ const navLinks = [
   { label: "FAQ",       sectionId: "faq"       },
 ];
 
+// Always route through Lenis when available, fallback to native
+function lenisScrollTo(sectionId) {
+  const el = document.getElementById(sectionId);
+  if (!el) return;
+  if (window.lenis) {
+    window.lenis.scrollTo(el, { offset: 0, duration: 1.2 });
+  } else {
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+}
+
 export default function Navbar() {
   const [scrolled,      setScrolled]      = useState(false);
   const [mobileOpen,    setMobileOpen]    = useState(false);
@@ -47,15 +58,12 @@ export default function Navbar() {
     (sectionId) => {
       setMobileOpen(false);
 
-      const doScroll = () => {
-        const el = document.getElementById(sectionId);
-        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-      };
-
       if (location.pathname !== "/") {
         navigate("/", { state: { scrollTo: sectionId } });
       } else {
-        doScroll();
+        // Small timeout lets mobile menu AnimatePresence finish closing
+        // before Lenis scrolls — prevents scroll being blocked by overlay
+        setTimeout(() => lenisScrollTo(sectionId), 50);
       }
     },
     [location.pathname, navigate]
@@ -66,10 +74,9 @@ export default function Navbar() {
     if (location.state?.scrollTo) {
       const id = location.state.scrollTo;
       const timer = setTimeout(() => {
-        const el = document.getElementById(id);
-        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+        lenisScrollTo(id);
         navigate("/", { replace: true, state: {} });
-      }, 350);
+      }, 400); // wait for page + lenis to initialise
       return () => clearTimeout(timer);
     }
   }, [location.state, navigate]);
@@ -111,7 +118,7 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* Let's Talk — scrolls to CTA form */}
+          {/* Let's Talk */}
           <button
             onClick={() => scrollToSection("contact")}
             className="hidden md:inline-flex items-center px-5 py-2 text-sm font-semibold text-[#0a0a0a] bg-white hover:bg-[#e8e8e8] transition-colors duration-200"
@@ -136,7 +143,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.25 }}
             className="max-w-6xl mx-auto mt-1 bg-[#111]/95 backdrop-blur-md overflow-hidden"
           >
             <div className="px-6 py-6 flex flex-col gap-5">
@@ -154,7 +161,7 @@ export default function Navbar() {
                 </button>
               ))}
 
-              {/* Let's Talk — scrolls to CTA form */}
+              {/* Let's Talk */}
               <button
                 onClick={() => scrollToSection("contact")}
                 className="mt-2 px-5 py-2.5 text-sm font-semibold text-[#0a0a0a] bg-white text-center hover:bg-[#e8e8e8] transition-colors"
