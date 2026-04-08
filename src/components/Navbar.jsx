@@ -84,7 +84,7 @@ export default function Navbar() {
   const isHome = location.pathname === "/";
 
   return (
-   <header className="absolute top-0 left-0 right-0 z-50 px-3 md:px-16 lg:px-60 pt-8">
+   <header className="absolute top-0 left-0 right-0 z-50 px-3 md:px-16 lg:px-60 pt-[60px]">
 
       {/* ── Floating Bar ── */}
       <div
@@ -94,11 +94,11 @@ export default function Navbar() {
             : "bg-white/5 backdrop-blur-sm"
         }`}
       >
-        <div className="flex items-center justify-between px-6 md:px-8 h-[68px]">
+        <div className="flex items-center justify-between px-6 md:px-8 h-[85px]">
 
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <img src="/logo.webp" alt="Prographr" className="h-8 w-8 object-contain" />
+            <img src="/logo.webp" alt="Prographr" className="h-12 w-12 object-contain" />
           </Link>
 
           {/* Desktop Nav */}
@@ -107,7 +107,7 @@ export default function Navbar() {
               <button
                 key={sectionId}
                 onClick={() => scrollToSection(sectionId)}
-                className={`text-sm font-medium transition-colors duration-200 cursor-pointer bg-transparent border-none outline-none ${
+                className={`text-[25px] font-light transition-colors duration-200 cursor-pointer bg-transparent border-none outline-none ${
                   isHome && activeSection === sectionId
                     ? "text-white underline underline-offset-[5px] decoration-white/60"
                     : "text-white/80 hover:text-white"
