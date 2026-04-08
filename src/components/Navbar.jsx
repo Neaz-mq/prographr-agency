@@ -84,11 +84,11 @@ export default function Navbar() {
   const isHome = location.pathname === "/";
 
   return (
-    <header className="absolute top-0 left-0 right-0 z-50 px-6 md:px-10 pt-8">
+   <header className="absolute top-0 left-0 right-0 z-50 px-3 md:px-16 lg:px-60 pt-8">
 
       {/* ── Floating Bar ── */}
       <div
-        className={`max-w-7xl mx-auto transition-all duration-500 ${
+        className={`mx-auto transition-all duration-500 ${
           scrolled
             ? "bg-white/5 backdrop-blur-md shadow-lg shadow-black/40"
             : "bg-white/5 backdrop-blur-sm"

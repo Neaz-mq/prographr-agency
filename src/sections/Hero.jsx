@@ -23,7 +23,8 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 flex-1 flex flex-col items-center justify-center max-w-7xl mx-auto w-full px-6 md:px-10 lg:-top-4 md:-top-6 -top-6">
+      {/* Content */}
+      <div className="relative z-10 flex-1 flex flex-col items-center justify-center max-w-7xl mx-auto w-full px-6 md:px-10 lg:-top-24 md:-top-20 -top-16">
         <motion.div {...fadeUp(0)} className="mb-8">
           <div className="inline-flex items-center gap-2 bg-white/5 px-3 py-1.5 backdrop-blur-sm">
             <span className="bg-[#FF7431] text-black text-[10px] font-bold px-2.5 py-0.5 rounded-full">
@@ -38,7 +39,7 @@ export default function Hero() {
 
         <motion.h1
           {...fadeUp(0.1)}
-          className="font-bold text-white leading-[1.25] text-center text-[1.8rem] sm:text-[3rem] md:text-[3rem] lg:text-[4.4rem]"
+          className="font-medium text-white leading-[1.25] text-center text-[1.8rem] sm:text-[3rem] md:text-[3.5rem] lg:text-[5.5rem]"
         >
           Crafting Digital
           <br />
