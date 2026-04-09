@@ -40,6 +40,30 @@ const PORTFOLIO_ITEMS = [
 
 const SLIDES = [...PORTFOLIO_ITEMS, ...PORTFOLIO_ITEMS, ...PORTFOLIO_ITEMS];
 
+// ── Resolves imgHeight and slideWidth based on actual window width ──
+function useDesktopSizes() {
+  const getSizes = () => {
+    if (typeof window === "undefined") {
+      return { imgHeight: "clamp(500px, 42vw, 660px)", slideWidth: "clamp(660px, 45vw, 1200px)" };
+    }
+    const w = window.innerWidth;
+    if (w >= 1920) return { imgHeight: "clamp(500px, 42vw, 660px)",  slideWidth: "clamp(660px, 45vw, 1200px)" }; // 3xl
+    if (w >= 1536) return { imgHeight: "clamp(300px, 37vw, 360px)",  slideWidth: "clamp(450px, 38vw, 1000px)"  }; // 2xl
+    if (w >= 1280) return { imgHeight: "clamp(200px, 36vw, 320px)",  slideWidth: "clamp(400px, 36vw, 800px)"  }; // xl
+    return              { imgHeight: "clamp(200px, 36vw, 300px)",  slideWidth: "clamp(340px, 38vw, 760px)"  }; // lg
+  };
+
+  const [sizes, setSizes] = useState(getSizes);
+
+  useEffect(() => {
+    const onResize = () => setSizes(getSizes());
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
+  return sizes;
+}
+
 function PortfolioCard({ item, imgHeight }) {
   return (
     <div className="h-full flex flex-col">
@@ -94,6 +118,8 @@ export default function PortfolioSection() {
     return () => window.removeEventListener("resize", check);
   }, []);
 
+  const { imgHeight, slideWidth } = useDesktopSizes();
+
   const swiperProps = {
     modules: [Autoplay, FreeMode],
     slidesPerView: "auto",
@@ -112,9 +138,8 @@ export default function PortfolioSection() {
   if (!isDesktop) {
     return (
       <section id="portfolio" className="bg-white w-full overflow-hidden mb-12">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 ">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8">
           <div className="pt-10 pb-6 border-b border-[#efefef]">
-            
             <h2 className="text-[clamp(28px,7vw,40px)] font-extrabold leading-[1.15] text-[#0a0a0a] tracking-[-0.5px]">
               Our Previous
               <br />
@@ -127,9 +152,9 @@ export default function PortfolioSection() {
           {SLIDES.map((item, i) => (
             <SwiperSlide
               key={`m-${item.id}-${i}`}
-              style={{ width: "clamp(240px, 68vw, 300px)" }}
+              style={{ width: "clamp(160px, 72vw, 360px)" }}
             >
-              <PortfolioCard item={item} imgHeight="clamp(180px, 48vw, 260px)" />
+              <PortfolioCard item={item} imgHeight="clamp(120px, 72vw, 220px)" />
             </SwiperSlide>
           ))}
         </Swiper>
@@ -138,32 +163,30 @@ export default function PortfolioSection() {
   }
 
   // ── DESKTOP ──────────────────────────────────────────────────────────
-  // Heading padding tightened (pt-10→pt-5, pb-8→pb-5) so Portfolio sits
-  // flush right after the About section spacer ends — no visible gap.
   return (
-    <section id="portfolio" className="bg-white w-full overflow-hidden mb-24">
+    <section id="portfolio" className="bg-white w-full overflow-hidden mb-24 3xl:-mt-2 2xl:mt-14 xl:mt-2 lg:mt-10">
       {/* Heading */}
       <div
         className="border-b border-[#efefef] pb-12"
         style={{ paddingLeft: LEFT_INDENT, paddingRight: LEFT_INDENT }}
-      >    
-        <h2 className="2xl:text-[clamp(36px,3.8vw,58px)] xl:text-[clamp(36px,3.8vw,58px)] lg:text-[clamp(36px,3.8vw,58px)] md:text-[clamp(36px,3.8vw,58px)] font-extrabold leading-[1.1] text-[#0a0a0a] tracking-[-1.5px]">
+      >
+        <h2 className="3xl:text-[clamp(72px,6vw,115px)] 2xl:text-[clamp(52px,3.8vw,58px)] xl:text-[clamp(45px,3.8vw,58px)] lg:text-[clamp(40px,3.8vw,58px)] md:text-[clamp(36px,3.8vw,58px)] font-semibold leading-[1.1] text-[#0a0a0a] tracking-[-1.5px]">
           Our Previous
           <br />
           Work
         </h2>
       </div>
 
-      {/* Images */}
+      {/* Swiper — both width and imgHeight come from the JS hook */}
       <Swiper {...swiperProps} speed={4500}>
         {SLIDES.map((item, i) => (
           <SwiperSlide
             key={`d-${item.id}-${i}`}
-            style={{ width: "clamp(560px, 26vw, 500px)" }}
+            style={{ width: slideWidth }}
           >
             <PortfolioCard
               item={item}
-              imgHeight="clamp(200px, 22vw, 360px)"
+              imgHeight={imgHeight}
             />
           </SwiperSlide>
         ))}

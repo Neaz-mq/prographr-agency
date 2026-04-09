@@ -249,13 +249,13 @@ export default function AboutSection() {
 
             {/* Text — always visible, never pushed out */}
             <div className="shrink-0 flex flex-col gap-3">
-              <p className="3xl:text-[14px] 2xl:text-[13px] xl:text-[11px] lg:text-[10px] leading-[1.6] text-[#666]">
+              <p className="3xl:text-[15px] 2xl:text-[13px] xl:text-[11px] lg:text-[10px] leading-[1.6] text-[#666]">
                 In today’s fast-moving digital world, strong and meaningful
                 design plays a vital role in building a successful brand. Our
                 design agency was created with one clear goal to help
                 businesses.
               </p>
-              <p className="3xl:text-[14px] 2xl:text-[13px] xl:text-[11px] lg:text-[10px] leading-[1.6] text-[#666]">
+              <p className="3xl:text-[15px] 2xl:text-[13px] xl:text-[11px] lg:text-[10px] leading-[1.6] text-[#666]">
                 Our agency specializes in design services that help brands stand
                 out in a competitive market.
               </p>
