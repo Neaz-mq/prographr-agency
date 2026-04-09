@@ -23,14 +23,13 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      {/* Content */}
-      <div className="relative z-10 flex-1 flex flex-col items-center justify-center max-w-7xl mx-auto w-full px-6 md:px-10 lg:-top-24 md:-top-20 -top-16">
+      <div className="relative z-10 flex-1 flex flex-col items-center justify-center max-w-7xl mx-auto w-full px-6 md:px-10 3xl:-top-24 2xl:-top-24 xl:-top-24 lg:-top-24 md:-top-20 -top-16">
         <motion.div {...fadeUp(0)} className="mb-8">
-          <div className="inline-flex items-center gap-2 bg-white/5 px-3 py-1.5 backdrop-blur-sm">
-            <span className="bg-[#FF7431] text-black text-[10px] font-bold px-2.5 py-0.5 rounded-full">
+          <div className="inline-flex items-center gap-2 bg-white/5 3xl:px-4 3xl:py-1.5 2xl:px-4 2xl:py-1.5 xl:px-4 xl:py-1.5 lg:px-4 lg:py-1.5 md:px-4 md:py-1.5 px-3 py-1.5 backdrop-blur-sm">
+            <span className="bg-[#FF7431] text-black 3xl:text-[13px] 2xl:text-[13px] xl:text-[13px] lg:text-[13px] md:text-[13px] text-[12px] font-bold 3xl:px-2.5 3xl:py-0.5 2xl:px-2.5 2xl:py-0.5 xl:px-2.5 xl:py-0.5 lg:px-2.5 lg:py-0.5 md:px-2.5 md:py-0.5 px-2.5 py-0.5 rounded-full">
               5.00
             </span>
-            <span className="text-white text-[12px]">
+            <span className="text-white 3xl:text-[13px] 2xl:text-[13px] xl:text-[13px] lg:text-[13px] md:text-[13px] text-[11px]">
               Our 2026 Design Trends Report is out
             </span>
             <ArrowRight size={13} className="text-[#ccc]" />
@@ -39,7 +38,7 @@ export default function Hero() {
 
         <motion.h1
           {...fadeUp(0.1)}
-          className="font-medium text-white leading-[1.25] text-center text-[1.8rem] sm:text-[3rem] md:text-[3.5rem] lg:text-[5.5rem]"
+          className="font-medium text-white leading-[1.65] sm:leading-[1.35] 3xl:leading-[1.25] 2xl:leading-[1.25] xl:leading-[1.25] lg:leading-[1.25] md:leading-[1.45] text-center text-[2rem] sm:text-[2.8rem] md:text-[3.2rem] lg:text-[4rem] xl:text-[4.2rem] 2xl:text-[4.5rem] 3xl:text-[6rem]"
         >
           Crafting Digital
           <br />
