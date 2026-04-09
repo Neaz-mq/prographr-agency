@@ -144,7 +144,7 @@ export default function PortfolioSection() {
     <section id="portfolio" className="bg-white w-full overflow-hidden mb-24">
       {/* Heading */}
       <div
-        className="border-b border-[#efefef] 2xl:pt-20 xl:pt-20 lg:pt-20 md:pt-20 pb-12"
+        className="border-b border-[#efefef] pb-12"
         style={{ paddingLeft: LEFT_INDENT, paddingRight: LEFT_INDENT }}
       >    
         <h2 className="2xl:text-[clamp(36px,3.8vw,58px)] xl:text-[clamp(36px,3.8vw,58px)] lg:text-[clamp(36px,3.8vw,58px)] md:text-[clamp(36px,3.8vw,58px)] font-extrabold leading-[1.1] text-[#0a0a0a] tracking-[-1.5px]">

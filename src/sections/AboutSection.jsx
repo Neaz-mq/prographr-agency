@@ -232,10 +232,10 @@ export default function AboutSection() {
 
         {/* ── Body row — fixed height drives section height ────────────── */}
         {/* 370px = card-3 height (355px) + top pad (15px). No wasted space. */}
-        <div className="flex items-stretch w-full shrink-0 3xl:h-[800px] h-[390px]">
+        <div className="flex items-stretch w-full shrink-0 3xl:h-[800px] 2xl:h-[390px] xl:h-[390px] lg:h-[390px]">
           {/* LEFT PANEL */}
           <div
-            className="shrink-0 flex flex-col border-r border-[#efefef] pr-10 pt-2 pb-5 gap-4 overflow-hidden 3xl:w-[70vw] 2xl:w-[52vw] xl:w-[47vw] lg:w-[47vw] md:w-[60vw]"
+            className="shrink-0 flex flex-col pr-10 pt-2 pb-5 gap-4 overflow-hidden 3xl:w-[70vw] 2xl:w-[52vw] xl:w-[47vw] lg:w-[47vw] md:w-[60vw]"
             style={{ paddingLeft: LEFT_INDENT }}
           >
             {/* Image — fixed height per breakpoint instead of flex-1 */}
@@ -249,13 +249,13 @@ export default function AboutSection() {
 
             {/* Text — always visible, never pushed out */}
             <div className="shrink-0 flex flex-col gap-3">
-              <p className="3xl:text-[15px] 2xl:text-[13px] leading-[1.6] text-[#666]">
+              <p className="3xl:text-[14px] 2xl:text-[13px] xl:text-[11px] lg:text-[10px] leading-[1.6] text-[#666]">
                 In today’s fast-moving digital world, strong and meaningful
                 design plays a vital role in building a successful brand. Our
                 design agency was created with one clear goal to help
                 businesses.
               </p>
-              <p className="3xl:text-[15px] 2xl:text-[13px] leading-[1.6] text-[#666]">
+              <p className="3xl:text-[14px] 2xl:text-[13px] xl:text-[11px] lg:text-[10px] leading-[1.6] text-[#666]">
                 Our agency specializes in design services that help brands stand
                 out in a competitive market.
               </p>
@@ -270,8 +270,8 @@ export default function AboutSection() {
               style={{ width: "max-content" }}
             >
               {/* Card 1 — B&W image */}
-              <div className="shrink-0 self-start border-r border-l border-[#efefef] pr-8 pl-8 pt-2 3xl:w-[74vw] 2xl:w-[35vw] xl:w-[45vw] lg:w-[55vw]">
-                <div className="relative 3xl:h-[630px] 2xl:h-[270px]">
+              <div className="shrink-0 self-start  pr-8 pl-8 pt-2 3xl:w-[70vw] 2xl:w-[48vw] xl:w-[47vw] lg:w-[47vw] md:w-[60vw]">
+                <div className="relative 3xl:h-[630px] 2xl:h-[355px] xl:h-[328px] lg:h-[350px]">
                   <div className="w-full h-full overflow-hidden">
                     <img
                       src="https://res.cloudinary.com/dzi3u164c/image/upload/v1774967188/photo-1556761175-b413da4baf72_iqjccn.avif"
@@ -295,26 +295,26 @@ export default function AboutSection() {
               </div>
 
               {/* Card 2 — Stats */}
-              <div className="shrink-0 self-stretch flex flex-col justify-start px-10 border-r border-[#efefef] pt-2   3xl:w-[74vw] 2xl:w-[35vw] xl:w-[45vw] lg:w-[55vw]">
-                <h3 className="3xl:text-[72px] 2xl:text-[42px] xl:text-[40px] lg:text-[36px] font-bold text-[#0a0a0a] 2xl:leading-[1.4] xl:leading-[1.33] lg:leading-[1.4] mb-8 -mt-2">
+              <div className="shrink-0 self-stretch flex flex-col justify-start px-10  pt-2 3xl:w-[70vw] 2xl:w-[48vw] xl:w-[47vw] lg:w-[47vw] md:w-[60vw]">
+                <h3 className="3xl:text-[72px] 2xl:text-[42px] xl:text-[40px] lg:text-[38px] font-bold text-[#0a0a0a] 2xl:leading-[1.4] xl:leading-[1.33] lg:leading-[1.4] mb-8 -mt-2">
                   What makes
                   <br />
                   <span className="2xl:whitespace-nowrap">
                     our agency different
                   </span>
                 </h3>
-                <div className="flex items-start gap-4 3xl:pt-36 2xl:pt-10 xl:pt-20 lg:pt-24">
+                <div className="flex items-start gap-4 3xl:pt-36 2xl:pt-14 xl:pt-12 lg:pt-20">
                   <div className="flex-1">
-                    <div className="3xl:text-[65px] 2xl:text-[40px] xl:text-[30px] lg:text-[28px] font-semibold leading-none mb-2 tracking-[-1px] 2xl:pt-10 xl:pt-6 lg:pt-10 text-[#0a0a0a]">
+                    <div className="3xl:text-[65px] 2xl:text-[40px] xl:text-[35px] lg:text-[32px] font-semibold leading-none mb-2 tracking-[-1px] 2xl:pt-14 xl:pt-10 lg:pt-10 text-[#0a0a0a]">
                       30+
                     </div>
                     <div className="3xl:text-[24px] 2xl:text-[12px] xl:text-[12px] lg:text-[9px] leading-[1.5] text-[#797878] font-normal">
                       Company with Work Experiences
                     </div>
                   </div>
-                  <div className="flex-[2] bg-[#0a0a0a] 3xl:px-12 3xl:py-20  2xl:px-7 2xl:py-12 xl:px-4 xl:py-10 lg:px-2 lg:py-10 flex 3xl:gap-52 2xl:gap-20 xl:gap-14 lg:gap-6 items-center justify-center">
+                  <div className="flex-[2] bg-[#0a0a0a] 3xl:px-12 3xl:py-20  2xl:px-7 2xl:py-12 xl:px-4 xl:py-11 lg:px-2 lg:py-11 flex 3xl:gap-52 2xl:gap-20 xl:gap-14 lg:gap-6 items-center justify-center">
                     <div className="2xl:px-0 xl:px-0 lg:px-2">
-                      <div className="3xl:text-[60px] 2xl:text-[40px] xl:text-[36px] lg:text-[28px] font-semibold leading-none mb-2 tracking-[-1px] text-white">
+                      <div className="3xl:text-[60px] 2xl:text-[40px] xl:text-[36px] lg:text-[30px] font-semibold leading-none mb-2 tracking-[-1px] text-white">
                         1K+
                       </div>
                       <div className="3xl:text-[20px] 2xl:text-[12px] xl:text-[10px] lg:text-[10px] leading-[1.5] text-white whitespace-nowrap">
@@ -322,7 +322,7 @@ export default function AboutSection() {
                       </div>
                     </div>
                     <div className="2xl:px-0 xl:px-0 lg:px-0">
-                      <div className="3xl:text-[60px] 2xl:text-[40px] xl:text-[36px] lg:text-[28px] font-semibold leading-none mb-2 tracking-[-1px] text-white">
+                      <div className="3xl:text-[60px] 2xl:text-[40px] xl:text-[36px] lg:text-[30px] font-semibold leading-none mb-2 tracking-[-1px] text-white">
                         100%
                       </div>
                       <div className="3xl:text-[20px] 2xl:text-[12px] xl:text-[10px] lg:text-[10px] leading-[1.5] text-white whitespace-nowrap">
@@ -334,8 +334,8 @@ export default function AboutSection() {
               </div>
 
               {/* Card 3 — Dark CTA */}
-              <div className="shrink-0 border border-[#efefef] mx-6 3xl:w-[74vw] 2xl:w-[35vw] xl:w-[45vw] lg:w-[55vw]">
-                <div className="relative 3xl:h-[635px] 2xl:h-[270px] xl:h-[260px] lg:h-[260px] overflow-hidden">
+              <div className="shrink-0  mx-6 3xl:w-[70vw] 2xl:w-[48vw] xl:w-[47vw] lg:w-[47vw] md:w-[60vw]">
+                <div className="relative 3xl:h-[635px] 2xl:h-[368px] xl:h-[332px] lg:h-[358px] overflow-hidden">
                   {/* Background Image */}
                   <img
                     src="https://res.cloudinary.com/dzi3u164c/image/upload/v1774931324/Asset_3_raki8b.webp"
@@ -344,12 +344,12 @@ export default function AboutSection() {
                   />
 
                   {/* 🔥 DARK GRADIENT OVERLAY (THIS FIXES VISIBILITY) */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent z-[1]" />
+                  <div className="absolute inset-0 bg-gradient-to-r  z-[1]" />
 
                   {/* Content */}
                   <div className="absolute inset-0 z-[2] flex flex-col justify-between p-16">
                     {/* TEXT */}
-                    <h3 className="text-[66px] font-extrabold text-white leading-[1.1] tracking-[-0.5px] max-w-[360px]">
+                    <h3 className="3xl:text-[66px] 2xl:text-[40px] xl:text-[36px] lg:text-[36px] font-extrabold text-white leading-[1.1] tracking-[-0.5px] 3xl:max-w-[360px] 2xl:max-w-[360px] xl:max-w-[360px] lg:max-w-[360px]">
                       Scroll and <br />
                       enjoy a <br />
                       new <br />
@@ -357,7 +357,7 @@ export default function AboutSection() {
                     </h3>
 
                     {/* BUTTON */}
-                    <button className="self-start inline-flex items-center gap-2 px-5 py-[9px] bg-transparent border border-white/30 rounded-full text-white/80 text-[11px] transition-all hover:bg-white/10 hover:text-white">
+                    <button className="self-start inline-flex items-center gap-2 px-5 py-[9px] bg-transparent border border-white/30 rounded-full text-white/80 text-[11px] transition-all hover:bg-white/10 hover:text-white 3xl:mt-0 2xl:mt-12 xl:mt-12">
                       Again let's go →
                     </button>
                   </div>
