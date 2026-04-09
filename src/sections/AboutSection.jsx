@@ -4,7 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const LEFT_INDENT = "max(40px, calc((100vw - 80rem) / 2 + 2.5rem))";
+const LEFT_INDENT = "max(40px, calc((88vw - 80rem) / 2 + 2.5rem))";
 
 export default function AboutSection() {
   const wrapperRef = useRef(null);
@@ -208,7 +208,7 @@ export default function AboutSection() {
     <div id="about" ref={wrapperRef}>
       <section
         ref={sectionRef}
-        className="bg-white w-full overflow-hidden flex flex-col"
+        className="bg-white w-full overflow-hidden  flex flex-col"
         /* No h-screen — height is now sum of heading + body row */
       >
         {/* ── Heading ─────────────────────────────────────────────────── */}

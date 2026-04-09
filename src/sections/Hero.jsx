@@ -23,7 +23,7 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 flex-1 flex flex-col items-center justify-center max-w-7xl mx-auto w-full px-6 md:px-10 3xl:-top-24 2xl:-top-16 xl:-top-16 lg:-top-14 md:-top-14 -top-7">
+      <div className="relative z-10 flex-1 flex flex-col items-center justify-center  mx-auto w-full px-6 md:px-10 3xl:-top-24 2xl:-top-16 xl:-top-16 lg:-top-14 md:-top-14 -top-7">
         <motion.div {...fadeUp(0)} className="mb-8">
           <div className="inline-flex items-center gap-2 bg-white/5 3xl:px-4 3xl:py-1.5 2xl:px-4 2xl:py-1.5 xl:px-4 xl:py-1.5 lg:px-4 lg:py-1.5 md:px-4 md:py-1.5 px-3 py-1.5 backdrop-blur-sm">
             <span className="bg-[#FF7431] text-black 3xl:text-[13px] 2xl:text-[13px] xl:text-[13px] lg:text-[13px] md:text-[13px] text-[12px] font-bold 3xl:px-2.5 3xl:py-0.5 2xl:px-2.5 2xl:py-0.5 xl:px-2.5 xl:py-0.5 lg:px-2.5 lg:py-0.5 md:px-2.5 md:py-0.5 px-2.5 py-0.5 rounded-full">

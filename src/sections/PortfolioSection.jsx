@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, FreeMode } from "swiper/modules";
 import "swiper/css";
 
-const LEFT_INDENT = "max(40px, calc((100vw - 80rem) / 2 + 2.3rem))";
+const LEFT_INDENT = "max(40px, calc((88vw - 80rem) / 2 + 2.3rem))";
 
 const PORTFOLIO_ITEMS = [
   {

@@ -32,7 +32,7 @@ export default function FAQ() {
     <section id="faq" className="bg-[#0a0a0a]">
 
       {/* ── Careers ── */}
-      <div className="max-w-7xl mx-auto px-6 md:px-10 pt-24 pb-16 border-b border-[#1f1f1f]">
+      <div className="md:px-10 3xl:px-60 2xl:px-60 xl:px-20 lg:px-14 mx-auto px-6  pt-24 pb-16 border-b border-[#1f1f1f]">
 
         <h2
           className="text-white font-bold text-2xl md:text-3xl leading-snug mb-10"
@@ -62,7 +62,7 @@ export default function FAQ() {
       </div>
 
       {/* ── FAQ ── */}
-      <div className="max-w-7xl mx-auto px-6 md:px-10 pt-16 pb-24">
+      <div className="md:px-10 3xl:px-60 2xl:px-60 xl:px-20 lg:px-14 mx-auto px-6  pt-16 pb-24">
 
         <h2
           className="text-white font-black leading-none mb-12 text-[40px] md:text-[50px] lg:text-[56px] xl:text-[60px] 2xl:text-[64px]"

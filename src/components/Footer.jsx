@@ -42,7 +42,7 @@ export default function Footer() {
   return (
     <footer className="bg-[#0a0a0a]">
 
-      <div className="max-w-7xl mx-auto px-6 md:px-10 pt-12 md:pt-16 pb-10 md:pb-12">
+      <div className="md:px-10 3xl:px-60 2xl:px-60 xl:px-20 lg:px-14 mx-auto px-6  pt-12 md:pt-16 pb-10 md:pb-12">
 
         {/* Logo */}
         <div className="flex items-center justify-center md:justify-start gap-2.5 mb-10 md:mb-12">
@@ -159,7 +159,7 @@ export default function Footer() {
 
       {/* Bottom Bar */}
       <div className="bg-white">
-        <div className="max-w-7xl mx-auto px-6 md:px-10 py-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="md:px-10 3xl:px-60 2xl:px-60 xl:px-20 lg:px-14 mx-auto px-6  py-5 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             {[Instagram, Linkedin, Twitter].map((Icon, i) => (
               <a key={i} href="#" className="w-8 h-8 border border-[#333] rounded-full flex items-center justify-center hover:bg-[#f0f0f0] transition-colors">

@@ -34,7 +34,7 @@ export default function CTA() {
 
   return (
     <section id="contact" className="bg-white">
-      <div className="max-w-7xl mx-auto px-6 md:px-10 py-20 md:py-28">
+      <div className="md:px-10 3xl:px-60 2xl:px-60 xl:px-20 lg:px-14 mx-auto px-6  py-20 md:py-28">
         {/* Heading */}
         <h2
           className="text-[#0a0a0a] font-bold mb-2"
