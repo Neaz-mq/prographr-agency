@@ -84,7 +84,7 @@ export default function Navbar() {
   const isHome = location.pathname === "/";
 
   return (
-   <header className="absolute top-0 left-0 right-0 z-50 px-3 md:px-16 lg:px-60 pt-[60px]">
+   <header className="absolute top-0 left-0 right-0 z-50 px-3 md:px-16 lg:px-60 pt-[40px] 3xl:pt-[60px] 2xl:pt-[45px]">
 
       {/* ── Floating Bar ── */}
       <div
@@ -94,20 +94,20 @@ export default function Navbar() {
             : "bg-white/5 backdrop-blur-sm"
         }`}
       >
-        <div className="flex items-center justify-between px-6 md:px-8 h-[85px]">
+        <div className="flex items-center justify-between px-6 md:px-8 h-[65px] 3xl:h-[85px] 2xl:h-[70px]">
 
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <img src="/logo.webp" alt="Prographr" className="h-12 w-12 object-contain" />
+            <img src="/logo.webp" alt="Prographr" className="h-8 w-8 3xl:h-12 3xl:w-12 2xl:h-10 2xl:w-10 object-contain" />
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center lg:gap-20 md:gap-12 gap-6">
+          <nav className="hidden md:flex items-center lg:gap-24 md:gap-12 gap-6">
             {navLinks.map(({ label, sectionId }) => (
               <button
                 key={sectionId}
                 onClick={() => scrollToSection(sectionId)}
-                className={`text-[25px] font-light transition-colors duration-200 cursor-pointer bg-transparent border-none outline-none ${
+                className={`text-[14px] 3xl:text-[18px] 2xl:text-[14px] font-light transition-colors duration-200 cursor-pointer bg-transparent border-none outline-none ${
                   isHome && activeSection === sectionId
                     ? "text-white underline underline-offset-[5px] decoration-white/60"
                     : "text-white/80 hover:text-white"
@@ -121,7 +121,7 @@ export default function Navbar() {
           {/* Let's Talk */}
           <button
             onClick={() => scrollToSection("contact")}
-            className="hidden md:inline-flex items-center px-5 py-2 text-sm font-semibold text-[#0a0a0a] bg-white hover:bg-[#e8e8e8] transition-colors duration-200"
+            className="hidden md:inline-flex items-center px-5 py-2 text-[14px] 3xl:text-[18px] 2xl:text-[14px] text-[#0a0a0a] bg-white hover:bg-[#e8e8e8] transition-colors duration-200"
           >
             Let's Talk
           </button>
