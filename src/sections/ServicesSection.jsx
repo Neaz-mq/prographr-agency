@@ -7,7 +7,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 gsap.registerPlugin(ScrollTrigger);
 
 const CARD_HEIGHT = 270;
-const SHOW_AMOUNT = 80;
+const SHOW_AMOUNT = 70;
 
 // ── shared helpers ───────────────────────────────────────────
 function CardShell({ className = "", style = {}, children }) {
@@ -178,7 +178,7 @@ function MobileCarousel() {
   const c = mobileCards[current];
 
   return (
-    <div className="-mt-32 pb-10 px-10">
+    <div className="-mt-44 pb-10 px-10">
       {/* overflow-hidden prevents x animation from causing scrollbar */}
       <div className="overflow-hidden">
         <AnimatePresence mode="wait">
