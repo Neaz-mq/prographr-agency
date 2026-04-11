@@ -33,24 +33,24 @@ export default function FAQ() {
       {/* ── Careers ── */}
       <div className="md:px-10 3xl:px-60 2xl:px-60 xl:px-20 lg:px-14 mx-auto px-6 pt-36 pb-16 border-b border-[#1f1f1f]">
         <h2
-          className="text-white font-medium text-2xl md:text-3xl lg:text-3xl xl:text-3xl 2xl:text-3xl 3xl:text-5xl mb-10 leading-relaxed"
+          className="font-medium leading-[1.2] text-white  3xl:max-w-[1260px] max-w-[760px] 3xl:text-[clamp(36px,4vw,84px)]  2xl:text-[clamp(36px,3.8vw,58px)]  xl:text-[clamp(36px,3.8vw,58px)]  lg:text-[clamp(36px,3.8vw,58px)]  md:text-[clamp(36px,3.8vw,58px)] tracking-[0.02em"
           style={{ fontFamily: "'Inter', sans-serif" }}
         >
           Become a member of a<br />
           talented team
         </h2>
 
-        <div className="flex flex-col divide-y divide-[#1f1f1f]">
+        <div className="flex flex-col divide-y divide-[#1f1f1f] pt-12">
           {jobs.map((job, i) => (
             <div
               key={i}
               className="flex items-center justify-between py-5 gap-4"
             >
               <div>
-                <p className="text-white font-semibold text-sm md:text-base leading-tight mb-1">
+                <p className="text-white font-semibold text-sm md:text-3xl leading-tight mb-1 tracking-[0.02em]">
                   {job.title}
                 </p>
-                <p className="text-[#555] text-xs">{job.meta}</p>
+                <p className="text-[#C1C1C1] text-xs md:text-lg pt-2">{job.meta}</p>
               </div>
               <button className="shrink-0 border border-white text-white text-xs px-4 py-2 hover:bg-white hover:text-[#0a0a0a] transition-colors duration-200 whitespace-nowrap">
                 Apply Now
@@ -63,7 +63,7 @@ export default function FAQ() {
       {/* ── FAQ ── */}
       <div className="md:px-10 3xl:px-60 2xl:px-60 xl:px-20 lg:px-14 mx-auto px-6  pt-16 pb-24">
         <h2
-          className="text-white leading-none mb-12 text-[40px] md:text-[50px] lg:text-[56px] xl:text-[60px] 2xl:text-[64px] 3xl:text-[98px] font-normal"
+          className="font-medium leading-[1.2] text-white  3xl:max-w-[1260px] max-w-[760px] 3xl:text-[clamp(36px,4vw,104px)]  2xl:text-[clamp(36px,3.8vw,58px)]  xl:text-[clamp(36px,3.8vw,58px)]  lg:text-[clamp(36px,3.8vw,58px)]  md:text-[clamp(36px,3.8vw,58px)] tracking-[0.02em"
           style={{
             fontFamily: "'Inter', sans-serif",
           }}
@@ -73,7 +73,7 @@ export default function FAQ() {
           Questions?
         </h2>
 
-        <div className="flex flex-col divide-y divide-[#1f1f1f]">
+        <div className="flex flex-col divide-y divide-[#1f1f1f] mt-20">
           {faqs.map((faq, i) => {
             const isOpen = openIndex === i;
             return (
@@ -83,7 +83,7 @@ export default function FAQ() {
                   className="w-full flex items-center justify-between gap-6 py-5 text-left group"
                 >
                   <span
-                    className={`text-sm md:text-lg xl:text-lg 2xl:text-lg 3xl:text-2xl font-medium transition-colors duration-200 ${
+                    className={`text-sm md:text-lg xl:text-lg 2xl:text-lg 3xl:text-3xl tracking-[0.02em] font-medium transition-colors duration-200 ${
                       isOpen
                         ? "text-white"
                         : "text-white/80 group-hover:text-white"
