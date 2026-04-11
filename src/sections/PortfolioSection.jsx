@@ -44,7 +44,7 @@ function useDesktopSizes() {
       return { imgHeight: "clamp(500px, 42vw, 660px)", slideWidth: "clamp(660px, 45vw, 1200px)" };
     }
     const w = window.innerWidth;
-    if (w >= 1920) return { imgHeight: "clamp(500px, 42vw, 660px)",  slideWidth: "clamp(660px, 45vw, 1200px)" };
+    if (w >= 1920) return { imgHeight: "clamp(650px, 42vw, 800px)",  slideWidth: "clamp(900px, 45vw, 1500px)" };
     if (w >= 1536) return { imgHeight: "clamp(300px, 37vw, 360px)",  slideWidth: "clamp(450px, 38vw, 1000px)"  };
     if (w >= 1280) return { imgHeight: "clamp(200px, 36vw, 320px)",  slideWidth: "clamp(400px, 36vw, 800px)"  };
     return              { imgHeight: "clamp(200px, 36vw, 300px)",  slideWidth: "clamp(340px, 38vw, 760px)"  };
@@ -90,11 +90,11 @@ function PortfolioCard({ item, imgHeight }) {
         )}
       </div>
 
-      <div className="flex items-center gap-2 pl-0 pr-4 py-3 border-t border-[#efefef] flex-wrap bg-white">
+      <div className="flex items-center gap-4 pl-0 pr-4 py-3 border-t border-[#efefef] flex-wrap bg-white">
         {item.tags.map((tag) => (
           <span
             key={tag}
-            className="text-[10px] text-black border border-[#ddd] font-bold bg-[#F2F2F2] px-2.5 py-[5px] whitespace-nowrap leading-none"
+            className="text-[10px] 3xl:text-[18px] text-black border border-[#ddd] font-semibold bg-[#F2F2F2] px-2.5 py-[5px] 3xl:px-8 3xl:py-3 whitespace-nowrap leading-none"
           >
             {tag}
           </span>
@@ -161,10 +161,10 @@ export default function PortfolioSection() {
 
   // ── DESKTOP ──────────────────────────────────────────────────────────
   return (
-    <section id="portfolio" className="bg-white w-full overflow-hidden mb-24 3xl:-mt-2 2xl:mt-14 xl:mt-2 lg:mt-10">
+    <section id="portfolio" className="bg-white w-full overflow-hidden mb-24 3xl:mt-28 2xl:mt-14 xl:mt-2 lg:mt-10">
       {/* ✅ FIX: replaced LEFT_INDENT style with matching Tailwind px classes */}
       <div className="border-b border-[#efefef] pb-12 px-3 md:px-10 3xl:px-60 2xl:px-60 xl:px-20 lg:px-14">
-        <h2 className="3xl:text-[clamp(52px,10vw,150px)] 2xl:text-[clamp(52px,3.8vw,58px)] xl:text-[clamp(45px,3.8vw,58px)] lg:text-[clamp(40px,3.8vw,58px)] md:text-[clamp(36px,3.8vw,58px)] font-semibold leading-[1.1] text-[#0a0a0a]  tracking-[0.02em]">
+        <h2 className="3xl:text-[clamp(52px,10vw,160px)] 2xl:text-[clamp(52px,3.8vw,58px)] xl:text-[clamp(45px,3.8vw,58px)] lg:text-[clamp(40px,3.8vw,58px)] md:text-[clamp(36px,3.8vw,58px)] font-semibold leading-[1.1] text-[#0a0a0a]  tracking-[0.02em]">
           Our Previous
           <br />
           Work
