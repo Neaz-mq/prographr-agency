@@ -98,7 +98,7 @@ export default function Navbar() {
 
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <img src="/logo.webp" alt="Prographr" className="h-8 w-8 3xl:h-12 3xl:w-12 2xl:h-10 2xl:w-10 xl:h-8 xl:w-8 lg:h-8 lg:w-8  object-contain" />
+            <img src="/logo.webp" alt="Prographr" className="h-8 w-8 3xl:h-14 3xl:w-14 2xl:h-10 2xl:w-10 xl:h-8 xl:w-8 lg:h-8 lg:w-8  object-contain" />
           </Link>
 
           {/* Desktop Nav */}
@@ -110,7 +110,7 @@ export default function Navbar() {
                 className={`text-[14px] 3xl:text-[18px] 2xl:text-[15px] xl:text-[15px] lg:text-[15px] md:text-[14px] font-light transition-colors duration-200 cursor-pointer bg-transparent border-none outline-none ${
                   isHome && activeSection === sectionId
                     ? "text-white underline underline-offset-[5px] decoration-white/60"
-                    : "text-white/80 hover:text-white"
+                    : "text-white hover:text-white"
                 }`}
               >
                 {label}
@@ -121,7 +121,7 @@ export default function Navbar() {
           {/* Let's Talk */}
           <button
             onClick={() => scrollToSection("contact")}
-            className="hidden md:inline-flex items-center px-5 py-2 text-[14px] 3xl:text-[18px] 2xl:text-[14px] xl:text-[14px] lg:text-[15px] md:text-[14px] text-[#0a0a0a] bg-white hover:bg-[#e8e8e8] transition-colors duration-200"
+            className="hidden md:inline-flex items-center px-5 py-2 text-[14px] 3xl:text-[18px] 2xl:text-[14px] xl:text-[14px] lg:text-[15px] md:text-[14px] text-[#0a0a0a] bg-white hover:bg-[#e8e8e8] transition-colors duration-200 font-medium"
           >
             Let's Talk
           </button>
