@@ -205,11 +205,11 @@ export default function AboutSection() {
         {/* ── Heading ── */}
         {/* ✅ FIX: replaced LEFT_INDENT style with matching Tailwind px classes */}
         <div className="w-full shrink-0">
-          <div className="pt-8 pb-5 border-b border-[#efefef] px-3 md:px-10 3xl:px-60 2xl:px-60 xl:px-20 lg:px-14">
-            <span className="inline-block 3xl:text-[15px] 2xl:text-[13px] xl:text-[13px] lg:text-[13px] md:text-[12px] bg-[#F2F2F2] text-black uppercase font-semibold px-4 py-1.5 mb-4">
+          <div className="pt-8 pb-5 border-b border-[#efefef] px-3 md:px-10 3xl:px-60  2xl:px-60 xl:px-20 lg:px-14">
+            <span className="inline-block 3xl:py-3 3xl:px-6 2xl:py-3 2xl:px-6 3xl:text-[18px] 2xl:text-[13px] xl:text-[13px] lg:text-[13px] md:text-[12px] bg-[#F2F2F2] text-black uppercase font-semibold px-4 py-1.5 mb-4 tracking-[0.02em]">
               About Us
             </span>
-            <h2 className="3xl:text-[clamp(60px,4vw,32px)] 2xl:text-[clamp(40px,2.2vw,32px)] xl:text-[clamp(36px,2.2vw,32px)] lg:text-[clamp(36px,2.2vw,32px)] md:text-[clamp(40px,2vw,44px)] font-semibold leading-[1.4] text-[#0a0a0a] 3xl:max-w-[1200px] 2xl:max-w-[800px] max-w-[700px] tracking-[0.02em]">
+            <h2 className="3xl:text-[clamp(82px,4vw,32px)] 2xl:text-[clamp(40px,2.2vw,32px)] xl:text-[clamp(36px,2.2vw,32px)] lg:text-[clamp(36px,2.2vw,32px)] md:text-[clamp(40px,2vw,44px)] font-semibold leading-[1.4] text-[#0a0a0a] 3xl:max-w-[1500px] 2xl:max-w-[800px] max-w-[700px] tracking-[0.02em]">
               We Help Businesses Stand Out With Modern, Creative, and{" "}
               <span className="text-[#c0c0c0]">
                 Impactful <br /> Design Solutions
