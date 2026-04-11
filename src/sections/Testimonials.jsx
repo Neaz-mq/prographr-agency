@@ -5,15 +5,15 @@ import "swiper/css";
 
 // ── ICONS ─────────────────────────────────────────────────────────────
 const UiUxIcon = () => (
-  <img src="/Asset 5.svg" alt="Ui icon" width={44} height={44} />
+  <img src="/Asset 5.svg" alt="Ui icon" width={62} height={62} />
 );
 
 const CodeIcon = () => (
-  <img src="/Asset 4.svg" alt="Development icon" width={44} height={44} />
+  <img src="/Asset 4.svg" alt="Development icon" width={62} height={62} />
 );
 
 const MarketIcon = () => (
-  <img src="/Asset 3.svg" alt="Marketing icon" width={44} height={44} />
+  <img src="/Asset 3.svg" alt="Marketing icon" width={62} height={62} />
 );
 
 // ── DATA ──────────────────────────────────────────────────────────────
@@ -280,19 +280,19 @@ export default function Testimonials() {
         {/* ✅ FIX: replaced LEFT_INDENT style with matching Tailwind px classes */}
         <div className="3xl:pt-64 pt-20 pb-14 px-3 md:px-10 3xl:px-60 2xl:px-60 xl:px-20 lg:px-14">
           <div className="relative">
-            <h2 className="font-medium leading-[1.2] text-white  3xl:max-w-[1260px] max-w-[760px] 3xl:text-[clamp(36px,4vw,84px)]  2xl:text-[clamp(36px,3.8vw,58px)]  xl:text-[clamp(36px,3.8vw,58px)]  lg:text-[clamp(36px,3.8vw,58px)]  md:text-[clamp(36px,3.8vw,58px)] tracking-[0.02em]">
+            <h2 className="font-medium leading-[1.2] text-white  3xl:max-w-[1260px] max-w-[760px] 3xl:text-[clamp(36px,4vw,94px)]  2xl:text-[clamp(36px,3.8vw,58px)]  xl:text-[clamp(36px,3.8vw,58px)]  lg:text-[clamp(36px,3.8vw,58px)]  md:text-[clamp(36px,3.8vw,58px)] tracking-[0.02em]">
               Built to Scale: Solutions
               <br />
               for Your Evolution
             </h2>
-            <p className="absolute bottom-0 top-40 right-0 text-md text-right leading-relaxed text-[#B2B2B2]">
+            <p className="absolute bottom-0 top-80 right-0 text-md 3xl:text-2xl text-right leading-relaxed text-[#B2B2B2]">
               A Showcase
               <br />
               of Our Latest Completed Works
             </p>
           </div>
 
-          <div className="grid grid-cols-3 mt-28 gap-14">
+          <div className="grid grid-cols-3 mt-64 gap-14">
             {SERVICES.map(({ id, icon, title, desc }) => (
               <ServiceCard key={id} icon={icon} title={title} desc={desc} />
             ))}
@@ -303,14 +303,14 @@ export default function Testimonials() {
         <div className="px-3 md:px-10 3xl:px-60 2xl:px-60 xl:px-20 lg:px-14">
           <div className="flex items-end justify-between pt-24 border-t border-white/[8%] py-12">
             <h2
-              className="font-medium leading-[1.2] text-white  3xl:max-w-[1260px] max-w-[760px] 3xl:text-[clamp(36px,4vw,84px)]  2xl:text-[clamp(36px,3.8vw,58px)]  xl:text-[clamp(36px,3.8vw,58px)]  lg:text-[clamp(36px,3.8vw,58px)]  md:text-[clamp(36px,3.8vw,58px)] tracking-[0.02em]"
+              className="font-medium leading-[1.2] text-white  3xl:max-w-[1260px] max-w-[760px] 3xl:text-[clamp(36px,4vw,94px)]  2xl:text-[clamp(36px,3.8vw,58px)]  xl:text-[clamp(36px,3.8vw,58px)]  lg:text-[clamp(36px,3.8vw,58px)]  md:text-[clamp(36px,3.8vw,58px)] tracking-[0.02em]"
              
             >
               Success Stories That
               <br />
               Inspire Us
             </h2>
-            <button className="text-white font-semibold uppercase transition-colors duration-200 hover:bg-white hover:text-black shrink-0 self-end mb-1 text-[14px] tracking-[2px] px-6 py-[12px] border border-white/30">
+            <button className="text-white font-semibold uppercase transition-colors duration-200 hover:bg-white hover:text-black shrink-0 self-end mb-1 text-[16px] tracking-[2px] px-6 py-[14px] border border-white/30">
               Client Stories
             </button>
           </div>
