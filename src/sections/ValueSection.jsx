@@ -137,7 +137,7 @@ export default function ValueSection() {
   return (
     <section className="w-full bg-white" style={{ position: "relative" }}>
       {/* ✅ FIX: replaced LEFT_INDENT style with matching Tailwind px classes */}
-      <div className="md:py-12 py-7 3xl:py-32 2xl:py-16 xl:py-16 lg:py-16 px-3 md:px-10 3xl:px-60 2xl:px-60 xl:px-20 lg:px-14 ">
+      <div className="md:py-12 py-7 3xl:py-44 2xl:py-16 xl:py-16 lg:py-16 px-3 md:px-10 3xl:px-60 2xl:px-60 xl:px-20 lg:px-14 ">
         <h2
           ref={headingRef}
           className="3xl:text-[clamp(52px,10vw,160px)] 2xl:text-[clamp(52px,3.8vw,58px)] xl:text-[clamp(45px,3.8vw,58px)] lg:text-[clamp(40px,3.8vw,58px)] md:text-[clamp(36px,3.8vw,58px)] font-semibold leading-[1.1] text-[#0a0a0a]  tracking-[0.02em] pb-20"
