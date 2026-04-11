@@ -46,8 +46,8 @@ export default function Footer() {
 
         {/* Logo */}
         <div className="flex items-center justify-center md:justify-start gap-2.5 mb-10 md:mb-12">
-          <img src="/logo.webp" alt="Prographr" className="h-5 w-5 object-contain" />
-          <span className="text-white text-lg tracking-wide" style={{ fontFamily: "'Raleway', sans-serif", fontWeight: 400 }}>
+          <img src="/logo.webp" alt="Prographr" className="h-8 w-8 object-contain" />
+          <span className="text-white text-2xl tracking-wide" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400 }}>
             Prographr
           </span>
         </div>
@@ -105,12 +105,12 @@ export default function Footer() {
         {/* Desktop */}
         <div className="hidden md:grid md:grid-cols-4 md:gap-0 md:divide-x md:divide-[#333]">
           <div className="md:pr-8">
-            <h4 className="text-white font-semibold text-base mb-3">Service</h4>
+            <h4 className="text-white font-medium text-xl mb-3">Service</h4>
             <div className="border-t border-[#333] mb-6" />
             <ul className="space-y-3">
               {serviceLinks.map((s) => (
                 <li key={s}>
-                  <button onClick={() => scrollToSection("services")} className="text-[#888] text-sm hover:text-white transition-colors leading-snug text-left bg-transparent border-none outline-none cursor-pointer">
+                  <button onClick={() => scrollToSection("services")} className="text-[#888] text-md hover:text-white transition-colors leading-snug text-left bg-transparent border-none outline-none cursor-pointer">
                     {s}
                   </button>
                 </li>
@@ -119,12 +119,12 @@ export default function Footer() {
           </div>
 
           <div className="md:px-8">
-            <h4 className="text-white font-semibold text-base mb-3">Information</h4>
+            <h4 className="text-white font-medium text-xl mb-3">Information</h4>
             <div className="border-t border-[#333] mb-6" />
             <ul className="space-y-3">
               {infoLinks.map(({ label, sectionId }) => (
                 <li key={label}>
-                  <button onClick={() => scrollToSection(sectionId)} className="text-[#888] text-sm hover:text-white transition-colors text-left bg-transparent border-none outline-none cursor-pointer">
+                  <button onClick={() => scrollToSection(sectionId)} className="text-[#888] text-md hover:text-white transition-colors text-left bg-transparent border-none outline-none cursor-pointer">
                     {label}
                   </button>
                 </li>
@@ -133,12 +133,12 @@ export default function Footer() {
           </div>
 
           <div className="md:px-8">
-            <h4 className="text-white font-semibold text-base mb-3">Quick Links</h4>
+            <h4 className="text-white font-medium text-xl mb-3">Quick Links</h4>
             <div className="border-t border-[#333] mb-6" />
             <ul className="space-y-3">
               {quickLinks.map(({ label, sectionId }) => (
                 <li key={label}>
-                  <button onClick={() => scrollToSection(sectionId)} className="text-[#888] text-sm hover:text-white transition-colors text-left bg-transparent border-none outline-none cursor-pointer">
+                  <button onClick={() => scrollToSection(sectionId)} className="text-[#888] text-md  hover:text-white transition-colors text-left bg-transparent border-none outline-none cursor-pointer">
                     {label}
                   </button>
                 </li>
@@ -147,9 +147,9 @@ export default function Footer() {
           </div>
 
           <div className="md:pl-8">
-            <h4 className="text-white font-semibold text-base mb-3">Contact Us</h4>
+            <h4 className="text-white font-medium text-xl mb-3">Contact Us</h4>
             <div className="border-t border-[#333] mb-6" />
-            <a href="mailto:contact.prographr@gmail.com" className="text-[#888] text-sm hover:text-white transition-colors break-all leading-relaxed">
+            <a href="mailto:contact.prographr@gmail.com" className="text-[#888] text-md  hover:text-white transition-colors break-all leading-relaxed">
               contact.prographr@gmail.com
             </a>
           </div>
@@ -167,13 +167,13 @@ export default function Footer() {
               </a>
             ))}
           </div>
-          <p className="text-[#0a0a0a] text-sm text-center">
+          <p className="text-[#0a0a0a] text-md text-center">
             © {new Date().getFullYear()} All rights reserved Prographr.
           </p>
           <div className="flex items-center gap-5">
-            <Link to="#" className="text-[#0a0a0a] text-sm hover:underline">Terms</Link>
-            <Link to="#" className="text-[#0a0a0a] text-sm underline underline-offset-2">Privacy</Link>
-            <Link to="#" className="text-[#0a0a0a] text-sm hover:underline">Cookies</Link>
+            <Link to="#" className="text-[#0a0a0a] text-base hover:underline">Terms</Link>
+            <Link to="#" className="text-[#0a0a0a] text-base underline underline-offset-2">Privacy</Link>
+            <Link to="#" className="text-[#0a0a0a] text-base hover:underline">Cookies</Link>
           </div>
         </div>
       </div>

@@ -31,7 +31,7 @@ export default function FAQ() {
   return (
     <section id="faq" className="bg-[#0a0a0a]">
       {/* ── Careers ── */}
-      <div className="md:px-10 3xl:px-60 2xl:px-60 xl:px-20 lg:px-14 mx-auto px-6 pt-24 pb-16 border-b border-[#1f1f1f]">
+      <div className="md:px-10 3xl:px-60 2xl:px-60 xl:px-20 lg:px-14 mx-auto px-6 pt-36 pb-16 border-b border-[#1f1f1f]">
         <h2
           className="text-white font-medium text-2xl md:text-3xl lg:text-3xl xl:text-3xl 2xl:text-3xl 3xl:text-5xl mb-10 leading-relaxed"
           style={{ fontFamily: "'Inter', sans-serif" }}
