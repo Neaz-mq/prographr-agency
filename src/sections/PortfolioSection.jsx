@@ -3,8 +3,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, FreeMode } from "swiper/modules";
 import "swiper/css";
 
-const LEFT_INDENT = "max(40px, calc((88vw - 80rem) / 2 + 2.3rem))";
-
 const PORTFOLIO_ITEMS = [
   {
     id: 1,
@@ -40,17 +38,16 @@ const PORTFOLIO_ITEMS = [
 
 const SLIDES = [...PORTFOLIO_ITEMS, ...PORTFOLIO_ITEMS, ...PORTFOLIO_ITEMS];
 
-// ── Resolves imgHeight and slideWidth based on actual window width ──
 function useDesktopSizes() {
   const getSizes = () => {
     if (typeof window === "undefined") {
       return { imgHeight: "clamp(500px, 42vw, 660px)", slideWidth: "clamp(660px, 45vw, 1200px)" };
     }
     const w = window.innerWidth;
-    if (w >= 1920) return { imgHeight: "clamp(500px, 42vw, 660px)",  slideWidth: "clamp(660px, 45vw, 1200px)" }; // 3xl
-    if (w >= 1536) return { imgHeight: "clamp(300px, 37vw, 360px)",  slideWidth: "clamp(450px, 38vw, 1000px)"  }; // 2xl
-    if (w >= 1280) return { imgHeight: "clamp(200px, 36vw, 320px)",  slideWidth: "clamp(400px, 36vw, 800px)"  }; // xl
-    return              { imgHeight: "clamp(200px, 36vw, 300px)",  slideWidth: "clamp(340px, 38vw, 760px)"  }; // lg
+    if (w >= 1920) return { imgHeight: "clamp(500px, 42vw, 660px)",  slideWidth: "clamp(660px, 45vw, 1200px)" };
+    if (w >= 1536) return { imgHeight: "clamp(300px, 37vw, 360px)",  slideWidth: "clamp(450px, 38vw, 1000px)"  };
+    if (w >= 1280) return { imgHeight: "clamp(200px, 36vw, 320px)",  slideWidth: "clamp(400px, 36vw, 800px)"  };
+    return              { imgHeight: "clamp(200px, 36vw, 300px)",  slideWidth: "clamp(340px, 38vw, 760px)"  };
   };
 
   const [sizes, setSizes] = useState(getSizes);
@@ -165,29 +162,22 @@ export default function PortfolioSection() {
   // ── DESKTOP ──────────────────────────────────────────────────────────
   return (
     <section id="portfolio" className="bg-white w-full overflow-hidden mb-24 3xl:-mt-2 2xl:mt-14 xl:mt-2 lg:mt-10">
-      {/* Heading */}
-      <div
-        className="border-b border-[#efefef] pb-12"
-        style={{ paddingLeft: LEFT_INDENT, paddingRight: LEFT_INDENT }}
-      >
-        <h2 className="3xl:text-[clamp(72px,6vw,115px)] 2xl:text-[clamp(52px,3.8vw,58px)] xl:text-[clamp(45px,3.8vw,58px)] lg:text-[clamp(40px,3.8vw,58px)] md:text-[clamp(36px,3.8vw,58px)] font-semibold leading-[1.1] text-[#0a0a0a] tracking-[-1.5px]">
+      {/* ✅ FIX: replaced LEFT_INDENT style with matching Tailwind px classes */}
+      <div className="border-b border-[#efefef] pb-12 px-3 md:px-10 3xl:px-60 2xl:px-60 xl:px-20 lg:px-14">
+        <h2 className="3xl:text-[clamp(62px,4vw,105px)] 2xl:text-[clamp(52px,3.8vw,58px)] xl:text-[clamp(45px,3.8vw,58px)] lg:text-[clamp(40px,3.8vw,58px)] md:text-[clamp(36px,3.8vw,58px)] font-semibold leading-[1.1] text-[#0a0a0a] tracking-[-1.5px]">
           Our Previous
           <br />
           Work
         </h2>
       </div>
 
-      {/* Swiper — both width and imgHeight come from the JS hook */}
       <Swiper {...swiperProps} speed={4500}>
         {SLIDES.map((item, i) => (
           <SwiperSlide
             key={`d-${item.id}-${i}`}
             style={{ width: slideWidth }}
           >
-            <PortfolioCard
-              item={item}
-              imgHeight={imgHeight}
-            />
+            <PortfolioCard item={item} imgHeight={imgHeight} />
           </SwiperSlide>
         ))}
       </Swiper>

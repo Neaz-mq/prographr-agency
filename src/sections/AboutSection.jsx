@@ -4,8 +4,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const LEFT_INDENT = "max(40px, calc((88vw - 80rem) / 2 + 2.5rem))";
-
 export default function AboutSection() {
   const wrapperRef = useRef(null);
   const sectionRef = useRef(null);
@@ -198,30 +196,20 @@ export default function AboutSection() {
   }
 
   // ── DESKTOP (≥ 1024px) ────────────────────────────────────────────────
-  //
-  // KEY FIX: Section height is now content-driven (h-auto) instead of h-screen.
-  // The body row has an explicit height of 370px — just enough for the tallest
-  // card (355px) plus a small top pad. Heading is tightened too.
-  // This eliminates the ~300px dead whitespace that was pushing Portfolio far down.
-  //
   return (
     <div id="about" ref={wrapperRef}>
       <section
         ref={sectionRef}
-        className="bg-white w-full overflow-hidden  flex flex-col"
-        /* No h-screen — height is now sum of heading + body row */
+        className="bg-white w-full overflow-hidden flex flex-col"
       >
-        {/* ── Heading ─────────────────────────────────────────────────── */}
-        {/* Tightened: pt-12→pt-8, pb-8→pb-5, mb-6→mb-4  (saves ~24px) */}
+        {/* ── Heading ── */}
+        {/* ✅ FIX: replaced LEFT_INDENT style with matching Tailwind px classes */}
         <div className="w-full shrink-0">
-          <div
-            className="pt-8 pb-5 border-b border-[#efefef]"
-            style={{ paddingLeft: LEFT_INDENT, paddingRight: LEFT_INDENT }}
-          >
+          <div className="pt-8 pb-5 border-b border-[#efefef] px-3 md:px-10 3xl:px-60 2xl:px-60 xl:px-20 lg:px-14">
             <span className="inline-block 3xl:text-[15px] 2xl:text-[13px] xl:text-[13px] lg:text-[13px] md:text-[12px] bg-[#F2F2F2] text-black uppercase font-semibold px-4 py-1.5 mb-4">
               About Us
             </span>
-            <h2 className="3xl:text-[clamp(48px,2.2vw,32px)] 2xl:text-[clamp(40px,2.2vw,32px)] xl:text-[clamp(36px,2.2vw,32px)] lg:text-[clamp(36px,2.2vw,32px)] md:text-[clamp(40px,2vw,44px)] font-bold leading-[1.4] text-[#0a0a0a] 3xl:max-w-[1000px] 2xl:max-w-[800px] max-w-[700px]">
+            <h2 className="3xl:text-[clamp(60px,4vw,32px)] 2xl:text-[clamp(40px,2.2vw,32px)] xl:text-[clamp(36px,2.2vw,32px)] lg:text-[clamp(36px,2.2vw,32px)] md:text-[clamp(40px,2vw,44px)] font-semibold leading-[1.4] text-[#0a0a0a] 3xl:max-w-[1200px] 2xl:max-w-[800px] max-w-[700px] tracking-[0.02em]">
               We Help Businesses Stand Out With Modern, Creative, and{" "}
               <span className="text-[#c0c0c0]">
                 Impactful <br /> Design Solutions
@@ -230,15 +218,12 @@ export default function AboutSection() {
           </div>
         </div>
 
-        {/* ── Body row — fixed height drives section height ────────────── */}
-        {/* 370px = card-3 height (355px) + top pad (15px). No wasted space. */}
+        {/* ── Body row ── */}
         <div className="flex items-stretch w-full shrink-0 3xl:h-[800px] 2xl:h-[390px] xl:h-[390px] lg:h-[390px]">
           {/* LEFT PANEL */}
-          <div
-            className="shrink-0 flex flex-col pr-10 pt-2 pb-5 gap-4 overflow-hidden 3xl:w-[70vw] 2xl:w-[52vw] xl:w-[47vw] lg:w-[47vw] md:w-[60vw]"
-            style={{ paddingLeft: LEFT_INDENT }}
-          >
-            {/* Image — fixed height per breakpoint instead of flex-1 */}
+          {/* ✅ FIX: replaced LEFT_INDENT style with matching Tailwind pl classes */}
+          <div className="shrink-0 flex flex-col pr-10 pt-2 pb-5 gap-4 overflow-hidden 3xl:w-[70vw] 2xl:w-[52vw] xl:w-[47vw] lg:w-[47vw] md:w-[60vw] pl-3 md:pl-10 3xl:pl-60 2xl:pl-60 xl:pl-20 lg:pl-14">
+            {/* Image */}
             <div className="shrink-0 overflow-hidden 3xl:h-[540px] 2xl:h-[270px] xl:h-[250px] lg:h-[240px]">
               <img
                 src="https://res.cloudinary.com/dzi3u164c/image/upload/v1774865116/Asset_1_qgly6y.webp"
@@ -247,15 +232,15 @@ export default function AboutSection() {
               />
             </div>
 
-            {/* Text — always visible, never pushed out */}
+            {/* Text */}
             <div className="shrink-0 flex flex-col gap-3">
-              <p className="3xl:text-[15px] 2xl:text-[13px] xl:text-[11px] lg:text-[10px] leading-[1.6] text-[#666]">
-                In today’s fast-moving digital world, strong and meaningful
+              <p className="3xl:text-[19px] 2xl:text-[13px] xl:text-[11px] lg:text-[10px] leading-[1.6] text-[#BFBBBB]">
+                In today's fast-moving digital world, strong and meaningful
                 design plays a vital role in building a successful brand. Our
                 design agency was created with one clear goal to help
                 businesses.
               </p>
-              <p className="3xl:text-[15px] 2xl:text-[13px] xl:text-[11px] lg:text-[10px] leading-[1.6] text-[#666]">
+              <p className="3xl:text-[19px] 2xl:text-[13px] xl:text-[11px] lg:text-[10px] leading-[1.6] text-[#BFBBBB]">
                 Our agency specializes in design services that help brands stand
                 out in a competitive market.
               </p>
@@ -270,7 +255,7 @@ export default function AboutSection() {
               style={{ width: "max-content" }}
             >
               {/* Card 1 — B&W image */}
-              <div className="shrink-0 self-start  pr-8 pl-8 pt-2 3xl:w-[70vw] 2xl:w-[48vw] xl:w-[47vw] lg:w-[47vw] md:w-[60vw]">
+              <div className="shrink-0 self-start pr-8 pl-8 pt-2 3xl:w-[70vw] 2xl:w-[48vw] xl:w-[47vw] lg:w-[47vw] md:w-[60vw]">
                 <div className="relative 3xl:h-[630px] 2xl:h-[355px] xl:h-[328px] lg:h-[350px]">
                   <div className="w-full h-full overflow-hidden">
                     <img
@@ -295,7 +280,7 @@ export default function AboutSection() {
               </div>
 
               {/* Card 2 — Stats */}
-              <div className="shrink-0 self-stretch flex flex-col justify-start px-10  pt-2 3xl:w-[70vw] 2xl:w-[48vw] xl:w-[47vw] lg:w-[47vw] md:w-[60vw]">
+              <div className="shrink-0 self-stretch flex flex-col justify-start px-10 pt-2 3xl:w-[70vw] 2xl:w-[48vw] xl:w-[47vw] lg:w-[47vw] md:w-[60vw]">
                 <h3 className="3xl:text-[72px] 2xl:text-[42px] xl:text-[40px] lg:text-[38px] font-bold text-[#0a0a0a] 2xl:leading-[1.4] xl:leading-[1.33] lg:leading-[1.4] mb-8 -mt-2">
                   What makes
                   <br />
@@ -312,7 +297,7 @@ export default function AboutSection() {
                       Company with Work Experiences
                     </div>
                   </div>
-                  <div className="flex-[2] bg-[#0a0a0a] 3xl:px-12 3xl:py-20  2xl:px-7 2xl:py-12 xl:px-4 xl:py-11 lg:px-2 lg:py-11 flex 3xl:gap-52 2xl:gap-20 xl:gap-14 lg:gap-6 items-center justify-center">
+                  <div className="flex-[2] bg-[#0a0a0a] 3xl:px-12 3xl:py-20 2xl:px-7 2xl:py-12 xl:px-4 xl:py-11 lg:px-2 lg:py-11 flex 3xl:gap-52 2xl:gap-20 xl:gap-14 lg:gap-6 items-center justify-center">
                     <div className="2xl:px-0 xl:px-0 lg:px-2">
                       <div className="3xl:text-[60px] 2xl:text-[40px] xl:text-[36px] lg:text-[30px] font-semibold leading-none mb-2 tracking-[-1px] text-white">
                         1K+
@@ -334,29 +319,21 @@ export default function AboutSection() {
               </div>
 
               {/* Card 3 — Dark CTA */}
-              <div className="shrink-0  mx-6 3xl:w-[70vw] 2xl:w-[48vw] xl:w-[47vw] lg:w-[47vw] md:w-[60vw]">
+              <div className="shrink-0 mx-6 3xl:w-[70vw] 2xl:w-[48vw] xl:w-[47vw] lg:w-[47vw] md:w-[60vw]">
                 <div className="relative 3xl:h-[635px] 2xl:h-[368px] xl:h-[332px] lg:h-[358px] overflow-hidden">
-                  {/* Background Image */}
                   <img
                     src="https://res.cloudinary.com/dzi3u164c/image/upload/v1774931324/Asset_3_raki8b.webp"
                     alt="CTA"
                     className="absolute inset-0 w-full h-full object-cover"
                   />
-
-                  {/* 🔥 DARK GRADIENT OVERLAY (THIS FIXES VISIBILITY) */}
-                  <div className="absolute inset-0 bg-gradient-to-r  z-[1]" />
-
-                  {/* Content */}
+                  <div className="absolute inset-0 bg-gradient-to-r z-[1]" />
                   <div className="absolute inset-0 z-[2] flex flex-col justify-between p-16">
-                    {/* TEXT */}
                     <h3 className="3xl:text-[66px] 2xl:text-[40px] xl:text-[36px] lg:text-[36px] font-extrabold text-white leading-[1.1] tracking-[-0.5px] 3xl:max-w-[360px] 2xl:max-w-[360px] xl:max-w-[360px] lg:max-w-[360px]">
                       Scroll and <br />
                       enjoy a <br />
                       new <br />
                       experience
                     </h3>
-
-                    {/* BUTTON */}
                     <button className="self-start inline-flex items-center gap-2 px-5 py-[9px] bg-transparent border border-white/30 rounded-full text-white/80 text-[11px] transition-all hover:bg-white/10 hover:text-white 3xl:mt-0 2xl:mt-12 xl:mt-12">
                       Again let's go →
                     </button>
@@ -370,7 +347,7 @@ export default function AboutSection() {
         </div>
       </section>
 
-      {/* Manual spacer — height set by JS to equal the horizontal scroll distance. */}
+      {/* Manual spacer */}
       <div ref={spacerRef} aria-hidden="true" />
     </div>
   );

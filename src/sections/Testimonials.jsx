@@ -3,8 +3,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, FreeMode } from "swiper/modules";
 import "swiper/css";
 
-const LEFT_INDENT = "max(40px, calc((88vw - 80rem) / 2 + 2.5rem))";
-
 // ── ICONS ─────────────────────────────────────────────────────────────
 const UiUxIcon = () => (
   <img src="/Asset 5.svg" alt="Ui icon" width={38} height={38} />
@@ -274,11 +272,8 @@ export default function Testimonials() {
   return (
     <section className="w-full bg-white overflow-hidden">
       <div className="bg-[#0a0a0a] pb-[310px]">
-        <div
-          className="pt-20 pb-14"
-          style={{ paddingLeft: LEFT_INDENT, paddingRight: LEFT_INDENT }}
-        >
-          {/* ↓ FIXED: removed py-10 so items-end aligns to heading baseline correctly */}
+        {/* ✅ FIX: replaced LEFT_INDENT style with matching Tailwind px classes */}
+        <div className="pt-20 pb-14 px-3 md:px-10 3xl:px-60 2xl:px-60 xl:px-20 lg:px-14">
           <div className="relative">
             <h2
               className="font-extrabold leading-[1.2] text-white tracking-[-1.5px] max-w-[660px]"
@@ -302,8 +297,8 @@ export default function Testimonials() {
           </div>
         </div>
 
-        {/* Success Stories heading + button */}
-        <div style={{ paddingLeft: LEFT_INDENT, paddingRight: LEFT_INDENT }}>
+        {/* ✅ FIX: replaced LEFT_INDENT style with matching Tailwind px classes */}
+        <div className="px-3 md:px-10 3xl:px-60 2xl:px-60 xl:px-20 lg:px-14">
           <div className="flex items-end justify-between pt-24 border-t border-white/[8%] py-12">
             <h2
               className="font-extrabold leading-[1.1] text-white tracking-[-1.5px]"
