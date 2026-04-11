@@ -34,17 +34,17 @@ const ArrowIcon = () => (
   </svg>
 );
 
-const IMG_W = 280;
-const IMG_H = 160;
+const IMG_W = 520;
+const IMG_H = 220;
 
 function ValueItem({ item, setImgRef, setMobileImgRef, setArrowRef, onEnter, onLeave }) {
   return (
     <div
       onMouseEnter={onEnter}
       onMouseLeave={onLeave}
-      className="group relative flex items-center justify-between gap-8 py-3 lg:py-10 cursor-pointer border-b border-black/10 last:border-b-0"
+      className="group relative flex items-center justify-between gap-8 py-3 lg:py-16 cursor-pointer border-b border-black/10 last:border-b-0 "
     >
-      <span className="text-black transition-colors duration-300 group-hover:text-black/50 select-none shrink-0 flex-1 min-w-0 3xl:text-[clamp(34px,2.4vw,18px)] 2xl:text-[clamp(16px,2.4vw,22px)] xl:text-[clamp(16px,2.4vw,18px)] lg:text-[clamp(16px,2.4vw,18px)]">
+      <span className="text-black transition-colors duration-300 group-hover:text-black/50 select-none shrink-0 flex-1 min-w-0 3xl:text-[clamp(40px,2.4vw,24px)] 2xl:text-[clamp(16px,2.4vw,22px)] xl:text-[clamp(16px,2.4vw,18px)] lg:text-[clamp(16px,2.4vw,18px)]">
         {item.label}
       </span>
       <div
@@ -137,10 +137,10 @@ export default function ValueSection() {
   return (
     <section className="w-full bg-white" style={{ position: "relative" }}>
       {/* ✅ FIX: replaced LEFT_INDENT style with matching Tailwind px classes */}
-      <div className="md:py-12 py-7 2xl:py-16 xl:py-16 lg:py-16 px-3 md:px-10 3xl:px-60 2xl:px-60 xl:px-20 lg:px-14">
+      <div className="md:py-12 py-7 3xl:py-32 2xl:py-16 xl:py-16 lg:py-16 px-3 md:px-10 3xl:px-60 2xl:px-60 xl:px-20 lg:px-14 ">
         <h2
           ref={headingRef}
-          className="font-bold text-black leading-[1.2] tracking-[-2px] mb-10 lg:mb-20 text-[40px] md:text-[50px] lg:text-[56px] xl:text-[60px] 2xl:text-[64px] 3xl:text-[98px]"
+          className="3xl:text-[clamp(52px,10vw,150px)] 2xl:text-[clamp(52px,3.8vw,58px)] xl:text-[clamp(45px,3.8vw,58px)] lg:text-[clamp(40px,3.8vw,58px)] md:text-[clamp(36px,3.8vw,58px)] font-semibold leading-[1.1] text-[#0a0a0a]  tracking-[0.02em] pb-20"
         >
           What value
           <br />are you
