@@ -36,7 +36,7 @@ export default function CTA() {
     <section id="contact" className="bg-white">
       <div className="md:px-10 3xl:px-60 2xl:px-60 xl:px-20 lg:px-14 mx-auto px-6  py-20 md:py-28">
         {/* Heading */}
-        <h2 className="text-[#0a0a0a] font-bold mb-2 font-[Inter] text-[clamp(36px,6vw,60px)]  md:text-[clamp(36px,6vw,60px)] xl:text-[clamp(36px,6vw,60px)] 2xl:text-[clamp(36px,6vw,60px)] 3xl:text-[clamp(36px,6vw,98px)]">
+        <h2 className="text-[#0a0a0a] font-bold mb-2 font-[Inter] text-[clamp(36px,6vw,60px)]  md:text-[clamp(36px,6vw,60px)] xl:text-[clamp(36px,6vw,60px)] 2xl:text-[clamp(36px,6vw,60px)] 3xl:text-[clamp(36px,6vw,104px)]">
           Let's talk
         </h2>
         <p
@@ -132,7 +132,7 @@ export default function CTA() {
             <button
               type="submit"
               disabled={status === "sending"}
-              className="bg-[#0a0a0a] text-white text-md font-medium px-6 py-3 hover:bg-[#222] transition-colors duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
+              className="bg-[#0a0a0a] text-white text-lg font-medium px-6 py-3 hover:bg-[#222] transition-colors duration-200 disabled:opacity-60 disabled:cursor-not-allowed tracking-[0.02em]"
               style={{ fontFamily: "'Inter', sans-serif" }}
             >
               {status === "sending" ? "Sending..." : "Send Now"}
