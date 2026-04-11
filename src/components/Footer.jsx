@@ -46,8 +46,8 @@ export default function Footer() {
 
         {/* Logo */}
         <div className="flex items-center justify-center md:justify-start gap-2.5 mb-10 md:mb-12">
-          <img src="/logo.webp" alt="Prographr" className="h-10 w-10 object-contain" />
-          <span className="text-white text-3xl tracking-wide" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400 }}>
+          <img src="/logo.webp" alt="Prographr" className="h-11 w-11 object-contain" />
+          <span className="text-white text-4xl tracking-wide" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400 }}>
             Prographr
           </span>
         </div>
@@ -110,7 +110,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {serviceLinks.map((s) => (
                 <li key={s}>
-                  <button onClick={() => scrollToSection("services")} className="text-[#888] text-lg hover:text-white transition-colors leading-snug text-left bg-transparent border-none outline-none cursor-pointer">
+                  <button onClick={() => scrollToSection("services")} className="text-[#888] text-xl hover:text-white transition-colors leading-snug text-left bg-transparent border-none outline-none cursor-pointer">
                     {s}
                   </button>
                 </li>
@@ -124,7 +124,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {infoLinks.map(({ label, sectionId }) => (
                 <li key={label}>
-                  <button onClick={() => scrollToSection(sectionId)} className="text-[#888] text-lg hover:text-white transition-colors text-left bg-transparent border-none outline-none cursor-pointer">
+                  <button onClick={() => scrollToSection(sectionId)} className="text-[#888] text-xl hover:text-white transition-colors text-left bg-transparent border-none outline-none cursor-pointer">
                     {label}
                   </button>
                 </li>
@@ -138,7 +138,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {quickLinks.map(({ label, sectionId }) => (
                 <li key={label}>
-                  <button onClick={() => scrollToSection(sectionId)} className="text-[#888] text-lg  hover:text-white transition-colors text-left bg-transparent border-none outline-none cursor-pointer">
+                  <button onClick={() => scrollToSection(sectionId)} className="text-[#888] text-xl  hover:text-white transition-colors text-left bg-transparent border-none outline-none cursor-pointer">
                     {label}
                   </button>
                 </li>
@@ -149,7 +149,7 @@ export default function Footer() {
           <div className="md:pl-8">
             <h4 className="text-white font-medium text-2xl mb-3">Contact Us</h4>
             <div className="border-t border-[#333] mb-6" />
-            <a href="mailto:contact.prographr@gmail.com" className="text-[#888] text-lg  hover:text-white transition-colors break-all leading-relaxed">
+            <a href="mailto:contact.prographr@gmail.com" className="text-[#888] text-xl  hover:text-white transition-colors break-all leading-relaxed">
               contact.prographr@gmail.com
             </a>
           </div>
