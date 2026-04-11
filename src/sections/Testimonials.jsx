@@ -99,11 +99,19 @@ function PlayBtn() {
 }
 
 // ── TESTIMONIAL CARD ──────────────────────────────────────────────────
-function TestimonialCard({ item, cardHeight, slideWidth }) {
+function TestimonialCard({ item }) {
   return (
-    <div
-      className="relative overflow-hidden w-full"
-      style={{ height: cardHeight, width: slideWidth }}
+   <div
+      className="
+        relative overflow-hidden w-full
+        h-[380px]
+        sm:h-[400px]
+        md:h-[420px]
+        lg:h-[440px]
+        xl:h-[480px]
+        2xl:h-[520px]
+        3xl:h-[800px]
+      "
     >
       <img
         src={item.thumbnail}
@@ -119,14 +127,14 @@ function TestimonialCard({ item, cardHeight, slideWidth }) {
         }}
       />
       <PlayBtn />
-      <div className="absolute bottom-0 left-0 right-0 px-5 pb-5">
-        <p className="text-white font-bold text-[18px] leading-tight tracking-[-0.3px]">
+      <div className="absolute bottom-0 left-0 right-0 px-10 pb-5">
+        <p className="text-white font-semibold text-[30px] leading-tight tracking-[-0.3px]">
           {item.name}
         </p>
-        <p className="text-[12px] font-medium mt-[3px] mb-3 text-white/[65%]">
+        <p className="text-[18px] font-medium mt-[3px] mb-3 text-white/[65%]">
           {item.role}
         </p>
-        <p className="text-[11px] leading-[1.65] line-clamp-3 text-white/50">
+        <p className="text-[15px] leading-[1.65] line-clamp-3 text-white/50 pb-6">
           {item.review}
         </p>
       </div>
@@ -168,7 +176,7 @@ export default function Testimonials() {
   const swiperProps = {
     modules: [Autoplay, FreeMode],
     slidesPerView: "auto",
-    spaceBetween: 16,
+    spaceBetween: 36,
     freeMode: { enabled: true, momentum: false },
     autoplay: {
       delay: 0,
@@ -309,19 +317,23 @@ export default function Testimonials() {
         </div>
       </div>
 
-      {/* Testimonial carousel */}
+      {/* SWIPER */}
       <div className="-mt-[250px]">
         <Swiper {...swiperProps} speed={4500}>
           {SLIDES.map((item, i) => (
             <SwiperSlide
               key={`d-${item.id}-${i}`}
-              style={{ width: "clamp(240px, 22vw, 320px)" }}
+              className="
+                !w-[240px]
+                sm:!w-[260px]
+                md:!w-[280px]
+                lg:!w-[300px]
+                xl:!w-[320px]
+                2xl:!w-[340px]
+                3xl:!w-[600px]
+              "
             >
-              <TestimonialCard
-                item={item}
-                cardHeight="clamp(380px, 38vw, 480px)"
-                slideWidth="clamp(240px, 22vw, 320px)"
-              />
+              <TestimonialCard item={item} />
             </SwiperSlide>
           ))}
         </Swiper>
