@@ -125,7 +125,7 @@ export default function TechnologySection() {
   }, []);
 
   return (
-    <section ref={containerRef} className="w-full bg-white relative">
+    <section ref={containerRef} className="w-full bg-white relative pb-32">
       {/* HEADING SECTION */}
       <div className="md:px-10 3xl:px-60 2xl:px-60 xl:px-20 lg:px-14 mx-auto px-6 pt-8 lg:pt-24 pb-10 lg:pb-14 overflow-hidden relative z-10 bg-white">
         <div className="overflow-hidden">

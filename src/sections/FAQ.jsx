@@ -29,22 +29,22 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
-    <section id="faq" className="bg-[#0a0a0a]">
+    <section id="faq" className="bg-[#0a0a0a] ">
       {/* ── Careers ── */}
-      <div className="md:px-10 3xl:px-60 2xl:px-60 xl:px-20 lg:px-14 mx-auto px-6 pt-36 pb-16 border-b border-[#1f1f1f]">
+      <div className="md:px-10 3xl:px-60 2xl:px-60 xl:px-20 lg:px-14 mx-auto px-6 pt-64 pb-16 border-b border-[#1f1f1f]">
         <h2
-          className="font-medium leading-[1.2] text-white  3xl:max-w-[1260px] max-w-[760px] 3xl:text-[clamp(36px,4vw,84px)]  2xl:text-[clamp(36px,3.8vw,58px)]  xl:text-[clamp(36px,3.8vw,58px)]  lg:text-[clamp(36px,3.8vw,58px)]  md:text-[clamp(36px,3.8vw,58px)] tracking-[0.02em"
+          className="font-medium leading-[1.2] text-white  3xl:max-w-[1260px] max-w-[760px] 3xl:text-[clamp(36px,4vw,94px)]  2xl:text-[clamp(36px,3.8vw,58px)]  xl:text-[clamp(36px,3.8vw,58px)]  lg:text-[clamp(36px,3.8vw,58px)]  md:text-[clamp(36px,3.8vw,58px)] tracking-[0.02em"
           style={{ fontFamily: "'Inter', sans-serif" }}
         >
           Become a member of a<br />
           talented team
         </h2>
 
-        <div className="flex flex-col divide-y divide-[#1f1f1f] pt-12">
+        <div className="flex flex-col divide-y divide-[#1f1f1f] pt-24">
           {jobs.map((job, i) => (
             <div
               key={i}
-              className="flex items-center justify-between py-5 gap-4"
+              className="flex items-center justify-between py-5 gap-6"
             >
               <div>
                 <p className="text-white font-semibold text-sm md:text-3xl leading-tight mb-1 tracking-[0.02em]">
@@ -52,7 +52,7 @@ export default function FAQ() {
                 </p>
                 <p className="text-[#C1C1C1] text-xs md:text-lg pt-2">{job.meta}</p>
               </div>
-              <button className="shrink-0 border border-white text-white text-xs px-4 py-2 hover:bg-white hover:text-[#0a0a0a] transition-colors duration-200 whitespace-nowrap">
+              <button className="shrink-0 border border-white text-white text-md px-6 py-3 hover:bg-white hover:text-[#0a0a0a] transition-colors duration-200 whitespace-nowrap">
                 Apply Now
               </button>
             </div>
@@ -63,7 +63,7 @@ export default function FAQ() {
       {/* ── FAQ ── */}
       <div className="md:px-10 3xl:px-60 2xl:px-60 xl:px-20 lg:px-14 mx-auto px-6  pt-16 pb-24">
         <h2
-          className="font-medium leading-[1.2] text-white  3xl:max-w-[1260px] max-w-[760px] 3xl:text-[clamp(36px,4vw,104px)]  2xl:text-[clamp(36px,3.8vw,58px)]  xl:text-[clamp(36px,3.8vw,58px)]  lg:text-[clamp(36px,3.8vw,58px)]  md:text-[clamp(36px,3.8vw,58px)] tracking-[0.02em"
+          className="font-medium leading-[1.2] text-white  3xl:max-w-[1360px] max-w-[760px] 3xl:text-[clamp(36px,4vw,104px)]  2xl:text-[clamp(36px,3.8vw,58px)]  xl:text-[clamp(36px,3.8vw,58px)]  lg:text-[clamp(36px,3.8vw,58px)]  md:text-[clamp(36px,3.8vw,58px)] tracking-[0.02em"
           style={{
             fontFamily: "'Inter', sans-serif",
           }}

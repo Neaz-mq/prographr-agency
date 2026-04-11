@@ -34,13 +34,13 @@ export default function CTA() {
 
   return (
     <section id="contact" className="bg-white">
-      <div className="md:px-10 3xl:px-60 2xl:px-60 xl:px-20 lg:px-14 mx-auto px-6  py-20 md:py-28">
+      <div className="md:px-10 3xl:px-60 2xl:px-60 xl:px-20 lg:px-14 mx-auto px-6  py-20 md:py-48">
         {/* Heading */}
-        <h2 className="text-[#0a0a0a] font-bold mb-2 font-[Inter] text-[clamp(36px,6vw,60px)]  md:text-[clamp(36px,6vw,60px)] xl:text-[clamp(36px,6vw,60px)] 2xl:text-[clamp(36px,6vw,60px)] 3xl:text-[clamp(36px,6vw,104px)]">
+        <h2 className="text-[#0a0a0a] font-semibold mb-2 font-[Inter] text-[clamp(36px,6vw,60px)]  md:text-[clamp(36px,6vw,60px)] xl:text-[clamp(36px,6vw,60px)] 2xl:text-[clamp(36px,6vw,60px)] 3xl:text-[clamp(36px,6vw,114px)]">
           Let's talk
         </h2>
         <p
-          className="text-[#aaa] text-md mb-12"
+          className="text-[#aaa] text-xl mb-12"
           style={{ fontFamily: "'Inter', sans-serif" }}
         >
           Ask us anything or just say hi.,
@@ -70,7 +70,7 @@ export default function CTA() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div className="flex flex-col gap-3">
               <label
-                className="text-[#0a0a0a] font-medium text-xl"
+                className="text-[#0a0a0a] font-medium text-2xl"
                 style={{ fontFamily: "'Inter', sans-serif" }}
               >
                 Name
@@ -82,14 +82,14 @@ export default function CTA() {
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
                 disabled={status === "sending"}
-                className="bg-transparent border-0 border-b border-[#ccc] pb-2 text-md text-[#0a0a0a] placeholder:text-[#ccc] outline-none focus:border-[#0a0a0a] transition-colors duration-200 disabled:opacity-50"
+                className="bg-transparent border-0 border-b border-[#ccc] pb-2 text-lg text-[#0a0a0a] placeholder:text-[#ccc] outline-none focus:border-[#0a0a0a] transition-colors duration-200 disabled:opacity-50"
                 style={{ fontFamily: "'Inter', sans-serif" }}
               />
             </div>
 
             <div className="flex flex-col gap-3">
               <label
-                className="text-[#0a0a0a] font-medium text-xl"
+                className="text-[#0a0a0a] font-medium text-2xl"
                 style={{ fontFamily: "'Inter', sans-serif" }}
               >
                 Email
@@ -101,7 +101,7 @@ export default function CTA() {
                 value={form.email}
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
                 disabled={status === "sending"}
-                className="bg-transparent border-0 border-b border-[#ccc] pb-2 text-sm text-[#0a0a0a] placeholder:text-[#ccc] outline-none focus:border-[#0a0a0a] transition-colors duration-200 disabled:opacity-50"
+                className="bg-transparent border-0 border-b border-[#ccc] pb-2 text-lg text-[#0a0a0a] placeholder:text-[#ccc] outline-none focus:border-[#0a0a0a] transition-colors duration-200 disabled:opacity-50"
                 style={{ fontFamily: "'Inter', sans-serif" }}
               />
             </div>
@@ -110,7 +110,7 @@ export default function CTA() {
           {/* Message */}
           <div className="flex flex-col gap-3">
             <label
-              className="text-[#0a0a0a] font-medium text-xl"
+              className="text-[#0a0a0a] font-medium text-2xl"
               style={{ fontFamily: "'Inter', sans-serif" }}
             >
               Message
@@ -122,7 +122,7 @@ export default function CTA() {
               value={form.message}
               onChange={(e) => setForm({ ...form, message: e.target.value })}
               disabled={status === "sending"}
-              className="bg-transparent border-0 border-b border-[#ccc] pb-2 text-sm text-[#0a0a0a] placeholder:text-[#ccc] outline-none focus:border-[#0a0a0a] transition-colors duration-200 resize-none disabled:opacity-50"
+              className="bg-transparent border-0 border-b border-[#ccc] pb-2 text-lg text-[#0a0a0a] placeholder:text-[#ccc] outline-none focus:border-[#0a0a0a] transition-colors duration-200 resize-none disabled:opacity-50"
               style={{ fontFamily: "'Inter', sans-serif" }}
             />
           </div>
@@ -132,7 +132,7 @@ export default function CTA() {
             <button
               type="submit"
               disabled={status === "sending"}
-              className="bg-[#0a0a0a] text-white text-lg font-medium px-6 py-3 hover:bg-[#222] transition-colors duration-200 disabled:opacity-60 disabled:cursor-not-allowed tracking-[0.02em]"
+              className="bg-[#0a0a0a] text-white text-xl font-medium px-6 py-3 hover:bg-[#222] transition-colors duration-200 disabled:opacity-60 disabled:cursor-not-allowed tracking-[0.02em]"
               style={{ fontFamily: "'Inter', sans-serif" }}
             >
               {status === "sending" ? "Sending..." : "Send Now"}
