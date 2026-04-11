@@ -57,7 +57,7 @@ function CardInner({ service }) {
           background: "linear-gradient(to right, rgba(5,5,5,0.97) 0%, rgba(5,5,5,0.90) 25%, rgba(5,5,5,0.60) 52%, rgba(5,5,5,0.12) 78%, rgba(5,5,5,0.00) 100%)",
         }}
       />
-      <div className="absolute inset-0 flex flex-col px-8 py-8 lg:px-12 lg:py-10">
+      <div className="absolute inset-0 flex flex-col px-10 py-8 lg:px-12 lg:py-10">
         <div className="flex flex-1 items-center">
           <p className="text-white max-w-sm leading-relaxed" style={{ fontSize: "clamp(11px, 1.05vw, 14px)", opacity: 0.85 }}>
             {service.description}
@@ -119,7 +119,7 @@ export default function TechnologySection() {
         <div className="overflow-hidden"> 
           <h2
             ref={headingRef}
-            className="font-bold text-black leading-[1.1] tracking-[-3px] text-[40px] md:text-[50px] lg:text-[56px] xl:text-[60px] 2xl:text-[64px]"
+            className="font-bold text-black leading-[1.1] tracking-[-3px] text-[40px] md:text-[50px] lg:text-[56px] xl:text-[60px] 2xl:text-[64px] 3xl:text-[98px]"
           >
             Technology
             <br />

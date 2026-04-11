@@ -46,7 +46,7 @@ function ValueItem({ item, setImgRef, setMobileImgRef, setArrowRef, onEnter, onL
       onMouseLeave={onLeave}
       className="group relative flex items-center justify-between gap-8 py-3 lg:py-10 cursor-pointer border-b border-black/10 last:border-b-0"
     >
-     <span className="text-black transition-colors duration-300 group-hover:text-black/50 select-none shrink-0 flex-1 min-w-0 2xl:text-[clamp(16px,2.4vw,22px)] xl:text-[clamp(16px,2.4vw,18px)] lg:text-[clamp(16px,2.4vw,18px)]">
+     <span className="text-black transition-colors duration-300 group-hover:text-black/50 select-none shrink-0 flex-1 min-w-0 3xl:text-[clamp(34px,2.4vw,18px)] 2xl:text-[clamp(16px,2.4vw,22px)] xl:text-[clamp(16px,2.4vw,18px)] lg:text-[clamp(16px,2.4vw,18px)] ">
         {item.label}
       </span>
       <div
@@ -143,12 +143,12 @@ export default function ValueSection() {
       <div className="md:py-12 py-7 2xl:py-16 xl:py-16 lg:py-16" style={{ paddingLeft: LEFT_INDENT, paddingRight: LEFT_INDENT }}>
         <h2
           ref={headingRef}
-          className="font-extrabold text-black leading-[1.2] tracking-[-2px] mb-10 lg:mb-20 text-[40px] md:text-[50px] lg:text-[56px] xl:text-[60px] 2xl:text-[64px]"
+          className="font-bold text-black leading-[1.2] tracking-[-2px] mb-10 lg:mb-20 text-[40px] md:text-[50px] lg:text-[56px] xl:text-[60px] 2xl:text-[64px] 3xl:text-[98px]"
         >
           What value
           <br />are you
-          <br />getting
-          <br />from us?
+          <br />getting from
+          <br />us?
         </h2>
         <div ref={listRef} className="border-t border-black/10" onMouseLeave={handleListLeave}>
           {ITEMS.map((item, i) => (

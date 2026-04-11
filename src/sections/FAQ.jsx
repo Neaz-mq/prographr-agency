@@ -30,15 +30,14 @@ export default function FAQ() {
 
   return (
     <section id="faq" className="bg-[#0a0a0a]">
-
       {/* ── Careers ── */}
-      <div className="md:px-10 3xl:px-60 2xl:px-60 xl:px-20 lg:px-14 mx-auto px-6  pt-24 pb-16 border-b border-[#1f1f1f]">
-
+      <div className="md:px-10 3xl:px-60 2xl:px-60 xl:px-20 lg:px-14 mx-auto px-6 pt-24 pb-16 border-b border-[#1f1f1f]">
         <h2
-          className="text-white font-bold text-2xl md:text-3xl leading-snug mb-10"
+          className="text-white font-medium text-2xl md:text-3xl lg:text-3xl xl:text-3xl 2xl:text-3xl 3xl:text-5xl mb-10 leading-relaxed"
           style={{ fontFamily: "'Inter', sans-serif" }}
         >
-          Become a member of a<br />talented team
+          Become a member of a<br />
+          talented team
         </h2>
 
         <div className="flex flex-col divide-y divide-[#1f1f1f]">
@@ -63,14 +62,15 @@ export default function FAQ() {
 
       {/* ── FAQ ── */}
       <div className="md:px-10 3xl:px-60 2xl:px-60 xl:px-20 lg:px-14 mx-auto px-6  pt-16 pb-24">
-
         <h2
-          className="text-white font-black leading-none mb-12 text-[40px] md:text-[50px] lg:text-[56px] xl:text-[60px] 2xl:text-[64px]"
+          className="text-white leading-none mb-12 text-[40px] md:text-[50px] lg:text-[56px] xl:text-[60px] 2xl:text-[64px] 3xl:text-[98px] font-normal"
           style={{
             fontFamily: "'Inter', sans-serif",
           }}
         >
-          Got<br />Questions?
+          Got
+          <br />
+          Questions?
         </h2>
 
         <div className="flex flex-col divide-y divide-[#1f1f1f]">
@@ -83,8 +83,10 @@ export default function FAQ() {
                   className="w-full flex items-center justify-between gap-6 py-5 text-left group"
                 >
                   <span
-                    className={`text-sm md:text-lg font-medium transition-colors duration-200 ${
-                      isOpen ? "text-white" : "text-white/80 group-hover:text-white"
+                    className={`text-sm md:text-lg xl:text-lg 2xl:text-lg 3xl:text-2xl font-medium transition-colors duration-200 ${
+                      isOpen
+                        ? "text-white"
+                        : "text-white/80 group-hover:text-white"
                     }`}
                     style={{ fontFamily: "'Inter', sans-serif" }}
                   >
@@ -101,9 +103,7 @@ export default function FAQ() {
                     isOpen ? "max-h-60 pb-6" : "max-h-0"
                   }`}
                 >
-                  <p className="text-[#888] text-sm leading-relaxed">
-                    {faq.a}
-                  </p>
+                  <p className="text-[#888] text-md leading-relaxed">{faq.a}</p>
                 </div>
               </div>
             );
