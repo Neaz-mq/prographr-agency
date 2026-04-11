@@ -164,7 +164,7 @@ export default function PortfolioSection() {
     <section id="portfolio" className="bg-white w-full overflow-hidden mb-24 3xl:-mt-2 2xl:mt-14 xl:mt-2 lg:mt-10">
       {/* ✅ FIX: replaced LEFT_INDENT style with matching Tailwind px classes */}
       <div className="border-b border-[#efefef] pb-12 px-3 md:px-10 3xl:px-60 2xl:px-60 xl:px-20 lg:px-14">
-        <h2 className="3xl:text-[clamp(62px,4vw,105px)] 2xl:text-[clamp(52px,3.8vw,58px)] xl:text-[clamp(45px,3.8vw,58px)] lg:text-[clamp(40px,3.8vw,58px)] md:text-[clamp(36px,3.8vw,58px)] font-semibold leading-[1.1] text-[#0a0a0a] tracking-[-1.5px]">
+        <h2 className="3xl:text-[clamp(52px,10vw,150px)] 2xl:text-[clamp(52px,3.8vw,58px)] xl:text-[clamp(45px,3.8vw,58px)] lg:text-[clamp(40px,3.8vw,58px)] md:text-[clamp(36px,3.8vw,58px)] font-semibold leading-[1.1] text-[#0a0a0a]  tracking-[0.02em]">
           Our Previous
           <br />
           Work
