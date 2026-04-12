@@ -5,15 +5,15 @@ import "swiper/css";
 
 // ── ICONS ─────────────────────────────────────────────────────────────
 const UiUxIcon = () => (
-  <img src="/Asset 5.svg" alt="Ui icon" width={62} height={62} />
+  <img src="/Asset 5.svg" alt="Ui icon" width={44} height={44} />
 );
 
 const CodeIcon = () => (
-  <img src="/Asset 4.svg" alt="Development icon" width={62} height={62} />
+  <img src="/Asset 4.svg" alt="Development icon" width={44} height={44} />
 );
 
 const MarketIcon = () => (
-  <img src="/Asset 3.svg" alt="Marketing icon" width={62} height={62} />
+  <img src="/Asset 3.svg" alt="Marketing icon" width={44} height={44} />
 );
 
 // ── DATA ──────────────────────────────────────────────────────────────
@@ -148,13 +148,13 @@ function ServiceCard({ icon, title, desc }) {
     <div className="flex flex-col justify-between p-8 3xl:p-14 min-h-[300px] xl:min-h-[320px] 3xl:min-h-[420px] bg-[#111616]">
       <div className="flex flex-col gap-12">
         <div className="w-16 h-16 flex items-center justify-center">{icon}</div>
-        <h3 className="text-white font-medium pt-4 leading-[1.25] tracking-[0.03em] 3xl:text-[clamp(24px,3vw,52px)] text-[clamp(16px,1.4vw,20px)]">
+        <h3 className="text-white font-medium pt-4 leading-[1.35] tracking-[0.03em] 3xl:text-[clamp(24px,3vw,38px)] text-[clamp(16px,1.4vw,20px)]">
           {title[0]}
           <br />
           {title[1]}
         </h3>
       </div>
-      <p className="text-[24px] leading-[1.7] text-[#B2B2B2] pt-36 pb-14 max-w-[300px] ">
+      <p className="text-[20px] leading-[1.7] text-[#B2B2B2] pt-36 pb-14 max-w-[300px] ">
         {desc}
       </p>
     </div>
@@ -278,7 +278,7 @@ export default function Testimonials() {
     <section className="w-full bg-white overflow-hidden">
       <div className="bg-[#0a0a0a] pb-[310px]">
         {/* ✅ FIX: replaced LEFT_INDENT style with matching Tailwind px classes */}
-        <div className="3xl:pt-64 pt-20 pb-14 px-3 md:px-10 3xl:px-60 2xl:px-60 xl:px-20 lg:px-14">
+        <div className="3xl:pt-64 pt-20 pb-14 px-3 md:px-10 3xl:px-[26rem] 2xl:px-60 xl:px-20 lg:px-14">
           <div className="relative">
             <h2 className="font-medium leading-[1.2] text-white  3xl:max-w-[1260px] max-w-[760px] 3xl:text-[clamp(36px,4vw,94px)]  2xl:text-[clamp(36px,3.8vw,58px)]  xl:text-[clamp(36px,3.8vw,58px)]  lg:text-[clamp(36px,3.8vw,58px)]  md:text-[clamp(36px,3.8vw,58px)] tracking-[0.02em]">
               Built to Scale: Solutions
@@ -300,7 +300,7 @@ export default function Testimonials() {
         </div>
 
         {/* ✅ FIX: replaced LEFT_INDENT style with matching Tailwind px classes */}
-        <div className="px-3 md:px-10 3xl:px-60 2xl:px-60 xl:px-20 lg:px-14">
+        <div className="px-3 md:px-10 3xl:px-[26rem] 2xl:px-60 xl:px-20 lg:px-14">
           <div className="flex items-end justify-between pt-24 border-t border-white/[8%] py-12">
             <h2
               className="font-medium leading-[1.2] text-white  3xl:max-w-[1260px] max-w-[760px] 3xl:text-[clamp(36px,4vw,94px)]  2xl:text-[clamp(36px,3.8vw,58px)]  xl:text-[clamp(36px,3.8vw,58px)]  lg:text-[clamp(36px,3.8vw,58px)]  md:text-[clamp(36px,3.8vw,58px)] tracking-[0.02em]"

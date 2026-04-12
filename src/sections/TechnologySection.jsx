@@ -65,7 +65,7 @@ function CardInner({ service }) {
       <div className="absolute inset-0 flex flex-col px-10 py-8 lg:px-12 lg:py-32">
         {/* ✅ mt-auto on this wrapper pushes the whole group to the bottom */}
         <div className="mt-auto flex flex-col gap-5">
-          <p className="text-white leading-relaxed 3xl:text-[clamp(20px,4vw,30px)] text-[clamp(11px,1.05vw,14px)] opacity-85">
+          <p className="text-white leading-relaxed 3xl:text-[clamp(20px,4vw,22px)] text-[clamp(11px,1.05vw,14px)] opacity-85">
             {service.description}
           </p>
           <div
@@ -73,7 +73,7 @@ function CardInner({ service }) {
             style={{ height: "1px", background: "rgba(255,255,255,0.22)" }}
           />
           <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between sm:gap-6">
-            <h3 className="text-white font-medium leading-[1.2] tracking-[0.02em] whitespace-pre-line text-[clamp(17px,1.9vw,27px)] 3xl:text-[clamp(28px,3vw,35px)]">
+            <h3 className="text-white font-medium leading-[1.2] tracking-[0.02em] whitespace-pre-line text-[clamp(17px,1.9vw,27px)] 3xl:text-[clamp(28px,3vw,30px)]">
               {service.title}
             </h3>
             <div className="flex flex-wrap gap-[20px] sm:justify-end">
@@ -127,11 +127,11 @@ export default function TechnologySection() {
   return (
     <section ref={containerRef} className="w-full bg-white relative pb-32">
       {/* HEADING SECTION */}
-      <div className="md:px-10 3xl:px-60 2xl:px-60 xl:px-20 lg:px-14 mx-auto px-6 pt-8 lg:pt-24 pb-10 lg:pb-14 overflow-hidden relative z-10 bg-white">
+      <div className="md:px-10 3xl:px-[26rem] 2xl:px-60 xl:px-20 lg:px-14 mx-auto px-6 pt-8 lg:pt-4 pb-10 lg:pb-14 overflow-hidden relative z-10 bg-white">
         <div className="overflow-hidden">
           <h2
             ref={headingRef}
-            className="3xl:text-[clamp(52px,10vw,160px)] 2xl:text-[clamp(52px,3.8vw,58px)] xl:text-[clamp(45px,3.8vw,58px)] lg:text-[clamp(40px,3.8vw,58px)] md:text-[clamp(36px,3.8vw,58px)] font-semibold leading-[1.1] text-[#0a0a0a] tracking-[0.02em]"
+            className="3xl:text-[clamp(52px,10vw,100px)] 2xl:text-[clamp(52px,3.8vw,58px)] xl:text-[clamp(45px,3.8vw,58px)] lg:text-[clamp(40px,3.8vw,58px)] md:text-[clamp(36px,3.8vw,58px)] font-semibold leading-[1.1] text-[#0a0a0a] tracking-[0.02em]"
           >
             Technology
             <br />
@@ -142,7 +142,7 @@ export default function TechnologySection() {
 
       {/* DESKTOP STACK */}
       <div className="hidden lg:block w-full">
-        <div className="md:px-10 3xl:px-60 2xl:px-60 xl:px-20 lg:px-14 mx-auto px-10">
+        <div className="md:px-10 3xl:px-[26rem] 2xl:px-60 xl:px-20 lg:px-14 mx-auto px-10">
           {SERVICES.map((service, i) => (
             <div
               key={service.id}
