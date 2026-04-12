@@ -84,7 +84,7 @@ export default function Navbar() {
   const isHome = location.pathname === "/";
 
   return (
-   <header className="absolute top-0 left-0 right-0 z-50 px-3 md:px-10 3xl:px-60 2xl:px-60 xl:px-20 lg:px-14 pt-[40px] 3xl:pt-[60px] 2xl:pt-[55px] xl:pt-[45px] lg:pt-[40px]">
+   <header className="absolute top-0 left-0 right-0 z-50 px-3 md:px-10 3xl:px-60 2xl:px-40 xl:px-20 lg:px-14 pt-[40px] 3xl:pt-[60px] 2xl:pt-[52px] xl:pt-[45px] lg:pt-[40px]">
 
       {/* ── Floating Bar ── */}
       <div
@@ -121,7 +121,7 @@ export default function Navbar() {
           {/* Let's Talk */}
           <button
             onClick={() => scrollToSection("contact")}
-            className="hidden md:inline-flex items-center px-5 py-2 text-[14px] 3xl:text-[18px] 2xl:text-[14px] xl:text-[14px] lg:text-[15px] md:text-[14px] text-[#0a0a0a] bg-white hover:bg-[#e8e8e8] transition-colors duration-200 font-medium"
+            className="hidden md:inline-flex items-center px-5 py-2 text-[14px] 3xl:text-[18px] 2xl:text-[15px] xl:text-[14px] lg:text-[15px] md:text-[14px] text-[#0a0a0a] bg-white hover:bg-[#e8e8e8] transition-colors duration-200 font-medium"
           >
             Let's Talk
           </button>
