@@ -98,7 +98,7 @@ export default function Navbar() {
 
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <img src="/logo.webp" alt="Prographr" className="h-8 w-8 3xl:h-12 3xl:w-12 2xl:h-10 2xl:w-10 xl:h-8 xl:w-8 lg:h-8 lg:w-8  object-contain" />
+            <img src="/logo.webp" alt="Prographr" className="h-8 w-8 3xl:h-10 3xl:w-10 2xl:h-10 2xl:w-10 xl:h-8 xl:w-8 lg:h-8 lg:w-8  object-contain" />
           </Link>
 
           {/* Desktop Nav */}
