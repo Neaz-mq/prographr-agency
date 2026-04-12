@@ -5,12 +5,11 @@ const logos = [
   { src: "/Be.webp",  alt: "Behance" },
   { src: "/Bk.webp",  alt: "Dribbble" },
   { src: "/Fi.webp",  alt: "Fiverr" },
-  { src: "/Fa.webp",  alt: "Falcon" },
   { src: "/Cir.webp", alt: "Circle" },
   { src: "/Up.webp",  alt: "Upwork" },
-  { src: "/We.webp",  alt: "Webflow" },
-  { src: "/Wr.webp",  alt: "WWR" },
-  { src: "/Ww.webp",  alt: "WW" },
+  { src: "/gr.svg",  alt: "Graphicriver" },
+  { src: "/freepik.svg",  alt: "Freepik" },
+  { src: "/st.svg",  alt: "Adobe" },
 ];
 
 const LogoTrack = () => (
