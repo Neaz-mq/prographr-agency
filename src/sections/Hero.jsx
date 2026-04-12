@@ -38,7 +38,7 @@ export default function Hero() {
 
         <motion.h1
           {...fadeUp(0.1)}
-          className="font-medium text-white tracking-wide leading-[1.65] sm:leading-[1.35] 3xl:leading-[1.25] 2xl:leading-[1.25] xl:leading-[1.25] lg:leading-[1.25] md:leading-[1.45] text-center text-[1.7rem] sm:text-[2.8rem] md:text-[3.2rem] lg:text-[4rem] xl:text-[4.2rem] 2xl:text-[4.3rem] 3xl:text-[6.8rem]"
+          className="font-medium text-white tracking-wide leading-[1.65] sm:leading-[1.35] 3xl:leading-[1.25] 2xl:leading-[1.25] xl:leading-[1.25] lg:leading-[1.25] md:leading-[1.45] text-center text-[1.7rem] sm:text-[2.8rem] md:text-[3.2rem] lg:text-[4rem] xl:text-[4.2rem] 2xl:text-[4.3rem] 3xl:text-[6.6rem]"
         >
           Crafting Digital
           <br />
