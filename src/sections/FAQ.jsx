@@ -52,7 +52,7 @@ export default function FAQ() {
                 </p>
                 <p className="text-[#C1C1C1] text-xs md:text-lg pt-2">{job.meta}</p>
               </div>
-              <button className="shrink-0 border border-white text-white text-md px-6 py-3 hover:bg-white hover:text-[#0a0a0a] transition-colors duration-200 whitespace-nowrap">
+              <button className="shrink-0 border border-white text-white text-xl px-6 py-3 hover:bg-white hover:text-[#0a0a0a] transition-colors duration-200 whitespace-nowrap">
                 Apply Now
               </button>
             </div>
