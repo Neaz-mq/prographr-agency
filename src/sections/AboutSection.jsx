@@ -82,7 +82,7 @@ export default function AboutSection() {
     return (
       <section id="about" className="bg-white w-full">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 w-full">
-          <div className="pt-10 pb-8 border-b border-[#efefef]">
+          <div className="pt-10 pb-8">
             <span className="inline-block text-[10px] bg-[#F2F2F2] text-black uppercase font-semibold px-3 py-1 mb-5">
               About Us
             </span>
@@ -204,7 +204,7 @@ export default function AboutSection() {
       >
         {/* ── Heading (stays pinned, does NOT scroll) ── */}
         <div className="w-full shrink-0">
-          <div className="pt-8 pb-5 border-b border-[#efefef] px-3 md:px-10 3xl:px-[26rem] 2xl:px-40 xl:px-20 lg:px-14">
+          <div className="pt-8 pb-5  px-3 md:px-10 3xl:px-[26rem] 2xl:px-40 xl:px-20 lg:px-14">
             <span className="inline-block 3xl:py-3 3xl:px-6 2xl:py-2 2xl:px-4 3xl:text-[16px] 2xl:text-[14px] xl:text-[13px] lg:text-[13px] md:text-[12px] bg-[#F2F2F2] text-black uppercase font-semibold px-3 py-1 mb-4 tracking-[0.02em]">
               About Us
             </span>
