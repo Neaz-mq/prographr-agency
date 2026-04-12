@@ -8,31 +8,26 @@ const PORTFOLIO_ITEMS = [
     id: 1,
     image: "https://res.cloudinary.com/dzi3u164c/image/upload/q_auto/f_auto/v1775119897/1_dc1bes.webp",
     tags: ["Flyer Design", "Rack Card", "App UI Design"],
-    dark: true,
   },
   {
     id: 2,
     image: "https://res.cloudinary.com/dzi3u164c/image/upload/q_auto/f_auto/v1775120064/2_vtojsw.webp",
     tags: ["UI UX Design", "Web Design", "Prototyping"],
-    dark: false,
   },
   {
     id: 3,
     image: "https://res.cloudinary.com/dzi3u164c/image/upload/q_auto/f_auto/v1775120173/3_vykw9g.webp",
     tags: ["React JS", "Next JS", "MERN"],
-    dark: true,
   },
   {
     id: 4,
     image: "https://res.cloudinary.com/dzi3u164c/image/upload/q_auto/f_auto/v1775120276/4_v4puxw.webp",
     tags: ["Brand Identity", "Brand Book", "Brand Manual"],
-    dark: true,
   },
   {
     id: 5,
     image: "https://res.cloudinary.com/dzi3u164c/image/upload/q_auto/f_auto/v1775120377/5_go4zm2.webp",
     tags: ["Product Label", "Label Design", "Bottle Label"],
-    dark: true,
   },
 ];
 
@@ -44,10 +39,10 @@ function useDesktopSizes() {
       return { imgHeight: "clamp(500px, 42vw, 660px)", slideWidth: "clamp(660px, 45vw, 1200px)" };
     }
     const w = window.innerWidth;
-    if (w >= 1920) return { imgHeight: "clamp(650px, 42vw, 800px)",  slideWidth: "clamp(900px, 45vw, 1500px)" };
-    if (w >= 1536) return { imgHeight: "clamp(300px, 37vw, 360px)",  slideWidth: "clamp(450px, 38vw, 1000px)"  };
-    if (w >= 1280) return { imgHeight: "clamp(200px, 36vw, 320px)",  slideWidth: "clamp(400px, 36vw, 800px)"  };
-    return              { imgHeight: "clamp(200px, 36vw, 300px)",  slideWidth: "clamp(340px, 38vw, 760px)"  };
+    if (w >= 1920) return { imgHeight: "clamp(600px, 42vw, 650px)", slideWidth: "clamp(700px, 40vw, 1000px)" };
+    if (w >= 1536) return { imgHeight: "clamp(300px, 37vw, 360px)", slideWidth: "clamp(450px, 38vw, 1000px)" };
+    if (w >= 1280) return { imgHeight: "clamp(200px, 36vw, 320px)", slideWidth: "clamp(400px, 36vw, 800px)" };
+    return { imgHeight: "clamp(200px, 36vw, 300px)", slideWidth: "clamp(340px, 38vw, 760px)" };
   };
 
   const [sizes, setSizes] = useState(getSizes);
@@ -63,42 +58,40 @@ function useDesktopSizes() {
 
 function PortfolioCard({ item, imgHeight }) {
   return (
-    <div className="h-full flex flex-col">
+    // group enables hover state for children
+    <div className="h-full flex flex-col group">
       <div
         className="relative overflow-hidden shrink-0"
         style={{ height: imgHeight }}
       >
+        {/* Image — scales up on hover */}
         <img
           src={item.image}
           alt={item.tags[0]}
-          className="w-full h-full object-cover transition-transform duration-700 hover:scale-[1.04]"
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
           loading="lazy"
         />
-        {item.dark ? (
-          <div
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              background:
-                "linear-gradient(to bottom, rgba(0,0,0,0.50) 0%, rgba(0,0,0,0.78) 100%)",
-            }}
-          />
-        ) : (
-          <div
-            className="absolute inset-0 pointer-events-none"
-            style={{ background: "rgba(0,0,0,0.06)" }}
-          />
-        )}
-      </div>
 
-      <div className="flex items-center gap-4 pl-0 pr-4 py-3 border-t border-[#efefef] flex-wrap bg-white">
-        {item.tags.map((tag) => (
-          <span
-            key={tag}
-            className="text-[10px] 3xl:text-[18px] text-black border border-[#ddd] font-semibold bg-[#F2F2F2] px-2.5 py-[5px] 3xl:px-8 3xl:py-3 whitespace-nowrap leading-none"
-          >
-            {tag}
-          </span>
-        ))}
+        {/* Dark overlay — visible by default, fades out on hover */}
+        <div
+          className="absolute inset-0 pointer-events-none transition-opacity duration-500 opacity-100 group-hover:opacity-0"
+          style={{
+            background:
+              "linear-gradient(to bottom, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0.75) 100%)",
+          }}
+        />
+
+        {/* Tags — inside image at bottom, fade out with overlay on hover */}
+        <div className="absolute bottom-4 left-4 right-0 px-4 py-4 flex items-center gap-3 flex-wrap transition-opacity duration-500 opacity-100 group-hover:opacity-0 pointer-events-none">
+          {item.tags.map((tag) => (
+            <span
+              key={tag}
+              className="text-[10px] 3xl:text-[18px] text-white border border-white/40 font-semibold bg-white/10 backdrop-blur-[2px] px-2.5 py-[5px] 3xl:px-8 3xl:py-3 whitespace-nowrap leading-none"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -162,9 +155,8 @@ export default function PortfolioSection() {
   // ── DESKTOP ──────────────────────────────────────────────────────────
   return (
     <section id="portfolio" className="bg-white w-full overflow-hidden mb-52 3xl:mt-20 2xl:mt-0 xl:mt-2 lg:mt-10">
-      {/* ✅ FIX: replaced LEFT_INDENT style with matching Tailwind px classes */}
-      <div className="border-b border-[#efefef] pb-12 px-3 md:px-10 3xl:px-60 2xl:px-40 xl:px-20 lg:px-14">
-        <h2 className="3xl:text-[clamp(52px,10vw,160px)] 2xl:text-[clamp(52px,10vw,160px)] xl:text-[clamp(45px,3.8vw,58px)] lg:text-[clamp(40px,3.8vw,58px)] md:text-[clamp(36px,3.8vw,58px)] font-semibold leading-[1.1] text-[#0a0a0a]  tracking-[0.02em]">
+      <div className="border-b border-[#efefef] pb-12 px-3 md:px-10 3xl:px-[26rem] 2xl:px-40 xl:px-20 lg:px-14">
+        <h2 className="3xl:text-[clamp(52px,10vw,100px)] 2xl:text-[clamp(52px,10vw,160px)] xl:text-[clamp(45px,3.8vw,58px)] lg:text-[clamp(40px,3.8vw,58px)] md:text-[clamp(36px,3.8vw,58px)] font-semibold leading-[1.1] text-[#0a0a0a] tracking-[0.02em]">
           Our Previous
           <br />
           Work
