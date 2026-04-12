@@ -34,9 +34,9 @@ export default function CTA() {
 
   return (
     <section id="contact" className="bg-white">
-      <div className="md:px-10 3xl:px-60 2xl:px-60 xl:px-20 lg:px-14 mx-auto px-6  py-20 md:py-48">
+      <div className="md:px-10 3xl:px-[26rem] 2xl:px-60 xl:px-20 lg:px-14 mx-auto px-6  py-20 md:py-48">
         {/* Heading */}
-        <h2 className="text-[#0a0a0a] font-semibold mb-2 font-[Inter] text-[clamp(36px,6vw,60px)]  md:text-[clamp(36px,6vw,60px)] xl:text-[clamp(36px,6vw,60px)] 2xl:text-[clamp(36px,6vw,60px)] 3xl:text-[clamp(36px,6vw,114px)]">
+        <h2 className="text-[#0a0a0a] font-semibold mb-2 font-[Inter] text-[clamp(36px,6vw,60px)]  md:text-[clamp(36px,6vw,60px)] xl:text-[clamp(36px,6vw,60px)] 2xl:text-[clamp(36px,6vw,60px)] 3xl:text-[clamp(52px,10vw,100px)]">
           Let's talk
         </h2>
         <p

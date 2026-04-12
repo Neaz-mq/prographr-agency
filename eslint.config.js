@@ -23,7 +23,14 @@ export default defineConfig([
       },
     },
     rules: {
-      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]|^motion$' }],
+      'no-unused-vars': [
+        'error',
+        {
+          varsIgnorePattern: '^[A-Z_]|^motion$',
+          argsIgnorePattern: '^[A-Z_]', // ✅ FIX: ignore destructured React components like Icon
+          ignoreRestSiblings: true,     // ✅ optional: avoids issues with rest props
+        },
+      ],
     },
   },
 ])

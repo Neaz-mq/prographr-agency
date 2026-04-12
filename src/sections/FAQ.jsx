@@ -31,9 +31,9 @@ export default function FAQ() {
   return (
     <section id="faq" className="bg-[#0a0a0a] ">
       {/* ── Careers ── */}
-      <div className="md:px-10 3xl:px-60 2xl:px-60 xl:px-20 lg:px-14 mx-auto px-6 pt-64 pb-16 border-b border-[#1f1f1f]">
+      <div className="md:px-10 3xl:px-[26rem] 2xl:px-60 xl:px-20 lg:px-14 mx-auto px-6 pt-64 pb-16 border-b border-[#1f1f1f]">
         <h2
-          className="font-medium leading-[1.2] text-white  3xl:max-w-[1260px] max-w-[760px] 3xl:text-[clamp(36px,4vw,94px)]  2xl:text-[clamp(36px,3.8vw,58px)]  xl:text-[clamp(36px,3.8vw,58px)]  lg:text-[clamp(36px,3.8vw,58px)]  md:text-[clamp(36px,3.8vw,58px)] tracking-[0.02em"
+          className="font-medium leading-[1.2] text-white  3xl:max-w-[1260px] max-w-[760px] 3xl:text-[clamp(52px,10vw,100px)]  2xl:text-[clamp(36px,3.8vw,58px)]  xl:text-[clamp(36px,3.8vw,58px)]  lg:text-[clamp(36px,3.8vw,58px)]  md:text-[clamp(36px,3.8vw,58px)] tracking-[0.02em"
           style={{ fontFamily: "'Inter', sans-serif" }}
         >
           Become a member of a<br />
@@ -47,12 +47,12 @@ export default function FAQ() {
               className="flex items-center justify-between py-5 gap-6"
             >
               <div>
-                <p className="text-white font-semibold text-sm md:text-3xl leading-tight mb-1 tracking-[0.02em]">
+                <p className="text-white font-semibold text-sm md:text-[28px] leading-tight mb-1 tracking-[0.02em]">
                   {job.title}
                 </p>
-                <p className="text-[#C1C1C1] text-xs md:text-lg pt-2">{job.meta}</p>
+                <p className="text-[#C1C1C1] text-xs md:text-md pt-2">{job.meta}</p>
               </div>
-              <button className="shrink-0 border border-white text-white text-xl px-6 py-3 hover:bg-white hover:text-[#0a0a0a] transition-colors duration-200 whitespace-nowrap">
+              <button className="shrink-0 border border-white text-white text-lg px-5 py-1.5 hover:bg-white hover:text-[#0a0a0a] transition-colors duration-200 whitespace-nowrap">
                 Apply Now
               </button>
             </div>
@@ -61,9 +61,9 @@ export default function FAQ() {
       </div>
 
       {/* ── FAQ ── */}
-      <div className="md:px-10 3xl:px-60 2xl:px-60 xl:px-20 lg:px-14 mx-auto px-6  pt-16 pb-24">
+      <div className="md:px-10 3xl:px-[26rem] 2xl:px-60 xl:px-20 lg:px-14 mx-auto px-6  pt-16 pb-24">
         <h2
-          className="font-medium leading-[1.2] text-white  3xl:max-w-[1360px] max-w-[760px] 3xl:text-[clamp(36px,4vw,104px)]  2xl:text-[clamp(36px,3.8vw,58px)]  xl:text-[clamp(36px,3.8vw,58px)]  lg:text-[clamp(36px,3.8vw,58px)]  md:text-[clamp(36px,3.8vw,58px)] tracking-[0.02em"
+          className="font-medium leading-[1.2] text-white  3xl:max-w-[1360px] max-w-[760px] 3xl:text-[clamp(52px,10vw,100px)]  2xl:text-[clamp(36px,3.8vw,58px)]  xl:text-[clamp(36px,3.8vw,58px)]  lg:text-[clamp(36px,3.8vw,58px)]  md:text-[clamp(36px,3.8vw,58px)] tracking-[0.02em"
           style={{
             fontFamily: "'Inter', sans-serif",
           }}
@@ -83,7 +83,7 @@ export default function FAQ() {
                   className="w-full flex items-center justify-between gap-6 py-5 text-left group"
                 >
                   <span
-                    className={`text-sm md:text-lg xl:text-lg 2xl:text-lg 3xl:text-3xl tracking-[0.02em] font-medium transition-colors duration-200 ${
+                    className={`text-sm md:text-lg xl:text-lg 2xl:text-lg 3xl:text-2xl tracking-[0.02em] font-medium transition-colors duration-200 ${
                       isOpen
                         ? "text-white"
                         : "text-white/80 group-hover:text-white"
@@ -92,7 +92,7 @@ export default function FAQ() {
                   >
                     {faq.q}
                   </span>
-                  <span className="shrink-0 text-white text-xl leading-none w-5 text-center">
+                  <span className="shrink-0 text-white text-lg leading-none w-5 text-center">
                     {isOpen ? "−" : "+"}
                   </span>
                 </button>
@@ -103,7 +103,7 @@ export default function FAQ() {
                     isOpen ? "max-h-60 pb-6" : "max-h-0"
                   }`}
                 >
-                  <p className="text-[#888] text-md leading-relaxed">{faq.a}</p>
+                  <p className="text-[#888] text-base leading-relaxed">{faq.a}</p>
                 </div>
               </div>
             );
