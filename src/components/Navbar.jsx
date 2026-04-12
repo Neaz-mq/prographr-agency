@@ -84,7 +84,7 @@ export default function Navbar() {
   const isHome = location.pathname === "/";
 
   return (
-   <header className="absolute top-0 left-0 right-0 z-50 px-3 md:px-10 3xl:px-60 2xl:px-40 xl:px-20 lg:px-14 pt-[40px] 3xl:pt-[60px] 2xl:pt-[52px] xl:pt-[45px] lg:pt-[40px]">
+   <header className="absolute top-0 left-0 right-0 z-50 px-3 md:px-10 3xl:px-72 2xl:px-40 xl:px-20 lg:px-14 pt-[40px] 3xl:pt-[60px] 2xl:pt-[52px] xl:pt-[45px] lg:pt-[40px]">
 
       {/* ── Floating Bar ── */}
       <div
@@ -98,7 +98,7 @@ export default function Navbar() {
 
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <img src="/logo.webp" alt="Prographr" className="h-8 w-8 3xl:h-14 3xl:w-14 2xl:h-10 2xl:w-10 xl:h-8 xl:w-8 lg:h-8 lg:w-8  object-contain" />
+            <img src="/logo.webp" alt="Prographr" className="h-8 w-8 3xl:h-12 3xl:w-12 2xl:h-10 2xl:w-10 xl:h-8 xl:w-8 lg:h-8 lg:w-8  object-contain" />
           </Link>
 
           {/* Desktop Nav */}
