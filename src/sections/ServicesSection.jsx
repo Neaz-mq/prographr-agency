@@ -7,7 +7,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 gsap.registerPlugin(ScrollTrigger);
 
 const CARD_HEIGHT = 270;
-const SHOW_AMOUNT = 100;
+const SHOW_AMOUNT = 105;
 
 // ── shared helpers ───────────────────────────────────────────
 function CardShell({ className = "", style = {}, children }) {
