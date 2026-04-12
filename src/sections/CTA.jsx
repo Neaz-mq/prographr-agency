@@ -70,7 +70,7 @@ export default function CTA() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div className="flex flex-col gap-3">
               <label
-                className="text-[#0a0a0a] font-medium text-2xl"
+                className="text-[#0a0a0a] font-medium 3xl:text-2xl 2xl:text-xl"
                 style={{ fontFamily: "'Inter', sans-serif" }}
               >
                 Name
@@ -82,14 +82,14 @@ export default function CTA() {
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
                 disabled={status === "sending"}
-                className="bg-transparent border-0 border-b border-[#ccc] pb-2 text-lg text-[#0a0a0a] placeholder:text-[#ccc] outline-none focus:border-[#0a0a0a] transition-colors duration-200 disabled:opacity-50"
+                className="bg-transparent border-0 border-b border-[#ccc] pb-2 3xl:text-lg 2xl:text-base text-[#0a0a0a] placeholder:text-[#ccc] outline-none focus:border-[#0a0a0a] transition-colors duration-200 disabled:opacity-50"
                 style={{ fontFamily: "'Inter', sans-serif" }}
               />
             </div>
 
             <div className="flex flex-col gap-3">
               <label
-                className="text-[#0a0a0a] font-medium text-2xl"
+                className="text-[#0a0a0a] font-medium 3xl:text-2xl 2xl:text-xl"
                 style={{ fontFamily: "'Inter', sans-serif" }}
               >
                 Email
@@ -101,7 +101,7 @@ export default function CTA() {
                 value={form.email}
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
                 disabled={status === "sending"}
-                className="bg-transparent border-0 border-b border-[#ccc] pb-2 text-lg text-[#0a0a0a] placeholder:text-[#ccc] outline-none focus:border-[#0a0a0a] transition-colors duration-200 disabled:opacity-50"
+                className="bg-transparent border-0 border-b border-[#ccc] pb-2 3xl:text-lg 2xl:text-base text-[#0a0a0a] placeholder:text-[#ccc] outline-none focus:border-[#0a0a0a] transition-colors duration-200 disabled:opacity-50"
                 style={{ fontFamily: "'Inter', sans-serif" }}
               />
             </div>
@@ -110,7 +110,7 @@ export default function CTA() {
           {/* Message */}
           <div className="flex flex-col gap-3">
             <label
-              className="text-[#0a0a0a] font-medium text-2xl"
+              className="text-[#0a0a0a] font-medium 3xl:text-2xl 2xl:text-xl"
               style={{ fontFamily: "'Inter', sans-serif" }}
             >
               Message
@@ -122,7 +122,7 @@ export default function CTA() {
               value={form.message}
               onChange={(e) => setForm({ ...form, message: e.target.value })}
               disabled={status === "sending"}
-              className="bg-transparent border-0 border-b border-[#ccc] pb-2 text-lg text-[#0a0a0a] placeholder:text-[#ccc] outline-none focus:border-[#0a0a0a] transition-colors duration-200 resize-none disabled:opacity-50"
+              className="bg-transparent border-0 border-b border-[#ccc] pb-2 3xl:text-lg 2xl:text-base text-[#0a0a0a] placeholder:text-[#ccc] outline-none focus:border-[#0a0a0a] transition-colors duration-200 resize-none disabled:opacity-50"
               style={{ fontFamily: "'Inter', sans-serif" }}
             />
           </div>
@@ -132,7 +132,7 @@ export default function CTA() {
             <button
               type="submit"
               disabled={status === "sending"}
-              className="bg-[#0a0a0a] text-white text-xl font-medium px-6 py-3 hover:bg-[#222] transition-colors duration-200 disabled:opacity-60 disabled:cursor-not-allowed tracking-[0.02em]"
+              className="bg-[#0a0a0a] text-white 3xl:text-xl 2xl:text-base font-medium 3xl:px-6 3xl:py-3 2xl:px-5 2xl:py-2 hover:bg-[#222] transition-colors duration-200 disabled:opacity-60 disabled:cursor-not-allowed tracking-[0.02em]"
               style={{ fontFamily: "'Inter', sans-serif" }}
             >
               {status === "sending" ? "Sending..." : "Send Now"}

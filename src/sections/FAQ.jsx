@@ -31,9 +31,9 @@ export default function FAQ() {
   return (
     <section id="faq" className="bg-[#0a0a0a] ">
       {/* ── Careers ── */}
-      <div className="md:px-10 3xl:px-[26rem] 2xl:px-[10rem] xl:px-20 lg:px-14 mx-auto px-6 pt-64 pb-16 border-b border-[#1f1f1f]">
+      <div className="md:px-10 3xl:px-[26rem] 2xl:px-[10rem] xl:px-20 lg:px-14 mx-auto px-6 3xl:pt-64 2xl:pt-52 pb-16 border-b border-[#1f1f1f]">
         <h2
-          className="font-medium leading-[1.2] text-white  3xl:max-w-[1260px] 2xl:max-w-[1100px] max-w-[760px] 3xl:text-[clamp(52px,10vw,90px)]  2xl:text-[clamp(52px,10vw,80px)]  xl:text-[clamp(36px,3.8vw,58px)]  lg:text-[clamp(36px,3.8vw,58px)]  md:text-[clamp(36px,3.8vw,58px)] tracking-[0.02em"
+          className="font-medium leading-[1.2] text-white  3xl:max-w-[1260px] 2xl:max-w-[1100px] max-w-[760px] 3xl:text-[clamp(52px,10vw,90px)]  2xl:text-[clamp(52px,10vw,72px)]  xl:text-[clamp(36px,3.8vw,58px)]  lg:text-[clamp(36px,3.8vw,58px)]  md:text-[clamp(36px,3.8vw,58px)] tracking-[0.02em"
           style={{ fontFamily: "'Inter', sans-serif" }}
         >
           Become a member of a<br />
@@ -47,12 +47,12 @@ export default function FAQ() {
               className="flex items-center justify-between py-5 gap-6"
             >
               <div>
-                <p className="text-white font-semibold text-sm md:text-[28px] leading-tight mb-1 tracking-[0.02em]">
+                <p className="text-white font-semibold text-sm 3xl:text-[28px] 2xl:text-[24px] leading-tight mb-1 tracking-[0.02em]">
                   {job.title}
                 </p>
                 <p className="text-[#C1C1C1] text-xs md:text-md pt-2">{job.meta}</p>
               </div>
-              <button className="shrink-0 border border-white text-white text-lg px-5 py-1.5 hover:bg-white hover:text-[#0a0a0a] transition-colors duration-200 whitespace-nowrap">
+              <button className="shrink-0 border border-white text-white 3xl:text-lg 2xl:text-base px-5 py-1.5 hover:bg-white hover:text-[#0a0a0a] transition-colors duration-200 whitespace-nowrap">
                 Apply Now
               </button>
             </div>
