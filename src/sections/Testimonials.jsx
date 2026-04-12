@@ -145,7 +145,7 @@ function TestimonialCard({ item }) {
 // ── SERVICE CARD ──────────────────────────────────────────────────────
 function ServiceCard({ icon, title, desc }) {
   return (
-    <div className="flex flex-col justify-between p-8 3xl:p-14 min-h-[300px] xl:min-h-[320px] 3xl:min-h-[420px] bg-[#111616]">
+    <div className="flex flex-col justify-between p-8 3xl:p-14 min-h-[300px] xl:min-h-[320px] 3xl:min-h-[400px] bg-[#111616]">
       <div className="flex flex-col gap-12">
         <div className="w-16 h-16 flex items-center justify-center">{icon}</div>
         <h3 className="text-white font-medium pt-4 leading-[1.35] tracking-[0.03em] 3xl:text-[clamp(24px,3vw,38px)] text-[clamp(16px,1.4vw,20px)]">
@@ -280,12 +280,12 @@ export default function Testimonials() {
         {/* ✅ FIX: replaced LEFT_INDENT style with matching Tailwind px classes */}
         <div className="3xl:pt-64 pt-20 pb-14 px-3 md:px-10 3xl:px-[26rem] 2xl:px-60 xl:px-20 lg:px-14">
           <div className="relative">
-            <h2 className="font-medium leading-[1.2] text-white  3xl:max-w-[1260px] max-w-[760px] 3xl:text-[clamp(36px,4vw,94px)]  2xl:text-[clamp(36px,3.8vw,58px)]  xl:text-[clamp(36px,3.8vw,58px)]  lg:text-[clamp(36px,3.8vw,58px)]  md:text-[clamp(36px,3.8vw,58px)] tracking-[0.02em]">
+            <h2 className="font-medium leading-[1.2] text-white  3xl:max-w-[1260px] max-w-[760px] 3xl:text-[clamp(36px,4vw,84px)]  2xl:text-[clamp(36px,3.8vw,58px)]  xl:text-[clamp(36px,3.8vw,58px)]  lg:text-[clamp(36px,3.8vw,58px)]  md:text-[clamp(36px,3.8vw,58px)] tracking-[0.02em]">
               Built to Scale: Solutions
               <br />
               for Your Evolution
             </h2>
-            <p className="absolute bottom-0 top-80 right-0 text-md 3xl:text-2xl text-right leading-relaxed text-[#B2B2B2]">
+            <p className="absolute bottom-0 top-80 right-0 text-md 3xl:text-xl text-right leading-relaxed text-[#B2B2B2]">
               A Showcase
               <br />
               of Our Latest Completed Works
@@ -303,7 +303,7 @@ export default function Testimonials() {
         <div className="px-3 md:px-10 3xl:px-[26rem] 2xl:px-60 xl:px-20 lg:px-14">
           <div className="flex items-end justify-between pt-24 border-t border-white/[8%] py-12">
             <h2
-              className="font-medium leading-[1.2] text-white  3xl:max-w-[1260px] max-w-[760px] 3xl:text-[clamp(36px,4vw,94px)]  2xl:text-[clamp(36px,3.8vw,58px)]  xl:text-[clamp(36px,3.8vw,58px)]  lg:text-[clamp(36px,3.8vw,58px)]  md:text-[clamp(36px,3.8vw,58px)] tracking-[0.02em]"
+              className="font-medium leading-[1.2] text-white  3xl:max-w-[1260px] max-w-[760px] 3xl:text-[clamp(36px,4vw,84px)]  2xl:text-[clamp(36px,3.8vw,58px)]  xl:text-[clamp(36px,3.8vw,58px)]  lg:text-[clamp(36px,3.8vw,58px)]  md:text-[clamp(36px,3.8vw,58px)] tracking-[0.02em]"
              
             >
               Success Stories That
