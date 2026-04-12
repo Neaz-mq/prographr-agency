@@ -77,7 +77,7 @@ export default function ClientLogos() {
 
   return (
     <section className="bg-white lg:pb-20 3xl:pt-36 3xl:pb-36 2xl:pt-28 xl:pt-28 lg:pt-28 md:pb-14 md:pt-16 sm:pb-12 sm:pt-20 pb-12 pt-10">
-      <div className="md:px-10 3xl:px-[26rem] 2xl:px-40 xl:px-20 lg:px-14 mx-auto px-6">
+      <div className="md:px-10 3xl:px-[26rem] 2xl:px-[10rem] xl:px-20 lg:px-14 mx-auto px-6">
         <div
           className="relative overflow-hidden"
           style={{

@@ -141,7 +141,7 @@ export default function Footer() {
             <div className="border-t border-[#333] mb-6" />
             <a
               href="mailto:contact.prographr@gmail.com"
-              className="text-[#888] text-lg hover:text-white transition-colors break-all leading-relaxed"
+              className="text-[#888] text-lg hover:text-white transition-colors break-all leading-relaxed whitespace-nowrap"
             >
               contact.prographr@gmail.com
             </a>

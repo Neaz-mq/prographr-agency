@@ -145,16 +145,16 @@ function TestimonialCard({ item }) {
 // ── SERVICE CARD ──────────────────────────────────────────────────────
 function ServiceCard({ icon, title, desc }) {
   return (
-    <div className="flex flex-col justify-between p-8 3xl:p-14 min-h-[300px] xl:min-h-[320px] 3xl:min-h-[400px] bg-[#111616]">
+    <div className="flex flex-col justify-between p-8 3xl:p-14 min-h-[300px] xl:min-h-[320px] 3xl:min-h-[300px] bg-[#111616]">
       <div className="flex flex-col gap-12">
         <div className="w-16 h-16 flex items-center justify-center">{icon}</div>
-        <h3 className="text-white font-medium pt-4 leading-[1.35] tracking-[0.03em] 3xl:text-[clamp(24px,3vw,38px)] text-[clamp(16px,1.4vw,20px)]">
+        <h3 className="text-white font-medium pt-4 leading-[1.35] tracking-[0.03em] 3xl:text-[clamp(24px,3vw,28px)] text-[clamp(16px,1.4vw,20px)]">
           {title[0]}
           <br />
           {title[1]}
         </h3>
       </div>
-      <p className="text-[20px] leading-[1.7] text-[#B2B2B2] pt-36 pb-14 max-w-[300px] ">
+      <p className="text-[16px] leading-[1.7] text-[#B2B2B2] pt-36 pb-14 max-w-[300px] ">
         {desc}
       </p>
     </div>
@@ -292,7 +292,7 @@ export default function Testimonials() {
             </p>
           </div>
 
-          <div className="grid grid-cols-3 mt-64 gap-14">
+          <div className="grid grid-cols-3 mt-64 gap-10">
             {SERVICES.map(({ id, icon, title, desc }) => (
               <ServiceCard key={id} icon={icon} title={title} desc={desc} />
             ))}
@@ -310,7 +310,7 @@ export default function Testimonials() {
               <br />
               Inspire Us
             </h2>
-            <button className="text-white font-semibold uppercase transition-colors duration-200 hover:bg-white hover:text-black shrink-0 self-end mb-1 text-[16px] tracking-[2px] px-6 py-[14px] border border-white/30">
+            <button className="text-white font-semibold uppercase transition-colors duration-200 hover:bg-white hover:text-black shrink-0 self-end mb-1 text-[15px] tracking-[2px] px-6 py-[10px] border border-white/30">
               Client Stories
             </button>
           </div>
