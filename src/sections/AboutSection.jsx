@@ -205,11 +205,11 @@ export default function AboutSection() {
         {/* ── Heading ── */}
         {/* ✅ FIX: replaced LEFT_INDENT style with matching Tailwind px classes */}
         <div className="w-full shrink-0">
-          <div className="pt-8 pb-5 border-b border-[#efefef] px-3 md:px-10 3xl:px-60  2xl:px-60 xl:px-20 lg:px-14">
-            <span className="inline-block 3xl:py-3 3xl:px-6 2xl:py-3 2xl:px-6 3xl:text-[18px] 2xl:text-[13px] xl:text-[13px] lg:text-[13px] md:text-[12px] bg-[#F2F2F2] text-black uppercase font-semibold px-4 py-1.5 mb-4 tracking-[0.02em]">
+          <div className="pt-8 pb-5 border-b border-[#efefef] px-3 md:px-10 3xl:px-60  2xl:px-40 xl:px-20 lg:px-14">
+            <span className="inline-block 3xl:py-3 3xl:px-6 2xl:py-2 2xl:px-4 3xl:text-[18px] 2xl:text-[14px] xl:text-[13px] lg:text-[13px] md:text-[12px] bg-[#F2F2F2] text-black uppercase font-semibold px-4 py-1.5 mb-4 tracking-[0.02em]">
               About Us
             </span>
-            <h2 className="3xl:text-[clamp(82px,4vw,32px)] 2xl:text-[clamp(40px,2.2vw,32px)] xl:text-[clamp(36px,2.2vw,32px)] lg:text-[clamp(36px,2.2vw,32px)] md:text-[clamp(40px,2vw,44px)] font-semibold leading-[1.4] text-[#0a0a0a] 3xl:max-w-[1500px] 2xl:max-w-[800px] max-w-[700px] tracking-[0.02em]">
+            <h2 className="3xl:text-[clamp(82px,4vw,32px)] 2xl:text-[clamp(48px,4vw,30px)] xl:text-[clamp(36px,2.2vw,32px)] lg:text-[clamp(36px,2.2vw,32px)] md:text-[clamp(40px,2vw,44px)] font-semibold leading-[1.4] text-[#0a0a0a] 3xl:max-w-[1500px] 2xl:max-w-[1000px] max-w-[700px] tracking-[0.02em]">
               We Help Businesses Stand Out With Modern, Creative, and{" "}
               <span className="text-[#c0c0c0]">
                 Impactful <br /> Design Solutions
@@ -219,12 +219,12 @@ export default function AboutSection() {
         </div>
 
         {/* ── Body row ── */}
-        <div className="flex items-stretch w-full shrink-0 3xl:h-[800px] 2xl:h-[390px] xl:h-[390px] lg:h-[390px]">
+        <div className="flex items-stretch w-full shrink-0 3xl:h-[800px] 2xl:h-[800px] xl:h-[390px] lg:h-[390px]">
           {/* LEFT PANEL */}
           {/* ✅ FIX: replaced LEFT_INDENT style with matching Tailwind pl classes */}
-          <div className="shrink-0 flex flex-col pr-10 pt-2 pb-5 gap-4 overflow-hidden 3xl:w-[70vw] 2xl:w-[52vw] xl:w-[47vw] lg:w-[47vw] md:w-[60vw] pl-3 md:pl-10 3xl:pl-60 2xl:pl-60 xl:pl-20 lg:pl-14">
+          <div className="shrink-0 flex flex-col pr-10 pt-2 pb-5 gap-4 overflow-hidden 3xl:w-[70vw] 2xl:w-[63vw] xl:w-[47vw] lg:w-[47vw] md:w-[60vw] pl-3 md:pl-10 3xl:pl-60 2xl:pl-40 xl:pl-20 lg:pl-14">
             {/* Image */}
-            <div className="shrink-0 overflow-hidden 3xl:h-[540px] 2xl:h-[270px] xl:h-[250px] lg:h-[240px]">
+            <div className="shrink-0 overflow-hidden 3xl:h-[540px] 2xl:h-[370px] xl:h-[250px] lg:h-[240px]">
               <img
                 src="https://res.cloudinary.com/dzi3u164c/image/upload/v1774865116/Asset_1_qgly6y.webp"
                 alt="About Prographr"
@@ -256,7 +256,7 @@ export default function AboutSection() {
             >
               {/* Card 1 — B&W image */}
               <div className="shrink-0 self-start pr-8 pl-8 pt-2 3xl:w-[70vw] 2xl:w-[48vw] xl:w-[47vw] lg:w-[47vw] md:w-[60vw]">
-                <div className="relative 3xl:h-[630px] 2xl:h-[355px] xl:h-[328px] lg:h-[350px]">
+                <div className="relative 3xl:h-[630px] 2xl:h-[450px] xl:h-[328px] lg:h-[350px]">
                   <div className="w-full h-full overflow-hidden">
                     <img
                       src="https://res.cloudinary.com/dzi3u164c/image/upload/v1774967188/photo-1556761175-b413da4baf72_iqjccn.avif"
@@ -280,37 +280,37 @@ export default function AboutSection() {
               </div>
 
               {/* Card 2 — Stats */}
-              <div className="shrink-0 self-stretch flex flex-col justify-start px-10 pt-2 3xl:w-[70vw] 2xl:w-[48vw] xl:w-[47vw] lg:w-[47vw] md:w-[60vw]">
-                <h3 className="3xl:text-[72px] 2xl:text-[42px] xl:text-[40px] lg:text-[38px] font-bold text-[#0a0a0a] 2xl:leading-[1.4] xl:leading-[1.33] lg:leading-[1.4] mb-8 -mt-2">
+              <div className="shrink-0 self-stretch flex flex-col justify-start px-10 pt-2 3xl:w-[70vw] 2xl:w-[63vw] xl:w-[47vw] lg:w-[47vw] md:w-[60vw]">
+                <h3 className="3xl:text-[72px] 2xl:text-[62px] xl:text-[40px] lg:text-[38px] font-bold text-[#0a0a0a] 2xl:leading-[1.4] xl:leading-[1.33] lg:leading-[1.4] mb-8 -mt-2">
                   What makes
                   <br />
                   <span className="2xl:whitespace-nowrap">
                     our agency different
                   </span>
                 </h3>
-                <div className="flex items-start gap-4 3xl:pt-36 2xl:pt-14 xl:pt-12 lg:pt-20">
+                <div className="flex items-start gap-4 3xl:pt-36 2xl:pt-16 xl:pt-12 lg:pt-20">
                   <div className="flex-1">
-                    <div className="3xl:text-[65px] 2xl:text-[40px] xl:text-[35px] lg:text-[32px] font-semibold leading-none mb-2 tracking-[-1px] 2xl:pt-14 xl:pt-10 lg:pt-10 text-[#0a0a0a]">
+                    <div className="3xl:text-[65px] 2xl:text-[50px] xl:text-[35px] lg:text-[32px] font-semibold leading-none mb-2 tracking-[-1px] 2xl:pt-14 xl:pt-10 lg:pt-10 text-[#0a0a0a]">
                       30+
                     </div>
-                    <div className="3xl:text-[24px] 2xl:text-[12px] xl:text-[12px] lg:text-[9px] leading-[1.5] text-[#797878] font-normal">
+                    <div className="3xl:text-[24px] 2xl:text-[15px] xl:text-[12px] lg:text-[9px] leading-[1.5] text-[#797878] font-normal">
                       Company with Work Experiences
                     </div>
                   </div>
-                  <div className="flex-[2] bg-[#0a0a0a] 3xl:px-12 3xl:py-20 2xl:px-7 2xl:py-12 xl:px-4 xl:py-11 lg:px-2 lg:py-11 flex 3xl:gap-52 2xl:gap-20 xl:gap-14 lg:gap-6 items-center justify-center">
+                  <div className="flex-[2] bg-[#0a0a0a] 3xl:px-12 3xl:py-20 2xl:px-7 2xl:py-14 xl:px-4 xl:py-11 lg:px-2 lg:py-11 flex 3xl:gap-52 2xl:gap-40 xl:gap-14 lg:gap-6 items-center justify-center">
                     <div className="2xl:px-0 xl:px-0 lg:px-2">
-                      <div className="3xl:text-[60px] 2xl:text-[40px] xl:text-[36px] lg:text-[30px] font-semibold leading-none mb-2 tracking-[-1px] text-white">
+                      <div className="3xl:text-[60px] 2xl:text-[50px] xl:text-[36px] lg:text-[30px] font-semibold leading-none mb-2 tracking-[-1px] text-white">
                         1K+
                       </div>
-                      <div className="3xl:text-[20px] 2xl:text-[12px] xl:text-[10px] lg:text-[10px] leading-[1.5] text-white whitespace-nowrap">
+                      <div className="3xl:text-[20px] 2xl:text-[14px] xl:text-[10px] lg:text-[10px] leading-[1.5] text-white whitespace-nowrap">
                         Job Completed
                       </div>
                     </div>
                     <div className="2xl:px-0 xl:px-0 lg:px-0">
-                      <div className="3xl:text-[60px] 2xl:text-[40px] xl:text-[36px] lg:text-[30px] font-semibold leading-none mb-2 tracking-[-1px] text-white">
+                      <div className="3xl:text-[60px] 2xl:text-[50px] xl:text-[36px] lg:text-[30px] font-semibold leading-none mb-2 tracking-[-1px] text-white">
                         100%
                       </div>
-                      <div className="3xl:text-[20px] 2xl:text-[12px] xl:text-[10px] lg:text-[10px] leading-[1.5] text-white whitespace-nowrap">
+                      <div className="3xl:text-[20px] 2xl:text-[14px] xl:text-[10px] lg:text-[10px] leading-[1.5] text-white whitespace-nowrap">
                         Satisfied Client
                       </div>
                     </div>
@@ -319,8 +319,8 @@ export default function AboutSection() {
               </div>
 
               {/* Card 3 — Dark CTA */}
-              <div className="shrink-0 mx-6 3xl:w-[70vw] 2xl:w-[48vw] xl:w-[47vw] lg:w-[47vw] md:w-[60vw]">
-                <div className="relative 3xl:h-[635px] 2xl:h-[368px] xl:h-[332px] lg:h-[358px] overflow-hidden">
+              <div className="shrink-0 mx-6 3xl:w-[70vw] 2xl:w-[63vw] xl:w-[47vw] lg:w-[47vw] md:w-[60vw]">
+                <div className="relative 3xl:h-[635px] 2xl:h-[460px] xl:h-[332px] lg:h-[358px] overflow-hidden">
                   <img
                     src="https://res.cloudinary.com/dzi3u164c/image/upload/v1774931324/Asset_3_raki8b.webp"
                     alt="CTA"
