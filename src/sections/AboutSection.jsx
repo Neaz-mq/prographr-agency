@@ -218,7 +218,7 @@ export default function AboutSection() {
         </div>
 
         {/* ── ALL cards scroll together ── */}
-        <div className="w-full overflow-hidden relative 3xl:h-[800px] 2xl:h-[800px] xl:h-[390px] lg:h-[390px]">
+        <div className="w-full overflow-hidden relative 3xl:h-[800px] 2xl:h-[600px] xl:h-[390px] lg:h-[390px]">
           <div
             ref={cardsWrapRef}
             className="flex items-stretch h-full will-change-transform"
