@@ -31,9 +31,9 @@ export default function FAQ() {
   return (
     <section id="faq" className="bg-[#0a0a0a] ">
       {/* ── Careers ── */}
-      <div className="md:px-10 3xl:px-[26rem] 2xl:px-60 xl:px-20 lg:px-14 mx-auto px-6 pt-64 pb-16 border-b border-[#1f1f1f]">
+      <div className="md:px-10 3xl:px-[26rem] 2xl:px-[10rem] xl:px-20 lg:px-14 mx-auto px-6 pt-64 pb-16 border-b border-[#1f1f1f]">
         <h2
-          className="font-medium leading-[1.2] text-white  3xl:max-w-[1260px] max-w-[760px] 3xl:text-[clamp(52px,10vw,90px)]  2xl:text-[clamp(36px,3.8vw,58px)]  xl:text-[clamp(36px,3.8vw,58px)]  lg:text-[clamp(36px,3.8vw,58px)]  md:text-[clamp(36px,3.8vw,58px)] tracking-[0.02em"
+          className="font-medium leading-[1.2] text-white  3xl:max-w-[1260px] 2xl:max-w-[1100px] max-w-[760px] 3xl:text-[clamp(52px,10vw,90px)]  2xl:text-[clamp(52px,10vw,80px)]  xl:text-[clamp(36px,3.8vw,58px)]  lg:text-[clamp(36px,3.8vw,58px)]  md:text-[clamp(36px,3.8vw,58px)] tracking-[0.02em"
           style={{ fontFamily: "'Inter', sans-serif" }}
         >
           Become a member of a<br />
@@ -61,9 +61,9 @@ export default function FAQ() {
       </div>
 
       {/* ── FAQ ── */}
-      <div className="md:px-10 3xl:px-[26rem] 2xl:px-60 xl:px-20 lg:px-14 mx-auto px-6  pt-16 pb-24">
+      <div className="md:px-10 3xl:px-[26rem] 2xl:px-[10rem] xl:px-20 lg:px-14 mx-auto px-6  pt-16 pb-24">
         <h2
-          className="font-medium leading-[1.2] text-white  3xl:max-w-[1360px] max-w-[760px] 3xl:text-[clamp(52px,10vw,90px)]  2xl:text-[clamp(36px,3.8vw,58px)]  xl:text-[clamp(36px,3.8vw,58px)]  lg:text-[clamp(36px,3.8vw,58px)]  md:text-[clamp(36px,3.8vw,58px)] tracking-[0.02em"
+          className="font-medium leading-[1.2] text-white  3xl:max-w-[1360px] 2xl:max-w-[1100px] max-w-[760px] 3xl:text-[clamp(52px,10vw,90px)]  2xl:text-[clamp(36px,3.8vw,58px)]  xl:text-[clamp(36px,3.8vw,58px)]  lg:text-[clamp(36px,3.8vw,58px)]  md:text-[clamp(36px,3.8vw,58px)] tracking-[0.02em"
           style={{
             fontFamily: "'Inter', sans-serif",
           }}

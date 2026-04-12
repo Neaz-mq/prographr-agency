@@ -127,11 +127,11 @@ export default function TechnologySection() {
   return (
     <section ref={containerRef} className="w-full bg-white relative pb-32">
       {/* HEADING SECTION */}
-      <div className="md:px-10 3xl:px-[26rem] 2xl:px-60 xl:px-20 lg:px-14 mx-auto px-6 pt-8 lg:pt-4 pb-10 lg:pb-14 overflow-hidden relative z-10 bg-white">
+      <div className="md:px-10 3xl:px-[26rem] 2xl:px-[10rem] xl:px-20 lg:px-14 mx-auto px-6 pt-8 lg:pt-4 pb-10 lg:pb-14 overflow-hidden relative z-10 bg-white">
         <div className="overflow-hidden">
           <h2
             ref={headingRef}
-            className="3xl:text-[clamp(52px,10vw,100px)] 2xl:text-[clamp(52px,3.8vw,58px)] xl:text-[clamp(45px,3.8vw,58px)] lg:text-[clamp(40px,3.8vw,58px)] md:text-[clamp(36px,3.8vw,58px)] font-semibold leading-[1.1] text-[#0a0a0a] tracking-[0.02em]"
+            className="3xl:text-[clamp(52px,10vw,100px)] 2xl:text-[clamp(52px,10vw,80px)] xl:text-[clamp(45px,3.8vw,58px)] lg:text-[clamp(40px,3.8vw,58px)] md:text-[clamp(36px,3.8vw,58px)] font-semibold leading-[1.1] text-[#0a0a0a] tracking-[0.02em]"
           >
             Technology
             <br />
@@ -142,7 +142,7 @@ export default function TechnologySection() {
 
       {/* DESKTOP STACK */}
       <div className="hidden lg:block w-full">
-        <div className="md:px-10 3xl:px-[26rem] 2xl:px-60 xl:px-20 lg:px-14 mx-auto px-10">
+        <div className="md:px-10 3xl:px-[26rem] 2xl:px-[10rem] xl:px-20 lg:px-14 mx-auto px-10">
           {SERVICES.map((service, i) => (
             <div
               key={service.id}

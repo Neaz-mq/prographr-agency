@@ -278,7 +278,7 @@ export default function Testimonials() {
     <section className="w-full bg-white overflow-hidden">
       <div className="bg-[#0a0a0a] pb-[310px]">
         {/* ✅ FIX: replaced LEFT_INDENT style with matching Tailwind px classes */}
-        <div className="3xl:pt-64 pt-20 pb-14 px-3 md:px-10 3xl:px-[26rem] 2xl:px-60 xl:px-20 lg:px-14">
+        <div className="3xl:pt-64 pt-20 pb-14 px-3 md:px-10 3xl:px-[26rem] 2xl:px-[10rem] xl:px-20 lg:px-14">
           <div className="relative">
             <h2 className="font-medium leading-[1.2] text-white  3xl:max-w-[1260px] max-w-[760px] 3xl:text-[clamp(36px,4vw,84px)]  2xl:text-[clamp(36px,3.8vw,58px)]  xl:text-[clamp(36px,3.8vw,58px)]  lg:text-[clamp(36px,3.8vw,58px)]  md:text-[clamp(36px,3.8vw,58px)] tracking-[0.02em]">
               Built to Scale: Solutions
@@ -300,7 +300,7 @@ export default function Testimonials() {
         </div>
 
         {/* ✅ FIX: replaced LEFT_INDENT style with matching Tailwind px classes */}
-        <div className="px-3 md:px-10 3xl:px-[26rem] 2xl:px-60 xl:px-20 lg:px-14">
+        <div className="px-3 md:px-10 3xl:px-[26rem] 2xl:px-[10rem] xl:px-20 lg:px-14">
           <div className="flex items-end justify-between pt-24 border-t border-white/[8%] py-12">
             <h2
               className="font-medium leading-[1.2] text-white  3xl:max-w-[1260px] max-w-[760px] 3xl:text-[clamp(36px,4vw,84px)]  2xl:text-[clamp(36px,3.8vw,58px)]  xl:text-[clamp(36px,3.8vw,58px)]  lg:text-[clamp(36px,3.8vw,58px)]  md:text-[clamp(36px,3.8vw,58px)] tracking-[0.02em]"

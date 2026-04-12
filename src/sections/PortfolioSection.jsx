@@ -155,7 +155,7 @@ export default function PortfolioSection() {
   // ── DESKTOP ──────────────────────────────────────────────────────────
   return (
     <section id="portfolio" className="bg-white w-full overflow-hidden mb-52 3xl:mt-20 2xl:mt-0 xl:mt-2 lg:mt-10">
-      <div className="border-b border-[#efefef] pb-12 px-3 md:px-10 3xl:px-[26rem] 2xl:px-40 xl:px-20 lg:px-14">
+      <div className="border-b border-[#efefef] pb-12 px-3 md:px-10 3xl:px-[26rem] 2xl:px-[10rem] xl:px-20 lg:px-14">
         <h2 className="3xl:text-[clamp(52px,10vw,90px)] 2xl:text-[clamp(52px,10vw,80px)] xl:text-[clamp(45px,3.8vw,58px)] lg:text-[clamp(40px,3.8vw,58px)] md:text-[clamp(36px,3.8vw,58px)] font-semibold leading-[1.1] text-[#0a0a0a] tracking-[0.02em]">
           Our Previous
           <br />
