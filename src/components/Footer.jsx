@@ -1,7 +1,7 @@
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Linkedin } from "lucide-react";
 import { FaBehance } from "react-icons/fa";
-import { SiEnvato } from "react-icons/si"; // Renamed from SiGraphicriver
+import { SiEnvato } from "react-icons/si";
 
 const SOCIAL_LINKS = [
   {
@@ -12,7 +12,7 @@ const SOCIAL_LINKS = [
   {
     href: "https://graphicriver.net/user/prographr/portfolio",
     label: "GraphicRiver",
-    Icon: SiEnvato, // Using the updated Envato/GraphicRiver icon
+    Icon: SiEnvato,
   },
   {
     href: "https://www.behance.net/prographr/",
@@ -67,25 +67,149 @@ export default function Footer() {
 
   return (
     <footer className="bg-[#0a0a0a]">
-      <div className="md:px-10 3xl:px-[26rem] 2xl:px-[10rem] xl:px-[5rem] lg:px-[4rem] mx-auto px-6 pt-12 md:pt-16 pb-0">
-        
+      <div className="mx-auto px-6 md:px-8 lg:px-[4rem] xl:px-[5rem] 2xl:px-[10rem] 3xl:px-[26rem] pt-12 md:pt-14 pb-0">
+
         {/* Logo */}
-        <div className="flex items-center justify-center md:justify-start gap-2.5 mb-10 md:mb-12">
-          <img src="/logo.webp" alt="Prographr" className="3xl:h-9 3xl:w-9 2xl:h-7 2xl:w-7 xl:h-7 xl:w-7 lg:h-7 lg:w-7 object-contain" />
+        <div className="flex items-center justify-center md:justify-start gap-2 mb-10 md:mb-10">
+          <img
+            src="/logo.webp"
+            alt="Prographr"
+            className="h-7 w-7 md:h-6 md:w-6 lg:h-7 lg:w-7 xl:h-7 xl:w-7 2xl:h-7 2xl:w-7 3xl:h-9 3xl:w-9 object-contain"
+          />
           <span
-            className="text-white 3xl:text-3xl 2xl:text-xl xl:text-lg lg:text-lg tracking-wide"
+            className="text-white text-base md:text-sm lg:text-lg xl:text-lg 2xl:text-xl 3xl:text-3xl tracking-wide"
             style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400 }}
           >
             Prographr
           </span>
         </div>
 
-        {/* ── Desktop & Mobile links sections omitted for brevity ── */}
-        {/* (The layout logic remains identical to your previous working version) */}
+        {/* ── Mobile links (below md) ── */}
+        <div className="md:hidden grid grid-cols-2 gap-8 mb-10">
+          <div>
+            <h4 className="text-white font-medium text-sm mb-3">Service</h4>
+            <div className="border-t border-[#333] mb-4" />
+            <ul className="space-y-3">
+              {serviceLinks.map((s) => (
+                <li key={s}>
+                  <button
+                    onClick={() => scrollToSection("services")}
+                    className="text-[#888] text-xs hover:text-white transition-colors text-left bg-transparent border-none outline-none cursor-pointer"
+                  >
+                    {s}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="space-y-8">
+            <div>
+              <h4 className="text-white font-medium text-sm mb-3">Information</h4>
+              <div className="border-t border-[#333] mb-4" />
+              <ul className="space-y-3">
+                {infoLinks.map(({ label, sectionId }) => (
+                  <li key={label}>
+                    <button
+                      onClick={() => scrollToSection(sectionId)}
+                      className="text-[#888] text-xs hover:text-white transition-colors text-left bg-transparent border-none outline-none cursor-pointer"
+                    >
+                      {label}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-white font-medium text-sm mb-3">Quick Links</h4>
+              <div className="border-t border-[#333] mb-4" />
+              <ul className="space-y-3">
+                {quickLinks.map(({ label, sectionId }) => (
+                  <li key={label}>
+                    <button
+                      onClick={() => scrollToSection(sectionId)}
+                      className="text-[#888] text-xs hover:text-white transition-colors text-left bg-transparent border-none outline-none cursor-pointer"
+                    >
+                      {label}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
 
-        {/* ── Desktop links ── */}
-        <div className="hidden md:grid md:grid-cols-4 md:gap-0 md:divide-x md:divide-[#333]">
-          <div className="md:pr-8">
+        {/* ── Desktop links (md and above) ── */}
+        <div className="hidden md:block lg:hidden">
+          <div className="grid grid-cols-2 gap-0 divide-x divide-[#333]">
+            <div className="pr-8">
+              <h4 className="text-white font-medium text-[13px] mb-3">Service</h4>
+              <div className="border-t border-[#333] mb-5" />
+              <ul className="space-y-3">
+                {serviceLinks.map((s) => (
+                  <li key={s}>
+                    <button
+                      onClick={() => scrollToSection("services")}
+                      className="text-[#888] text-[12px] hover:text-white transition-colors leading-snug text-left bg-transparent border-none outline-none cursor-pointer"
+                    >
+                      {s}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="pl-8 grid grid-cols-3 gap-6">
+              <div>
+                <h4 className="text-white font-medium text-[13px] mb-3">Information</h4>
+                <div className="border-t border-[#333] mb-5" />
+                <ul className="space-y-3">
+                  {infoLinks.map(({ label, sectionId }) => (
+                    <li key={label}>
+                      <button
+                        onClick={() => scrollToSection(sectionId)}
+                        className="text-[#888] text-[12px] hover:text-white transition-colors text-left bg-transparent border-none outline-none cursor-pointer"
+                      >
+                        {label}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-white font-medium text-[13px] mb-3">Quick Links</h4>
+                <div className="border-t border-[#333] mb-5" />
+                <ul className="space-y-3">
+                  {quickLinks.map(({ label, sectionId }) => (
+                    <li key={label}>
+                      <button
+                        onClick={() => scrollToSection(sectionId)}
+                        className="text-[#888] text-[12px] hover:text-white transition-colors text-left bg-transparent border-none outline-none cursor-pointer"
+                      >
+                        {label}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-white font-medium text-[13px] mb-3">Contact Us</h4>
+                <div className="border-t border-[#333] mb-5" />
+                <a
+                  href="mailto:contact.prographr@gmail.com"
+                  className="text-[#888] text-[11px] hover:text-white transition-colors leading-relaxed break-all"
+                >
+                  contact.prographr@gmail.com
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* lg and above: classic 4-col layout */}
+        <div className="hidden lg:grid lg:grid-cols-4 lg:gap-0 lg:divide-x lg:divide-[#333]">
+          <div className="lg:pr-8">
             <h4 className="text-white font-medium 3xl:text-xl 2xl:text-lg xl:text-lg lg:text-base mb-3">Service</h4>
             <div className="border-t border-[#333] mb-6" />
             <ul className="space-y-3">
@@ -102,7 +226,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div className="md:px-8">
+          <div className="lg:px-8">
             <h4 className="text-white font-medium 3xl:text-xl 2xl:text-lg xl:text-lg lg:text-base mb-3">Information</h4>
             <div className="border-t border-[#333] mb-6" />
             <ul className="space-y-3">
@@ -110,7 +234,7 @@ export default function Footer() {
                 <li key={label}>
                   <button
                     onClick={() => scrollToSection(sectionId)}
-                    className="text-[#888]  3xl:text-lg 2xl:text-sm xl:text-sm lg:text-sm hover:text-white transition-colors text-left bg-transparent border-none outline-none cursor-pointer"
+                    className="text-[#888] 3xl:text-lg 2xl:text-sm xl:text-sm lg:text-sm hover:text-white transition-colors text-left bg-transparent border-none outline-none cursor-pointer"
                   >
                     {label}
                   </button>
@@ -119,7 +243,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div className="md:px-8">
+          <div className="lg:px-8">
             <h4 className="text-white font-medium 3xl:text-xl 2xl:text-lg xl:text-lg lg:text-base mb-3">Quick Links</h4>
             <div className="border-t border-[#333] mb-6" />
             <ul className="space-y-3">
@@ -127,7 +251,7 @@ export default function Footer() {
                 <li key={label}>
                   <button
                     onClick={() => scrollToSection(sectionId)}
-                    className="text-[#888]  3xl:text-lg 2xl:text-sm xl:text-sm lg:text-sm hover:text-white transition-colors text-left bg-transparent border-none outline-none cursor-pointer"
+                    className="text-[#888] 3xl:text-lg 2xl:text-sm xl:text-sm lg:text-sm hover:text-white transition-colors text-left bg-transparent border-none outline-none cursor-pointer"
                   >
                     {label}
                   </button>
@@ -136,12 +260,12 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div className="md:pl-8">
-            <h4 className="text-white font-medium 3xl:text-xl 2xl:text-lg xl:text-lg mb-3 lg:text-base">Contact Us</h4>
+          <div className="lg:pl-8">
+            <h4 className="text-white font-medium 3xl:text-xl 2xl:text-lg xl:text-lg lg:text-base mb-3">Contact Us</h4>
             <div className="border-t border-[#333] mb-6" />
             <a
               href="mailto:contact.prographr@gmail.com"
-              className="text-[#888]  3xl:text-lg 2xl:text-sm xl:text-sm lg:text-sm hover:text-white transition-colors break-all leading-relaxed whitespace-nowrap"
+              className="text-[#888] 3xl:text-lg 2xl:text-sm xl:text-sm lg:text-sm hover:text-white transition-colors break-all leading-relaxed"
             >
               contact.prographr@gmail.com
             </a>
@@ -149,8 +273,8 @@ export default function Footer() {
         </div>
 
         {/* ── Bottom bar ── */}
-        <div className="border-t border-[#222] mt-10 md:mt-14 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          
+        <div className="border-t border-[#222] mt-10 md:mt-12 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+
           {/* Social icons */}
           <div className="flex items-center gap-3">
             {SOCIAL_LINKS.map(({ href, label, Icon }) => (
@@ -168,19 +292,19 @@ export default function Footer() {
           </div>
 
           {/* Copyright */}
-          <p className="text-[#555] text-sm text-center">
+          <p className="text-[#555] text-xs md:text-[11px] lg:text-sm text-center">
             © {new Date().getFullYear()} All rights reserved Prographr.
           </p>
 
           {/* Legal links */}
-          <div className="flex items-center gap-5">
-            <Link to="#" className="text-[#555] text-sm hover:text-white transition-colors">
+          <div className="flex items-center gap-4 md:gap-3 lg:gap-5">
+            <Link to="#" className="text-[#555] text-xs md:text-[11px] lg:text-sm hover:text-white transition-colors">
               Terms
             </Link>
-            <Link to="#" className="text-[#555] text-sm hover:text-white transition-colors underline underline-offset-2">
+            <Link to="#" className="text-[#555] text-xs md:text-[11px] lg:text-sm hover:text-white transition-colors underline underline-offset-2">
               Privacy
             </Link>
-            <Link to="#" className="text-[#555] text-sm hover:text-white transition-colors">
+            <Link to="#" className="text-[#555] text-xs md:text-[11px] lg:text-sm hover:text-white transition-colors">
               Cookies
             </Link>
           </div>
