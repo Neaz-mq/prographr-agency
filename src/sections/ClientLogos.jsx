@@ -19,7 +19,7 @@ const LogoTrack = () => (
         <img
           src={logo.src}
           alt={logo.alt}
-          className="lg:h-8 md:h-7 h-6 3xl:h-8 2xl:h-6 w-auto object-contain opacity-60 hover:opacity-90 transition-opacity duration-200 grayscale"
+          className="lg:h-8 md:h-7 h-6 3xl:h-8 2xl:h-6 xl:h-6 w-auto object-contain opacity-60 hover:opacity-90 transition-opacity duration-200 grayscale"
         />
       </div>
     ))}
