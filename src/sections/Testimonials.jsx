@@ -128,13 +128,13 @@ function TestimonialCard({ item }) {
       />
       <PlayBtn />
       <div className="absolute bottom-0 left-0 right-0 px-10 pb-5">
-        <p className="text-white font-semibold 3xl:text-[30px] 2xl:text-[30px] xl:text-[30px] lg:text-[22px] md:text-[17px] leading-tight tracking-[-0.3px]">
+        <p className="text-white font-semibold 3xl:text-[30px] 2xl:text-[30px] xl:text-[30px] lg:text-[22px] md:text-[17px] text-[16px] leading-tight tracking-[-0.3px]">
           {item.name}
         </p>
         <p className="3xl:text-[18px] 2xl:text-[18px] xl:text-[18px] lg:text-[13px] md:text-[11px] font-medium mt-[3px] mb-3 text-white/[65%]">
           {item.role}
         </p>
-        <p className="3xl:text-[15px] 2xl:text-[15px] xl:text-[15px] lg:text-[12px] md:text-[11px] leading-[1.65] line-clamp-3 text-white/50 pb-6">
+        <p className="3xl:text-[15px] 2xl:text-[15px] xl:text-[15px] lg:text-[12px] md:text-[11px] text-[9px] leading-[1.65] line-clamp-3 text-white/50 pb-6">
           {item.review}
         </p>
       </div>
@@ -221,13 +221,13 @@ export default function Testimonials() {
                 >
                   <div className="flex flex-col gap-4">
                     <div>{icon}</div>
-                    <h3 className="text-white font-bold text-[17px]">
+                    <h3 className="text-white font-bold text-[14px]">
                       {title[0]}
                       <br />
                       {title[1]}
                     </h3>
                   </div>
-                  <p className="text-[12px] leading-relaxed text-white/[32%]">
+                  <p className="text-[10px] leading-relaxed text-white/[32%]">
                     {desc}
                   </p>
                 </div>
@@ -245,7 +245,7 @@ export default function Testimonials() {
                 <br />
                 That Inspire Us
               </h2>
-              <button className="shrink-0 text-white font-semibold uppercase transition-colors duration-200 hover:bg-white hover:text-black text-[9px] tracking-[1.8px] px-3 py-[7px] border border-white/30 self-end mb-1">
+              <button className="shrink-0 text-white font-semibold uppercase transition-colors duration-200 hover:bg-white hover:text-black text-[8px] tracking-[1.8px] px-3 py-[7px] border border-white/30 self-end mb-1">
                 Client Stories
               </button>
             </div>
@@ -310,7 +310,7 @@ export default function Testimonials() {
               <br />
               Inspire Us
             </h2>
-            <button className="text-white font-semibold uppercase transition-colors duration-200 hover:bg-white hover:text-black shrink-0 self-end mb-1 3xl:text-[15px] 2xl:text-[13px] xl:text-[11px] lg:text-[11px] tracking-[2px] px-6 py-[10px] border border-white/30">
+            <button className="text-white font-semibold uppercase transition-colors duration-200 hover:bg-white hover:text-black shrink-0 self-end mb-1 3xl:text-[15px] 2xl:text-[13px] xl:text-[11px] lg:text-[11px] tracking-[2px] text-[9px] px-6 py-[10px] border border-white/30">
               Client Stories
             </button>
           </div>

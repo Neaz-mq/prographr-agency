@@ -65,7 +65,7 @@ function CardInner({ service }) {
       <div className="absolute inset-0 flex flex-col px-10 py-8 lg:px-12 lg:py-32">
         {/* ✅ mt-auto on this wrapper pushes the whole group to the bottom */}
         <div className="mt-auto flex flex-col gap-5">
-          <p className="text-white leading-relaxed 3xl:text-[clamp(20px,4vw,22px)] text-[clamp(11px,1.05vw,14px)] opacity-85">
+          <p className="text-white leading-relaxed 3xl:text-[clamp(20px,4vw,22px)] text-[clamp(13px,1.05vw,14px)] opacity-85">
             {service.description}
           </p>
           <div
@@ -131,7 +131,7 @@ export default function TechnologySection() {
         <div className="overflow-hidden">
           <h2
             ref={headingRef}
-            className="3xl:text-[clamp(52px,10vw,100px)] 2xl:text-[clamp(52px,10vw,80px)] xl:text-[clamp(45px,3.8vw,58px)] lg:text-[clamp(40px,3.8vw,58px)] md:text-[clamp(36px,3.8vw,58px)] font-semibold leading-[1.1] text-[#0a0a0a] tracking-[0.02em]"
+            className="3xl:text-[clamp(52px,10vw,100px)] 2xl:text-[clamp(52px,10vw,80px)] xl:text-[clamp(45px,3.8vw,58px)] lg:text-[clamp(40px,3.8vw,58px)] md:text-[clamp(36px,3.8vw,58px)] text-[clamp(36px,3.8vw,58px)]  font-semibold leading-[1.1] text-[#0a0a0a] tracking-[0.02em]"
           >
             Technology
             <br />
@@ -170,7 +170,7 @@ export default function TechnologySection() {
       style={{ borderRadius: "0px" }}
     >
       {/* Change height here ↓ */}
-      <div className="h-[600px] md:h-[420px] relative w-full overflow-hidden">
+      <div className="h-[380px] md:h-[420px] relative w-full overflow-hidden">
         <CardInner service={service} />
       </div>
     </div>
