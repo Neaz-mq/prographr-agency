@@ -42,7 +42,7 @@ function useDesktopSizes() {
     if (w >= 1920) return { imgHeight: "clamp(600px, 42vw, 650px)", slideWidth: "clamp(700px, 40vw, 1000px)" };
     if (w >= 1536) return { imgHeight: "clamp(300px, 37vw, 360px)", slideWidth: "clamp(450px, 38vw, 1000px)" };
     if (w >= 1280) return { imgHeight: "clamp(200px, 36vw, 320px)", slideWidth: "clamp(400px, 36vw, 800px)" };
-    return { imgHeight: "clamp(200px, 36vw, 300px)", slideWidth: "clamp(340px, 38vw, 760px)" };
+    return { imgHeight: "clamp(200px, 36vw, 300px)", slideWidth: "clamp(280px, 38vw, 660px)" };
   };
 
   const [sizes, setSizes] = useState(getSizes);
@@ -154,8 +154,8 @@ export default function PortfolioSection() {
 
   // ── DESKTOP ──────────────────────────────────────────────────────────
   return (
-    <section id="portfolio" className="bg-white w-full overflow-hidden 3xl:mb-52 2xl:mb-52 xl:mb-36 3xl:mt-20 2xl:mt-0 xl:mt-20 lg:mt-10">
-      <div className="border-b border-[#efefef] pb-12 px-3 md:px-10 3xl:px-[26rem] 2xl:px-[10rem] xl:px-[5rem] lg:px-14">
+    <section id="portfolio" className="bg-white w-full overflow-hidden 3xl:mb-52 2xl:mb-52 xl:mb-36 lg:mb-32 3xl:mt-20 2xl:mt-0 xl:mt-20 lg:mt-20">
+      <div className="border-b border-[#efefef] pb-12 px-3 md:px-10 3xl:px-[26rem] 2xl:px-[10rem] xl:px-[5rem] lg:px-[4rem]">
         <h2 className="3xl:text-[clamp(52px,10vw,90px)] 2xl:text-[clamp(52px,10vw,80px)] xl:text-[clamp(45px,3.8vw,58px)] lg:text-[clamp(40px,3.8vw,58px)] md:text-[clamp(36px,3.8vw,58px)] font-semibold leading-[1.1] text-[#0a0a0a] tracking-[0.02em]">
           Our Previous
           <br />
