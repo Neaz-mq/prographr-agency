@@ -204,11 +204,11 @@ export default function AboutSection() {
       >
         {/* ── Heading (stays pinned, does NOT scroll) ── */}
         <div className="w-full shrink-0">
-          <div className="pt-8 pb-5  px-3 md:px-10 3xl:px-[26rem] 2xl:px-[10rem] xl:px-[5rem] lg:px-14">
-            <span className="inline-block 3xl:py-3 3xl:px-6 2xl:py-2 2xl:px-4 3xl:text-[16px] 2xl:text-[14px] xl:text-[11px] lg:text-[13px] md:text-[12px] bg-[#F2F2F2] text-black uppercase font-semibold px-3 py-1 mb-4 tracking-[0.02em]">
+          <div className="pt-8 pb-5  px-3 md:px-10 3xl:px-[26rem] 2xl:px-[10rem] xl:px-[5rem] lg:px-[4rem]">
+            <span className="inline-block 3xl:py-3 3xl:px-6 2xl:py-2 2xl:px-4 3xl:text-[16px] 2xl:text-[14px] xl:text-[11px] lg:text-[12px] md:text-[12px] bg-[#F2F2F2] text-black uppercase font-semibold px-3 py-1 mb-4 tracking-[0.02em]">
               About Us
             </span>
-            <h2 className="3xl:text-[clamp(48px,4vw,30px)] 2xl:text-[clamp(48px,4vw,30px)] xl:text-[clamp(26px,2.2vw,32px)] lg:text-[clamp(36px,2.2vw,32px)] md:text-[clamp(40px,2vw,44px)] font-semibold leading-[1.4] text-[#0a0a0a] 3xl:max-w-[1300px] 2xl:max-w-[1000px] max-w-[700px] tracking-[0.02em]">
+            <h2 className="3xl:text-[clamp(48px,4vw,30px)] 2xl:text-[clamp(48px,4vw,30px)] xl:text-[clamp(26px,2.2vw,32px)] lg:text-[clamp(32px,2.2vw,30px)] md:text-[clamp(40px,2vw,44px)] font-semibold leading-[1.4] text-[#0a0a0a] 3xl:max-w-[1300px] 2xl:max-w-[1000px] max-w-[700px] tracking-[0.02em]">
               We Help Businesses Stand Out With Modern, Creative, and{" "}
               <span className="text-[#c0c0c0]">
                 Impactful <br /> Design Solutions
@@ -218,7 +218,7 @@ export default function AboutSection() {
         </div>
 
         {/* ── ALL cards scroll together ── */}
-        <div className="w-full overflow-hidden relative 3xl:h-[800px] 2xl:h-[600px] xl:h-[320px] lg:h-[390px]">
+        <div className="w-full overflow-hidden relative 3xl:h-[800px] 2xl:h-[600px] xl:h-[320px] lg:h-[360px]">
           <div
             ref={cardsWrapRef}
             className="flex items-stretch h-full will-change-transform"
@@ -227,8 +227,8 @@ export default function AboutSection() {
             {/* ── Card 0 — indent wrapper + same-width card as Card 1 ── */}
             {/* KEY FIX: left indent is on the OUTER wrapper (adds to total width)  */}
             {/* the INNER card div is identical in width/padding to Card 1         */}
-            <div className="shrink-0 flex items-start pl-3 md:pl-10 3xl:pl-[26rem] 2xl:pl-40 xl:pl-20 lg:pl-14 pt-2 pb-5">
-              <div className="3xl:w-[35vw] 2xl:w-[48vw] xl:w-[45vw] lg:w-[47vw] md:w-[60vw] pr-8">
+            <div className="shrink-0 flex items-start pl-3 md:pl-10 3xl:pl-[26rem] 2xl:pl-40 xl:pl-20 lg:pl-16 pt-2 pb-5">
+              <div className="3xl:w-[35vw] 2xl:w-[48vw] xl:w-[45vw] lg:w-[48vw] md:w-[60vw] pr-8">
                 <div className="overflow-hidden relative 3xl:h-[630px] 2xl:h-[450px] xl:h-[300px] lg:h-[350px]">
                   <img
                     src="https://res.cloudinary.com/dzi3u164c/image/upload/v1774865116/Asset_1_qgly6y.webp"
@@ -239,7 +239,7 @@ export default function AboutSection() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
                   {/* Text overlay */}
                   <div className="absolute bottom-0 left-0 right-0 px-5 pb-5 pt-3 flex flex-col gap-1.5 z-10 bg-black/50 backdrop-blur-[2px]">
-                    <p className="3xl:text-[15px] 2xl:text-[11px] xl:text-[9.5px] lg:text-[9px] leading-[1.6] text-white/90">
+                    <p className="3xl:text-[15px] 2xl:text-[11px] xl:text-[9.5px] lg:text-[9.5px] leading-[1.6] text-white/90">
                       In today's fast-moving digital world, strong and meaningful
                       design plays a vital role in building a successful brand.
                       Our design agency was created with one clear goal to help
@@ -255,7 +255,7 @@ export default function AboutSection() {
             </div>
 
             {/* ── Card 1 — B&W image ── */}
-            <div className="shrink-0 self-start pr-8 pl-8 pt-2 3xl:w-[35vw] 2xl:w-[48vw] xl:w-[45vw] lg:w-[47vw] md:w-[60vw]">
+            <div className="shrink-0 self-start pr-8 pl-8 pt-2 3xl:w-[35vw] 2xl:w-[48vw] xl:w-[45vw] lg:w-[48vw] md:w-[60vw]">
               <div className="relative 3xl:h-[630px] 2xl:h-[450px] xl:h-[300px] lg:h-[350px]">
                 <div className="w-full h-full overflow-hidden">
                   <img
@@ -280,7 +280,7 @@ export default function AboutSection() {
             </div>
 
             {/* ── Card 2 — Stats ── */}
-            <div className="shrink-0 self-stretch flex flex-col justify-start px-10 pt-2 3xl:w-[35vw] 2xl:w-[63vw] xl:w-[45vw] lg:w-[47vw] md:w-[60vw]">
+            <div className="shrink-0 self-stretch flex flex-col justify-start px-10 pt-2 3xl:w-[35vw] 2xl:w-[63vw] xl:w-[45vw] lg:w-[48vw] md:w-[60vw]">
               <h3 className="3xl:text-[64px] 2xl:text-[62px] xl:text-[40px] lg:text-[38px] font-bold text-[#0a0a0a] 2xl:leading-[1.4] xl:leading-[1.33] lg:leading-[1.4] mb-8 -mt-2">
                 What makes
                 <br />
@@ -319,7 +319,7 @@ export default function AboutSection() {
             </div>
 
             {/* ── Card 3 — Dark CTA ── */}
-            <div className="shrink-0 mx-6 3xl:w-[35vw] 2xl:w-[63vw] xl:w-[45vw] lg:w-[47vw] md:w-[60vw]">
+            <div className="shrink-0 mx-6 3xl:w-[35vw] 2xl:w-[63vw] xl:w-[45vw] lg:w-[48vw] md:w-[60vw]">
               <div className="relative 3xl:h-[635px] 2xl:h-[460px] xl:h-[303px] lg:h-[358px] overflow-hidden">
                 <img
                   src="https://res.cloudinary.com/dzi3u164c/image/upload/v1774931324/Asset_3_raki8b.webp"
@@ -327,7 +327,7 @@ export default function AboutSection() {
                   className="absolute inset-0 w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r z-[1]" />
-                <div className="absolute inset-0 z-[2] flex flex-col justify-between 3xl:p-16 2xl:p-16 xl:p-8">
+                <div className="absolute inset-0 z-[2] flex flex-col justify-between 3xl:p-16 2xl:p-16 xl:p-8 lg:p-8">
                   <h3 className="3xl:text-[66px] 2xl:text-[40px] xl:text-[36px] lg:text-[36px] font-extrabold text-white leading-[1.1] tracking-[-0.5px] 3xl:max-w-[360px] 2xl:max-w-[360px] xl:max-w-[360px] lg:max-w-[360px]">
                     Scroll and <br />
                     enjoy a <br />
