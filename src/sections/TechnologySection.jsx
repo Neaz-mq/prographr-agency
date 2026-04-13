@@ -125,9 +125,9 @@ export default function TechnologySection() {
   }, []);
 
   return (
-    <section ref={containerRef} className="w-full bg-white relative pb-32">
+    <section ref={containerRef} className="w-full bg-white relative 3xl:pb-32 2xl:pb-32 xl:pb-6">
       {/* HEADING SECTION */}
-      <div className="md:px-10 3xl:px-[26rem] 2xl:px-[10rem] xl:px-20 lg:px-14 mx-auto px-6 pt-8 lg:pt-4 pb-10 lg:pb-14 overflow-hidden relative z-10 bg-white">
+      <div className="md:px-10 3xl:px-[26rem] 2xl:px-[10rem] xl:px-[5rem] lg:px-14 mx-auto px-6 pt-8 lg:pt-4 pb-10 lg:pb-14 overflow-hidden relative z-10 bg-white">
         <div className="overflow-hidden">
           <h2
             ref={headingRef}
@@ -142,7 +142,7 @@ export default function TechnologySection() {
 
       {/* DESKTOP STACK */}
       <div className="hidden lg:block w-full">
-        <div className="md:px-10 3xl:px-[26rem] 2xl:px-[10rem] xl:px-20 lg:px-14 mx-auto px-10">
+        <div className="md:px-10 3xl:px-[26rem] 2xl:px-[10rem] xl:px-[5rem] lg:px-14 mx-auto px-10">
           {SERVICES.map((service, i) => (
             <div
               key={service.id}
@@ -153,7 +153,7 @@ export default function TechnologySection() {
                 marginBottom: i < SERVICES.length - 1 ? `${CARD_GAP}px` : 0,
               }}
             >
-              <div className="relative w-full overflow-hidden h-[40vh] sm:h-[45vh] lg:h-[50vh] xl:h-[50vh] 2xl:h-[50vh] 3xl:h-[80vh] rounded-none">
+              <div className="relative w-full overflow-hidden h-[40vh] sm:h-[45vh] lg:h-[50vh] xl:h-[65vh] 2xl:h-[70vh] 3xl:h-[80vh] rounded-none">
                 <CardInner service={service} />
               </div>
             </div>

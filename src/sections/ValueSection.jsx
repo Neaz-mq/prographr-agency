@@ -44,7 +44,7 @@ function ValueItem({ item, setImgRef, setMobileImgRef, setArrowRef, onEnter, onL
       onMouseLeave={onLeave}
       className="group relative flex items-center justify-between gap-8 py-3 lg:py-16 cursor-pointer border-b border-black/10 last:border-b-0 "
     >
-      <span className="text-black transition-colors duration-300 group-hover:text-black/50 select-none shrink-0 flex-1 min-w-0 3xl:text-[clamp(30px,2.4vw,24px)] 2xl:text-[clamp(16px,2.4vw,22px)] xl:text-[clamp(16px,2.4vw,18px)] lg:text-[clamp(16px,2.4vw,18px)]">
+      <span className="text-black transition-colors duration-300 group-hover:text-black/50 select-none shrink-0 flex-1 min-w-0 3xl:text-[clamp(30px,2.4vw,24px)] 2xl:text-[clamp(16px,2.4vw,22px)] xl:text-[clamp(16px,2.4vw,22px)] lg:text-[clamp(16px,2.4vw,18px)]">
         {item.label}
       </span>
       <div
@@ -137,7 +137,7 @@ export default function ValueSection() {
   return (
     <section className="w-full bg-white" style={{ position: "relative" }}>
       {/* ✅ FIX: replaced LEFT_INDENT style with matching Tailwind px classes */}
-      <div className="md:py-12 py-7 3xl:py-44 2xl:py-16 xl:py-16 lg:py-16 px-3 md:px-10 3xl:px-[26rem] 2xl:px-[10rem] xl:px-20 lg:px-14 ">
+      <div className="md:py-12 py-7 3xl:py-44 2xl:py-16 xl:py-16 lg:py-16 px-3 md:px-10 3xl:px-[26rem] 2xl:px-[10rem] xl:px-[5rem] lg:px-14 ">
         <h2
           ref={headingRef}
           className="3xl:text-[clamp(52px,10vw,100px)] 2xl:text-[clamp(52px,10vw,80px)] xl:text-[clamp(45px,3.8vw,58px)] lg:text-[clamp(40px,3.8vw,58px)] md:text-[clamp(36px,3.8vw,58px)] font-semibold leading-[1.1] text-[#0a0a0a]  tracking-[0.02em] pb-20"

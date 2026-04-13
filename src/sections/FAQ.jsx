@@ -31,7 +31,7 @@ export default function FAQ() {
   return (
     <section id="faq" className="bg-[#0a0a0a] ">
       {/* ── Careers ── */}
-      <div className="md:px-10 3xl:px-[26rem] 2xl:px-[10rem] xl:px-20 lg:px-14 mx-auto px-6 3xl:pt-64 2xl:pt-52 pb-16 border-b border-[#1f1f1f]">
+      <div className="md:px-10 3xl:px-[26rem] 2xl:px-[10rem] xl:px-[5rem] lg:px-14 mx-auto px-6 3xl:pt-64 2xl:pt-52 xl:pt-36 pb-16 border-b border-[#1f1f1f]">
         <h2
           className="font-medium leading-[1.2] text-white  3xl:max-w-[1260px] 2xl:max-w-[1100px] max-w-[760px] 3xl:text-[clamp(52px,10vw,90px)]  2xl:text-[clamp(52px,10vw,72px)]  xl:text-[clamp(36px,3.8vw,58px)]  lg:text-[clamp(36px,3.8vw,58px)]  md:text-[clamp(36px,3.8vw,58px)] tracking-[0.02em"
           style={{ fontFamily: "'Inter', sans-serif" }}
@@ -47,12 +47,12 @@ export default function FAQ() {
               className="flex items-center justify-between py-5 gap-6"
             >
               <div>
-                <p className="text-white font-semibold text-sm 3xl:text-[28px] 2xl:text-[24px] leading-tight mb-1 tracking-[0.02em]">
+                <p className="text-white font-semibold text-sm 3xl:text-[28px] 2xl:text-[24px] xl:text-[22px] leading-tight mb-1 tracking-[0.02em]">
                   {job.title}
                 </p>
                 <p className="text-[#C1C1C1] text-xs md:text-md pt-2">{job.meta}</p>
               </div>
-              <button className="shrink-0 border border-white text-white 3xl:text-lg 2xl:text-base px-5 py-1.5 hover:bg-white hover:text-[#0a0a0a] transition-colors duration-200 whitespace-nowrap">
+              <button className="shrink-0 border border-white text-white 3xl:text-lg 2xl:text-base xl:text-[10px] 3xl:px-5 3xl:py-1.5 2xl:px-5 2xl:py-1.5 xl:px-3 xl:py-1.5 hover:bg-white hover:text-[#0a0a0a] transition-colors duration-200 whitespace-nowrap">
                 Apply Now
               </button>
             </div>
@@ -103,7 +103,7 @@ export default function FAQ() {
                     isOpen ? "max-h-60 pb-6" : "max-h-0"
                   }`}
                 >
-                  <p className="text-[#888] text-base leading-relaxed">{faq.a}</p>
+                  <p className="text-[#888] 3xl:text-base 2xl:text-base xl:text-sm leading-relaxed">{faq.a}</p>
                 </div>
               </div>
             );
