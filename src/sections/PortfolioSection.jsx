@@ -39,10 +39,11 @@ function useDesktopSizes() {
       return { imgHeight: "clamp(500px, 42vw, 660px)", slideWidth: "clamp(660px, 45vw, 1200px)" };
     }
     const w = window.innerWidth;
-    if (w >= 1920) return { imgHeight: "clamp(600px, 42vw, 650px)", slideWidth: "clamp(700px, 40vw, 1000px)" };
-    if (w >= 1536) return { imgHeight: "clamp(300px, 37vw, 360px)", slideWidth: "clamp(450px, 38vw, 1000px)" };
-    if (w >= 1280) return { imgHeight: "clamp(200px, 36vw, 320px)", slideWidth: "clamp(400px, 36vw, 800px)" };
-    return { imgHeight: "clamp(200px, 36vw, 300px)", slideWidth: "clamp(280px, 38vw, 660px)" };
+    if (w >= 1920) return { imgHeight: "clamp(600px, 42vw, 650px)",  slideWidth: "clamp(700px, 40vw, 1000px)" };
+    if (w >= 1536) return { imgHeight: "clamp(300px, 37vw, 360px)",  slideWidth: "clamp(450px, 38vw, 1000px)" };
+    if (w >= 1280) return { imgHeight: "clamp(200px, 36vw, 320px)",  slideWidth: "clamp(400px, 36vw, 800px)"  };
+    // lg: 1024px–1279px ↓ increased from clamp(200px,36vw,300px)
+    return           { imgHeight: "clamp(320px, 36vw, 420px)",  slideWidth: "clamp(380px, 38vw, 660px)" };
   };
 
   const [sizes, setSizes] = useState(getSizes);
@@ -124,33 +125,44 @@ export default function PortfolioSection() {
     style: { margin: 0 },
   };
 
-  // ── MOBILE ──────────────────────────────────────────────────────────
-  if (!isDesktop) {
-    return (
-      <section id="portfolio" className="bg-white w-full overflow-hidden mb-12">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8">
-          <div className="pt-10 pb-6 border-b border-[#efefef]">
-            <h2 className="text-[clamp(28px,10vw,40px)] font-extrabold leading-[1.15] text-[#0a0a0a] tracking-[-0.5px]">
-              Our Previous
-              <br />
-              Work
-            </h2>
-          </div>
+ // ── MOBILE ──────────────────────────────────────────────────────────
+if (!isDesktop) {
+  return (
+    <section id="portfolio" className="bg-white w-full overflow-hidden mb-12">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8">
+        <div className="pt-10 pb-6 border-b border-[#efefef]">
+          <h2 className="text-[clamp(28px,10vw,40px)] font-extrabold leading-[1.15] text-[#0a0a0a] tracking-[-0.5px]">
+            Our Previous
+            <br />
+            Work
+          </h2>
         </div>
+      </div>
 
-        <Swiper {...swiperProps} speed={3500}>
-          {SLIDES.map((item, i) => (
-            <SwiperSlide
-              key={`m-${item.id}-${i}`}
-              style={{ width: "clamp(160px, 72vw, 360px)" }}
-            >
-              <PortfolioCard item={item} imgHeight="clamp(120px, 72vw, 220px)" />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </section>
-    );
-  }
+      <Swiper {...swiperProps} speed={3500}>
+        {SLIDES.map((item, i) => (
+          <SwiperSlide
+            key={`m-${item.id}-${i}`}
+            style={{
+              width: window.innerWidth >= 768
+                ? "clamp(340px, 52vw, 520px)"
+                : "clamp(160px, 72vw, 360px)",
+            }}
+          >
+            <PortfolioCard
+              item={item}
+              imgHeight={
+                window.innerWidth >= 768
+                  ? "clamp(280px, 42vw, 420px)"
+                  : "clamp(120px, 72vw, 220px)"
+              }
+            />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </section>
+  );
+}
 
   // ── DESKTOP ──────────────────────────────────────────────────────────
   return (

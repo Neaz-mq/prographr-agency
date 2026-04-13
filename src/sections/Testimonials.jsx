@@ -106,7 +106,7 @@ function TestimonialCard({ item }) {
         relative overflow-hidden w-full
         h-[380px]
         sm:h-[400px]
-        md:h-[420px]
+        md:h-[400px]
         lg:h-[420px]
         xl:h-[440px]
         2xl:h-[520px]
@@ -128,13 +128,13 @@ function TestimonialCard({ item }) {
       />
       <PlayBtn />
       <div className="absolute bottom-0 left-0 right-0 px-10 pb-5">
-        <p className="text-white font-semibold 3xl:text-[30px] 2xl:text-[30px] xl:text-[30px] lg:text-[22px] leading-tight tracking-[-0.3px]">
+        <p className="text-white font-semibold 3xl:text-[30px] 2xl:text-[30px] xl:text-[30px] lg:text-[22px] md:text-[17px] leading-tight tracking-[-0.3px]">
           {item.name}
         </p>
-        <p className="3xl:text-[18px] 2xl:text-[18px] xl:text-[18px] lg:text-[13px] font-medium mt-[3px] mb-3 text-white/[65%]">
+        <p className="3xl:text-[18px] 2xl:text-[18px] xl:text-[18px] lg:text-[13px] md:text-[11px] font-medium mt-[3px] mb-3 text-white/[65%]">
           {item.role}
         </p>
-        <p className="3xl:text-[15px] 2xl:text-[15px] xl:text-[15px] lg:text-[12px] leading-[1.65] line-clamp-3 text-white/50 pb-6">
+        <p className="3xl:text-[15px] 2xl:text-[15px] xl:text-[15px] lg:text-[12px] md:text-[11px] leading-[1.65] line-clamp-3 text-white/50 pb-6">
           {item.review}
         </p>
       </div>
@@ -145,7 +145,7 @@ function TestimonialCard({ item }) {
 // ── SERVICE CARD ──────────────────────────────────────────────────────
 function ServiceCard({ icon, title, desc }) {
   return (
-    <div className="flex flex-col justify-between p-8 3xl:p-14 min-h-[300px] xl:min-h-[200px] 3xl:min-h-[300px] bg-[#111616]">
+    <div className="flex flex-col justify-between p-8 3xl:p-14 min-h-[300px] xl:min-h-[250px] 2xl:min-h-[200px] 3xl:min-h-[300px] bg-[#111616]">
       <div className="flex flex-col gap-12">
         <div className="w-16 h-16 flex items-center justify-center">{icon}</div>
         <h3 className="text-white font-medium pt-4 leading-[1.45] tracking-[0.03em] 3xl:text-[clamp(24px,3vw,28px)] 2xl:text-[clamp(16px,1.4vw,20px)] xl:text-[clamp(30px,2vw,40px)] lg:text-[clamp(20px,2vw,30px)]">
@@ -204,7 +204,7 @@ export default function Testimonials() {
                 <br />
                 Your Evolution
               </h2>
-              <p className="text-right leading-relaxed shrink-0 text-[10px] pb-1 text-white/[38%]">
+              <p className="text-right leading-relaxed shrink-0 text-[12px] pb-1 text-white/[38%]">
                 A Showcase
                 <br />
                 of Our Latest
@@ -221,13 +221,13 @@ export default function Testimonials() {
                 >
                   <div className="flex flex-col gap-4">
                     <div>{icon}</div>
-                    <h3 className="text-white font-bold text-[15px] leading-tight">
+                    <h3 className="text-white font-bold text-[17px]">
                       {title[0]}
                       <br />
                       {title[1]}
                     </h3>
                   </div>
-                  <p className="text-[10px] leading-relaxed text-white/[32%]">
+                  <p className="text-[12px] leading-relaxed text-white/[32%]">
                     {desc}
                   </p>
                 </div>
@@ -327,7 +327,7 @@ export default function Testimonials() {
                 !w-[240px]
                 sm:!w-[260px]
                 md:!w-[280px]
-                lg:!w-[320px]
+                lg:!w-[420px]
                 xl:!w-[450px]
                 2xl:!w-[340px]
                 3xl:!w-[600px]

@@ -204,11 +204,11 @@ export default function AboutSection() {
       >
         {/* ── Heading (stays pinned, does NOT scroll) ── */}
         <div className="w-full shrink-0">
-          <div className="pt-8 pb-5  px-3 md:px-10 3xl:px-[26rem] 2xl:px-[10rem] xl:px-[5rem] lg:px-[4rem]">
-            <span className="inline-block 3xl:py-3 3xl:px-6 2xl:py-2 2xl:px-4 3xl:text-[16px] 2xl:text-[14px] xl:text-[11px] lg:text-[12px] md:text-[12px] bg-[#F2F2F2] text-black uppercase font-semibold px-3 py-1 mb-4 tracking-[0.02em]">
+          <div className="pt-8 pb-5  px-3 md:px-[2.5rem] 3xl:px-[26rem] 2xl:px-[10rem] xl:px-[5rem] lg:px-[4rem]">
+            <span className="inline-block 3xl:py-3 3xl:px-6 2xl:py-2 2xl:px-4 3xl:text-[16px] 2xl:text-[14px] xl:text-[11px] lg:text-[12px] md:text-[11px] bg-[#F2F2F2] text-black uppercase font-semibold px-3 py-1 mb-4 tracking-[0.02em]">
               About Us
             </span>
-            <h2 className="3xl:text-[clamp(48px,4vw,30px)] 2xl:text-[clamp(48px,4vw,30px)] xl:text-[clamp(26px,2.2vw,32px)] lg:text-[clamp(32px,2.2vw,30px)] md:text-[clamp(40px,2vw,44px)] font-semibold leading-[1.4] text-[#0a0a0a] 3xl:max-w-[1300px] 2xl:max-w-[1000px] max-w-[700px] tracking-[0.02em]">
+            <h2 className="3xl:text-[clamp(48px,4vw,30px)] 2xl:text-[clamp(48px,4vw,30px)] xl:text-[clamp(26px,2.2vw,32px)] lg:text-[clamp(32px,2.2vw,30px)] md:text-[clamp(30px,2vw,30px)] font-semibold leading-[1.4] text-[#0a0a0a] 3xl:max-w-[1300px] 2xl:max-w-[1000px] max-w-[700px] tracking-[0.02em]">
               We Help Businesses Stand Out With Modern, Creative, and{" "}
               <span className="text-[#c0c0c0]">
                 Impactful <br /> Design Solutions

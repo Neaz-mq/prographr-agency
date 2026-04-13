@@ -31,7 +31,7 @@ export default function FAQ() {
   return (
     <section id="faq" className="bg-[#0a0a0a] ">
       {/* ── Careers ── */}
-      <div className="md:px-10 3xl:px-[26rem] 2xl:px-[10rem] xl:px-[5rem] lg:px-[4rem] mx-auto px-6 3xl:pt-64 2xl:pt-52 xl:pt-36  lg:pt-36 pb-16 border-b border-[#1f1f1f]">
+      <div className="md:px-10 3xl:px-[26rem] 2xl:px-[10rem] xl:px-[5rem] lg:px-[4rem] mx-auto px-6 3xl:pt-64 2xl:pt-52 xl:pt-36 lg:pt-36 md:pt-36 pb-16 border-b border-[#1f1f1f]">
         <h2
           className="font-medium leading-[1.2] text-white  3xl:max-w-[1260px] 2xl:max-w-[1100px] max-w-[760px] 3xl:text-[clamp(52px,10vw,90px)]  2xl:text-[clamp(52px,10vw,72px)]  xl:text-[clamp(36px,3.8vw,58px)]  lg:text-[clamp(36px,3.8vw,58px)]  md:text-[clamp(36px,3.8vw,58px)] tracking-[0.02em"
           style={{ fontFamily: "'Inter', sans-serif" }}
@@ -47,12 +47,12 @@ export default function FAQ() {
               className="flex items-center justify-between py-5 gap-6"
             >
               <div>
-                <p className="text-white font-semibold text-sm 3xl:text-[28px] 2xl:text-[24px] xl:text-[22px] lg:text-[20px] leading-tight mb-1 tracking-[0.02em]">
+                <p className="text-white font-semibold text-sm 3xl:text-[28px] 2xl:text-[24px] xl:text-[22px] lg:text-[20px] md:text-[18px] leading-tight mb-1 tracking-[0.02em]">
                   {job.title}
                 </p>
                 <p className="text-[#C1C1C1] text-xs md:text-md pt-2">{job.meta}</p>
               </div>
-              <button className="shrink-0 border border-white text-white 3xl:text-lg 2xl:text-base xl:text-[11px]    lg:text-[11px] 3xl:px-5 3xl:py-1.5 2xl:px-5 2xl:py-1.5 xl:px-3 xl:py-1.5 lg:px-2.5 lg:py-1.5 hover:bg-white hover:text-[#0a0a0a] transition-colors duration-200 whitespace-nowrap">
+              <button className="shrink-0 border border-white text-white 3xl:text-lg 2xl:text-base xl:text-[11px]    lg:text-[11px] md:text-[11px] 3xl:px-5 3xl:py-1.5 2xl:px-5 2xl:py-1.5 xl:px-3 xl:py-1.5 lg:px-2.5 lg:py-1.5 md:px-2.5 md:py-1  hover:bg-white hover:text-[#0a0a0a] transition-colors duration-200 whitespace-nowrap">
                 Apply Now
               </button>
             </div>
@@ -83,7 +83,7 @@ export default function FAQ() {
                   className="w-full flex items-center justify-between gap-6 py-5 text-left group"
                 >
                   <span
-                    className={`text-sm md:text-lg lg:text-lg xl:text-lg 2xl:text-lg 3xl:text-2xl tracking-[0.02em] font-medium transition-colors duration-200 ${
+                    className={`text-sm md:text-base lg:text-lg xl:text-lg 2xl:text-lg 3xl:text-2xl tracking-[0.02em] font-medium transition-colors duration-200 ${
                       isOpen
                         ? "text-white"
                         : "text-white/80 group-hover:text-white"
@@ -103,7 +103,7 @@ export default function FAQ() {
                     isOpen ? "max-h-60 pb-6" : "max-h-0"
                   }`}
                 >
-                  <p className="text-[#888] 3xl:text-base 2xl:text-base xl:text-sm lg:text-sm leading-relaxed">{faq.a}</p>
+                  <p className="text-[#888] 3xl:text-base 2xl:text-base xl:text-sm lg:text-sm md:text-[12px] leading-relaxed">{faq.a}</p>
                 </div>
               </div>
             );

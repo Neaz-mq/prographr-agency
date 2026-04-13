@@ -153,7 +153,7 @@ export default function TechnologySection() {
                 marginBottom: i < SERVICES.length - 1 ? `${CARD_GAP}px` : 0,
               }}
             >
-              <div className="relative w-full overflow-hidden h-[40vh] sm:h-[45vh] lg:h-[55vh] xl:h-[65vh] 2xl:h-[70vh] 3xl:h-[80vh] rounded-none">
+              <div className="relative w-full overflow-hidden h-[40vh] sm:h-[45vh] md:h-[30vh] lg:h-[55vh] xl:h-[65vh] 2xl:h-[70vh] 3xl:h-[80vh] rounded-none">
                 <CardInner service={service} />
               </div>
             </div>
@@ -161,18 +161,21 @@ export default function TechnologySection() {
         </div>
       </div>
 
-      {/* MOBILE LIST */}
-      <div className="lg:hidden max-w-7xl mx-auto sm:px-9 px-5 flex flex-col gap-3">
-        {SERVICES.map((service) => (
-          <div
-            key={service.id}
-            className="relative w-full overflow-hidden"
-            style={{ height: `${CARD_HEIGHT_PX}px`, borderRadius: "0px" }}
-          >
-            <CardInner service={service} />
-          </div>
-        ))}
+    {/* MOBILE LIST */}
+<div className="lg:hidden max-w-7xl mx-auto sm:px-9 px-5 flex flex-col gap-3">
+  {SERVICES.map((service) => (
+    <div
+      key={service.id}
+      className="relative w-full overflow-hidden"
+      style={{ borderRadius: "0px" }}
+    >
+      {/* Change height here ↓ */}
+      <div className="h-[600px] md:h-[420px] relative w-full overflow-hidden">
+        <CardInner service={service} />
       </div>
+    </div>
+  ))}
+</div>
 
       <div className="pb-16 lg:pb-28" />
     </section>

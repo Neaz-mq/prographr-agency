@@ -67,7 +67,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-[#0a0a0a]">
-      <div className="mx-auto px-6 md:px-8 lg:px-[4rem] xl:px-[5rem] 2xl:px-[10rem] 3xl:px-[26rem] pt-12 md:pt-14 pb-0">
+      <div className="mx-auto px-6 md:px-10 lg:px-[4rem] xl:px-[5rem] 2xl:px-[10rem] 3xl:px-[26rem] pt-12 md:pt-14 pb-0">
 
         {/* Logo */}
         <div className="flex items-center justify-center md:justify-start gap-2 mb-10 md:mb-10">
@@ -138,76 +138,72 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* ── Desktop links (md and above) ── */}
-        <div className="hidden md:block lg:hidden">
-          <div className="grid grid-cols-2 gap-0 divide-x divide-[#333]">
-            <div className="pr-8">
-              <h4 className="text-white font-medium text-[13px] mb-3">Service</h4>
-              <div className="border-t border-[#333] mb-5" />
-              <ul className="space-y-3">
-                {serviceLinks.map((s) => (
-                  <li key={s}>
-                    <button
-                      onClick={() => scrollToSection("services")}
-                      className="text-[#888] text-[12px] hover:text-white transition-colors leading-snug text-left bg-transparent border-none outline-none cursor-pointer"
-                    >
-                      {s}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </div>
+        {/* ── md only: 2x2 grid ── */}
+        <div className="hidden md:grid lg:hidden grid-cols-2 gap-x-10 gap-y-10">
+          <div>
+            <h4 className="text-white font-medium text-[13px] mb-3">Service</h4>
+            <div className="border-t border-[#333] mb-5" />
+            <ul className="space-y-3">
+              {serviceLinks.map((s) => (
+                <li key={s}>
+                  <button
+                    onClick={() => scrollToSection("services")}
+                    className="text-[#888] text-[12px] hover:text-white transition-colors leading-snug text-left bg-transparent border-none outline-none cursor-pointer"
+                  >
+                    {s}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-            <div className="pl-8 grid grid-cols-3 gap-6">
-              <div>
-                <h4 className="text-white font-medium text-[13px] mb-3">Information</h4>
-                <div className="border-t border-[#333] mb-5" />
-                <ul className="space-y-3">
-                  {infoLinks.map(({ label, sectionId }) => (
-                    <li key={label}>
-                      <button
-                        onClick={() => scrollToSection(sectionId)}
-                        className="text-[#888] text-[12px] hover:text-white transition-colors text-left bg-transparent border-none outline-none cursor-pointer"
-                      >
-                        {label}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+          <div>
+            <h4 className="text-white font-medium text-[13px] mb-3">Information</h4>
+            <div className="border-t border-[#333] mb-5" />
+            <ul className="space-y-3">
+              {infoLinks.map(({ label, sectionId }) => (
+                <li key={label}>
+                  <button
+                    onClick={() => scrollToSection(sectionId)}
+                    className="text-[#888] text-[12px] hover:text-white transition-colors text-left bg-transparent border-none outline-none cursor-pointer"
+                  >
+                    {label}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-              <div>
-                <h4 className="text-white font-medium text-[13px] mb-3">Quick Links</h4>
-                <div className="border-t border-[#333] mb-5" />
-                <ul className="space-y-3">
-                  {quickLinks.map(({ label, sectionId }) => (
-                    <li key={label}>
-                      <button
-                        onClick={() => scrollToSection(sectionId)}
-                        className="text-[#888] text-[12px] hover:text-white transition-colors text-left bg-transparent border-none outline-none cursor-pointer"
-                      >
-                        {label}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+          <div>
+            <h4 className="text-white font-medium text-[13px] mb-3">Quick Links</h4>
+            <div className="border-t border-[#333] mb-5" />
+            <ul className="space-y-3">
+              {quickLinks.map(({ label, sectionId }) => (
+                <li key={label}>
+                  <button
+                    onClick={() => scrollToSection(sectionId)}
+                    className="text-[#888] text-[12px] hover:text-white transition-colors text-left bg-transparent border-none outline-none cursor-pointer"
+                  >
+                    {label}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-              <div>
-                <h4 className="text-white font-medium text-[13px] mb-3">Contact Us</h4>
-                <div className="border-t border-[#333] mb-5" />
-                <a
-                  href="mailto:contact.prographr@gmail.com"
-                  className="text-[#888] text-[11px] hover:text-white transition-colors leading-relaxed break-all"
-                >
-                  contact.prographr@gmail.com
-                </a>
-              </div>
-            </div>
+          <div>
+            <h4 className="text-white font-medium text-[13px] mb-3">Contact Us</h4>
+            <div className="border-t border-[#333] mb-5" />
+            <a
+              href="mailto:contact.prographr@gmail.com"
+              className="text-[#888] text-[12px] hover:text-white transition-colors leading-relaxed break-all"
+            >
+              contact.prographr@gmail.com
+            </a>
           </div>
         </div>
 
-        {/* lg and above: classic 4-col layout */}
+        {/* ── lg and above: classic 4-col layout ── */}
         <div className="hidden lg:grid lg:grid-cols-4 lg:gap-0 lg:divide-x lg:divide-[#333]">
           <div className="lg:pr-8">
             <h4 className="text-white font-medium 3xl:text-xl 2xl:text-lg xl:text-lg lg:text-base mb-3">Service</h4>
@@ -274,8 +270,6 @@ export default function Footer() {
 
         {/* ── Bottom bar ── */}
         <div className="border-t border-[#222] mt-10 md:mt-12 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-
-          {/* Social icons */}
           <div className="flex items-center gap-3">
             {SOCIAL_LINKS.map(({ href, label, Icon }) => (
               <a
@@ -291,12 +285,10 @@ export default function Footer() {
             ))}
           </div>
 
-          {/* Copyright */}
           <p className="text-[#555] text-xs md:text-[11px] lg:text-sm text-center">
             © {new Date().getFullYear()} All rights reserved Prographr.
           </p>
 
-          {/* Legal links */}
           <div className="flex items-center gap-4 md:gap-3 lg:gap-5">
             <Link to="#" className="text-[#555] text-xs md:text-[11px] lg:text-sm hover:text-white transition-colors">
               Terms

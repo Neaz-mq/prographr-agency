@@ -84,7 +84,7 @@ export default function Navbar() {
   const isHome = location.pathname === "/";
 
   return (
-   <header className="absolute top-0 left-0 right-0 z-50 px-3 md:px-10 3xl:px-[25rem] 2xl:px-[9rem] xl:px-[5rem] lg:px-[4rem] pt-[40px] 3xl:pt-[40px] 2xl:pt-[40px] xl:pt-[36px] lg:pt-[38px]">
+   <header className="absolute top-0 left-0 right-0 z-50 px-3 md:px-[1rem] 3xl:px-[25rem] 2xl:px-[9rem] xl:px-[5rem] lg:px-[4rem] pt-[40px] 3xl:pt-[40px] 2xl:pt-[40px] xl:pt-[36px] lg:pt-[38px]">
 
       {/* ── Floating Bar ── */}
       <div
@@ -98,16 +98,16 @@ export default function Navbar() {
 
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <img src="/logo.webp" alt="Prographr" className="h-8 w-8 3xl:h-9 3xl:w-9 2xl:h-7 2xl:w-7 xl:h-6 xl:w-6 lg:h-7 lg:w-7  object-contain" />
+            <img src="/logo.webp" alt="Prographr" className="h-8 w-8 3xl:h-9 3xl:w-9 2xl:h-7 2xl:w-7 xl:h-6 xl:w-6 lg:h-7 lg:w-7 md:h-6 md:w-6  object-contain" />
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center lg:gap-24 md:gap-12 gap-6">
+          <nav className="hidden md:flex items-center lg:gap-24 md:gap-16 gap-6">
             {navLinks.map(({ label, sectionId }) => (
               <button
                 key={sectionId}
                 onClick={() => scrollToSection(sectionId)}
-                className={`text-[14px] 3xl:text-[16px] 2xl:text-[13px] xl:text-[13px] lg:text-[14px] md:text-[14px] font-light transition-colors duration-200 cursor-pointer bg-transparent border-none outline-none ${
+                className={`text-[14px] 3xl:text-[16px] 2xl:text-[13px] xl:text-[13px] lg:text-[14px] md:text-[13px] font-light transition-colors duration-200 cursor-pointer bg-transparent border-none outline-none ${
                   isHome && activeSection === sectionId
                     ? "text-white underline underline-offset-[5px] decoration-white/60"
                     : "text-white hover:text-white"
@@ -121,7 +121,7 @@ export default function Navbar() {
           {/* Let's Talk */}
           <button
             onClick={() => scrollToSection("contact")}
-            className="hidden md:inline-flex items-center 3xl:px-5 3xl:py-1.5 2xl:px-4 2xl:py-1 xl:px-3 xl:py-0.5 lg:px-3 lg:py-0.5 text-[14px] 3xl:text-[16px] 2xl:text-[13px] xl:text-[13px] lg:text-[14px] md:text-[14px] text-[#0a0a0a] bg-white hover:bg-[#e8e8e8] transition-colors duration-200 font-medium"
+            className="hidden md:inline-flex items-center 3xl:px-5 3xl:py-1.5 2xl:px-4 2xl:py-1 xl:px-3 xl:py-0.5 lg:px-3 lg:py-0.5 md:px-3 md:py-0.5 text-[14px] 3xl:text-[16px] 2xl:text-[13px] xl:text-[13px] lg:text-[14px] md:text-[14px] text-[#0a0a0a] bg-white hover:bg-[#e8e8e8] transition-colors duration-200 font-medium"
           >
             Let's Talk
           </button>

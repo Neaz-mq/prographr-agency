@@ -40,7 +40,7 @@ export default function CTA() {
           Let's talk
         </h2>
         <p
-          className="text-[#aaa] 3xl:text-xl 2xl:text-xl xl:text-xl lg:text-sm mb-12"
+          className="text-[#aaa] 3xl:text-xl 2xl:text-xl xl:text-xl lg:text-sm md:text-sm mb-12"
           style={{ fontFamily: "'Inter', sans-serif" }}
         >
           Ask us anything or just say hi.,
@@ -82,7 +82,7 @@ export default function CTA() {
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
                 disabled={status === "sending"}
-                className="bg-transparent border-0 border-b border-[#ccc] pb-2 3xl:text-lg 2xl:text-base xl:text-sm lg:text-sm text-[#0a0a0a] placeholder:text-[#ccc] outline-none focus:border-[#0a0a0a] transition-colors duration-200 disabled:opacity-50"
+                className="bg-transparent border-0 border-b border-[#ccc] pb-2 3xl:text-lg 2xl:text-base xl:text-sm lg:text-sm md:text-sm text-[#0a0a0a] placeholder:text-[#ccc] outline-none focus:border-[#0a0a0a] transition-colors duration-200 disabled:opacity-50"
                 style={{ fontFamily: "'Inter', sans-serif" }}
               />
             </div>
@@ -101,7 +101,7 @@ export default function CTA() {
                 value={form.email}
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
                 disabled={status === "sending"}
-                className="bg-transparent border-0 border-b border-[#ccc] pb-2 3xl:text-lg 2xl:text-base xl:text-sm lg:text-sm text-[#0a0a0a] placeholder:text-[#ccc] outline-none focus:border-[#0a0a0a] transition-colors duration-200 disabled:opacity-50"
+                className="bg-transparent border-0 border-b border-[#ccc] pb-2 3xl:text-lg 2xl:text-base xl:text-sm lg:text-sm md:text-sm text-[#0a0a0a] placeholder:text-[#ccc] outline-none focus:border-[#0a0a0a] transition-colors duration-200 disabled:opacity-50"
                 style={{ fontFamily: "'Inter', sans-serif" }}
               />
             </div>
@@ -122,7 +122,7 @@ export default function CTA() {
               value={form.message}
               onChange={(e) => setForm({ ...form, message: e.target.value })}
               disabled={status === "sending"}
-              className="bg-transparent border-0 border-b border-[#ccc] pb-2 3xl:text-lg 2xl:text-base xl:text-sm lg:text-sm text-[#0a0a0a] placeholder:text-[#ccc] outline-none focus:border-[#0a0a0a] transition-colors duration-200 resize-none disabled:opacity-50"
+              className="bg-transparent border-0 border-b border-[#ccc] pb-2 3xl:text-lg 2xl:text-base xl:text-sm lg:text-sm md:text-sm text-[#0a0a0a] placeholder:text-[#ccc] outline-none focus:border-[#0a0a0a] transition-colors duration-200 resize-none disabled:opacity-50"
               style={{ fontFamily: "'Inter', sans-serif" }}
             />
           </div>
@@ -132,7 +132,7 @@ export default function CTA() {
             <button
               type="submit"
               disabled={status === "sending"}
-              className="bg-[#0a0a0a] text-white 3xl:text-xl 2xl:text-base xl:text-base lg:text-base font-medium 3xl:px-6 3xl:py-3 2xl:px-5 2xl:py-2 xl:px-4 xl:py-2 lg:px-3 lg:py-1.5 hover:bg-[#222] transition-colors duration-200 disabled:opacity-60 disabled:cursor-not-allowed tracking-[0.02em]"
+              className="bg-[#0a0a0a] text-white 3xl:text-xl 2xl:text-base xl:text-base lg:text-base md:text-base  font-medium 3xl:px-6 3xl:py-3 2xl:px-5 2xl:py-2 xl:px-4 xl:py-2 lg:px-3 lg:py-1.5 md:px-2.5 md:py-1 hover:bg-[#222] transition-colors duration-200 disabled:opacity-60 disabled:cursor-not-allowed tracking-[0.02em]"
               style={{ fontFamily: "'Inter', sans-serif" }}
             >
               {status === "sending" ? "Sending..." : "Send Now"}
