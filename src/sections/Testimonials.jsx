@@ -108,7 +108,7 @@ function TestimonialCard({ item }) {
         sm:h-[400px]
         md:h-[400px]
         lg:h-[420px]
-        xl:h-[440px]
+        xl:h-[500px]
         2xl:h-[520px]
         3xl:h-[800px]
       "
@@ -128,13 +128,13 @@ function TestimonialCard({ item }) {
       />
       <PlayBtn />
       <div className="absolute bottom-0 left-0 right-0 px-10 pb-5">
-        <p className="text-white font-semibold 3xl:text-[30px] 2xl:text-[30px] xl:text-[30px] lg:text-[22px] md:text-[17px] text-[16px] leading-tight tracking-[-0.3px]">
+        <p className="text-white font-semibold 3xl:text-[30px] 2xl:text-[30px] xl:text-[22px] lg:text-[22px] md:text-[17px] text-[16px] leading-tight tracking-[-0.3px]">
           {item.name}
         </p>
-        <p className="3xl:text-[18px] 2xl:text-[18px] xl:text-[18px] lg:text-[13px] md:text-[11px] font-medium mt-[3px] mb-3 text-white/[65%]">
+        <p className="3xl:text-[18px] 2xl:text-[18px] xl:text-[16px] lg:text-[13px] md:text-[11px] font-medium mt-[3px] mb-3 text-white/[65%]">
           {item.role}
         </p>
-        <p className="3xl:text-[15px] 2xl:text-[15px] xl:text-[15px] lg:text-[12px] md:text-[11px] text-[9px] leading-[1.65] line-clamp-3 text-white/50 pb-6">
+        <p className="3xl:text-[15px] 2xl:text-[15px] xl:text-[14px] lg:text-[12px] md:text-[11px] text-[9px] leading-[1.65] line-clamp-3 text-white/50 pb-6">
           {item.review}
         </p>
       </div>
@@ -328,7 +328,7 @@ export default function Testimonials() {
                 sm:!w-[260px]
                 md:!w-[280px]
                 lg:!w-[420px]
-                xl:!w-[450px]
+                xl:!w-[500px]
                 2xl:!w-[340px]
                 3xl:!w-[600px]
               "
