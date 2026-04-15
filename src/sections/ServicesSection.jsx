@@ -7,7 +7,6 @@ import {
   ChevronRight, 
   Presentation, 
   Image as ImageIcon,
-  MousePointer2,
 } from "lucide-react";
 import {
   SiFigma,
@@ -29,9 +28,8 @@ gsap.registerPlugin(ScrollTrigger);
 const CARD_HEIGHT = 270;
 const SHOW_AMOUNT = 105;
 const EXPAND_H = 160; 
-const EXPAND_W = 60; // Increased to make the card grow wider on hover
+const EXPAND_W = 60; 
 
-// ── updated tech-stack data with tighter spacing logic ─────────────────────────────────
 const STACKS = {
   c0: {
     label: "Creative Tools",
@@ -47,12 +45,13 @@ const STACKS = {
       { Icon: SiFigma, name: "Figma", color: "#F24E1E" },
     ],
   },
-  c1: {
+ c1: {
     label: "Tech Stack",
     desc: "Full-stack MERN applications built for performance and scale.",
-    divider: "rgba(255,255,255,0.15)",
-    meta: "rgba(255,255,255,0.5)",
-    pill: "rgba(255,255,255,0.1)",
+    // Changed these to dark colors to be visible on the white background
+    divider: "rgba(0,0,0,0.1)", 
+    meta: "rgba(0,0,0,0.6)",
+    pill: "rgba(0,0,0,0.05)",
     items: [
       { Icon: SiReact, name: "React", color: "#61DAFB" },
       { Icon: SiNodedotjs, name: "Node.js", color: "#6CC24A" },
@@ -74,14 +73,15 @@ const STACKS = {
       { Icon: SiTailwindcss, name: "Tailwind", color: "#38BDF8" },
     ],
   },
-  c3: {
-    label: "Slide Tools",
-    desc: "Stunning slide decks that make your ideas land and stick.",
-    divider: "rgba(255,255,255,0.2)",
-    meta: "rgba(255,255,255,0.5)",
-    pill: "rgba(255,255,255,0.15)",
+ c3: {
+    label: "Design Tools",
+    desc: "High-impact presentation decks that tell a story and convert.",
+    // Update these to dark colors for visibility on white
+    divider: "rgba(0,0,0,0.1)", 
+    meta: "rgba(0,0,0,0.6)",
+    pill: "rgba(0,0,0,0.05)",
     items: [
-      { Icon: Presentation, name: "PPT", color: "#D24726" },
+      { Icon: Presentation, name: "PowerPoint", color: "#D04423" },
       { Icon: SiCanva, name: "Canva", color: "#00C4CC" },
       { Icon: SiFigma, name: "Figma", color: "#F24E1E" },
     ],
@@ -90,7 +90,7 @@ const STACKS = {
 
 function CardShell({ className = "", style = {}, children }) {
   return (
-    <div className={`w-full h-full rounded-xl overflow-hidden relative shadow-[0_12px_40px_rgba(0,0,0,0.15)] ${className}`} style={style}>
+    <div className={`w-full h-full rounded-xl overflow-hidden relative  ${className}`} style={style}>
       {children}
     </div>
   );
@@ -124,14 +124,13 @@ function LinePattern({ color = "rgba(255,255,255,0.15)" }) {
   );
 }
 
-// Spacing tightened to match the image: desc padding removed, meta margin reduced
 function StackSection({ stackId }) {
   const s = STACKS[stackId];
   if (!s) return null;
   return (
-    <div className="px-5 pt-0 pb-6"> {/* Removed pt-2, tightened padding */}
-      <div style={{ height: 1, background: s.divider, marginBottom: 8 }} /> {/* divider closer */}
-      <p style={{ fontSize: 10.5, lineHeight: 1.5, color: s.meta, marginBottom: 12, fontWeight: 500 }}> {/* smaller meta, reduced marginBottom */}
+    <div className="px-5 pt-2 pb-6"> {/* Changed pt-0 to pt-2 to keep it tight but clean */}
+      <div style={{ height: 1, background: s.divider, marginBottom: 8 }} />
+      <p style={{ fontSize: 10.5, lineHeight: 1.5, color: s.meta, marginBottom: 8, fontWeight: 500 }}>
         {s.desc}
       </p>
       <p style={{ fontSize: 8, fontWeight: 800, letterSpacing: "0.15em", textTransform: "uppercase", color: s.meta, marginBottom: 10, opacity: 0.6 }}>
@@ -151,10 +150,9 @@ function StackSection({ stackId }) {
   );
 }
 
-// desktop cards updated to be wider (235 instead of 215/232)
 const desktopCards = [
   {
-    id: "c0", cx: -155, cy: 10, w: 245, h: CARD_HEIGHT, rotate: -22, zIndex: 2,
+    id: "c0", cx: -155, cy: 10, w: 240, h: CARD_HEIGHT, rotate: -22, zIndex: 2,
     from: { x: -100, y: 120, rotate: -45 },
     render: () => (
       <CardShell className="bg-[#C8FF00]">
@@ -167,7 +165,7 @@ const desktopCards = [
     ),
   },
   {
-    id: "c1", cx: -55, cy: -15, w: 245, h: CARD_HEIGHT + 20, rotate: -8, zIndex: 4,
+    id: "c1", cx: -55, cy: -15, w: 240, h: CARD_HEIGHT + 20, rotate: -8, zIndex: 4,
     from: { x: -40, y: -130, rotate: -18 },
     render: () => (
       <CardShell className="bg-[#0d0d0d]">
@@ -180,7 +178,7 @@ const desktopCards = [
     ),
   },
   {
-    id: "c2", cx: 60, cy: -15, w: 245, h: CARD_HEIGHT + 20, rotate: 6, zIndex: 3,
+    id: "c2", cx: 60, cy: -15, w: 240, h: CARD_HEIGHT + 20, rotate: 6, zIndex: 3,
     from: { x: 40, y: -130, rotate: 16 },
     render: () => (
       <CardShell className="bg-[#f8f8f8]">
@@ -192,7 +190,7 @@ const desktopCards = [
     ),
   },
   {
-    id: "c3", cx: 165, cy: 10, w: 245, h: CARD_HEIGHT, rotate: 20, zIndex: 2,
+    id: "c3", cx: 165, cy: 10, w: 240, h: CARD_HEIGHT, rotate: 20, zIndex: 2,
     from: { x: 100, y: 110, rotate: 44 },
     render: () => (
       <CardShell style={{ background: "linear-gradient(145deg,#a855f7,#ec4899)" }}>
@@ -216,7 +214,7 @@ function DesktopFan() {
   useEffect(() => {
     const setScale = () => {
       if (!wrapperRef.current) return;
-      const scale = Math.min(1, (window.innerWidth - 16) / 520); // slightly wider to fit wider cards
+      const scale = Math.min(1, (window.innerWidth - 16) / 520);
       wrapperRef.current.style.transform = `scale(${scale})`;
       wrapperRef.current.style.transformOrigin = "bottom center";
     };
@@ -324,7 +322,7 @@ function DesktopFan() {
             {card.render()}
             <div
               ref={el => (stackRefs.current[i] = el)}
-              style={{ position: "absolute", top: card.h - 10, left: 0, right: 0, opacity: 0 }} // Pushed Stack up to meet description
+              style={{ position: "absolute", top: card.h - 10, left: 0, right: 0, opacity: 0 }}
             >
               <StackSection stackId={card.id} />
             </div>
@@ -344,37 +342,52 @@ function MobileCarousel() {
   const goNext = () => { setCurrent((current + 1) % 4); setExpanded(false); };
   const goPrev = () => { setCurrent((current - 1 + 4) % 4); setExpanded(false); };
 
+  const isDarkCard = ids[current] === "c1";
+
   return (
-    <div className="pb-10 px-6">
-      <div className="overflow-hidden rounded-2xl relative" style={{ minHeight: 280 }}>
+    <div className="w-full max-w-[450px] mx-auto px-6">
+      <div 
+        className="relative overflow-hidden transition-all duration-500 rounded-2xl"
+        // Reduced height from 520 to 480 to pull the bottom slider up
+        style={{ height: expanded ? 480 : 300 }} 
+      >
         <AnimatePresence mode="wait">
-          <motion.div
-            key={current}
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -20 }}
-            className="w-full h-full"
-          >
-            {c.render()}
+          <motion.div key={current} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="w-full h-full">
+            <div className="h-[300px]">{c.render()}</div>
             {expanded && (
-              <div className="absolute inset-0 bg-inherit pt-32 overflow-y-auto">
+              <motion.div 
+                initial={{ opacity: 0, y: 5 }} 
+                animate={{ opacity: 1, y: 0 }} 
+                // Changed pt-4 to pt-1 to pull the text closer to the logo
+                className="h-[180px] overflow-y-auto pt-1 bg-transparent"
+              >
                 <StackSection stackId={ids[current]} />
-              </div>
+              </motion.div>
             )}
           </motion.div>
         </AnimatePresence>
         
         <button 
-          onClick={() => setExpanded(!expanded)}
-          className="absolute top-4 right-4 z-20 p-2 rounded-full bg-black/10 text-black/50"
+          onClick={() => setExpanded(!expanded)} 
+          className={`absolute top-4 right-4 z-50 px-4 py-1.5 rounded-full backdrop-blur-lg text-[10px] font-black uppercase transition-all duration-300 ${
+            isDarkCard 
+              ? "bg-white/20 text-white shadow-[0_0_10px_rgba(255,255,255,0.1)]" 
+              : "bg-black/10 text-black/80"
+          }`}
         >
           {expanded ? "Close" : "Details"}
         </button>
       </div>
 
-      <div className="flex justify-center gap-4 mt-6">
-        <button onClick={goPrev} className="p-2 border rounded-full"><ChevronLeft size={20}/></button>
-        <button onClick={goNext} className="p-2 border rounded-full"><ChevronRight size={20}/></button>
+      {/* Reduced mt-8 to mt-4 to pull the dots and arrows closer to the card */}
+      <div className="flex items-center justify-between mt-4 px-4 pb-10">
+        <button onClick={goPrev} className="p-3 border rounded-full"><ChevronLeft size={24} className="text-gray-600"/></button>
+        <div className="flex gap-2">
+          {ids.map((_, i) => (
+            <div key={i} className={`h-1.5 rounded-full transition-all duration-300 ${current === i ? "w-6 bg-black" : "w-1.5 bg-black/20"}`} />
+          ))}
+        </div>
+        <button onClick={goNext} className="p-3 border rounded-full"><ChevronRight size={24} className="text-gray-600"/></button>
       </div>
     </div>
   );
@@ -382,12 +395,13 @@ function MobileCarousel() {
 
 export default function ServicesSection() {
   return (
-    <section id="services" className="bg-white">
-      <div className="lg:hidden">
-        <div className="h-20" />
+    <section id="services" className="">
+      {/* Mobile only */}
+      <div className="lg:hidden block -mt-40">
         <MobileCarousel />
       </div>
 
+      {/* Desktop only - Matches your original layout perfectly */}
       <div 
         className="hidden lg:block relative z-10 bg-transparent"
         style={{ marginTop: -(CARD_HEIGHT - SHOW_AMOUNT) }}
