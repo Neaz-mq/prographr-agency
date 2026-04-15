@@ -208,7 +208,7 @@ export default function AboutSection() {
             <span className="inline-block 3xl:py-3 3xl:px-6 2xl:py-2 2xl:px-4 3xl:text-[16px] 2xl:text-[14px] xl:text-[11px] lg:text-[12px] md:text-[11px] bg-[#F2F2F2] text-black uppercase font-semibold px-3 py-1 mb-4 tracking-[0.02em]">
               About Us
             </span>
-            <h2 className="3xl:text-[clamp(48px,4vw,30px)] 2xl:text-[clamp(48px,4vw,30px)] xl:text-[clamp(26px,2.2vw,32px)] lg:text-[clamp(32px,2.2vw,30px)] md:text-[clamp(30px,2vw,30px)] font-semibold leading-[1.4] text-[#0a0a0a] 3xl:max-w-[1300px] 2xl:max-w-[1000px] max-w-[700px] tracking-[0.02em]">
+            <h2 className="3xl:text-[clamp(48px,4vw,30px)] 2xl:text-[clamp(42px,4vw,30px)] xl:text-[clamp(26px,2.2vw,32px)] lg:text-[clamp(32px,2.2vw,30px)] md:text-[clamp(30px,2vw,30px)] font-semibold leading-[1.4] text-[#0a0a0a] 3xl:max-w-[1300px] 2xl:max-w-[1000px] max-w-[700px] tracking-[0.02em]">
               We Help Businesses Stand Out With Modern, Creative, and{" "}
               <span className="text-[#c0c0c0]">
                 Impactful <br /> Design Solutions
@@ -229,7 +229,7 @@ export default function AboutSection() {
             {/* the INNER card div is identical in width/padding to Card 1         */}
             <div className="shrink-0 flex items-start pl-3 md:pl-10 3xl:pl-[26rem] 2xl:pl-40 xl:pl-20 lg:pl-16 pt-2 pb-5">
               <div className="3xl:w-[35vw] 2xl:w-[48vw] xl:w-[45vw] lg:w-[48vw] md:w-[60vw] pr-8">
-                <div className="overflow-hidden relative 3xl:h-[630px] 2xl:h-[450px] xl:h-[300px] lg:h-[350px]">
+                <div className="overflow-hidden relative 3xl:h-[630px] 2xl:h-[350px] xl:h-[300px] lg:h-[350px]">
                   <img
                     src="https://res.cloudinary.com/dzi3u164c/image/upload/v1774865116/Asset_1_qgly6y.webp"
                     alt="About Prographr"
@@ -256,7 +256,7 @@ export default function AboutSection() {
 
             {/* ── Card 1 — B&W image ── */}
             <div className="shrink-0 self-start pr-8 pl-8 pt-2 3xl:w-[35vw] 2xl:w-[48vw] xl:w-[45vw] lg:w-[48vw] md:w-[60vw]">
-              <div className="relative 3xl:h-[630px] 2xl:h-[450px] xl:h-[300px] lg:h-[350px]">
+              <div className="relative 3xl:h-[630px] 2xl:h-[350px] xl:h-[300px] lg:h-[350px]">
                 <div className="w-full h-full overflow-hidden">
                   <img
                     src="https://res.cloudinary.com/dzi3u164c/image/upload/v1774967188/photo-1556761175-b413da4baf72_iqjccn.avif"
@@ -280,8 +280,8 @@ export default function AboutSection() {
             </div>
 
             {/* ── Card 2 — Stats ── */}
-            <div className="shrink-0 self-stretch flex flex-col justify-start px-10 pt-2 3xl:w-[35vw] 2xl:w-[63vw] xl:w-[45vw] lg:w-[48vw] md:w-[60vw]">
-              <h3 className="3xl:text-[64px] 2xl:text-[62px] xl:text-[40px] lg:text-[38px] font-bold text-[#0a0a0a] 2xl:leading-[1.4] xl:leading-[1.33] lg:leading-[1.4] mb-8 -mt-2">
+            <div className="shrink-0 self-stretch flex flex-col justify-start px-10 pt-2 3xl:w-[35vw] 2xl:w-[48vw] xl:w-[45vw] lg:w-[48vw] md:w-[60vw]">
+              <h3 className="3xl:text-[64px] 2xl:text-[50px] xl:text-[40px] lg:text-[38px] font-bold text-[#0a0a0a] 2xl:leading-[1.4] xl:leading-[1.33] lg:leading-[1.4] mb-8 -mt-2">
                 What makes
                 <br />
                 <span className="2xl:whitespace-nowrap">
@@ -290,16 +290,16 @@ export default function AboutSection() {
               </h3>
               <div className="flex items-start gap-4 3xl:pt-44 2xl:pt-16 xl:pt-8 lg:pt-20">
                 <div className="flex-1">
-                  <div className="3xl:text-[56px] 2xl:text-[50px] xl:text-[35px] lg:text-[32px] font-semibold leading-none mb-2 tracking-[-1px] 3xl:pt-16 2xl:pt-14 xl:pt-10 lg:pt-10 text-[#0a0a0a]">
+                  <div className="3xl:text-[56px] 2xl:text-[40px] xl:text-[35px] lg:text-[32px] font-semibold leading-none mb-2 tracking-[-1px] 3xl:pt-16 2xl:pt-6 xl:pt-10 lg:pt-10 text-[#0a0a0a]">
                     30+
                   </div>
-                  <div className="3xl:text-[13px] 2xl:text-[15px] xl:text-[12px] lg:text-[9px] leading-[1.5] text-[#797878] font-normal">
+                  <div className="3xl:text-[13px] 2xl:text-[11px] xl:text-[12px] lg:text-[9px] leading-[1.5] text-[#797878] font-normal">
                     Company with Work Experiences
                   </div>
                 </div>
-                <div className="flex-[2] bg-[#0a0a0a] 3xl:px-12 3xl:py-20 2xl:px-7 2xl:py-14 xl:px-4 xl:py-9 lg:px-2 lg:py-11 flex 3xl:gap-40 2xl:gap-40 xl:gap-14 lg:gap-6 items-center justify-center">
+                <div className="flex-[2] bg-[#0a0a0a] 3xl:px-12 3xl:py-20 2xl:px-7 2xl:py-7 xl:px-4 xl:py-9 lg:px-2 lg:py-11 flex 3xl:gap-40 2xl:gap-40 xl:gap-14 lg:gap-6 items-center justify-center">
                   <div className="2xl:px-0 xl:px-0 lg:px-2">
-                    <div className="3xl:text-[55px] 2xl:text-[50px] xl:text-[40px] lg:text-[30px] font-semibold leading-none mb-2 tracking-[-1px] text-white">
+                    <div className="3xl:text-[55px] 2xl:text-[40px] xl:text-[40px] lg:text-[30px] font-semibold leading-none mb-2 tracking-[-1px] text-white">
                       1K+
                     </div>
                     <div className="3xl:text-[16px] 2xl:text-[14px] xl:text-[10px] lg:text-[10px] leading-[1.5] text-white whitespace-nowrap">
@@ -307,7 +307,7 @@ export default function AboutSection() {
                     </div>
                   </div>
                   <div className="2xl:px-0 xl:px-0 lg:px-0">
-                    <div className="3xl:text-[55px] 2xl:text-[50px] xl:text-[40px] lg:text-[30px] font-semibold leading-none mb-2 tracking-[-1px] text-white">
+                    <div className="3xl:text-[55px] 2xl:text-[40px] xl:text-[40px] lg:text-[30px] font-semibold leading-none mb-2 tracking-[-1px] text-white">
                       100%
                     </div>
                     <div className="3xl:text-[16px] 2xl:text-[14px] xl:text-[10px] lg:text-[10px] leading-[1.5] text-white whitespace-nowrap">
@@ -319,8 +319,8 @@ export default function AboutSection() {
             </div>
 
             {/* ── Card 3 — Dark CTA ── */}
-            <div className="shrink-0 mx-6 3xl:w-[35vw] 2xl:w-[63vw] xl:w-[45vw] lg:w-[48vw] md:w-[60vw]">
-              <div className="relative 3xl:h-[635px] 2xl:h-[460px] xl:h-[303px] lg:h-[358px] overflow-hidden">
+            <div className="shrink-0 mx-6 3xl:w-[35vw] 2xl:w-[48vw] xl:w-[45vw] lg:w-[48vw] md:w-[60vw]">
+              <div className="relative 3xl:h-[635px] 2xl:h-[360px] xl:h-[303px] lg:h-[358px] overflow-hidden">
                 <img
                   src="https://res.cloudinary.com/dzi3u164c/image/upload/v1774931324/Asset_3_raki8b.webp"
                   alt="CTA"
