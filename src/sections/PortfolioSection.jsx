@@ -21,7 +21,7 @@ const PORTFOLIO_ITEMS = [
   },
   {
     id: 4,
-    image: "https://res.cloudinary.com/dzi3u164c/image/upload/q_auto/f_auto/v1775120276/4_v4puxw.webp",
+    image: "https://res.cloudinary.com/dzi3u164c/image/upload/q_auto/f_auto/v1776597939/Presentation-14_cjtdan.webp",
     tags: ["Brand Identity", "Brand Book", "Brand Manual"],
   },
   {
