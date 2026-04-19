@@ -290,10 +290,10 @@ export default function AboutSection() {
               </h3>
               <div className="flex items-start gap-4 3xl:pt-44 2xl:pt-16 xl:pt-8 lg:pt-20">
                 <div className="flex-1">
-                  <div className="3xl:text-[56px] 2xl:text-[40px] xl:text-[35px] lg:text-[32px] font-semibold leading-none mb-2 tracking-[-1px] 3xl:pt-16 2xl:pt-6 xl:pt-10 lg:pt-10 text-[#0a0a0a]">
+                  <div className="3xl:text-[56px] 2xl:text-[40px] xl:text-[35px] lg:text-[32px] font-semibold leading-none mb-2 tracking-[-1px] 3xl:pt-20 2xl:pt-6 xl:pt-10 lg:pt-10 text-[#0a0a0a]">
                     30+
                   </div>
-                  <div className="3xl:text-[13px] 2xl:text-[11px] xl:text-[12px] lg:text-[9px] leading-[1.5] text-[#797878] font-normal">
+                  <div className="3xl:text-[13px] 2xl:text-[11px] xl:text-[12px] lg:text-[9px] leading-[1.5] text-[#797878] font-normal 3xl:pt-1 2xl:pt-0 xl:pt-0 lg:pt-0 pt-0">
                     Company with Work Experiences
                   </div>
                 </div>
