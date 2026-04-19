@@ -40,7 +40,7 @@ function useDesktopSizes() {
     }
     const w = window.innerWidth;
     if (w >= 1920) return { imgHeight: "clamp(600px, 42vw, 650px)",  slideWidth: "clamp(700px, 40vw, 1000px)" };
-    if (w >= 1536) return { imgHeight: "clamp(300px, 37vw, 360px)",  slideWidth: "clamp(450px, 38vw, 1000px)" };
+    if (w >= 1536) return { imgHeight: "clamp(370px, 37vw, 430px)",  slideWidth: "clamp(450px, 38vw, 1000px)" };
     if (w >= 1280) return { imgHeight: "clamp(200px, 36vw, 320px)",  slideWidth: "clamp(400px, 36vw, 800px)"  };
     // lg: 1024px–1279px ↓ increased from clamp(200px,36vw,300px)
     return           { imgHeight: "clamp(320px, 36vw, 420px)",  slideWidth: "clamp(380px, 38vw, 660px)" };
