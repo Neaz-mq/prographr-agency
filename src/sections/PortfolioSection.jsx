@@ -6,7 +6,7 @@ import "swiper/css";
 const PORTFOLIO_ITEMS = [
   {
     id: 1,
-    image: "https://res.cloudinary.com/dzi3u164c/image/upload/q_auto/f_auto/v1775119897/1_dc1bes.webp",
+    image: "https://res.cloudinary.com/dzi3u164c/image/upload/q_auto/f_auto/v1776599999/Presentation-16_hzmygv.jpg",
     tags: ["Flyer Design", "Rack Card", "App UI Design"],
   },
   {
@@ -26,7 +26,7 @@ const PORTFOLIO_ITEMS = [
   },
   {
     id: 5,
-    image: "https://res.cloudinary.com/dzi3u164c/image/upload/q_auto/f_auto/v1775120377/5_go4zm2.webp",
+    image: "https://res.cloudinary.com/dzi3u164c/image/upload/q_auto/f_auto/v1776599891/Presentation-15_afhcci.jpg",
     tags: ["Product Label", "Label Design", "Bottle Label"],
   },
 ];
