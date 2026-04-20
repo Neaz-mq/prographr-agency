@@ -1,7 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, FreeMode } from "swiper/modules";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "swiper/css";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const PORTFOLIO_ITEMS = [
   {
@@ -39,11 +43,10 @@ function useDesktopSizes() {
       return { imgHeight: "clamp(500px, 42vw, 660px)", slideWidth: "clamp(660px, 45vw, 1200px)" };
     }
     const w = window.innerWidth;
-    if (w >= 1920) return { imgHeight: "clamp(600px, 42vw, 650px)",  slideWidth: "clamp(700px, 40vw, 1000px)" };
-    if (w >= 1536) return { imgHeight: "clamp(370px, 37vw, 430px)",  slideWidth: "clamp(450px, 38vw, 1000px)" };
-    if (w >= 1280) return { imgHeight: "clamp(200px, 36vw, 320px)",  slideWidth: "clamp(400px, 36vw, 800px)"  };
-    // lg: 1024px–1279px ↓ increased from clamp(200px,36vw,300px)
-    return           { imgHeight: "clamp(320px, 36vw, 420px)",  slideWidth: "clamp(380px, 38vw, 660px)" };
+    if (w >= 1920) return { imgHeight: "clamp(600px, 42vw, 650px)", slideWidth: "clamp(700px, 40vw, 1000px)" };
+    if (w >= 1536) return { imgHeight: "clamp(370px, 37vw, 430px)", slideWidth: "clamp(450px, 38vw, 1000px)" };
+    if (w >= 1280) return { imgHeight: "clamp(200px, 36vw, 320px)", slideWidth: "clamp(400px, 36vw, 800px)" };
+    return           { imgHeight: "clamp(320px, 36vw, 420px)", slideWidth: "clamp(380px, 38vw, 660px)" };
   };
 
   const [sizes, setSizes] = useState(getSizes);
@@ -59,30 +62,20 @@ function useDesktopSizes() {
 
 function PortfolioCard({ item, imgHeight }) {
   return (
-    // group enables hover state for children
     <div className="h-full flex flex-col group">
-      <div
-        className="relative overflow-hidden shrink-0"
-        style={{ height: imgHeight }}
-      >
-        {/* Image — scales up on hover */}
+      <div className="relative overflow-hidden shrink-0" style={{ height: imgHeight }}>
         <img
           src={item.image}
           alt={item.tags[0]}
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
           loading="lazy"
         />
-
-        {/* Dark overlay — visible by default, fades out on hover */}
         <div
           className="absolute inset-0 pointer-events-none transition-opacity duration-500 opacity-100 group-hover:opacity-0"
           style={{
-            background:
-              "linear-gradient(to bottom, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0.75) 100%)",
+            background: "linear-gradient(to bottom, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0.75) 100%)",
           }}
         />
-
-        {/* Tags — inside image at bottom, fade out with overlay on hover */}
         <div className="absolute bottom-4 left-4 right-0 px-4 py-4 flex items-center gap-3 flex-wrap transition-opacity duration-500 opacity-100 group-hover:opacity-0 pointer-events-none">
           {item.tags.map((tag) => (
             <span
@@ -99,6 +92,9 @@ function PortfolioCard({ item, imgHeight }) {
 }
 
 export default function PortfolioSection() {
+  const headingRef = useRef(null);
+  const containerRef = useRef(null);
+
   const [isDesktop, setIsDesktop] = useState(() =>
     typeof window !== "undefined" ? window.innerWidth >= 1024 : true
   );
@@ -108,6 +104,31 @@ export default function PortfolioSection() {
     window.addEventListener("resize", check);
     return () => window.removeEventListener("resize", check);
   }, []);
+
+  useEffect(() => {
+    if (!headingRef.current) return;
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        headingRef.current,
+        { y: "110%", skewY: 7, opacity: 0 },
+        {
+          y: "0%",
+          skewY: 0,
+          opacity: 1,
+          duration: 1.5,
+          ease: "expo.out",
+          scrollTrigger: {
+            trigger: headingRef.current,
+            start: "top 95%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, [isDesktop]); // re-run when layout switches so the ref is fresh
 
   const { imgHeight, slideWidth } = useDesktopSizes();
 
@@ -125,50 +146,56 @@ export default function PortfolioSection() {
     style: { margin: 0 },
   };
 
- // ── MOBILE ──────────────────────────────────────────────────────────
-if (!isDesktop) {
-  return (
-    <section id="portfolio" className="bg-white w-full overflow-hidden mb-12">
-      <div className="max-w-7xl mx-auto px-5 sm:px-8">
-        <div className="pt-10 pb-6 border-b border-[#efefef]">
-          <h2 className="text-[clamp(28px,10vw,40px)] font-extrabold leading-[1.15] text-[#0a0a0a] tracking-[-0.5px]">
-            Our Previous
-            <br />
-            Work
-          </h2>
+  // ── MOBILE ──────────────────────────────────────────────────────────
+  if (!isDesktop) {
+    return (
+      <section id="portfolio" ref={containerRef} className="bg-white w-full overflow-hidden mb-12">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8">
+          <div className="pt-10 pb-6 border-b border-[#efefef] overflow-hidden">
+            <h2
+              ref={headingRef}
+              className="text-[clamp(28px,10vw,40px)] font-extrabold leading-[1.15] text-[#0a0a0a] tracking-[-0.5px]"
+            >
+              Our Recent
+              <br />
+              Work
+            </h2>
+          </div>
         </div>
-      </div>
 
-      <Swiper {...swiperProps} speed={3500}>
-        {SLIDES.map((item, i) => (
-          <SwiperSlide
-            key={`m-${item.id}-${i}`}
-            style={{
-              width: window.innerWidth >= 768
-                ? "clamp(340px, 52vw, 520px)"
-                : "clamp(160px, 72vw, 360px)",
-            }}
-          >
-            <PortfolioCard
-              item={item}
-              imgHeight={
-                window.innerWidth >= 768
-                  ? "clamp(280px, 42vw, 420px)"
-                  : "clamp(120px, 72vw, 220px)"
-              }
-            />
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </section>
-  );
-}
+        <Swiper {...swiperProps} speed={3500}>
+          {SLIDES.map((item, i) => (
+            <SwiperSlide
+              key={`m-${item.id}-${i}`}
+              style={{
+                width: window.innerWidth >= 768
+                  ? "clamp(340px, 52vw, 520px)"
+                  : "clamp(160px, 72vw, 360px)",
+              }}
+            >
+              <PortfolioCard
+                item={item}
+                imgHeight={
+                  window.innerWidth >= 768
+                    ? "clamp(280px, 42vw, 420px)"
+                    : "clamp(120px, 72vw, 220px)"
+                }
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </section>
+    );
+  }
 
   // ── DESKTOP ──────────────────────────────────────────────────────────
   return (
-    <section id="portfolio" className="bg-white w-full overflow-hidden 3xl:mb-52 2xl:mb-52 xl:mb-36 lg:mb-32 3xl:mt-20 2xl:mt-0 xl:mt-20 lg:mt-20">
-      <div className="border-b border-[#efefef] pb-12 px-3 md:px-10 3xl:px-[26rem] 2xl:px-[10rem] xl:px-[5rem] lg:px-[4rem]">
-        <h2 className="3xl:text-[clamp(52px,10vw,90px)] 2xl:text-[clamp(52px,10vw,80px)] xl:text-[clamp(45px,3.8vw,58px)] lg:text-[clamp(40px,3.8vw,58px)] md:text-[clamp(36px,3.8vw,58px)] font-semibold leading-[1.1] text-[#0a0a0a] tracking-[0.02em]">
+    <section id="portfolio" ref={containerRef} className="bg-white w-full overflow-hidden 3xl:mb-52 2xl:mb-52 xl:mb-36 lg:mb-32 3xl:mt-20 2xl:mt-0 xl:mt-20 lg:mt-20">
+      <div className="border-b border-[#efefef] pb-12 px-3 md:px-10 3xl:px-[26rem] 2xl:px-[10rem] xl:px-[5rem] lg:px-[4rem] overflow-hidden">
+        <h2
+          ref={headingRef}
+          className="3xl:text-[clamp(52px,10vw,90px)] 2xl:text-[clamp(52px,10vw,80px)] xl:text-[clamp(45px,3.8vw,58px)] lg:text-[clamp(40px,3.8vw,58px)] md:text-[clamp(36px,3.8vw,58px)] font-semibold leading-[1.1] text-[#0a0a0a] tracking-[0.02em]"
+        >
           Our Recent
           <br />
           Work
@@ -177,10 +204,7 @@ if (!isDesktop) {
 
       <Swiper {...swiperProps} speed={4500}>
         {SLIDES.map((item, i) => (
-          <SwiperSlide
-            key={`d-${item.id}-${i}`}
-            style={{ width: slideWidth }}
-          >
+          <SwiperSlide key={`d-${item.id}-${i}`} style={{ width: slideWidth }}>
             <PortfolioCard item={item} imgHeight={imgHeight} />
           </SwiperSlide>
         ))}
