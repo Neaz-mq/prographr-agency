@@ -1,5 +1,8 @@
 import { useRef, useEffect, useCallback } from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const ITEMS = [
   {
@@ -42,7 +45,7 @@ function ValueItem({ item, setImgRef, setMobileImgRef, setArrowRef, onEnter, onL
     <div
       onMouseEnter={onEnter}
       onMouseLeave={onLeave}
-      className="group relative flex items-center justify-between gap-8 py-3 lg:py-16 cursor-pointer border-b border-black/10 last:border-b-0 "
+      className="group relative flex items-center justify-between gap-8 py-3 lg:py-16 cursor-pointer border-b border-black/10 last:border-b-0"
     >
       <span className="text-black transition-colors duration-300 group-hover:text-black/50 select-none shrink-0 flex-1 min-w-0 3xl:text-[clamp(30px,2.4vw,24px)] 2xl:text-[clamp(16px,2.4vw,22px)] xl:text-[clamp(16px,2.4vw,22px)] lg:text-[clamp(16px,2.4vw,22px)]">
         {item.label}
@@ -69,6 +72,7 @@ function ValueItem({ item, setImgRef, setMobileImgRef, setArrowRef, onEnter, onL
 }
 
 export default function ValueSection() {
+  const containerRef = useRef(null);
   const headingRef = useRef(null);
   const listRef = useRef(null);
   const imgNodes = useRef([]);
@@ -93,6 +97,58 @@ export default function ValueSection() {
 
   useEffect(() => {
     const isDesktop = window.innerWidth >= 1024;
+
+    const ctx = gsap.context(() => {
+      // ── Heading: same animation as TechnologySection ──
+      gsap.fromTo(
+        headingRef.current,
+        { y: "110%", skewY: 7, opacity: 0 },
+        {
+          y: "0%",
+          skewY: 0,
+          opacity: 1,
+          duration: 1.5,
+          ease: "expo.out",
+          scrollTrigger: {
+            trigger: headingRef.current,
+            start: "top 95%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+
+      // ── List items entrance ──
+      gsap.from(listRef.current.children, {
+        y: 24,
+        opacity: 0,
+        duration: 0.7,
+        ease: "power3.out",
+        stagger: 0.12,
+        scrollTrigger: {
+          trigger: listRef.current,
+          start: "top 90%",
+          toggleActions: "play none none none",
+        },
+      });
+
+      // ── Mobile thumbnails entrance ──
+      if (!isDesktop) {
+        gsap.to(mobileImgNodes.current, {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          ease: "power3.out",
+          stagger: 0.1,
+          scrollTrigger: {
+            trigger: listRef.current,
+            start: "top 90%",
+            toggleActions: "play none none none",
+          },
+        });
+      }
+    }, containerRef);
+
+    // ── Desktop image clip-path initial state ──
     ITEMS.forEach((_, i) => {
       if (isDesktop) {
         gsap.set(imgNodes.current[i], {
@@ -104,13 +160,6 @@ export default function ValueSection() {
       gsap.set(arrowNodes.current[i], { x: 0, y: 0 });
     });
 
-    const ctx = gsap.context(() => {
-      gsap.from(headingRef.current, { y: 40, opacity: 0, duration: 1, ease: "power3.out", delay: 0.1 });
-      gsap.from(listRef.current.children, { y: 24, opacity: 0, duration: 0.7, ease: "power3.out", stagger: 0.12, delay: 0.35 });
-      if (!isDesktop) {
-        gsap.to(mobileImgNodes.current, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out", stagger: 0.1, delay: 0.55 });
-      }
-    });
     return () => ctx.revert();
   }, []);
 
@@ -135,18 +184,22 @@ export default function ValueSection() {
   }, [hideImage, showImage, nudgeArrow]);
 
   return (
-    <section className="w-full bg-white" style={{ position: "relative" }}>
-      {/* ✅ FIX: replaced LEFT_INDENT style with matching Tailwind px classes */}
-      <div className="md:py-12 py-7 3xl:py-44 2xl:py-16 xl:py-16 lg:py-16 px-6 md:px-10 3xl:px-[26rem] 2xl:px-[10rem] xl:px-[5rem] lg:px-[4rem] ">
-        <h2
-          ref={headingRef}
-          className="3xl:text-[clamp(52px,10vw,100px)] 2xl:text-[clamp(52px,10vw,80px)] xl:text-[clamp(45px,3.8vw,58px)] lg:text-[clamp(40px,3.8vw,58px)] md:text-[clamp(36px,3.8vw,58px)] text-[clamp(36px,3.8vw,58px)] font-semibold leading-[1.1] text-[#0a0a0a]  tracking-[0.02em] pb-20"
-        >
-          What value
-          <br />are you
-          <br />getting from
-          <br />us?
-        </h2>
+    <section ref={containerRef} className="w-full bg-white" style={{ position: "relative" }}>
+      <div className="md:py-12 py-7 3xl:py-44 2xl:py-16 xl:py-16 lg:py-16 px-6 md:px-10 3xl:px-[26rem] 2xl:px-[10rem] xl:px-[5rem] lg:px-[4rem]">
+
+        {/* overflow-hidden clips the slide-up animation */}
+        <div className="overflow-hidden pb-20">
+          <h2
+            ref={headingRef}
+            className="3xl:text-[clamp(52px,10vw,100px)] 2xl:text-[clamp(52px,10vw,80px)] xl:text-[clamp(45px,3.8vw,58px)] lg:text-[clamp(40px,3.8vw,58px)] md:text-[clamp(36px,3.8vw,58px)] text-[clamp(36px,3.8vw,58px)] font-semibold leading-[1.1] text-[#0a0a0a] tracking-[0.02em]"
+          >
+            What value
+            <br />are you
+            <br />getting from
+            <br />us?
+          </h2>
+        </div>
+
         <div ref={listRef} className="border-t border-black/10" onMouseLeave={handleListLeave}>
           {ITEMS.map((item, i) => (
             <ValueItem
