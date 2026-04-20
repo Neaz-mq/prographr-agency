@@ -338,7 +338,7 @@ export default function AboutSection() {
                     Again let's go →
                   </button>
                 </div>
-              </div>
+              </div> 
             </div>
 
             <div className="shrink-0 w-12" />
