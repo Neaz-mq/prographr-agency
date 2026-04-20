@@ -229,7 +229,7 @@ export default function AboutSection() {
             {/* the INNER card div is identical in width/padding to Card 1         */}
             <div className="shrink-0 flex items-start pl-3 md:pl-10 3xl:pl-[26rem] 2xl:pl-40 xl:pl-20 lg:pl-16 pt-2 pb-5">
               <div className="3xl:w-[35vw] 2xl:w-[48vw] xl:w-[45vw] lg:w-[48vw] md:w-[60vw] pr-8">
-                <div className="overflow-hidden relative 3xl:h-[630px] 2xl:h-[350px] xl:h-[300px] lg:h-[350px]">
+                <div className="overflow-hidden relative 3xl:h-[550px] 2xl:h-[350px] xl:h-[300px] lg:h-[350px]">
                   <img
                     src="https://res.cloudinary.com/dzi3u164c/image/upload/v1774865116/Asset_1_qgly6y.webp"
                     alt="About Prographr"
@@ -239,13 +239,13 @@ export default function AboutSection() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
                   {/* Text overlay */}
                   <div className="absolute bottom-0 left-0 right-0 px-5 pb-5 pt-3 flex flex-col gap-1.5 z-10 bg-black/50 backdrop-blur-[2px]">
-                    <p className="3xl:text-[15px] 2xl:text-[11px] xl:text-[9.5px] lg:text-[9.5px] leading-[1.6] text-white/90">
+                    <p className="3xl:text-[13px] 2xl:text-[11px] xl:text-[9.5px] lg:text-[9.5px] leading-[1.6] text-white/90">
                       In today's fast-moving digital world, strong and meaningful
                       design plays a vital role in building a successful brand.
                       Our design agency was created with one clear goal to help
                       businesses.
                     </p>
-                    <p className="3xl:text-[15px] 2xl:text-[11px] xl:text-[9.5px] lg:text-[9px] leading-[1.6] text-white/90">
+                    <p className="3xl:text-[13px] 2xl:text-[11px] xl:text-[9.5px] lg:text-[9px] leading-[1.6] text-white/90">
                       Our agency specializes in design services that help brands
                       stand out in a competitive market.
                     </p>
@@ -256,7 +256,7 @@ export default function AboutSection() {
 
             {/* ── Card 1 — B&W image ── */}
             <div className="shrink-0 self-start pr-8 pl-8 pt-2 3xl:w-[35vw] 2xl:w-[48vw] xl:w-[45vw] lg:w-[48vw] md:w-[60vw]">
-              <div className="relative 3xl:h-[630px] 2xl:h-[350px] xl:h-[300px] lg:h-[350px]">
+              <div className="relative 3xl:h-[550px] 2xl:h-[350px] xl:h-[300px] lg:h-[350px]">
                 <div className="w-full h-full overflow-hidden">
                   <img
                     src="https://res.cloudinary.com/dzi3u164c/image/upload/v1774967188/photo-1556761175-b413da4baf72_iqjccn.avif"
@@ -281,14 +281,14 @@ export default function AboutSection() {
 
             {/* ── Card 2 — Stats ── */}
             <div className="shrink-0 self-stretch flex flex-col justify-start px-10 pt-2 3xl:w-[35vw] 2xl:w-[48vw] xl:w-[45vw] lg:w-[48vw] md:w-[60vw]">
-              <h3 className="3xl:text-[64px] 2xl:text-[50px] xl:text-[40px] lg:text-[38px] font-bold text-[#0a0a0a] 2xl:leading-[1.4] xl:leading-[1.33] lg:leading-[1.4] mb-8 -mt-2">
+              <h3 className="3xl:text-[52px] 2xl:text-[50px] xl:text-[40px] lg:text-[38px] font-bold text-[#0a0a0a] 2xl:leading-[1.4] xl:leading-[1.33] lg:leading-[1.4] mb-8 -mt-2">
                 What makes
                 <br />
                 <span className="2xl:whitespace-nowrap">
                   our agency different
                 </span>
               </h3>
-              <div className="flex items-start gap-4 3xl:pt-44 2xl:pt-16 xl:pt-8 lg:pt-20">
+              <div className="flex items-start gap-4 3xl:pt-32 2xl:pt-16 xl:pt-8 lg:pt-20">
                 <div className="flex-1">
                   <div className="3xl:text-[56px] 2xl:text-[40px] xl:text-[35px] lg:text-[32px] font-semibold leading-none mb-2 tracking-[-1px] 3xl:pt-20 2xl:pt-6 xl:pt-10 lg:pt-10 text-[#0a0a0a]">
                     30+
@@ -297,7 +297,7 @@ export default function AboutSection() {
                     Company with Work Experiences
                   </div>
                 </div>
-                <div className="flex-[2] bg-[#0a0a0a] 3xl:px-12 3xl:py-20 2xl:px-7 2xl:py-7 xl:px-4 xl:py-9 lg:px-2 lg:py-11 flex 3xl:gap-40 2xl:gap-40 xl:gap-14 lg:gap-6 items-center justify-center">
+                <div className="flex-[2] bg-[#0a0a0a] 3xl:px-8 3xl:py-20 2xl:px-7 2xl:py-7 xl:px-4 xl:py-9 lg:px-2 lg:py-11 flex 3xl:gap-40 2xl:gap-40 xl:gap-14 lg:gap-6 items-center justify-center">
                   <div className="2xl:px-0 xl:px-0 lg:px-2">
                     <div className="3xl:text-[55px] 2xl:text-[40px] xl:text-[40px] lg:text-[30px] font-semibold leading-none mb-2 tracking-[-1px] text-white">
                       1K+
@@ -320,7 +320,7 @@ export default function AboutSection() {
 
             {/* ── Card 3 — Dark CTA ── */}
             <div className="shrink-0 mx-6 3xl:w-[35vw] 2xl:w-[48vw] xl:w-[45vw] lg:w-[48vw] md:w-[60vw]">
-              <div className="relative 3xl:h-[635px] 2xl:h-[360px] xl:h-[303px] lg:h-[358px] overflow-hidden">
+              <div className="relative 3xl:h-[552px] 2xl:h-[360px] xl:h-[303px] lg:h-[358px] overflow-hidden">
                 <img
                   src="https://res.cloudinary.com/dzi3u164c/image/upload/v1774931324/Asset_3_raki8b.webp"
                   alt="CTA"
@@ -328,7 +328,7 @@ export default function AboutSection() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-r z-[1]" />
                 <div className="absolute inset-0 z-[2] flex flex-col justify-between 3xl:p-16 2xl:p-16 xl:p-8 lg:p-8">
-                  <h3 className="3xl:text-[66px] 2xl:text-[40px] xl:text-[36px] lg:text-[36px] font-extrabold text-white leading-[1.1] tracking-[-0.5px] 3xl:max-w-[360px] 2xl:max-w-[360px] xl:max-w-[360px] lg:max-w-[360px]">
+                  <h3 className="3xl:text-[58px] 2xl:text-[40px] xl:text-[36px] lg:text-[36px] font-extrabold text-white leading-[1.1] tracking-[-0.5px] 3xl:max-w-[360px] 2xl:max-w-[360px] xl:max-w-[360px] lg:max-w-[360px]">
                     Scroll and <br />
                     enjoy a <br />
                     new <br />
