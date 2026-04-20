@@ -1,4 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+@font-face {
+  font-family: 'Awesome Serif VAR';
+  src: url('/fonts/Awesome Serif VAR-VF.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Awesome Serif VAR';
+  src: url('/fonts/Awesome Serif Italic VAR-VF.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  --font-primary: 'Awesome Serif VAR', serif;
+}
 
 @tailwind base;
 @tailwind components;
@@ -9,21 +27,23 @@
   html {
     scroll-behavior: auto;
     overflow-x: hidden;
-    /* Hide native scrollbar on all browsers */
-    scrollbar-width: none;        /* Firefox */
-    -ms-overflow-style: none;     /* IE/Edge */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
   }
-  html::-webkit-scrollbar {
-    display: none;                /* Chrome/Safari */
-  }
+  html::-webkit-scrollbar { display: none; }
   body {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-primary);
     background-color: #ffffff;
     color: #ffffff;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-primary);
+    font-weight: 700;
+  }
+  p, span, a, li, button, input, textarea, select, label {
+    font-family: var(--font-primary);
   }
 }
 

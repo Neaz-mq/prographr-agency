@@ -78,7 +78,6 @@ export default function Footer() {
           />
           <span
             className="text-white text-base md:text-sm lg:text-lg xl:text-lg 2xl:text-xl 3xl:text-3xl tracking-wide"
-            style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400 }}
           >
             Prographr
           </span>
