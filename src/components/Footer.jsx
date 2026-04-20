@@ -138,8 +138,8 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* ── md only: 2x2 grid ── */}
-        <div className="hidden md:grid lg:hidden grid-cols-2 gap-x-10 gap-y-10">
+        {/* ── md only: 3-col grid ── */}
+        <div className="hidden md:grid lg:hidden grid-cols-3 gap-x-10 gap-y-10">
           <div>
             <h4 className="text-white font-medium text-[13px] mb-3">Service</h4>
             <div className="border-t border-[#333] mb-5" />
@@ -190,21 +190,10 @@ export default function Footer() {
               ))}
             </ul>
           </div>
-
-          <div>
-            <h4 className="text-white font-medium text-[13px] mb-3">Contact Us</h4>
-            <div className="border-t border-[#333] mb-5" />
-            <a
-              href="mailto:contact.prographr@gmail.com"
-              className="text-[#888] text-[12px] hover:text-white transition-colors leading-relaxed break-all"
-            >
-              contact.prographr@gmail.com
-            </a>
-          </div>
         </div>
 
-        {/* ── lg and above: classic 4-col layout ── */}
-        <div className="hidden lg:grid lg:grid-cols-4 lg:gap-0 lg:divide-x lg:divide-[#333]">
+        {/* ── lg and above: 3-col layout ── */}
+        <div className="hidden lg:grid lg:grid-cols-3 lg:gap-0 lg:divide-x lg:divide-[#333]">
           <div className="lg:pr-8">
             <h4 className="text-white font-medium 3xl:text-xl 2xl:text-lg xl:text-lg lg:text-base mb-3">Service</h4>
             <div className="border-t border-[#333] mb-6" />
@@ -239,7 +228,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div className="lg:px-8">
+          <div className="lg:pl-8">
             <h4 className="text-white font-medium 3xl:text-xl 2xl:text-lg xl:text-lg lg:text-base mb-3">Quick Links</h4>
             <div className="border-t border-[#333] mb-6" />
             <ul className="space-y-3">
@@ -255,24 +244,13 @@ export default function Footer() {
               ))}
             </ul>
           </div>
-
-          <div className="lg:pl-8">
-            <h4 className="text-white font-medium 3xl:text-xl 2xl:text-lg xl:text-lg lg:text-base mb-3">Contact Us</h4>
-            <div className="border-t border-[#333] mb-6" />
-            <a
-              href="mailto:contact.prographr@gmail.com"
-              className="text-[#888] 3xl:text-lg 2xl:text-sm xl:text-sm lg:text-sm hover:text-white transition-colors break-all leading-relaxed"
-            >
-              contact.prographr@gmail.com
-            </a>
-          </div>
         </div>
 
         {/* ── Bottom bar ── */}
         <div className="border-t border-[#222] mt-10 md:mt-12 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             {SOCIAL_LINKS.map(({ href, label, Icon }) => (
-              <a
+              <a 
                 key={label}
                 href={href}
                 target="_blank"
