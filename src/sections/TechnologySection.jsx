@@ -65,7 +65,7 @@ function CardInner({ service }) {
       <div className="absolute inset-0 flex flex-col px-10 py-8 lg:px-12 lg:py-32">
         {/* ✅ mt-auto on this wrapper pushes the whole group to the bottom */}
         <div className="mt-auto flex flex-col gap-5">
-          <p className="text-white leading-relaxed 3xl:text-[clamp(20px,4vw,22px)] text-[clamp(13px,1.05vw,14px)] opacity-85">
+          <p className="text-white leading-relaxed 3xl:text-[clamp(20px,4vw,20px)] text-[clamp(13px,1.05vw,14px)] opacity-85">
             {service.description}
           </p>
           <div
@@ -73,14 +73,14 @@ function CardInner({ service }) {
             style={{ height: "1px", background: "rgba(255,255,255,0.22)" }}
           />
           <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between sm:gap-6">
-            <h3 className="text-white font-medium leading-[1.2] tracking-[0.02em] whitespace-pre-line text-[clamp(17px,1.9vw,27px)] 3xl:text-[clamp(28px,3vw,30px)]">
+            <h3 className="text-white font-medium leading-[1.2] tracking-[0.02em] whitespace-pre-line text-[clamp(17px,1.9vw,27px)] 3xl:text-[clamp(28px,3vw,28px)]">
               {service.title}
             </h3>
             <div className="flex flex-wrap gap-[20px] sm:justify-end">
               {service.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="bg-white text-black font-bold px-[13px] py-[8px] text-[clamp(9px,0.82vw,12px)] 3xl:text-[clamp(12px,2vw,16px)] "
+                  className="bg-white text-black font-bold px-[13px] py-[8px] text-[clamp(9px,0.82vw,12px)] 3xl:text-[clamp(12px,2vw,14px)] "
                 >
                   {tag}
                 </span>
@@ -153,7 +153,7 @@ export default function TechnologySection() {
                 marginBottom: i < SERVICES.length - 1 ? `${CARD_GAP}px` : 0,
               }}
             >
-              <div className="relative w-full overflow-hidden h-[40vh] sm:h-[45vh] md:h-[30vh] lg:h-[55vh] xl:h-[65vh] 2xl:h-[70vh] 3xl:h-[80vh] rounded-none">
+              <div className="relative w-full overflow-hidden h-[40vh] sm:h-[45vh] md:h-[30vh] lg:h-[55vh] xl:h-[65vh] 2xl:h-[70vh] 3xl:h-[72vh] rounded-none">
                 <CardInner service={service} />
               </div>
             </div>
