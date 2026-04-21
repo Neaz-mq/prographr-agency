@@ -15,7 +15,8 @@
 }
 
 :root {
-  --font-primary: 'Awesome Serif VAR', serif;
+  --font-heading: 'Awesome Serif VAR', serif;
+  --font-body: 'Inter', sans-serif;
 }
 
 @tailwind base;
@@ -32,18 +33,15 @@
   }
   html::-webkit-scrollbar { display: none; }
   body {
-    font-family: var(--font-primary);
+    font-family: var(--font-body);
     background-color: #ffffff;
     color: #ffffff;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-primary);
+    font-family: var(--font-heading);
     font-weight: 700;
-  }
-  p, span, a, li, button, input, textarea, select, label {
-    font-family: var(--font-primary);
   }
 }
 
