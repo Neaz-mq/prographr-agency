@@ -2,10 +2,10 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 
 const logos = [
-  { src: "/upwork (2).svg",        alt: "Upwork" },
-  { src: "/dribbble-4.svg",        alt: "Dribbble" },
-  { src: "/envato (1).svg",        alt: "Envato" },
-  { src: "/fiverr-2 (1).svg",      alt: "Fiverr" },
+  { src: "/upwork (2).svg",   alt: "Upwork",   mono: true },
+  { src: "/dribbble-4.svg",   alt: "Dribbble",  mono: true },
+  { src: "/envato (1).svg",   alt: "Envato",    mono: true },
+  { src: "/fiverr-2 (1).svg", alt: "Fiverr",    mono: true },
 ];
 
 const LogoTrack = () => (
@@ -15,7 +15,8 @@ const LogoTrack = () => (
         <img
           src={logo.src}
           alt={logo.alt}
-          className="lg:h-6 md:h-5 h-6 3xl:h-8 2xl:h-6 xl:h-6 w-auto object-contain opacity-60 hover:opacity-90 transition-opacity duration-200 grayscale"
+          className="lg:h-6 md:h-5 h-6 3xl:h-8 2xl:h-6 xl:h-6 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity duration-200"
+          style={logo.mono ? { filter: "brightness(0)" } : undefined}
         />
       </div>
     ))}
