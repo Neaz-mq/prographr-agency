@@ -1,7 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, FreeMode } from "swiper/modules";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "swiper/css";
+
+gsap.registerPlugin(ScrollTrigger);
 
 // ── ICONS ─────────────────────────────────────────────────────────────
 const UiUxIcon = () => (
@@ -101,7 +105,7 @@ function PlayBtn() {
 // ── TESTIMONIAL CARD ──────────────────────────────────────────────────
 function TestimonialCard({ item }) {
   return (
-   <div
+    <div
       className="
         relative overflow-hidden w-full
         h-[380px]
@@ -145,7 +149,7 @@ function TestimonialCard({ item }) {
 // ── SERVICE CARD ──────────────────────────────────────────────────────
 function ServiceCard({ icon, title, desc }) {
   return (
-    <div className="flex flex-col justify-between p-8 3xl:p-14 min-h-[300px] xl:min-h-[250px] 2xl:min-h-[200px] 3xl:min-h-[300px] bg-[#111616]">
+    <div className="flex flex-col justify-between p-8 3xl:p-14 min-h-[300px] xl:min-h-[250px] 2xl:min-h-[200px] 3xl:min-h-[300px] bg-[#1E3539]">
       <div className="flex flex-col gap-12">
         <div className="w-16 h-16 flex items-center justify-center">{icon}</div>
         <h3 className="text-white font-medium pt-4 leading-[1.45] tracking-[0.03em] 3xl:text-[clamp(24px,3vw,28px)] 2xl:text-[clamp(16px,1.4vw,20px)] xl:text-[clamp(30px,2vw,40px)] lg:text-[clamp(20px,2vw,30px)]">
@@ -154,7 +158,7 @@ function ServiceCard({ icon, title, desc }) {
           {title[1]}
         </h3>
       </div>
-      <p className="3xl:text-[16px] 2xl:text-[16px] xl:text-[16px] lg:text-[14px] leading-[1.7] text-[#B2B2B2] pt-36 pb-14 max-w-[300px] ">
+      <p className="3xl:text-[16px] 2xl:text-[16px] xl:text-[16px] lg:text-[14px] leading-[1.7] text-[#B2B2B2] pt-36 pb-14 max-w-[300px]">
         {desc}
       </p>
     </div>
@@ -163,6 +167,12 @@ function ServiceCard({ icon, title, desc }) {
 
 // ── MAIN COMPONENT ────────────────────────────────────────────────────
 export default function Testimonials() {
+  const containerRef = useRef(null);
+
+  // Two heading refs for the animation
+  const builtHeadingRef = useRef(null);
+  const successHeadingRef = useRef(null);
+
   const [isDesktop, setIsDesktop] = useState(() =>
     typeof window !== "undefined" ? window.innerWidth >= 1024 : true,
   );
@@ -172,6 +182,35 @@ export default function Testimonials() {
     window.addEventListener("resize", check);
     return () => window.removeEventListener("resize", check);
   }, []);
+
+  // ── GSAP animations (same style as Portfolio heading) ─────────────
+  useEffect(() => {
+    const refs = [builtHeadingRef.current, successHeadingRef.current].filter(Boolean);
+    if (!refs.length) return;
+
+    const ctx = gsap.context(() => {
+      refs.forEach((el) => {
+        gsap.fromTo(
+          el,
+          { y: "110%", skewY: 7, opacity: 0 },
+          {
+            y: "0%",
+            skewY: 0,
+            opacity: 1,
+            duration: 1.5,
+            ease: "expo.out",
+            scrollTrigger: {
+              trigger: el,
+              start: "top 95%",
+              toggleActions: "play none none none",
+            },
+          }
+        );
+      });
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, [isDesktop]);
 
   const swiperProps = {
     modules: [Autoplay, FreeMode],
@@ -190,20 +229,24 @@ export default function Testimonials() {
   // ── MOBILE ────────────────────────────────────────────────────────
   if (!isDesktop) {
     return (
-      <section className="w-full bg-white overflow-hidden md:pt-10 pt-0">
+      <section ref={containerRef} className="w-full bg-white overflow-hidden md:pt-10 pt-0">
         <div className="bg-[#0a0a0a] pb-[220px]">
           <div className="max-w-7xl mx-auto px-5 sm:px-8 pt-20 pb-10">
             <div className="flex items-end justify-between gap-4">
-              <h2
-                className="font-extrabold leading-[1.12] text-white tracking-[-0.8px]"
-                style={{ fontSize: "clamp(26px,7vw,38px)" }}
-              >
-                Built to Scale:
-                <br />
-                Solutions for
-                <br />
-                Your Evolution
-              </h2>
+              {/* overflow-hidden clips the slide-up */}
+              <div className="overflow-hidden">
+                <h2
+                  ref={builtHeadingRef}
+                  className="font-extrabold leading-[1.12] text-white tracking-[-0.8px]"
+                  style={{ fontSize: "clamp(26px,7vw,38px)" }}
+                >
+                  Built to Scale:
+                  <br />
+                  Solutions for
+                  <br />
+                  Your Evolution
+                </h2>
+              </div>
               <p className="text-right leading-relaxed shrink-0 text-[12px] pb-1 text-white/[38%]">
                 A Showcase
                 <br />
@@ -237,14 +280,18 @@ export default function Testimonials() {
 
           <div className="max-w-7xl mx-auto px-5 sm:px-8 pt-6">
             <div className="flex items-end justify-between gap-4">
-              <h2
-                className="font-extrabold leading-[1.12] text-white tracking-[-0.8px]"
-                style={{ fontSize: "clamp(26px,7vw,38px)" }}
-              >
-                Success Stories
-                <br />
-                That Inspire Us
-              </h2>
+              {/* overflow-hidden clips the slide-up */}
+              <div className="overflow-hidden">
+                <h2
+                  ref={successHeadingRef}
+                  className="font-extrabold leading-[1.12] text-white tracking-[-0.8px]"
+                  style={{ fontSize: "clamp(26px,7vw,38px)" }}
+                >
+                  Success Stories
+                  <br />
+                  That Inspire Us
+                </h2>
+              </div>
               <button className="shrink-0 text-white font-semibold uppercase transition-colors duration-200 hover:bg-white hover:text-black text-[8px] tracking-[1.8px] px-3 py-[7px] border border-white/30 self-end mb-1">
                 Client Stories
               </button>
@@ -275,16 +322,21 @@ export default function Testimonials() {
 
   // ── DESKTOP ───────────────────────────────────────────────────────
   return (
-    <section className="w-full bg-white overflow-hidden">
-      <div className="bg-[#0a0a0a] pb-[310px]">
-        {/* ✅ FIX: replaced LEFT_INDENT style with matching Tailwind px classes */}
+    <section ref={containerRef} className="w-full bg-white overflow-hidden">
+      <div className="bg-[#182F33] pb-[310px]">
         <div className="3xl:pt-64 2xl:pt-52 xl:pt-36 lg:pt-36 pt-20 pb-14 px-3 md:px-10 3xl:px-[26rem] 2xl:px-[10rem] xl:px-[5rem] lg:px-[4rem]">
           <div className="relative">
-            <h2 className="font-medium leading-[1.2] text-white  3xl:max-w-[1260px] max-w-[760px] 3xl:text-[clamp(36px,4vw,84px)]  2xl:text-[clamp(36px,3.8vw,58px)]  xl:text-[clamp(36px,3.8vw,58px)]  lg:text-[clamp(36px,3.8vw,58px)]  md:text-[clamp(36px,3.8vw,58px)] tracking-[0.02em]">
-              Built to Scale: Solutions
-              <br />
-              for Your Evolution
-            </h2>
+            {/* overflow-hidden clips the slide-up on "Built to Scale" */}
+            <div className="overflow-hidden">
+              <h2
+                ref={builtHeadingRef}
+                className="font-medium leading-[1.2] text-white 3xl:max-w-[1260px] max-w-[760px] 3xl:text-[clamp(36px,4vw,84px)] 2xl:text-[clamp(36px,3.8vw,58px)] xl:text-[clamp(36px,3.8vw,58px)] lg:text-[clamp(36px,3.8vw,58px)] md:text-[clamp(36px,3.8vw,58px)] tracking-[0.02em]"
+              >
+                Built to Scale: Solutions
+                <br />
+                for Your Evolution
+              </h2>
+            </div>
             <p className="absolute bottom-0 3xl:top-80 2xl:top-60 xl:top-60 lg:top-48 right-0 text-md 3xl:text-xl text-right leading-relaxed text-[#B2B2B2]">
               A Showcase
               <br />
@@ -299,17 +351,19 @@ export default function Testimonials() {
           </div>
         </div>
 
-        {/* ✅ FIX: replaced LEFT_INDENT style with matching Tailwind px classes */}
         <div className="px-3 md:px-10 3xl:px-[26rem] 2xl:px-[10rem] xl:px-20 lg:px-14">
           <div className="flex items-end justify-between pt-24 border-t border-white/[8%] py-12">
-            <h2
-              className="font-medium leading-[1.2] text-white  3xl:max-w-[1260px] max-w-[760px] 3xl:text-[clamp(36px,4vw,84px)]  2xl:text-[clamp(36px,3.8vw,58px)]  xl:text-[clamp(36px,3.8vw,58px)]  lg:text-[clamp(36px,3.8vw,58px)]  md:text-[clamp(36px,3.8vw,58px)] tracking-[0.02em]"
-             
-            >
-              Success Stories That
-              <br />
-              Inspire Us
-            </h2>
+            {/* overflow-hidden clips the slide-up on "Success Stories" */}
+            <div className="overflow-hidden">
+              <h2
+                ref={successHeadingRef}
+                className="font-medium leading-[1.2] text-white 3xl:max-w-[1260px] max-w-[760px] 3xl:text-[clamp(36px,4vw,84px)] 2xl:text-[clamp(36px,3.8vw,58px)] xl:text-[clamp(36px,3.8vw,58px)] lg:text-[clamp(36px,3.8vw,58px)] md:text-[clamp(36px,3.8vw,58px)] tracking-[0.02em]"
+              >
+                Success Stories That
+                <br />
+                Inspire Us
+              </h2>
+            </div>
             <button className="text-white font-semibold uppercase transition-colors duration-200 hover:bg-white hover:text-black shrink-0 self-end mb-1 3xl:text-[15px] 2xl:text-[13px] xl:text-[11px] lg:text-[11px] tracking-[2px] text-[9px] px-6 py-[10px] border border-white/30">
               Client Stories
             </button>

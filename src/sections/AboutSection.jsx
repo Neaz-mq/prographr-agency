@@ -43,7 +43,7 @@ function CharRevealHeading({ triggerRef, className = "", charClassName = "" }) {
           trigger,
           start: "top 75%",
           end: "bottom 30%",
-          scrub: 0.6,        // ties color directly to scroll position
+          scrub: 0.6, // ties color directly to scroll position
         },
       });
     });
@@ -54,12 +54,19 @@ function CharRevealHeading({ triggerRef, className = "", charClassName = "" }) {
   return (
     <div ref={containerRef} className={`flex flex-col gap-0 ${className}`}>
       {headingLines.map((line, li) => (
-        <p key={li} className="leading-[1.5] tracking-[0.01em]" aria-label={line}>
+        <p
+          key={li}
+          className="leading-[1.5] tracking-[0.01em]"
+          aria-label={line}
+        >
           {line.split("").map((char, ci) => (
             <span
               key={`${li}-${ci}`}
               className={`char-span inline-block ${charClassName}`}
-              style={{ color: "#c0c0c0", whiteSpace: char === " " ? "pre" : "normal" }}
+              style={{
+                color: "#c0c0c0",
+                whiteSpace: char === " " ? "pre" : "normal",
+              }}
             >
               {char}
             </span>
@@ -103,12 +110,19 @@ function CharRevealHeadingMobile({ className = "", charClassName = "" }) {
   return (
     <div ref={containerRef} className={`flex flex-col gap-0 ${className}`}>
       {headingLines.map((line, li) => (
-        <p key={li} className="leading-[1.5] tracking-[0.01em]" aria-label={line}>
+        <p
+          key={li}
+          className="leading-[1.5] tracking-[0.01em]"
+          aria-label={line}
+        >
           {line.split("").map((char, ci) => (
             <span
               key={`${li}-${ci}`}
               className={`char-span-m inline-block ${charClassName}`}
-              style={{ color: "#c0c0c0", whiteSpace: char === " " ? "pre" : "normal" }}
+              style={{
+                color: "#c0c0c0",
+                whiteSpace: char === " " ? "pre" : "normal",
+              }}
             >
               {char}
             </span>
@@ -128,7 +142,7 @@ export default function AboutSection() {
   const headingRef = useRef(null);
 
   const [isDesktop, setIsDesktop] = useState(() =>
-    typeof window !== "undefined" ? window.innerWidth >= 1024 : true
+    typeof window !== "undefined" ? window.innerWidth >= 1024 : true,
   );
 
   useEffect(() => {
@@ -215,15 +229,16 @@ export default function AboutSection() {
               </h2>
             </div>
             <div className="sm:flex-1 sm:pb-1">
-              <CharRevealHeadingMobile
-                charClassName="text-[clamp(14px,3.8vw,20px)] font-semibold"
-              />
+              <CharRevealHeadingMobile charClassName="text-[clamp(14px,3.8vw,20px)] font-semibold" />
             </div>
           </div>
         </div>
 
         <div className="max-w-7xl mx-auto px-5 sm:px-8 w-full py-8 flex flex-col gap-8">
-          <div className="w-full overflow-hidden" style={{ height: "clamp(260px, 42vw, 480px)" }}>
+          <div
+            className="w-full overflow-hidden"
+            style={{ height: "clamp(260px, 42vw, 480px)" }}
+          >
             <img
               src="https://res.cloudinary.com/dzi3u164c/image/upload/v1774865116/Asset_1_qgly6y.webp"
               alt="About Prographr"
@@ -241,7 +256,10 @@ export default function AboutSection() {
             </p>
           </div>
           <div className="w-full overflow-hidden px-0">
-            <div className="relative" style={{ height: "clamp(220px, 52vw, 340px)" }}>
+            <div
+              className="relative"
+              style={{ height: "clamp(220px, 52vw, 340px)" }}
+            >
               <div className="w-full h-full overflow-hidden">
                 <img
                   src="https://res.cloudinary.com/dzi3u164c/image/upload/v1774967188/photo-1556761175-b413da4baf72_iqjccn.avif"
@@ -281,13 +299,17 @@ export default function AboutSection() {
                   <div className="text-[clamp(26px,7vw,40px)] font-semibold leading-none mb-1 tracking-[-1px] text-white">
                     1K+
                   </div>
-                  <div className="text-[11px] leading-[1.5] text-white">Job Completed</div>
+                  <div className="text-[11px] leading-[1.5] text-white">
+                    Job Completed
+                  </div>
                 </div>
                 <div>
                   <div className="text-[clamp(26px,7vw,40px)] font-semibold leading-none mb-1 tracking-[-1px] text-white">
                     100%
                   </div>
-                  <div className="text-[11px] leading-[1.5] text-white">Satisfied Client</div>
+                  <div className="text-[11px] leading-[1.5] text-white">
+                    Satisfied Client
+                  </div>
                 </div>
               </div>
             </div>
@@ -367,16 +389,19 @@ export default function AboutSection() {
                     alt="About Prographr"
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 px-5 pb-5 pt-3 flex flex-col gap-1.5 z-10 bg-black/50 backdrop-blur-[2px]">
-                    <p className="3xl:text-[13px] 2xl:text-[11px] xl:text-[9.5px] lg:text-[9.5px] leading-[1.6] text-white/90">
-                      In today's fast-moving digital world, strong and meaningful design plays a
-                      vital role in building a successful brand. Our design agency was created with
-                      one clear goal to help businesses.
-                    </p>
-                    <p className="3xl:text-[13px] 2xl:text-[11px] xl:text-[9.5px] lg:text-[9px] leading-[1.6] text-white/90">
-                      Our agency specializes in design services that help brands stand out in a
-                      competitive market.
+                  {/* Green overlay — Set a fixed height or min-height to match Card 1 */}
+                  <div
+                    className="absolute bottom-6 left-1/2 -translate-x-1/2 w-[92%] px-5 py-6 z-10 flex items-center"
+                    style={{
+                      backgroundColor: "rgba(100, 138, 90, 0.88)",
+                      minHeight: "80px",
+                    }}
+                  >
+                    <p className="3xl:text-[13px] 2xl:text-[11px] xl:text-[9.5px] lg:text-[9.5px] leading-[1.6] text-white">
+                      Our agency specializes in a wide range of design services
+                      that help brands stand out in a competitive market. From
+                      flyer design to full brand identity, we create meaningful
+                      visuals that drive results.
                     </p>
                   </div>
                 </div>
@@ -384,49 +409,51 @@ export default function AboutSection() {
             </div>
 
             {/* Card 1 */}
-            <div className="shrink-0 self-start pr-8 pl-8 pt-2 3xl:w-[35vw] 2xl:w-[48vw] xl:w-[45vw] lg:w-[48vw] md:w-[60vw]">
-              <div className="relative 3xl:h-[550px] 2xl:h-[350px] xl:h-[300px] lg:h-[350px]">
-                <div className="w-full h-full overflow-hidden">
+            <div className="shrink-0 flex items-start pt-2 pb-5">
+              {/* Matched width and padding to Card 0 */}
+              <div className="3xl:w-[35vw] 2xl:w-[48vw] xl:w-[45vw] lg:w-[48vw] md:w-[60vw] pr-8">
+                <div className="overflow-hidden relative 3xl:h-[550px] 2xl:h-[350px] xl:h-[300px] lg:h-[350px]">
                   <img
                     src="https://res.cloudinary.com/dzi3u164c/image/upload/v1774967188/photo-1556761175-b413da4baf72_iqjccn.avif"
-                    alt="We have a expert team"
-                    className="w-full h-full object-cover"
+                    alt="We have an expert team"
+                    className="w-full h-full object-cover grayscale"
                   />
-                </div>
-                <div className="absolute bottom-8 left-0 flex items-center whitespace-nowrap">
-                  <div className="bg-[#000000] py-2 pl-10">
-                    <span className="text-white text-[15px] font-normal tracking-wide">
-                      We have an ex
-                    </span>
-                  </div>
-                  <div className="py-2">
-                    <span className="text-white text-[15px] font-normal tracking-wide">
-                      pert team
-                    </span>
+                  {/* Green overlay — Adjusted width (w-[65%]) and matched height logic */}
+                  <div
+                    className="absolute bottom-6 left-6 w-[40%] px-6 py-6 z-10 flex items-center"
+                    style={{
+                      backgroundColor: "rgba(114, 163, 100, 0.9)",
+                      minHeight: "90px",
+                    }}
+                  >
+                    <p className="text-white text-[15px] font-normal tracking-wide whitespace-nowrap">
+                      We have an expert team
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
-
             {/* Card 2 — Stats */}
             <div className="shrink-0 self-stretch flex flex-col justify-start px-10 pt-2 3xl:w-[35vw] 2xl:w-[48vw] xl:w-[45vw] lg:w-[48vw] md:w-[60vw]">
               <h3 className="3xl:text-[52px] 2xl:text-[50px] xl:text-[40px] lg:text-[38px] font-bold text-[#0a0a0a] 2xl:leading-[1.4] xl:leading-[1.33] lg:leading-[1.4] mb-8 -mt-2">
                 What makes
                 <br />
-                <span className="2xl:whitespace-nowrap">our agency different</span>
+                <span className="2xl:whitespace-nowrap">
+                  our agency different
+                </span>
               </h3>
               <div className="flex items-start gap-4 3xl:pt-32 2xl:pt-16 xl:pt-8 lg:pt-20">
                 <div className="flex-1">
-                  <div className="3xl:text-[56px] 2xl:text-[40px] xl:text-[35px] lg:text-[32px] font-semibold leading-none mb-2 tracking-[-1px] 3xl:pt-20 2xl:pt-6 xl:pt-10 lg:pt-10 text-[#0a0a0a]">
+                  <div className="3xl:text-[56px] 2xl:text-[40px] xl:text-[35px] lg:text-[32px] font-semibold leading-none mb-2 tracking-[-1px] 3xl:pt-20 2xl:pt-6 xl:pt-10 lg:pt-10 text-[#73AC56]">
                     30+
                   </div>
-                  <div className="3xl:text-[13px] 2xl:text-[11px] xl:text-[12px] lg:text-[9px] leading-[1.5] text-[#797878] font-normal">
+                  <div className="3xl:text-[13px] 2xl:text-[11px] xl:text-[12px] lg:text-[9px] leading-[1.5] text-[#2d2d2d] font-normal">
                     Company with Work Experiences
                   </div>
                 </div>
-                <div className="flex-[2] bg-[#0a0a0a] 3xl:px-8 3xl:py-20 2xl:px-7 2xl:py-7 xl:px-4 xl:py-9 lg:px-2 lg:py-11 flex 3xl:gap-40 2xl:gap-40 xl:gap-14 lg:gap-6 items-center justify-center">
+                <div className="flex-[2] bg-[#182F33] 3xl:px-8 3xl:py-20 2xl:px-7 2xl:py-7 xl:px-4 xl:py-9 lg:px-2 lg:py-11 flex 3xl:gap-40 2xl:gap-40 xl:gap-14 lg:gap-6 items-center justify-center">
                   <div className="2xl:px-0 xl:px-0 lg:px-2">
-                    <div className="3xl:text-[55px] 2xl:text-[40px] xl:text-[40px] lg:text-[30px] font-semibold leading-none mb-2 tracking-[-1px] text-white">
+                    <div className="3xl:text-[55px] 2xl:text-[40px] xl:text-[40px] lg:text-[30px] font-semibold leading-none mb-2 tracking-[-1px] text-[#73AC56]">
                       1K+
                     </div>
                     <div className="3xl:text-[16px] 2xl:text-[14px] xl:text-[10px] lg:text-[10px] leading-[1.5] text-white whitespace-nowrap">
@@ -434,7 +461,7 @@ export default function AboutSection() {
                     </div>
                   </div>
                   <div>
-                    <div className="3xl:text-[55px] 2xl:text-[40px] xl:text-[40px] lg:text-[30px] font-semibold leading-none mb-2 tracking-[-1px] text-white">
+                    <div className="3xl:text-[55px] 2xl:text-[40px] xl:text-[40px] lg:text-[30px] font-semibold leading-none mb-2 tracking-[-1px] text-[#73AC56]">
                       100%
                     </div>
                     <div className="3xl:text-[16px] 2xl:text-[14px] xl:text-[10px] lg:text-[10px] leading-[1.5] text-white whitespace-nowrap">
