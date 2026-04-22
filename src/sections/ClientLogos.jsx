@@ -2,14 +2,10 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 
 const logos = [
-  { src: "/Be.webp",  alt: "Behance" },
-  { src: "/Bk.webp",  alt: "Dribbble" },
-  { src: "/Fi.webp",  alt: "Fiverr" },
-  { src: "/Cir.webp", alt: "Circle" },
-  { src: "/Up.webp",  alt: "Upwork" },
-  { src: "/gr.svg",  alt: "Graphicriver" },
-  { src: "/freepik.svg",  alt: "Freepik" },
-  { src: "/st.svg",  alt: "Adobe" },
+  { src: "/upwork (2).svg",        alt: "Upwork" },
+  { src: "/dribbble-4.svg",        alt: "Dribbble" },
+  { src: "/envato (1).svg",        alt: "Envato" },
+  { src: "/fiverr-2 (1).svg",      alt: "Fiverr" },
 ];
 
 const LogoTrack = () => (
@@ -19,7 +15,7 @@ const LogoTrack = () => (
         <img
           src={logo.src}
           alt={logo.alt}
-          className="lg:h-6 md:h-5 h-6 3xl:h-8 2xl:h-6 xl:h-6  w-auto object-contain opacity-60 hover:opacity-90 transition-opacity duration-200 grayscale"
+          className="lg:h-6 md:h-5 h-6 3xl:h-8 2xl:h-6 xl:h-6 w-auto object-contain opacity-60 hover:opacity-90 transition-opacity duration-200 grayscale"
         />
       </div>
     ))}
@@ -38,14 +34,12 @@ export default function ClientLogos() {
     let trackWidth = 0;
 
     const startTicker = () => {
-      // Measure ONE LogoTrack's width
       trackWidth = track.children[0].offsetWidth;
 
       if (tickerFnRef.current) gsap.ticker.remove(tickerFnRef.current);
 
       tickerFnRef.current = () => {
         xPos -= 0.6;
-        // Reset after exactly one full track width — 4 copies means no gap ever
         if (xPos <= -trackWidth) xPos += trackWidth;
         gsap.set(track, { x: xPos });
       };
@@ -84,7 +78,6 @@ export default function ClientLogos() {
             WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
           }}
         >
-          {/* 4 copies — always enough to fill any viewport without gaps */}
           <div ref={trackRef} className="flex will-change-transform">
             <LogoTrack />
             <LogoTrack />
