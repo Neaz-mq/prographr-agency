@@ -36,7 +36,6 @@ export default function ClientLogos() {
 
     const startTicker = () => {
       trackWidth = track.children[0].offsetWidth;
-
       if (tickerFnRef.current) gsap.ticker.remove(tickerFnRef.current);
 
       tickerFnRef.current = () => {
@@ -52,16 +51,11 @@ export default function ClientLogos() {
     const loadPromises = imgs.map((img) =>
       img.complete
         ? Promise.resolve()
-        : new Promise((res) => {
-            img.onload = res;
-            img.onerror = res;
-          })
+        : new Promise((res) => { img.onload = res; img.onerror = res; })
     );
 
     Promise.all(loadPromises).then(() => {
-      requestAnimationFrame(() => {
-        requestAnimationFrame(startTicker);
-      });
+      requestAnimationFrame(() => requestAnimationFrame(startTicker));
     });
 
     return () => {
@@ -70,7 +64,8 @@ export default function ClientLogos() {
   }, []);
 
   return (
-    <section className="bg-white lg:pb-20 3xl:pt-36 3xl:pb-36 2xl:pt-28 xl:pt-28 lg:pt-28 md:pb-14 md:pt-16 sm:pb-12 sm:pt-20 pb-12 pt-10">
+    // ↓ removed bottom padding — About section starts right here
+    <section className="bg-white 3xl:pt-36 2xl:pt-28 xl:pt-28 lg:pt-28 md:pt-16 sm:pt-20 pt-10 pb-6 md:pb-8 3xl:pb-40">
       <div className="md:px-[2.5rem] 3xl:px-[26rem] 2xl:px-[10rem] xl:px-[5rem] lg:px-[4rem] mx-auto px-6">
         <div
           className="relative overflow-hidden"

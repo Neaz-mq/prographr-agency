@@ -4,14 +4,131 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const headingLines = [
+  "We Help Businesses",
+  "Stand Out With",
+  "Modern, Creative,",
+  "and Impactful Design",
+  "Solutions",
+];
+
+// ─── Per-character Ollyo animation ────────────────────────────────────────────
+// Splits each line into <span> per character, then uses a single scrubbed
+// ScrollTrigger that drives a staggered gsap.to so the dark/gray boundary
+// moves through the characters exactly as the user scrolls — matching Ollyo's
+// mid-word cut visible in the screenshot.
+function CharRevealHeading({ triggerRef, className = "", charClassName = "" }) {
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    const trigger = triggerRef?.current ?? container;
+    if (!container || !trigger) return;
+
+    const chars = Array.from(container.querySelectorAll(".char-span"));
+    if (!chars.length) return;
+
+    // Start all gray
+    gsap.set(chars, { color: "#c0c0c0" });
+
+    const ctx = gsap.context(() => {
+      gsap.to(chars, {
+        color: "#0a0a0a",
+        stagger: {
+          each: 0.015, // tight stagger per character
+          from: "start",
+        },
+        ease: "none",
+        scrollTrigger: {
+          trigger,
+          start: "top 75%",
+          end: "bottom 30%",
+          scrub: 0.6,        // ties color directly to scroll position
+        },
+      });
+    });
+
+    return () => ctx.revert();
+  }, [triggerRef]);
+
+  return (
+    <div ref={containerRef} className={`flex flex-col gap-0 ${className}`}>
+      {headingLines.map((line, li) => (
+        <p key={li} className="leading-[1.5] tracking-[0.01em]" aria-label={line}>
+          {line.split("").map((char, ci) => (
+            <span
+              key={`${li}-${ci}`}
+              className={`char-span inline-block ${charClassName}`}
+              style={{ color: "#c0c0c0", whiteSpace: char === " " ? "pre" : "normal" }}
+            >
+              {char}
+            </span>
+          ))}
+        </p>
+      ))}
+    </div>
+  );
+}
+
+// ─── Mobile version (same logic, slightly different trigger points) ───────────
+function CharRevealHeadingMobile({ className = "", charClassName = "" }) {
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const chars = Array.from(container.querySelectorAll(".char-span-m"));
+    if (!chars.length) return;
+
+    gsap.set(chars, { color: "#c0c0c0" });
+
+    const ctx = gsap.context(() => {
+      gsap.to(chars, {
+        color: "#0a0a0a",
+        stagger: { each: 0.018, from: "start" },
+        ease: "none",
+        scrollTrigger: {
+          trigger: container,
+          start: "top 82%",
+          end: "bottom 20%",
+          scrub: 0.6,
+        },
+      });
+    });
+
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <div ref={containerRef} className={`flex flex-col gap-0 ${className}`}>
+      {headingLines.map((line, li) => (
+        <p key={li} className="leading-[1.5] tracking-[0.01em]" aria-label={line}>
+          {line.split("").map((char, ci) => (
+            <span
+              key={`${li}-${ci}`}
+              className={`char-span-m inline-block ${charClassName}`}
+              style={{ color: "#c0c0c0", whiteSpace: char === " " ? "pre" : "normal" }}
+            >
+              {char}
+            </span>
+          ))}
+        </p>
+      ))}
+    </div>
+  );
+}
+
+// ─── Main Component ───────────────────────────────────────────────────────────
 export default function AboutSection() {
   const wrapperRef = useRef(null);
   const sectionRef = useRef(null);
   const cardsWrapRef = useRef(null);
   const spacerRef = useRef(null);
+  const headingRef = useRef(null);
 
   const [isDesktop, setIsDesktop] = useState(() =>
-    typeof window !== "undefined" ? window.innerWidth >= 1024 : true,
+    typeof window !== "undefined" ? window.innerWidth >= 1024 : true
   );
 
   useEffect(() => {
@@ -20,6 +137,7 @@ export default function AboutSection() {
     return () => window.removeEventListener("resize", check);
   }, []);
 
+  // Horizontal scroll pin (desktop)
   useEffect(() => {
     if (!isDesktop) return;
     const wrapper = wrapperRef.current;
@@ -32,8 +150,7 @@ export default function AboutSection() {
       -(cardsWrap.scrollWidth - cardsWrap.parentElement.clientWidth);
 
     const updateSpacer = () => {
-      const dist = Math.abs(getScrollAmount());
-      spacer.style.height = `${dist}px`;
+      spacer.style.height = `${Math.abs(getScrollAmount())}px`;
     };
 
     const ctx = gsap.context(() => {
@@ -77,26 +194,36 @@ export default function AboutSection() {
     };
   }, [isDesktop]);
 
-  // ── MOBILE / TABLET (< 1024px) ────────────────────────────────────────
+  // ── MOBILE ──────────────────────────────────────────────────────────────────
   if (!isDesktop) {
     return (
       <section id="about" className="bg-white w-full">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 w-full">
-          <div className="pt-10 pb-8">
-            <span className="inline-block text-[10px] bg-[#F2F2F2] text-black uppercase font-semibold px-3 py-1 mb-5">
-              About Us
-            </span>
-            <h2 className="text-[clamp(28px,5.5vw,22px)] font-extrabold leading-[1.4] text-[#0a0a0a] max-w-[660px]">
-              We Help Businesses Stand Out With Modern, Creative, and{" "}
-              <span className="text-[#c0c0c0]">Impactful Design Solutions</span>
-            </h2>
+        <div
+          ref={headingRef}
+          className="max-w-7xl mx-auto px-5 sm:px-8 w-full pt-4 pb-8"
+        >
+          <span className="inline-block text-[10px] bg-[#F2F2F2] text-black uppercase font-semibold px-3 py-1 mb-6 tracking-[0.08em]">
+            About Us
+          </span>
+
+          <div className="flex flex-col sm:flex-row sm:items-end sm:gap-6">
+            <div className="sm:w-[30%] shrink-0 mb-4 sm:mb-0">
+              <h2 className="text-[clamp(40px,10vw,64px)] font-bold text-[#0a0a0a] leading-[1.05] tracking-[-1px]">
+                About
+                <br />
+                Us
+              </h2>
+            </div>
+            <div className="sm:flex-1 sm:pb-1">
+              <CharRevealHeadingMobile
+                charClassName="text-[clamp(14px,3.8vw,20px)] font-semibold"
+              />
+            </div>
           </div>
         </div>
+
         <div className="max-w-7xl mx-auto px-5 sm:px-8 w-full py-8 flex flex-col gap-8">
-          <div
-            className="w-full overflow-hidden"
-            style={{ height: "clamp(260px, 42vw, 480px)" }}
-          >
+          <div className="w-full overflow-hidden" style={{ height: "clamp(260px, 42vw, 480px)" }}>
             <img
               src="https://res.cloudinary.com/dzi3u164c/image/upload/v1774865116/Asset_1_qgly6y.webp"
               alt="About Prographr"
@@ -114,10 +241,7 @@ export default function AboutSection() {
             </p>
           </div>
           <div className="w-full overflow-hidden px-0">
-            <div
-              className="relative"
-              style={{ height: "clamp(220px, 52vw, 340px)" }}
-            >
+            <div className="relative" style={{ height: "clamp(220px, 52vw, 340px)" }}>
               <div className="w-full h-full overflow-hidden">
                 <img
                   src="https://res.cloudinary.com/dzi3u164c/image/upload/v1774967188/photo-1556761175-b413da4baf72_iqjccn.avif"
@@ -157,17 +281,13 @@ export default function AboutSection() {
                   <div className="text-[clamp(26px,7vw,40px)] font-semibold leading-none mb-1 tracking-[-1px] text-white">
                     1K+
                   </div>
-                  <div className="text-[11px] leading-[1.5] text-white">
-                    Job Completed
-                  </div>
+                  <div className="text-[11px] leading-[1.5] text-white">Job Completed</div>
                 </div>
                 <div>
                   <div className="text-[clamp(26px,7vw,40px)] font-semibold leading-none mb-1 tracking-[-1px] text-white">
                     100%
                   </div>
-                  <div className="text-[11px] leading-[1.5] text-white">
-                    Satisfied Client
-                  </div>
+                  <div className="text-[11px] leading-[1.5] text-white">Satisfied Client</div>
                 </div>
               </div>
             </div>
@@ -195,38 +315,50 @@ export default function AboutSection() {
     );
   }
 
-  // ── DESKTOP (≥ 1024px) ────────────────────────────────────────────────
+  // ── DESKTOP ───────────────────────────────────────────────────────────────────
   return (
     <div id="about" ref={wrapperRef}>
       <section
         ref={sectionRef}
         className="bg-white w-full overflow-hidden flex flex-col"
       >
-        {/* ── Heading (stays pinned, does NOT scroll) ── */}
-        <div className="w-full shrink-0">
-          <div className="pt-8 pb-5  px-3 md:px-[2.5rem] 3xl:px-[26rem] 2xl:px-[10rem] xl:px-[5rem] lg:px-[4rem]">
-            <span className="inline-block 3xl:py-3 3xl:px-6 2xl:py-2 2xl:px-4 3xl:text-[16px] 2xl:text-[14px] xl:text-[11px] lg:text-[12px] md:text-[11px] bg-[#F2F2F2] text-black uppercase font-semibold px-3 py-1 mb-4 tracking-[0.02em]">
-              About Us
-            </span>
-            <h2 className="3xl:text-[clamp(48px,6vw,30px)] 2xl:text-[clamp(42px,4vw,30px)] xl:text-[clamp(26px,2.2vw,32px)] lg:text-[clamp(32px,2.2vw,30px)] md:text-[clamp(30px,2vw,30px)] font-semibold leading-[1.4] text-[#0a0a0a] 3xl:max-w-[1200px] 2xl:max-w-[1000px] max-w-[800px] tracking-[0.02em]">
-              We Help Businesses Stand Out With Modern, Creative, and{" "}
-              <span className="text-[#c0c0c0]">
-                Impactful Design Solutions
-              </span>
-            </h2>
+        {/* Two-column heading */}
+        <div
+          ref={headingRef}
+          className="w-full shrink-0 px-3 md:px-[2.5rem] 3xl:px-[26rem] 2xl:px-[10rem] xl:px-[5rem] lg:px-[4rem] pt-6 pb-5"
+        >
+          <div className="flex items-end 3xl:gap-12 2xl:gap-10 xl:gap-8 lg:gap-6">
+            {/* Left */}
+            <div className="shrink-0 self-start 3xl:w-[500px] 2xl:w-[380px] xl:w-[150px] lg:w-[130px]">
+              <h2 className="3xl:text-[clamp(72px,7vw,110px)] 2xl:text-[clamp(56px,6vw,88px)] xl:text-[clamp(42px,5vw,68px)] lg:text-[clamp(36px,4.5vw,58px)] font-bold text-[#182F33] leading-[1.0] tracking-[-2px]">
+                About Us
+              </h2>
+            </div>
+
+            {/* Right — per-character scroll-linked color reveal */}
+            <div className="flex-1 pb-1 flex justify-end">
+              <CharRevealHeading
+                triggerRef={headingRef}
+                charClassName="
+                  3xl:text-[clamp(28px,2.4vw,42px)]
+                  2xl:text-[clamp(22px,1.9vw,34px)]
+                  xl:text-[clamp(18px,1.6vw,26px)]
+                  lg:text-[clamp(16px,1.5vw,22px)]
+                  font-medium whitespace-nowrap
+                "
+              />
+            </div>
           </div>
         </div>
 
-        {/* ── ALL cards scroll together ── */}
+        {/* Horizontal scroll cards */}
         <div className="w-full overflow-hidden relative 3xl:h-[800px] 2xl:h-[600px] xl:h-[320px] lg:h-[360px]">
           <div
             ref={cardsWrapRef}
             className="flex items-stretch h-full will-change-transform"
             style={{ width: "max-content" }}
           >
-            {/* ── Card 0 — indent wrapper + same-width card as Card 1 ── */}
-            {/* KEY FIX: left indent is on the OUTER wrapper (adds to total width)  */}
-            {/* the INNER card div is identical in width/padding to Card 1         */}
+            {/* Card 0 */}
             <div className="shrink-0 flex items-start pl-3 md:pl-10 3xl:pl-[26rem] 2xl:pl-40 xl:pl-20 lg:pl-16 pt-2 pb-5">
               <div className="3xl:w-[35vw] 2xl:w-[48vw] xl:w-[45vw] lg:w-[48vw] md:w-[60vw] pr-8">
                 <div className="overflow-hidden relative 3xl:h-[550px] 2xl:h-[350px] xl:h-[300px] lg:h-[350px]">
@@ -235,26 +367,23 @@ export default function AboutSection() {
                     alt="About Prographr"
                     className="w-full h-full object-cover"
                   />
-                  {/* Gradient fade */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-                  {/* Text overlay */}
                   <div className="absolute bottom-0 left-0 right-0 px-5 pb-5 pt-3 flex flex-col gap-1.5 z-10 bg-black/50 backdrop-blur-[2px]">
                     <p className="3xl:text-[13px] 2xl:text-[11px] xl:text-[9.5px] lg:text-[9.5px] leading-[1.6] text-white/90">
-                      In today's fast-moving digital world, strong and meaningful
-                      design plays a vital role in building a successful brand.
-                      Our design agency was created with one clear goal to help
-                      businesses.
+                      In today's fast-moving digital world, strong and meaningful design plays a
+                      vital role in building a successful brand. Our design agency was created with
+                      one clear goal to help businesses.
                     </p>
                     <p className="3xl:text-[13px] 2xl:text-[11px] xl:text-[9.5px] lg:text-[9px] leading-[1.6] text-white/90">
-                      Our agency specializes in design services that help brands
-                      stand out in a competitive market.
+                      Our agency specializes in design services that help brands stand out in a
+                      competitive market.
                     </p>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* ── Card 1 — B&W image ── */}
+            {/* Card 1 */}
             <div className="shrink-0 self-start pr-8 pl-8 pt-2 3xl:w-[35vw] 2xl:w-[48vw] xl:w-[45vw] lg:w-[48vw] md:w-[60vw]">
               <div className="relative 3xl:h-[550px] 2xl:h-[350px] xl:h-[300px] lg:h-[350px]">
                 <div className="w-full h-full overflow-hidden">
@@ -279,21 +408,19 @@ export default function AboutSection() {
               </div>
             </div>
 
-            {/* ── Card 2 — Stats ── */}
+            {/* Card 2 — Stats */}
             <div className="shrink-0 self-stretch flex flex-col justify-start px-10 pt-2 3xl:w-[35vw] 2xl:w-[48vw] xl:w-[45vw] lg:w-[48vw] md:w-[60vw]">
               <h3 className="3xl:text-[52px] 2xl:text-[50px] xl:text-[40px] lg:text-[38px] font-bold text-[#0a0a0a] 2xl:leading-[1.4] xl:leading-[1.33] lg:leading-[1.4] mb-8 -mt-2">
                 What makes
                 <br />
-                <span className="2xl:whitespace-nowrap">
-                  our agency different
-                </span>
+                <span className="2xl:whitespace-nowrap">our agency different</span>
               </h3>
               <div className="flex items-start gap-4 3xl:pt-32 2xl:pt-16 xl:pt-8 lg:pt-20">
                 <div className="flex-1">
                   <div className="3xl:text-[56px] 2xl:text-[40px] xl:text-[35px] lg:text-[32px] font-semibold leading-none mb-2 tracking-[-1px] 3xl:pt-20 2xl:pt-6 xl:pt-10 lg:pt-10 text-[#0a0a0a]">
                     30+
                   </div>
-                  <div className="3xl:text-[13px] 2xl:text-[11px] xl:text-[12px] lg:text-[9px] leading-[1.5] text-[#797878] font-normal 3xl:pt-1 2xl:pt-0 xl:pt-0 lg:pt-0 pt-0">
+                  <div className="3xl:text-[13px] 2xl:text-[11px] xl:text-[12px] lg:text-[9px] leading-[1.5] text-[#797878] font-normal">
                     Company with Work Experiences
                   </div>
                 </div>
@@ -306,7 +433,7 @@ export default function AboutSection() {
                       Job Completed
                     </div>
                   </div>
-                  <div className="2xl:px-0 xl:px-0 lg:px-0">
+                  <div>
                     <div className="3xl:text-[55px] 2xl:text-[40px] xl:text-[40px] lg:text-[30px] font-semibold leading-none mb-2 tracking-[-1px] text-white">
                       100%
                     </div>
@@ -318,7 +445,7 @@ export default function AboutSection() {
               </div>
             </div>
 
-            {/* ── Card 3 — Dark CTA ── */}
+            {/* Card 3 — Dark CTA */}
             <div className="shrink-0 mx-6 3xl:w-[35vw] 2xl:w-[48vw] xl:w-[45vw] lg:w-[48vw] md:w-[60vw]">
               <div className="relative 3xl:h-[552px] 2xl:h-[360px] xl:h-[303px] lg:h-[358px] overflow-hidden">
                 <img
@@ -338,7 +465,7 @@ export default function AboutSection() {
                     Again let's go →
                   </button>
                 </div>
-              </div> 
+              </div>
             </div>
 
             <div className="shrink-0 w-12" />
@@ -346,7 +473,6 @@ export default function AboutSection() {
         </div>
       </section>
 
-      {/* Manual spacer */}
       <div ref={spacerRef} aria-hidden="true" />
     </div>
   );
