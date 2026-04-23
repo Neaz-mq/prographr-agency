@@ -6,8 +6,8 @@ import { motion, AnimatePresence } from "framer-motion";
 const navLinks = [
   { label: "Services",  sectionId: "services"  },
   { label: "Portfolio", sectionId: "portfolio" },
-  { label: "About",     sectionId: "about"     },
-  { label: "FAQ",       sectionId: "faq"       },
+  { label: "About Us",     sectionId: "about"     },
+  { label: "Contact Us",       sectionId: "faq"       },
 ];
 
 // Always route through Lenis when available, fallback to native
@@ -130,7 +130,7 @@ export default function Navbar() {
             {/* Let's Talk Button */}
             <button
               onClick={() => scrollToSection("contact")}
-              className="inline-flex items-center 3xl:px-5 3xl:py-1.5 2xl:px-4 2xl:py-1 xl:px-3 xl:py-0.5 lg:px-3 lg:py-0.5 md:px-3 md:py-0.5 text-[14px] 3xl:text-[16px] 2xl:text-[13px] xl:text-[13px] lg:text-[14px] md:text-[14px] text-[#0a0a0a] bg-white hover:bg-[#e8e8e8] transition-colors duration-200 font-medium"
+              className="inline-flex items-center rounded-xl 3xl:px-5 3xl:py-1.5 2xl:px-4 2xl:py-1 xl:px-3 xl:py-0.5 lg:px-3 lg:py-0.5 md:px-3 md:py-0.5 text-[14px] 3xl:text-[16px] 2xl:text-[13px] xl:text-[13px] lg:text-[14px] md:text-[14px] text-[#0a0a0a] bg-white hover:bg-[#e8e8e8] transition-colors duration-200 font-medium"
             >
               Let's Talk
             </button>
