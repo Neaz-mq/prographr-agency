@@ -128,7 +128,7 @@ export default function PortfolioSection() {
     }, containerRef);
 
     return () => ctx.revert();
-  }, [isDesktop]); // re-run when layout switches so the ref is fresh
+  }, [isDesktop]); 
 
   const { imgHeight, slideWidth } = useDesktopSizes();
 
