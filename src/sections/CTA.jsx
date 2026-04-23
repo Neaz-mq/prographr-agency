@@ -68,7 +68,7 @@ export default function CTA() {
         <div className="overflow-hidden">
           <h2
             ref={headingRef}
-            className="text-[#0a0a0a] font-semibold mb-2 text-[clamp(36px,6vw,60px)] lg:text-[clamp(40px,3.8vw,58px)] md:text-[clamp(36px,6vw,60px)] xl:text-[clamp(36px,6vw,60px)] 2xl:text-[clamp(36px,6vw,60px)] 3xl:text-[clamp(52px,10vw,100px)]"
+            className="text-[#0a0a0a] font-semibold mb-2 text-[clamp(36px,6vw,60px)] 3xl:text-[clamp(52px,10vw,90px)] 2xl:text-[clamp(52px,10vw,80px)] xl:text-[clamp(45px,3.8vw,58px)] lg:text-[clamp(40px,3.8vw,58px)] md:text-[clamp(36px,3.8vw,58px)]"
           >
             Let's talk
           </h2>

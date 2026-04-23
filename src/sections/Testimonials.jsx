@@ -330,7 +330,7 @@ export default function Testimonials() {
             <div className="overflow-hidden">
               <h2
                 ref={builtHeadingRef}
-                className="font-medium leading-[1.2] text-white 3xl:max-w-[1260px] max-w-[760px] 3xl:text-[clamp(36px,4vw,84px)] 2xl:text-[clamp(36px,3.8vw,58px)] xl:text-[clamp(36px,3.8vw,58px)] lg:text-[clamp(36px,3.8vw,58px)] md:text-[clamp(36px,3.8vw,58px)] tracking-[0.02em]"
+                className="font-medium leading-[1.2] text-white 3xl:max-w-[1260px] max-w-[760px] 3xl:text-[clamp(52px,10vw,90px)] 2xl:text-[clamp(52px,10vw,80px)] xl:text-[clamp(45px,3.8vw,58px)] lg:text-[clamp(40px,3.8vw,58px)] md:text-[clamp(36px,3.8vw,58px)] tracking-[0.02em]"
               >
                 Built to Scale: Solutions
                 <br />
@@ -357,7 +357,7 @@ export default function Testimonials() {
             <div className="overflow-hidden">
               <h2
                 ref={successHeadingRef}
-                className="font-medium leading-[1.2] text-white 3xl:max-w-[1260px] max-w-[760px] 3xl:text-[clamp(36px,4vw,84px)] 2xl:text-[clamp(36px,3.8vw,58px)] xl:text-[clamp(36px,3.8vw,58px)] lg:text-[clamp(36px,3.8vw,58px)] md:text-[clamp(36px,3.8vw,58px)] tracking-[0.02em]"
+                className="font-medium leading-[1.2] text-white 3xl:max-w-[1260px] max-w-[760px] 3xl:text-[clamp(52px,10vw,90px)] 2xl:text-[clamp(52px,10vw,80px)] xl:text-[clamp(45px,3.8vw,58px)] lg:text-[clamp(40px,3.8vw,58px)] md:text-[clamp(36px,3.8vw,58px)] tracking-[0.02em]"
               >
                 Success Stories That
                 <br />

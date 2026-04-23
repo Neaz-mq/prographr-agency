@@ -347,7 +347,7 @@ export default function AboutSection() {
           <div className="flex items-end 3xl:gap-12 2xl:gap-10 xl:gap-8 lg:gap-6">
             {/* Left */}
             <div className="shrink-0 self-start 3xl:w-[500px] 2xl:w-[380px] xl:w-[150px] lg:w-[130px]">
-              <h2 className="3xl:text-[clamp(72px,7vw,110px)] 2xl:text-[clamp(56px,6vw,88px)] xl:text-[clamp(42px,5vw,68px)] lg:text-[clamp(36px,4.5vw,58px)] font-bold text-[#182F33] leading-[1.0] tracking-[-2px]">
+              <h2 className="3xl:text-[clamp(52px,10vw,90px)] 2xl:text-[clamp(52px,10vw,80px)] xl:text-[clamp(45px,3.8vw,58px)] lg:text-[clamp(40px,3.8vw,58px)] md:text-[clamp(36px,3.8vw,58px)] font-bold text-[#182F33] leading-[1.0] tracking-[-2px]">
                 About Us
               </h2>
             </div>

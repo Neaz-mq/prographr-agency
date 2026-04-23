@@ -186,11 +186,11 @@ export default function Footer() {
             ))}
           </div>
 
-          <p className="text-[#555] text-xs md:text-[11px] lg:text-sm text-center">
+          <p className="text-[#888] text-xs md:text-[11px] lg:text-sm text-center">
             © {new Date().getFullYear()} All rights reserved Prographr.
           </p>
 
-          <p className="text-[#555] text-xs md:text-[11px] lg:text-sm">
+          <p className="text-[#888] text-xs md:text-[11px] lg:text-sm">
             Developed by{" "}
             <span className="text-white hover:text-[#FF7431] transition-colors cursor-default">
               Prographr

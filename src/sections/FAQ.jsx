@@ -64,7 +64,7 @@ export default function FAQ() {
   return (
     <section id="faq" ref={containerRef} className="bg-[#182F33]">
       {/* ── Careers ── */}
-      <div className="md:px-10 3xl:px-[26rem] 2xl:px-[10rem] xl:px-[5rem] lg:px-[4rem] mx-auto px-6 3xl:pt-64 2xl:pt-52 xl:pt-36 lg:pt-36 md:pt-36 pb-16 pt-28 border-b border-[#1f1f1f]">
+      <div className="md:px-10 3xl:px-[26rem] 2xl:px-[10rem] xl:px-[5rem] lg:px-[4rem] mx-auto px-6 3xl:pt-64 2xl:pt-52 xl:pt-36 lg:pt-36 md:pt-36 pb-16 pt-28 border-b border-[#1f1f1f] hidden">
         {/* overflow-hidden clips the slide-up so it doesn't show below the section */}
         <div className="overflow-hidden">
           <h2
@@ -94,11 +94,11 @@ export default function FAQ() {
       </div>
 
       {/* ── FAQ ── */}
-      <div className="md:px-10 3xl:px-[26rem] 2xl:px-[10rem] xl:px-20 lg:px-14 mx-auto px-6 pt-16 pb-24">
+      <div className="md:px-10 3xl:px-[26rem] 2xl:px-[10rem] xl:px-20 lg:px-14 mx-auto px-6 pt-32 pb-32">
         <div className="overflow-hidden">
           <h2
             ref={faqHeadingRef}
-            className="font-medium leading-[1.2] text-white 3xl:max-w-[1360px] 2xl:max-w-[1100px] max-w-[760px] 3xl:text-[clamp(52px,10vw,90px)] 2xl:text-[clamp(36px,3.8vw,58px)] xl:text-[clamp(36px,3.8vw,58px)] lg:text-[clamp(36px,3.8vw,58px)] md:text-[clamp(36px,3.8vw,58px)] text-[clamp(32px,3.8vw,45px)]"
+            className="font-medium leading-[1.2] text-white 3xl:max-w-[1360px] 2xl:max-w-[1100px] max-w-[760px] 3xl:text-[clamp(52px,10vw,90px)] 2xl:text-[clamp(52px,10vw,80px)] xl:text-[clamp(45px,3.8vw,58px)] lg:text-[clamp(40px,3.8vw,58px)] md:text-[clamp(36px,3.8vw,58px)] text-[clamp(32px,3.8vw,45px)]"
           >
             Got
             <br />

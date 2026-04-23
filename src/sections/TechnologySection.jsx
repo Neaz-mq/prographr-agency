@@ -131,7 +131,7 @@ export default function TechnologySection() {
         <div className="overflow-hidden">
           <h2
             ref={headingRef}
-            className="3xl:text-[clamp(52px,10vw,100px)] 2xl:text-[clamp(52px,10vw,80px)] xl:text-[clamp(45px,3.8vw,58px)] lg:text-[clamp(40px,3.8vw,58px)] md:text-[clamp(36px,3.8vw,58px)] text-[clamp(36px,3.8vw,58px)]  font-semibold leading-[1.1] text-[#0a0a0a] tracking-[0.02em]"
+            className="3xl:text-[clamp(52px,10vw,90px)] 2xl:text-[clamp(52px,10vw,80px)] xl:text-[clamp(45px,3.8vw,58px)] lg:text-[clamp(40px,3.8vw,58px)] md:text-[clamp(36px,3.8vw,58px)] text-[clamp(36px,3.8vw,58px)]  font-semibold leading-[1.1] text-[#0a0a0a] tracking-[0.02em]"
           >
             Technology
             <br />

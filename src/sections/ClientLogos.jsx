@@ -2,10 +2,12 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 
 const logos = [
-  { src: "/upwork (2).svg",   alt: "Upwork",   mono: true },
-  { src: "/dribbble-4.svg",   alt: "Dribbble",  mono: true },
-  { src: "/envato (1).svg",   alt: "Envato",    mono: true },
-  { src: "/fiverr-2 (1).svg", alt: "Fiverr",    mono: true },
+  { src: "/Upwork.svg",     alt: "Upwork",      mono: true },
+  { src: "/Dribbble.svg",   alt: "Dribbble",    mono: true },
+  { src: "/Envato.svg",     alt: "Envato",      mono: true },
+  { src: "/Fiverr.svg",     alt: "Fiverr",      mono: true },
+  { src: "/Freelancer.svg", alt: "Freelancer",  mono: true },
+  { src: "/Freepik.svg",    alt: "Freepik",     mono: true },
 ];
 
 const LogoTrack = () => (
@@ -15,7 +17,7 @@ const LogoTrack = () => (
         <img
           src={logo.src}
           alt={logo.alt}
-          className="lg:h-6 md:h-5 h-6 3xl:h-8 2xl:h-6 xl:h-6 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity duration-200"
+          className="lg:h-10 md:h-8 h-8 3xl:h-20 2xl:h-10 xl:h-10 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity duration-200"
           style={logo.mono ? { filter: "brightness(0)" } : undefined}
         />
       </div>
@@ -64,7 +66,6 @@ export default function ClientLogos() {
   }, []);
 
   return (
-    // ↓ removed bottom padding — About section starts right here
     <section className="bg-white 3xl:pt-36 2xl:pt-28 xl:pt-28 lg:pt-28 md:pt-16 sm:pt-20 pt-10 pb-6 md:pb-8 3xl:pb-40">
       <div className="md:px-[2.5rem] 3xl:px-[26rem] 2xl:px-[10rem] xl:px-[5rem] lg:px-[4rem] mx-auto px-6">
         <div
