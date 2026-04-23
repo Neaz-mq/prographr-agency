@@ -12,11 +12,6 @@ const headingLines = [
   "Solutions",
 ];
 
-// ─── Per-character Ollyo animation ────────────────────────────────────────────
-// Splits each line into <span> per character, then uses a single scrubbed
-// ScrollTrigger that drives a staggered gsap.to so the dark/gray boundary
-// moves through the characters exactly as the user scrolls — matching Ollyo's
-// mid-word cut visible in the screenshot.
 function CharRevealHeading({ triggerRef, className = "", charClassName = "" }) {
   const containerRef = useRef(null);
 
