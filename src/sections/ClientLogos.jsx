@@ -13,7 +13,7 @@ const logos = [
 const LogoTrack = () => (
   <div className="flex items-center shrink-0">
     {logos.map((logo, i) => (
-      <div key={i} className="shrink-0 px-10">
+      <div key={i} className="shrink-0 px-7">
         <img
           src={logo.src}
           alt={logo.alt}
@@ -66,7 +66,7 @@ export default function ClientLogos() {
   }, []);
 
   return (
-    <section className="bg-white 3xl:pt-36 2xl:pt-28 xl:pt-28 lg:pt-28 md:pt-16 sm:pt-20 pt-10 pb-6 md:pb-8 3xl:pb-40">
+    <section className="bg-white 3xl:pt-28 2xl:pt-24 xl:pt-24 lg:pt-24 md:pt-12 sm:pt-16 pt-8 pb-6 md:pb-8 3xl:pb-40">
       <div className="md:px-[2.5rem] 3xl:px-[26rem] 2xl:px-[10rem] xl:px-[5rem] lg:px-[4rem] mx-auto px-6">
         <div
           className="relative overflow-hidden"
