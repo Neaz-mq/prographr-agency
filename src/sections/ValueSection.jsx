@@ -99,7 +99,6 @@ export default function ValueSection() {
     const isDesktop = window.innerWidth >= 1024;
 
     const ctx = gsap.context(() => {
-      // ── Heading: same animation as TechnologySection ──
       gsap.fromTo(
         headingRef.current,
         { y: "110%", skewY: 7, opacity: 0 },
