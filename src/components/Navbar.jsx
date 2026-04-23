@@ -88,7 +88,7 @@ export default function Navbar() {
   const isHome = location.pathname === "/";
 
   return (
-    <header className="absolute top-0 left-0 right-0 z-50 px-3 md:px-[1rem] 3xl:px-[25rem] 2xl:px-[9rem] xl:px-[5rem] lg:px-[4rem] pt-[40px] 3xl:pt-[20px] 2xl:pt-[40px] xl:pt-[36px] lg:pt-[38px]">
+    <header className="absolute top-0 left-0 right-0 z-50 px-3 md:px-[1rem] 3xl:px-[25rem] 2xl:px-[9rem] xl:px-[5rem] lg:px-[4rem] pt-[40px] 3xl:pt-[10px] 2xl:pt-[40px] xl:pt-[36px] lg:pt-[38px]">
 
       {/* Floating Bar */}
       <div
