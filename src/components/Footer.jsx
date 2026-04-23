@@ -62,7 +62,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-[#0a0a0a]">
+    <footer className="bg-[#182F33]">
       <div className="mx-auto px-6 md:px-10 lg:px-[4rem] xl:px-[5rem] 2xl:px-[10rem] 3xl:px-[26rem] pt-12 md:pt-16 pb-0">
         
         {/* ── Mobile (below md): logo top, then 2 cols ── */}
