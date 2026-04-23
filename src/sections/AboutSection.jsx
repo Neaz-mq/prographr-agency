@@ -355,14 +355,14 @@ export default function AboutSection() {
           </div>
         </div>
 
-        <div className="w-full overflow-hidden relative 3xl:h-[800px] 2xl:h-[600px] xl:h-[320px] lg:h-[360px]">
+        <div className="w-full overflow-hidden relative 3xl:h-[750px] 2xl:h-[600px] xl:h-[320px] lg:h-[360px]">
           <div
             ref={cardsWrapRef}
             className="flex items-stretch h-full will-change-transform"
             style={{ width: "max-content" }}
           >
             {/* Card 0 */}
-            <div className="shrink-0 flex items-start pl-3 md:pl-10 3xl:pl-[26rem] 2xl:pl-40 xl:pl-20 lg:pl-16 pt-2 pb-5">
+            <div className="shrink-0 flex items-start pl-3 md:pl-10 3xl:pl-[26rem] 2xl:pl-40 xl:pl-20 lg:pl-16 pt-2 pb-2">
               <div className="3xl:w-[35vw] 2xl:w-[48vw] xl:w-[45vw] lg:w-[48vw] md:w-[60vw] pr-8">
                 <div className="overflow-hidden relative 3xl:h-[550px] 2xl:h-[350px] xl:h-[300px] lg:h-[350px]">
                   <img
@@ -389,7 +389,7 @@ export default function AboutSection() {
             </div>
 
             {/* Card 1 */}
-            <div className="shrink-0 flex items-start pt-2 pb-5">
+            <div className="shrink-0 flex items-start pt-2 pb-2">
               <div className="3xl:w-[35vw] 2xl:w-[48vw] xl:w-[45vw] lg:w-[48vw] md:w-[60vw] pr-8">
                 <div className="overflow-hidden relative 3xl:h-[550px] 2xl:h-[350px] xl:h-[300px] lg:h-[350px]">
                   <img
@@ -413,7 +413,7 @@ export default function AboutSection() {
             </div>
 
             {/* Card 2 — Stats */}
-            <div className="shrink-0 self-stretch flex flex-col justify-start px-10 pt-2 3xl:w-[45vw] 2xl:w-[48vw] xl:w-[45vw] lg:w-[48vw] md:w-[60vw]">
+            <div className="shrink-0 self-stretch flex flex-col justify-start px-10 pt-2 3xl:w-[45vw] 2xl:w-[48vw] xl:w-[45vw] lg:w-[48vw] md:w-[60vw] pb-2">
               <h3 className="3xl:text-[52px] 2xl:text-[50px] xl:text-[40px] lg:text-[38px] font-normal text-[#0a0a0a] 2xl:leading-[1.4] xl:leading-[1.33] lg:leading-[1.4] mb-8 3xl:mt-8 2xl:mt-6 xl:mt-6 lg:mt-6">
                 What makes
                 <br />
@@ -452,7 +452,7 @@ export default function AboutSection() {
             </div>
 
             {/* Card 3 — Dark CTA */}
-            <div className="shrink-0 mx-6 3xl:w-[40vw] 2xl:w-[48vw] xl:w-[45vw] lg:w-[48vw] md:w-[60vw]">
+            <div className="shrink-0 mx-6 3xl:w-[40vw] 2xl:w-[48vw] xl:w-[45vw] lg:w-[48vw] md:w-[60vw] pb-2">
               <div className="relative 3xl:h-[552px] 2xl:h-[360px] xl:h-[303px] lg:h-[358px] overflow-hidden">
                 <img
                   src="https://res.cloudinary.com/dzi3u164c/image/upload/v1774931324/Asset_3_raki8b.webp"

@@ -190,7 +190,7 @@ export default function PortfolioSection() {
 
   // ── DESKTOP ──────────────────────────────────────────────────────────
   return (
-    <section id="portfolio" ref={containerRef} className="bg-white w-full overflow-hidden 3xl:mb-52 2xl:mb-52 xl:mb-36 lg:mb-32 3xl:mt-20 2xl:mt-0 xl:mt-20 lg:mt-20">
+    <section id="portfolio" ref={containerRef} className="bg-white w-full overflow-hidden 3xl:mb-52 2xl:mb-52 xl:mb-36 lg:mb-32 3xl:mt-0 2xl:mt-0 xl:mt-20 lg:mt-20">
       <div className="border-b border-[#efefef] pb-12 px-3 md:px-10 3xl:px-[26rem] 2xl:px-[10rem] xl:px-[5rem] lg:px-[4rem] overflow-hidden">
         <h2
           ref={headingRef}
