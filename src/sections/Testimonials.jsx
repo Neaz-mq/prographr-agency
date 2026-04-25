@@ -122,13 +122,13 @@ function ServiceCard({ icon, title, desc }) {
         {icon}
       </div>
       {/* Title */}
-      <h3 className="text-white font-medium leading-[1.35] tracking-[0.01em] 3xl:text-[clamp(24px,2vw,32px)] 2xl:text-[clamp(20px,1.6vw,26px)] xl:text-[22px] lg:text-[20px] text-[18px]">
+      <h3 className="text-white font-medium leading-[1.45] tracking-[0.01em] 3xl:text-[clamp(24px,2vw,328x)] 2xl:text-[clamp(20px,1.6vw,26px)] xl:text-[22px] lg:text-[20px] text-[18px] 3xl:pt-4">
         {title[0]}
         <br />
         {title[1]}
       </h3>
       {/* Description — immediately below title */}
-      <p className="3xl:text-[15px] 2xl:text-[14px] xl:text-[13px] lg:text-[12px] text-[12px] leading-[1.7] text-[#B2B2B2]">
+      <p className="3xl:text-[17px] 2xl:text-[14px] xl:text-[13px] lg:text-[12px] text-[12px] leading-[1.7] text-[#B2B2B2] 3xl:pt-2">
         {desc}
       </p>
     </div>
@@ -277,7 +277,7 @@ export default function Testimonials() {
         </div>
 
         <div className="px-3 md:px-10 3xl:px-[26rem] 2xl:px-[10rem] xl:px-20 lg:px-14">
-          <div className="flex items-end justify-between pt-24 border-t border-white/[8%] py-12">
+          <div className="flex items-end justify-between pt-32 border-t border-white/[8%] py-12">
             <div className="overflow-hidden">
               <h2
                 ref={successHeadingRef}

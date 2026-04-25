@@ -64,8 +64,7 @@ export default function FAQ() {
   return (
     <section id="faq" ref={containerRef} className="bg-[#182F33]">
       {/* ── Careers ── */}
-      <div className="md:px-10 3xl:px-[26rem] 2xl:px-[10rem] xl:px-[5rem] lg:px-[4rem] mx-auto px-6 3xl:pt-64 2xl:pt-52 xl:pt-36 lg:pt-36 md:pt-36 pb-16 pt-28 border-b border-[#1f1f1f] hidden">
-        {/* overflow-hidden clips the slide-up so it doesn't show below the section */}
+      <div className="md:px-10 3xl:px-[26rem] 2xl:px-[10rem] xl:px-[5rem] lg:px-[4rem] mx-auto px-6 3xl:pt-64 2xl:pt-52 xl:pt-36 lg:pt-36 md:pt-36 pb-16 pt-28 border-b border-white/[8%] hidden">
         <div className="overflow-hidden">
           <h2
             ref={careersHeadingRef}
@@ -76,9 +75,9 @@ export default function FAQ() {
           </h2>
         </div>
 
-        <div className="flex flex-col divide-y divide-[#1f1f1f] pt-24">
+        <div className="flex flex-col pt-24">
           {jobs.map((job, i) => (
-            <div key={i} className="flex items-center justify-between py-5 gap-6">
+            <div key={i} className={`flex items-center justify-between py-5 gap-6 ${i !== 0 ? "border-t border-white/[8%]" : ""}`}>
               <div>
                 <p className="text-white font-semibold text-sm 3xl:text-[28px] 2xl:text-[24px] xl:text-[22px] lg:text-[20px] md:text-[18px] text-[17px] leading-tight mb-1 tracking-[0.02em]">
                   {job.title}
@@ -106,11 +105,11 @@ export default function FAQ() {
           </h2>
         </div>
 
-        <div className="flex flex-col divide-y divide-[#1f1f1f] mt-20">
+        <div className="flex flex-col mt-20">
           {faqs.map((faq, i) => {
             const isOpen = openIndex === i;
             return (
-              <div key={i}>
+              <div key={i} className={i !== 0 ? "border-t border-white/[8%]" : ""}>
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : i)}
                   className="w-full flex items-center justify-between gap-6 py-5 text-left group"
@@ -139,6 +138,8 @@ export default function FAQ() {
               </div>
             );
           })}
+          {/* bottom border to close the last item */}
+          <div className="border-t border-white/[8%]" />
         </div>
       </div>
     </section>

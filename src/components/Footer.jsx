@@ -170,7 +170,7 @@ export default function Footer() {
         </div>
 
         {/* ── Bottom bar ── */}
-        <div className="border-t border-[#222] mt-10 md:mt-14 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="border-t border-white/[8%] mt-10 md:mt-14 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             {SOCIAL_LINKS.map(({ href, label, Icon }) => (
               <a
