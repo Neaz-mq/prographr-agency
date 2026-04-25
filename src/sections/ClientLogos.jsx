@@ -10,6 +10,8 @@ const logos = [
   { src: "/Freepik.svg",    alt: "Freepik",     mono: true },
 ];
 
+const MONO_FILTER = "grayscale(1) brightness(0) contrast(1)";
+
 const LogoTrack = () => (
   <div className="flex items-center shrink-0">
     {logos.map((logo, i) => (
@@ -18,7 +20,7 @@ const LogoTrack = () => (
           src={logo.src}
           alt={logo.alt}
           className="lg:h-10 md:h-8 h-8 3xl:h-20 2xl:h-10 xl:h-10 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity duration-200"
-          style={logo.mono ? { filter: "brightness(0)" } : undefined}
+          style={logo.mono ? { filter: MONO_FILTER } : undefined}
         />
       </div>
     ))}
