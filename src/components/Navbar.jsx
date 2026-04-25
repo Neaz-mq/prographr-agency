@@ -7,7 +7,7 @@ const navLinks = [
   { label: "Services",  sectionId: "services"  },
   { label: "Portfolio", sectionId: "portfolio" },
   { label: "About Us",     sectionId: "about"     },
-  { label: "Contact Us",       sectionId: "faq"       },
+  { label: "FAQ",       sectionId: "faq"       },
 ];
 
 // Always route through Lenis when available, fallback to native
