@@ -80,6 +80,8 @@ export default function ClientLogos() {
             <LogoTrack />
             <LogoTrack />
             <LogoTrack />
+            <LogoTrack />
+            <LogoTrack />
           </div>
         </div>
       </div>
