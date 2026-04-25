@@ -15,11 +15,11 @@ const MONO_FILTER = "grayscale(1) brightness(0) contrast(100)";
 const LogoTrack = () => (
   <div className="flex items-center shrink-0">
     {logos.map((logo, i) => (
-      <div key={i} className="shrink-0 px-7">
+      <div key={i} className="shrink-0 3xl:px-7 2xl:px-7 xl:px-7 lg:px-7 md:px-6 sm:px-4 px-2">
         <img
           src={logo.src}
           alt={logo.alt}
-          className="lg:h-10 md:h-8 h-8 3xl:h-20 2xl:h-10 xl:h-10 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity duration-200"
+          className="lg:h-14 h-10 md:h-12  3xl:h-20 2xl:h-14 xl:h-14 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity duration-200"
           style={{
             ...(logo.mono ? { filter: MONO_FILTER } : {}),
             ...(logo.scale ? { transform: `scale(${logo.scale})` } : {}),
@@ -71,7 +71,7 @@ export default function ClientLogos() {
   }, []);
 
   return (
-    <section className="bg-white 3xl:pt-28 2xl:pt-24 xl:pt-24 lg:pt-24 md:pt-12 sm:pt-16 pt-8 pb-6 md:pb-8 3xl:pb-40">
+    <section className="bg-white 3xl:pt-28 2xl:pt-20 xl:pt-20 lg:pt-20 md:pt-14 sm:pt-16 pt-12 pb-6 md:pb-8 3xl:pb-40">
       <div className="md:px-[2.5rem] 3xl:px-[26rem] 2xl:px-[10rem] xl:px-[5rem] lg:px-[4rem] mx-auto px-6">
         <div
           className="relative overflow-hidden"
