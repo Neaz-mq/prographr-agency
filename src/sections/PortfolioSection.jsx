@@ -80,7 +80,7 @@ function PortfolioCard({ item, imgHeight }) {
           {item.tags.map((tag) => (
             <span
               key={tag}
-              className="text-[10px] 3xl:text-[18px] text-white border border-white/40 font-semibold bg-white/10 backdrop-blur-[2px] px-2.5 py-[5px] 3xl:px-8 3xl:py-3 whitespace-nowrap leading-none"
+              className="text-[10px] 3xl:text-[18px] text-black border border-white/40 font-semibold bg-white backdrop-blur-[2px] px-2.5 py-[5px] 3xl:px-8 3xl:py-3 whitespace-nowrap leading-none"
             >
               {tag}
             </span>
