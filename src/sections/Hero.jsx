@@ -27,10 +27,10 @@ export default function Hero() {
         {/* Badge */}
         <motion.div {...fadeUp(0)} className="mb-8">
           <div className="inline-flex items-center gap-2  px-3 py-1.5 md:px-4 md:py-1.5 ">
-            <span className="bg-[#73AC56] text-white text-[12px] md:text-[11px] xl:text-[16px]  px-5 py-1 rounded-xl">
+            <span className="bg-[#73AC56] text-white text-[12px] md:text-[11px] lg:text-[14px] xl:text-[16px]  px-5 py-1 rounded-xl">
               5.00
             </span>
-            <span className="text-white text-[11px] md:text-[12px] xl:text-[16px]">
+            <span className="text-white text-[11px] md:text-[12px] lg:text-[14px] xl:text-[16px]">
               Our 2026 Design Trends Report is out
             </span>
           </div>
@@ -39,7 +39,7 @@ export default function Hero() {
         {/* Heading */}
         <motion.h1
           {...fadeUp(0.1)}
-          className="font-medium text-white tracking-wide text-center leading-[1.65] sm:leading-[1.35] md:leading-[1.45] lg:leading-[1.25] text-[1.7rem] sm:text-[2.8rem] md:text-[3rem] lg:text-[3.5rem] xl:text-[4.2rem] 2xl:text-[3.7rem] 3xl:text-[6.2rem]"
+          className="font-medium text-white tracking-wide text-center leading-[1.65] sm:leading-[1.35] md:leading-[1.45] lg:leading-[1.25] text-[2.2rem] sm:text-[2.8rem] md:text-[3rem] lg:text-[3.5rem] xl:text-[4.2rem] 2xl:text-[3.7rem] 3xl:text-[6.2rem]"
         >
           Crafting Digital
           <br />
@@ -51,7 +51,7 @@ export default function Hero() {
         {/* Service tags */}
         <motion.div
           {...fadeUp(0.22)}
-          className="flex flex-wrap items-center justify-center gap-4 mt-14"
+          className="flex flex-wrap items-center justify-center lg:gap-3 xl:gap-4 2xl:gap-4 3xl:gap-4 md:gap-3 gap-3 mt-14"
         >
           {services.map((service, i) => (
             <span
