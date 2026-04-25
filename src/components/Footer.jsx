@@ -1,24 +1,9 @@
 import { useNavigate, useLocation } from "react-router-dom";
-import { Linkedin } from "lucide-react";
-import { FaBehance } from "react-icons/fa";
-import { SiEnvato } from "react-icons/si";
 
 const SOCIAL_LINKS = [
-  {
-    href: "https://www.linkedin.com/company/prographr/",
-    label: "LinkedIn",
-    Icon: Linkedin,
-  },
-  {
-    href: "https://graphicriver.net/user/prographr/portfolio",
-    label: "GraphicRiver",
-    Icon: SiEnvato,
-  },
-  {
-    href: "https://www.behance.net/prographr/",
-    label: "Behance",
-    Icon: FaBehance,
-  },
+  { href: "https://www.linkedin.com/company/prographr/", label: "LinkedIn" },
+  { href: "https://graphicriver.net/user/prographr/portfolio", label: "GraphicRiver" },
+  { href: "https://www.behance.net/prographr/", label: "Behance" },
 ];
 
 function useSectionScroll() {
@@ -58,21 +43,20 @@ export default function Footer() {
   const informationLinks = [
     { label: "FAQ", sectionId: "faq" },
     { label: "Support", sectionId: "contact" },
-    { label: "Contact Us", sectionId: "contact" },
   ];
 
   return (
     <footer className="bg-[#182F33]">
       <div className="mx-auto px-6 md:px-10 lg:px-[4rem] xl:px-[5rem] 2xl:px-[10rem] 3xl:px-[26rem] pt-12 md:pt-16 pb-0">
-        
-        {/* ── Mobile (below md): logo top, then 2 cols ── */}
+
+        {/* ── Mobile View ── */}
         <div className="md:hidden">
           <div className="flex items-center gap-2 mb-10">
             <img src="/logo.webp" alt="Prographr" className="h-7 w-7 object-contain" />
             <span className="text-white text-base tracking-wide">Prographr</span>
           </div>
 
-          <div className="grid grid-cols-2 gap-8 mb-10">
+          <div className="grid grid-cols-2 gap-8 mb-8">
             <div>
               <h4 className="text-white font-medium text-sm mb-4">Service</h4>
               <ul className="space-y-3">
@@ -105,32 +89,45 @@ export default function Footer() {
               </ul>
             </div>
           </div>
+
+          <div className="mb-10">
+            <h4 className="text-white font-medium text-sm mb-4">Social</h4>
+            <ul className="space-y-3">
+              {SOCIAL_LINKS.map(({ href, label }) => (
+                <li key={label}>
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#888] text-xs hover:text-white transition-colors"
+                  >
+                    {label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
-        {/* ── md and above: 4 flat equal columns [logo | blank | service | information] ── */}
-        <div
-          className="hidden md:grid"
-          style={{ gridTemplateColumns: "1fr 1fr 1fr 1fr" }}
-        >
-          {/* Col 1 — Logo */}
-          <div className="flex flex-col items-start">
-            <div className="flex items-center gap-2 mb-10">
-              <img
-                src="/logo.webp"
-                alt="Prographr"
-                className="h-6 w-6 lg:h-7 lg:w-7 3xl:h-9 3xl:w-9 object-contain"
-              />
-            </div>
+        {/* ── Desktop View: Flex Layout ── */}
+        <div className="hidden md:flex items-start justify-between">
+          
+          {/* Logo — Far Left */}
+          <div className="flex-shrink-0">
+            <img
+              src="/logo.webp"
+              alt="Prographr"
+              className="h-6 w-6 lg:h-7 lg:w-7 3xl:h-9 3xl:w-9 object-contain"
+            />
           </div>
 
-          {/* Col 2 — Blank spacer */}
-          <div />
-
-          {/* Col 3 — Service: block pushed to right edge, text left-aligned from heading */}
-          <div className="flex flex-col">
-            <div className="ml-auto">
+          {/* Nav Columns — Grouped to the Right */}
+          <div className="flex gap-16 lg:gap-20 xl:gap-24 2xl:gap-28 3xl:gap-64">
+            
+            {/* Service */}
+            <div className="flex flex-col">
               <h4 className="text-white font-medium text-[13px] lg:text-base 2xl:text-lg 3xl:text-xl mb-10">
-                Service
+                Services
               </h4>
               <ul className="space-y-3">
                 {serviceLinks.map((s) => (
@@ -145,11 +142,9 @@ export default function Footer() {
                 ))}
               </ul>
             </div>
-          </div>
 
-          {/* Col 4 — Information: block pushed to right edge, text left-aligned from heading */}
-          <div className="flex flex-col">
-            <div className="ml-auto">
+            {/* Information */}
+            <div className="flex flex-col">
               <h4 className="text-white font-medium text-[13px] lg:text-base 2xl:text-lg 3xl:text-xl mb-10">
                 Information
               </h4>
@@ -166,27 +161,33 @@ export default function Footer() {
                 ))}
               </ul>
             </div>
+
+            {/* Social */}
+            <div className="flex flex-col">
+              <h4 className="text-white font-medium text-[13px] lg:text-base 2xl:text-lg 3xl:text-xl mb-10">
+                Social
+              </h4>
+              <ul className="space-y-3">
+                {SOCIAL_LINKS.map(({ href, label }) => (
+                  <li key={label}>
+                    <a
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[#888] text-[12px] lg:text-sm 2xl:text-sm 3xl:text-lg hover:text-white transition-colors"
+                    >
+                      {label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
 
-        {/* ── Bottom bar ── */}
+        {/* ── Bottom Bar ── */}
         <div className="border-t border-white/[8%] mt-10 md:mt-14 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            {SOCIAL_LINKS.map(({ href, label, Icon }) => (
-              <a
-                key={label}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={label}
-                className="w-8 h-8 border border-[#333] rounded-full flex items-center justify-center text-[#888] hover:text-white hover:border-[#555] transition-colors"
-              >
-                <Icon size={15} />
-              </a>
-            ))}
-          </div>
-
-          <p className="text-[#888] text-xs md:text-[11px] lg:text-sm text-center">
+          <p className="text-[#888] text-xs md:text-[11px] lg:text-sm text-center sm:text-left">
             © {new Date().getFullYear()} All rights reserved Prographr.
           </p>
 
@@ -197,6 +198,7 @@ export default function Footer() {
             </span>
           </p>
         </div>
+
       </div>
     </footer>
   );
