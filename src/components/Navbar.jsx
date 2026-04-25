@@ -108,7 +108,7 @@ export default function Navbar() {
               <img
                 src="/logo.webp"
                 alt="Prographr"
-                className="h-8 w-8 3xl:h-9 3xl:w-9 2xl:h-7 2xl:w-7 xl:h-6 xl:w-6 lg:h-7 lg:w-7 md:h-6 md:w-6 object-contain"
+                className="h-6 w-6 3xl:h-9 3xl:w-9 2xl:h-7 2xl:w-7 xl:h-6 xl:w-6 lg:h-7 lg:w-7 md:h-6 md:w-6 object-contain"
               />
             </Link>
 
@@ -140,7 +140,7 @@ export default function Navbar() {
             {/* Hamburger */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="md:hidden z-[60] relative flex flex-col justify-center items-center w-8 h-8 gap-[6px] bg-transparent border-none outline-none cursor-pointer"
+              className="md:hidden z-[60] relative flex flex-col justify-center items-center w-6 h-6 gap-[6px] bg-transparent border-none outline-none cursor-pointer"
               aria-label="Toggle menu"
             >
               <motion.span
@@ -199,9 +199,9 @@ export default function Navbar() {
                     animate="open"
                     exit="closed"
                     onClick={() => scrollToSection(sectionId)}
-                    className="w-full text-left bg-transparent border-none outline-none cursor-pointer flex items-center justify-between group"
+                    className="w-full text-left bg-transparent border-none outline-none cursor-pointer flex items-center justify-between group mt-6"
                   >
-                    <span className={`text-[clamp(36px,10vw,52px)] font-semibold tracking-[-1px] leading-none transition-colors duration-200 ${
+                    <span className={`text-[clamp(36px,10vw,36px)] font-semibold tracking-[-1px] leading-none transition-colors duration-200 ${
                       isHome && activeSection === sectionId ? "text-[#73AC56]" : "text-white group-hover:text-[#73AC56]"
                     }`}>
                       {label}
@@ -220,7 +220,7 @@ export default function Navbar() {
               exit="closed"
               className="flex items-center justify-between pt-8"
             >
-              <div className="flex flex-col gap-1">
+              <div className="flex flex-col gap-1 mt-2">
                 <span className="text-white/40 text-[10px] uppercase tracking-[0.15em]">Ready to start?</span>
               </div>
               <button
