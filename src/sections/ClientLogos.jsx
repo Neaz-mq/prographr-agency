@@ -10,7 +10,7 @@ const logos = [
   { src: "/Freepik.svg",    alt: "Freepik",     mono: true },
 ];
 
-const MONO_FILTER = "grayscale(1) brightness(0) contrast(1)";
+const MONO_FILTER = "grayscale(1) brightness(0) contrast(100)";
 
 const LogoTrack = () => (
   <div className="flex items-center shrink-0">
