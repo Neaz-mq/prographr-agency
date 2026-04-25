@@ -7,7 +7,7 @@ const logos = [
   { src: "/Envato.svg",     alt: "Envato",      mono: true },
   { src: "/Fiverr.svg",     alt: "Fiverr",      mono: true },
   { src: "/Freelancer.svg", alt: "Freelancer",  mono: true },
-  { src: "/fr.svg",    alt: "Freepik",     mono: true },
+  { src: "/fr.svg",         alt: "Freepik",     mono: true, scale: "0.55" },
 ];
 
 const MONO_FILTER = "grayscale(1) brightness(0) contrast(100)";
@@ -20,7 +20,10 @@ const LogoTrack = () => (
           src={logo.src}
           alt={logo.alt}
           className="lg:h-10 md:h-8 h-8 3xl:h-20 2xl:h-10 xl:h-10 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity duration-200"
-          style={logo.mono ? { filter: MONO_FILTER } : undefined}
+          style={{
+            ...(logo.mono ? { filter: MONO_FILTER } : {}),
+            ...(logo.scale ? { transform: `scale(${logo.scale})` } : {}),
+          }}
         />
       </div>
     ))}
