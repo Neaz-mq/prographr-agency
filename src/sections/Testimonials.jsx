@@ -17,7 +17,6 @@ const MarketIcon = () => (
   <img src="/Asset 3.svg" alt="Marketing icon" width={44} height={44} />
 );
 
-// ── Updated descriptions ──────────────────────────────────────────────
 const SERVICES = [
   {
     id: 1,
@@ -42,47 +41,35 @@ const SERVICES = [
 const TESTIMONIALS = [
   {
     id: 1,
-    thumbnail: "https://res.cloudinary.com/dzi3u164c/image/upload/q_auto/f_auto/v1775279980/1_boplvw.webp",
-    name: "Elena Rodriguez",
-    role: "Founder & CEO",
-    review: "Honestly didn't expect this level of quality. The brand identity they built feels premium, intentional, and exactly us.",
+    thumbnail: "https://res.cloudinary.com/dzi3u164c/image/upload/v1777105532/Chantel_Gorton_in3lxh.png",
+    name: "Chantel Gorton",
+    role: "WorkRightNW",
+    review: "We have been working with Prographr for over 5 years now and has been instrumental in our branding, packaging and all creative design projects. They created our logos, marketing and branding assets, retail product packaging and product photo editing for retail and online sales. They are easy to work with and always available, has very strong work ethic and integrity which is critical when it comes to consulting and freelance services. Their output are of great quality and exceeds our expectations.",
   },
   {
     id: 2,
-    thumbnail: "https://res.cloudinary.com/dzi3u164c/image/upload/q_auto/f_auto/v1775280021/2_gsi1di.webp",
-    name: "Sarah Jenkins",
-    role: "Marketing Director",
-    review: "Fastest turnaround I've seen — and zero quality drop. Our campaign materials went viral on LinkedIn within 48 hours.",
+    thumbnail: "https://res.cloudinary.com/dzi3u164c/image/upload/v1777105580/Suresh_nvvz9n.png",
+    name: "Suresh Kanthaswamy",
+    role: "Envelor Inc",
+    review: "We have been using Prographr for over 5 years now and has been instrumental in our branding, packaging and all creative design projects. They are always available, has very strong work ethic and integrity. Great quality and exceeds our expectations.",
   },
   {
     id: 3,
-    thumbnail: "https://res.cloudinary.com/dzi3u164c/image/upload/q_auto/f_auto/v1775280158/3_y9ndfl.webp",
-    name: "David Harrison",
-    role: "Project Manager",
-    review: "They didn't just build a website — they built a conversion machine. Traffic doubled, bounce rate dropped. Crazy results.",
+    thumbnail: "https://res.cloudinary.com/dzi3u164c/image/upload/v1777105468/blue-rents_1_ygjwjr.png",
+    name: "Charles A. Cameron",
+    role: "Real Estate Developer",
+    review: "Doing real estate business without business card was difficult for me. I found a excellent business card template here and modified by the design owner. The designer did a fantastic job for me. Thanks...",
   },
   {
     id: 4,
-    thumbnail: "https://res.cloudinary.com/dzi3u164c/image/upload/q_auto/f_auto/v1775280183/4_gxrtp2.webp",
-    name: "Mark Smith",
-    role: "Co-founder & COO",
-    review: "Three agencies passed on our timeline. Prographr delivered ahead of it. Slides, deck, site — all on point. 10/10.",
+    thumbnail: "https://res.cloudinary.com/dzi3u164c/image/upload/v1777105560/Dr._Rado-Kotorov-CEO_zpfry2.webp",
+    name: "Rado Kotorov",
+    role: "Storied Data Inc.",
+    review: "We work for a long time together. And it is most of the time outstanding.",
   },
 ];
 
 const SLIDES = [...TESTIMONIALS, ...TESTIMONIALS, ...TESTIMONIALS];
-
-function PlayBtn() {
-  return (
-    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-      <div className="flex items-center justify-center rounded-full w-[52px] h-[52px] bg-white/[18%] border-[1.5px] border-white/[45%] backdrop-blur-[6px]">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="ml-[2px]">
-          <path d="M4 2.5L13.5 8L4 13.5V2.5Z" fill="white" />
-        </svg>
-      </div>
-    </div>
-  );
-}
 
 function TestimonialCard({ item }) {
   return (
@@ -97,15 +84,19 @@ function TestimonialCard({ item }) {
         className="absolute inset-0 pointer-events-none"
         style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.04) 20%, rgba(0,0,0,0.55) 55%, rgba(0,0,0,0.88) 100%)" }}
       />
-      <PlayBtn />
-      <div className="absolute bottom-0 left-0 right-0 px-10 pb-5">
+      <div className="absolute bottom-0 left-0 right-0 px-10 pb-10 flex flex-col justify-end">
+        {/* name always at same distance from bottom */}
         <p className="text-white font-semibold 3xl:text-[30px] 2xl:text-[30px] xl:text-[22px] lg:text-[22px] md:text-[17px] text-[16px] leading-tight tracking-[-0.3px]">
           {item.name}
         </p>
-        <p className="3xl:text-[18px] 2xl:text-[18px] xl:text-[16px] lg:text-[13px] md:text-[11px] font-medium mt-[3px] mb-3 text-white/[65%]">
+        <p className="3xl:text-[18px] 2xl:text-[18px] xl:text-[16px] lg:text-[13px] md:text-[11px] font-medium mt-[3px] mb-3 text-white/[80%]">
           {item.role}
         </p>
-        <p className="3xl:text-[15px] 2xl:text-[15px] xl:text-[14px] lg:text-[12px] md:text-[11px] text-[9px] leading-[1.65] line-clamp-3 text-white/50 pb-6">
+        {/* fixed min-height = 3 lines so all cards align name/role identically */}
+        <p
+          className="3xl:text-[15px] 2xl:text-[15px] xl:text-[14px] lg:text-[12px] md:text-[11px] text-[9px] leading-[1.65] line-clamp-3 text-white/60"
+          style={{ minHeight: "calc(3 * 1.65em)" }}
+        >
           {item.review}
         </p>
       </div>
@@ -113,21 +104,17 @@ function TestimonialCard({ item }) {
   );
 }
 
-// ── Updated ServiceCard — compact, description right below title ───────
 function ServiceCard({ icon, title, desc }) {
   return (
     <div className="flex flex-col p-8 3xl:p-14 bg-[#1E3539] gap-6">
-      {/* Icon */}
       <div className="w-12 h-12 flex items-center justify-center">
         {icon}
       </div>
-      {/* Title */}
       <h3 className="text-white font-medium leading-[1.45] tracking-[0.01em] 3xl:text-[clamp(24px,2vw,328x)] 2xl:text-[clamp(20px,1.6vw,26px)] xl:text-[22px] lg:text-[20px] text-[18px] 3xl:pt-4">
         {title[0]}
         <br />
         {title[1]}
       </h3>
-      {/* Description — immediately below title */}
       <p className="3xl:text-[17px] 2xl:text-[14px] xl:text-[13px] lg:text-[12px] text-[12px] leading-[1.7] text-[#B2B2B2] 3xl:pt-2">
         {desc}
       </p>
@@ -180,7 +167,7 @@ export default function Testimonials() {
     style: { margin: 0 },
   };
 
-  // ── MOBILE ─────────────────────────────────────────────────────────
+  // ── MOBILE ──────────────────────────────────────────────────────────
   if (!isDesktop) {
     return (
       <section ref={containerRef} className="w-full bg-white overflow-hidden md:pt-10 pt-0">
@@ -238,7 +225,7 @@ export default function Testimonials() {
           <Swiper {...swiperProps} speed={3500}>
             {SLIDES.map((item, i) => (
               <SwiperSlide key={`m-${item.id}-${i}`} style={{ width: "clamp(200px, 62vw, 260px)" }}>
-                <TestimonialCard item={item} cardHeight="clamp(300px, 70vw, 380px)" slideWidth="clamp(200px, 62vw, 260px)" />
+                <TestimonialCard item={item} />
               </SwiperSlide>
             ))}
           </Swiper>
@@ -248,7 +235,7 @@ export default function Testimonials() {
     );
   }
 
-  // ── DESKTOP ────────────────────────────────────────────────────────
+  // ── DESKTOP ─────────────────────────────────────────────────────────
   return (
     <section ref={containerRef} className="w-full bg-white overflow-hidden">
       <div className="bg-[#182F33] pb-[310px]">
@@ -268,7 +255,6 @@ export default function Testimonials() {
             </p>
           </div>
 
-          {/* ── Service cards — compact grid ── */}
           <div className="grid grid-cols-3 mt-72 gap-6 3xl:gap-10">
             {SERVICES.map(({ id, icon, title, desc }) => (
               <ServiceCard key={id} icon={icon} title={title} desc={desc} />
