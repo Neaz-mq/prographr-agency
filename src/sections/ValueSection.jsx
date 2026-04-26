@@ -199,7 +199,7 @@ export default function ValueSection() {
           </h2>
         </div>
 
-        <div ref={listRef} className="border-t border-black/10" onMouseLeave={handleListLeave}>
+     <div ref={listRef} className="lg:border-t border-black/10" onMouseLeave={handleListLeave}>
           {ITEMS.map((item, i) => (
             <ValueItem
               key={item.id}
