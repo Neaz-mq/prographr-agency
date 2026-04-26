@@ -46,7 +46,7 @@ function CharRevealHeading({ triggerRef, className = "", charClassName = "" }) {
       {headingLines.map((line, li) => (
         <p
           key={li}
-          className="leading-[1.2] tracking-[0.01em]"
+          className="3xl:leading-[1.2] 2xl:leading-[1.2] xl:leading-[1.3] lg:leading-[1.3] leading-[1.3] tracking-[0.01em]"
           aria-label={line}
         >
           {line.split("").map((char, ci) => (
@@ -202,27 +202,23 @@ export default function AboutSection() {
           ref={headingRef}
           className="max-w-7xl mx-auto px-5 sm:px-8 w-full pt-4 pb-8"
         >
-          <span className="inline-block text-[10px] bg-[#F2F2F2] text-black uppercase font-semibold px-3 py-1 mb-6 tracking-[0.08em]">
-            About Us
-          </span>
-          <div className="flex flex-col sm:flex-row sm:items-end sm:gap-6">
-            <div className="sm:w-[30%] shrink-0 mb-4 sm:mb-0">
-              <h2 className="text-[clamp(40px,10vw,64px)] font-bold text-[#0a0a0a] leading-[1.05] tracking-[-1px]">
+          <div className="flex flex-row items-start justify-between gap-4 md:pt-8 pt-5">
+            <div className="shrink-0">
+              <h2 className="text-[clamp(40px,10vw,64px)] font-bold text-[#182F33] leading-[1.05] tracking-[-1px] ">
                 About
                 <br />
                 Us
               </h2>
             </div>
-            <div className="sm:flex-1 sm:pb-1">
-              {/* ← font-light here */}
-              <CharRevealHeadingMobile charClassName="text-[clamp(14px,3.8vw,20px)] font-normal" />
+            <div className="flex-1 pb-1 flex justify-end items-end">
+              <CharRevealHeadingMobile charClassName="text-[clamp(13px,3.5vw,20px)] font-normal" />
             </div>
           </div>
         </div>
 
         <div className="max-w-7xl mx-auto px-5 sm:px-8 w-full py-8 flex flex-col gap-8">
           <div
-            className="w-full overflow-hidden"
+            className="w-full overflow-hidden relative"
             style={{ height: "clamp(260px, 42vw, 480px)" }}
           >
             <img
@@ -230,17 +226,22 @@ export default function AboutSection() {
               alt="About Prographr"
               className="w-full h-full object-cover object-center"
             />
+            <div
+              className="absolute bottom-6 left-4 w-[92%] px-5 z-10 flex items-center"
+              style={{
+                backgroundColor: "rgba(100, 138, 90, 0.88)",
+                height: "clamp(60px, 14vw, 90px)",
+              }}
+            >
+              <p className="text-white md:text-[clamp(11px,2.8vw,12px)] text-[clamp(9px,2.8vw,9px)] md:leading-[1.6] leading-[1.3]">
+                Our agency specializes in a wide range of design services that
+                help brands stand out in a competitive market. From flyer design
+                to full brand identity, we create meaningful visuals that drive
+                results.
+              </p>
+            </div>
           </div>
-          <div className="flex flex-col gap-3 max-w-[560px]">
-            <p className="text-[13px] leading-[1.6] text-[#666]">
-              In today's fast-moving digital world, strong and meaningful design
-              plays a vital role in building a successful brand.
-            </p>
-            <p className="text-[13px] leading-[1.6] text-[#666]">
-              Our agency specializes in design services that help brands stand
-              out in a competitive market.
-            </p>
-          </div>
+
           <div className="w-full overflow-hidden px-0">
             <div
               className="relative"
@@ -253,36 +254,35 @@ export default function AboutSection() {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="absolute bottom-8 left-0 flex items-center whitespace-nowrap">
-                <div className="bg-[#000000] py-3 pl-5 sm:pl-8">
-                  <span className="text-white text-[13px] sm:text-[15px] font-normal tracking-wide">
-                    We have an ex
-                  </span>
-                </div>
-                <div className="py-3">
-                  <span className="text-white text-[13px] sm:text-[15px] font-normal tracking-wide">
-                    pert team
-                  </span>
-                </div>
+              <div
+                className="absolute bottom-6 left-4 w-[55%] px-5 z-10 flex items-center"
+                style={{
+                  backgroundColor: "rgba(114, 163, 100, 0.9)",
+                  height: "clamp(52px, 12vw, 72px)",
+                }}
+              >
+                <p className="text-white md:text-[clamp(13px,2.8vw,13px)] text-[clamp(10px,2.8vw,10px)] font-normal tracking-wide">
+                  We have an expert team
+                </p>
               </div>
             </div>
           </div>
-          <div className="flex flex-col gap-5">
-            <h3 className="text-[clamp(24px,5.5vw,36px)] font-bold text-[#0a0a0a] leading-[1.25]">
+          <div className="flex flex-col gap-5 ">
+            <h3 className="text-[clamp(24px,5.5vw,36px)] font-medium text-[#0a0a0a] leading-[1.25]">
               What makes our agency different
             </h3>
             <div className="flex items-stretch gap-3 sm:gap-5 mt-2">
               <div className="flex flex-col justify-center gap-1 flex-1">
-                <div className="text-[clamp(32px,8vw,44px)] font-semibold leading-none tracking-[-1px] text-[#0a0a0a]">
+                <div className="text-[clamp(32px,8vw,44px)] font-semibold leading-none tracking-[-1px] text-[#73AC56]">
                   30+
                 </div>
                 <div className="text-[11px] leading-[1.5] text-[#555]">
                   Company with Work Experiences
                 </div>
               </div>
-              <div className="flex-[2] bg-[#0a0a0a] px-4 sm:px-8 py-6 flex gap-5 sm:gap-24 items-center justify-center">
+              <div className="flex-[2] bg-[#182F33] px-4 sm:px-8 py-6 flex gap-5 sm:gap-24 items-center justify-center">
                 <div>
-                  <div className="text-[clamp(26px,7vw,40px)] font-semibold leading-none mb-1 tracking-[-1px] text-white">
+                  <div className="text-[clamp(26px,7vw,40px)] font-semibold leading-none mb-1 tracking-[-1px] text-[#73AC56]">
                     1K+
                   </div>
                   <div className="text-[11px] leading-[1.5] text-white">
@@ -290,7 +290,7 @@ export default function AboutSection() {
                   </div>
                 </div>
                 <div>
-                  <div className="text-[clamp(26px,7vw,40px)] font-semibold leading-none mb-1 tracking-[-1px] text-white">
+                  <div className="text-[clamp(26px,7vw,40px)] font-semibold leading-none mb-1 tracking-[-1px] text-[#73AC56]">
                     100%
                   </div>
                   <div className="text-[11px] leading-[1.5] text-white">
@@ -331,7 +331,7 @@ export default function AboutSection() {
       >
         <div
           ref={headingRef}
-          className="w-full shrink-0 px-3 md:px-[2.5rem] 3xl:px-[26rem] 2xl:px-[10rem] xl:px-[5rem] lg:px-[4rem] pt-6 3xl:pb-32 pb-5"
+          className="w-full shrink-0 px-3 md:px-[2.5rem] 3xl:px-[26rem] 2xl:px-[10rem] xl:px-[5rem] lg:px-[4rem] 3xl:pt-6 2xl:pt-16 xl:pt-16 lg:pt-16  3xl:pb-32 2xl:pb-20 xl:pb-16 lg:pb-16  pb-5"
         >
           <div className="flex items-end 3xl:gap-12 2xl:gap-10 xl:gap-8 lg:gap-6">
             <div className="shrink-0 self-start 3xl:w-[500px] 2xl:w-[380px] xl:w-[150px] lg:w-[130px]">
@@ -371,13 +371,13 @@ export default function AboutSection() {
                     className="w-full h-full object-cover"
                   />
                   <div
-                    className="absolute bottom-6 left-1/2 -translate-x-1/2 w-[92%] px-5 py-6 z-10 flex items-center"
+                    className="absolute bottom-6 left-1/2 -translate-x-1/2 w-[92%] px-5 z-10 flex items-center"
                     style={{
                       backgroundColor: "rgba(100, 138, 90, 0.88)",
-                      minHeight: "80px",
+                      height: "clamp(80px, 8vw, 120px)",
                     }}
                   >
-                    <p className="3xl:text-[13px] 2xl:text-[11px] xl:text-[9.5px] lg:text-[9.5px] leading-[1.6] text-white">
+                    <p className="3xl:text-[15px] 2xl:text-[13px] xl:text-[12px] lg:text-[12px] leading-[1.6] text-white">
                       Our agency specializes in a wide range of design services
                       that help brands stand out in a competitive market. From
                       flyer design to full brand identity, we create meaningful
@@ -398,13 +398,13 @@ export default function AboutSection() {
                     className="w-full h-full object-cover grayscale"
                   />
                   <div
-                    className="absolute bottom-6 left-6 w-[40%] px-6 py-6 z-10 flex items-center"
+                    className="absolute bottom-6 left-6 w-[50%] px-6 z-10 flex items-center"
                     style={{
                       backgroundColor: "rgba(114, 163, 100, 0.9)",
-                      minHeight: "90px",
+                      height: "clamp(80px, 8vw, 120px)",
                     }}
                   >
-                    <p className="text-white text-[15px] font-normal tracking-wide whitespace-nowrap">
+                    <p className="text-white 3xl:text-[18px] 2xl:text-[14px] xl:text-[12px] lg:text-[14px] font-normal tracking-wide whitespace-nowrap">
                       We have an expert team
                     </p>
                   </div>
@@ -414,23 +414,23 @@ export default function AboutSection() {
 
             {/* Card 2 — Stats */}
             <div className="shrink-0 self-stretch flex flex-col justify-start px-10 pt-2 3xl:w-[45vw] 2xl:w-[48vw] xl:w-[45vw] lg:w-[48vw] md:w-[60vw] pb-2">
-              <h3 className="3xl:text-[52px] 2xl:text-[50px] xl:text-[40px] lg:text-[38px] font-normal text-[#0a0a0a] 2xl:leading-[1.4] xl:leading-[1.33] lg:leading-[1.4] mb-8 3xl:mt-8 2xl:mt-6 xl:mt-6 lg:mt-6">
+              <h3 className="3xl:text-[52px] 2xl:text-[50px] xl:text-[40px] lg:text-[38px] font-normal text-[#0a0a0a] 2xl:leading-[1.4] xl:leading-[1.33] lg:leading-[1.4] mb-8 3xl:mt-10 2xl:mt-4 xl:mt-4 lg:mt-4">
                 What makes
                 <br />
                 <span className="2xl:whitespace-nowrap">
                   our agency different
                 </span>
               </h3>
-              <div className="flex items-start gap-4 3xl:pt-16 2xl:pt-16 xl:pt-8 lg:pt-20">
+              <div className="flex items-start gap-4 3xl:pt-16 2xl:pt-10 xl:pt-2 lg:pt-20">
                 <div className="flex-1">
-                  <div className="3xl:text-[72px] 2xl:text-[40px] xl:text-[35px] lg:text-[32px] font-semibold leading-none mb-2 tracking-[-1px] 3xl:pt-20 2xl:pt-6 xl:pt-10 lg:pt-10 text-[#73AC56]">
+                  <div className="3xl:text-[72px] 2xl:text-[40px] xl:text-[35px] lg:text-[32px] font-semibold leading-none mb-2 tracking-[-1px] 3xl:pt-20 2xl:pt-8 xl:pt-10 lg:pt-10 text-[#73AC56]">
                     30+
                   </div>
                   <div className="3xl:text-[18px] 2xl:text-[11px] xl:text-[12px] lg:text-[9px] leading-[1.5] text-black font-normal">
                     Company with Work Experiences
                   </div>
                 </div>
-                <div className="flex-[2] bg-[#182F33] 3xl:px-8 3xl:py-20 2xl:px-7 2xl:py-7 xl:px-4 xl:py-9 lg:px-2 lg:py-11 flex 3xl:gap-52 2xl:gap-40 xl:gap-14 lg:gap-6 items-center justify-center">
+                <div className="flex-[2] bg-[#182F33] 3xl:px-8 3xl:py-20 2xl:px-7 2xl:py-7 xl:px-4 xl:py-9 lg:px-2 lg:py-9 flex 3xl:gap-52 2xl:gap-40 xl:gap-14 lg:gap-6 items-center justify-center">
                   <div className="2xl:px-0 xl:px-0 lg:px-2">
                     <div className="3xl:text-[72px] 2xl:text-[40px] xl:text-[40px] lg:text-[30px] font-semibold leading-none mb-2 tracking-[-1px] text-[#73AC56]">
                       1K+
@@ -453,7 +453,7 @@ export default function AboutSection() {
 
             {/* Card 3 — Dark CTA */}
             <div className="shrink-0 mx-6 3xl:w-[40vw] 2xl:w-[48vw] xl:w-[45vw] lg:w-[48vw] md:w-[60vw] pb-2">
-              <div className="relative 3xl:h-[552px] 2xl:h-[360px] xl:h-[303px] lg:h-[358px] overflow-hidden">
+              <div className="relative 3xl:h-[560px] 2xl:h-[360px] xl:h-[303px] lg:h-[358px] overflow-hidden">
                 <img
                   src="https://res.cloudinary.com/dzi3u164c/image/upload/v1774931324/Asset_3_raki8b.webp"
                   alt="CTA"
