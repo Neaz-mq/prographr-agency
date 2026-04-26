@@ -70,7 +70,7 @@ function CardInner({ service }) {
             className="w-full"
             style={{ height: "1px", background: "rgba(255,255,255,0.22)" }}
           />
-          <div className="flex flex-col gap-2 sm:gap-3 sm:flex-row sm:items-end sm:justify-between sm:gap-6">
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between sm:gap-6">
             <h3 className="text-white font-medium leading-[1.2] tracking-[0.02em] whitespace-pre-line text-[clamp(15px,4.5vw,22px)] sm:text-[clamp(17px,2.8vw,24px)] lg:text-[clamp(17px,1.9vw,27px)] 3xl:text-[clamp(28px,3vw,28px)]">
               {service.title}
             </h3>

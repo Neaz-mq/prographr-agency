@@ -93,11 +93,11 @@ export default function FAQ() {
       </div>
 
       {/* ── FAQ ── */}
-      <div className="md:px-10 3xl:px-[26rem] 2xl:px-[10rem] xl:px-20 lg:px-14 mx-auto px-6 pt-32 pb-32">
+      <div className="md:px-10 3xl:px-[26rem] 2xl:px-[10rem] xl:px-20 lg:px-14 mx-auto px-6 3xl:pt-32 3xl:pb-32 2xl:pt-32 2xl:pb-32 xl:pt-32 xl:pb-32 lg:pt-32 lg:pb-32 md:pt-32 md:pb-32 sm:pt-24 sm:pb-24 pt-20 pb-20">
         <div className="overflow-hidden">
           <h2
             ref={faqHeadingRef}
-            className="font-medium leading-[1.2] text-white 3xl:max-w-[1360px] 2xl:max-w-[1100px] max-w-[760px] 3xl:text-[clamp(52px,10vw,90px)] 2xl:text-[clamp(52px,10vw,80px)] xl:text-[clamp(45px,3.8vw,58px)] lg:text-[clamp(40px,3.8vw,58px)] md:text-[clamp(36px,3.8vw,58px)] text-[clamp(32px,3.8vw,45px)]"
+            className="font-medium leading-[1.2] text-white 3xl:max-w-[1360px] 2xl:max-w-[1100px] max-w-[760px] 3xl:text-[clamp(52px,10vw,90px)] 2xl:text-[clamp(52px,10vw,80px)] xl:text-[clamp(45px,3.8vw,58px)] lg:text-[clamp(40px,3.8vw,58px)] md:text-[clamp(36px,3.8vw,58px)] text-[clamp(36px,3.8vw,58px)]"
           >
             Got
             <br />
@@ -105,7 +105,7 @@ export default function FAQ() {
           </h2>
         </div>
 
-        <div className="flex flex-col mt-20">
+        <div className="flex flex-col 3xl:mt-20 2xl:mt-20 xl:mt-20 lg:mt-20 md:mt-20 sm:mt-12 mt-10">
           {faqs.map((faq, i) => {
             const isOpen = openIndex === i;
             return (
@@ -115,7 +115,7 @@ export default function FAQ() {
                   className="w-full flex items-center justify-between gap-6 py-5 text-left group"
                 >
                   <span
-                    className={`text-base md:text-base lg:text-lg xl:text-lg 2xl:text-lg 3xl:text-2xl tracking-[0.02em] font-medium transition-colors duration-200 ${
+                    className={`text-base md:text-base lg:text-md xl:text-lg 2xl:text-lg 3xl:text-2xl tracking-[0.02em] font-medium transition-colors duration-200 ${
                       isOpen ? "text-white" : "text-white/80 group-hover:text-white"
                     }`}
                   >
@@ -131,7 +131,7 @@ export default function FAQ() {
                     isOpen ? "max-h-60 pb-6" : "max-h-0"
                   }`}
                 >
-                  <p className="text-[#888] 3xl:text-base 2xl:text-base xl:text-sm lg:text-sm md:text-[12px] text-[11px] leading-relaxed">
+                  <p className="text-[#888] 3xl:text-base 2xl:text-base xl:text-sm lg:text-[12px] md:text-[12px] text-[11px] leading-relaxed">
                     {faq.a}
                   </p>
                 </div>
