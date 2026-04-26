@@ -70,9 +70,23 @@ export default function ClientLogos() {
     };
   }, []);
 
-  return (
+ return (
     <section className="bg-white 3xl:pt-28 2xl:pt-20 xl:pt-20 lg:pt-20 md:pt-14 sm:pt-16 pt-12 pb-6 md:pb-8 3xl:pb-40">
       <div className="md:px-[2.5rem] 3xl:px-[26rem] 2xl:px-[10rem] xl:px-[5rem] lg:px-[4rem] mx-auto px-6">
+
+        {/* ── Heading ── */}
+        <div className="flex flex-col items-center text-center mb-10 md:mb-14">
+          <p className="text-black/40 uppercase tracking-[0.2em] text-[10px] md:text-[11px] font-medium mb-3">
+            Trusted across platforms
+          </p>
+          <h2 className="3xl:text-[clamp(52px,10vw,90px)] 2xl:text-[clamp(52px,10vw,80px)] xl:text-[clamp(45px,3.8vw,58px)] lg:text-[clamp(40px,3.8vw,58px)] md:text-[clamp(36px,3.8vw,58px)] font-bold text-[#182F33] leading-[1.0] tracking-[-2px] pb-5">
+            Where our work
+            <br />
+            gets recognized
+          </h2>
+        </div>
+
+        {/* ── Logo ticker ── */}
         <div
           className="relative overflow-hidden"
           style={{

@@ -12,20 +12,28 @@ const jobs = [
 
 const faqs = [
   {
-    q: "What is the difference between UI and UX design?",
-    a: "UX (User Experience) design focuses on the logic, usability, and feel of the product—ensuring the journey is intuitive. UI (User Interface) design focuses on the visual touchpoints—colors, typography, and layouts—that make the product engaging and professional. We provide both to ensure your site works as beautifully as it looks.",
+    q: "What does your graphic design process look like?",
+    a: "We start with a discovery session to understand your brand, audience, and goals. From there we move into concept development, present multiple directions, and refine based on your feedback. Every visual we create is intentional — built to communicate clearly and leave a lasting impression.",
   },
   {
-    q: "Do you handle both design and development?",
-    a: "Yes. Prographr is a full-service creative agency. We handle everything from brand identity and UI/UX design to full-stack web development and deployment.",
+    q: "How do you approach brand logo and identity design?",
+    a: "We treat your logo as the foundation of everything. We research your industry, competitors, and target audience before putting pen to paper. The result is a mark that feels distinct, scalable across all formats, and true to who you are as a business.",
   },
   {
-    q: "How long does a typical project take?",
-    a: "Project timelines vary based on scope. A landing page typically takes 1–2 weeks, while a full web application can take 4–12 weeks. We'll give you a clear timeline during the discovery call.",
+    q: "What goes into a web design project?",
+    a: "Every web design project begins with wireframes and user flow mapping before any visuals are created. We design for both aesthetics and usability — ensuring your site looks great and converts visitors into clients. All designs are responsive and optimized for every screen size.",
   },
   {
-    q: "Can you redesign an existing website?",
-    a: "Absolutely. We specialize in redesigns—improving both aesthetics and performance while preserving your brand equity and SEO structure.",
+    q: "Can you design pitch decks and presentation templates?",
+    a: "Yes. We design presentations that are clean, on-brand, and built to impress — whether it's a client pitch, investor deck, or internal report. We also create reusable templates so your team can stay consistent without starting from scratch every time.",
+  },
+  {
+    q: "Do you handle development after the design is approved?",
+    a: "Absolutely. We offer full web development — from landing pages to complex web applications. Our developers work directly from our own design files, which means no miscommunication, pixel-perfect output, and faster delivery.",
+  },
+  {
+    q: "What tools and technologies do you work with?",
+    a: "For design, we work in Figma, Adobe Illustrator, Photoshop, and InDesign. Presentations are crafted in PowerPoint, Keynote, and Google Slides. On the development side we build with React, Next.js, Tailwind CSS, and Node.js — deployed on Vercel or custom hosting depending on your needs. We use the right tool for the job, not just the popular one.",
   },
 ];
 

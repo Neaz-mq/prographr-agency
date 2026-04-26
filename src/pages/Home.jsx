@@ -6,8 +6,9 @@ import PortfolioSection from "../sections/PortfolioSection";
 import Testimonials from "../sections/Testimonials";
 import ValueSection from "../sections/ValueSection";
 import TechnologySection from "../sections/TechnologySection";
+import PlatformProfiles from "../sections/PlatformProfiles";
 import FAQ from "../sections/FAQ";
 import CTA from "../sections/CTA";
 export default function Home() {
-  return <><Hero/> <ClientLogos /> <AboutSection /> <PortfolioSection /> <Testimonials /> <ValueSection /> <TechnologySection /> <FAQ /> <CTA /></>;
+  return <><Hero/> <ClientLogos /> <AboutSection /> <PortfolioSection /> <Testimonials /> <ValueSection /> <TechnologySection /> <FAQ />  <PlatformProfiles /> <CTA /></>;
 }

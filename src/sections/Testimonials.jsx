@@ -21,20 +21,20 @@ const SERVICES = [
   {
     id: 1,
     icon: <UiUxIcon />,
-    title: ["UI/UX", "Design services"],
-    desc: "We craft intuitive, beautiful interfaces that keep users engaged and drive meaningful interactions across every touchpoint.",
+    title: ["Creative &", "Brand Design"],
+    desc: "From compelling graphics to memorable logos, we shape visual identities that communicate who you are — consistently across every platform and format.",
   },
   {
     id: 2,
     icon: <CodeIcon />,
-    title: ["Development", "Solution"],
-    desc: "From robust backends to pixel-perfect frontends, we build scalable web solutions tailored to your business goals.",
+    title: ["Web Design &", "Development"],
+    desc: "We design and build fast, responsive websites that look sharp and perform even sharper — from landing pages to full web applications.",
   },
   {
     id: 3,
     icon: <MarketIcon />,
-    title: ["Marketing", "and Automation"],
-    desc: "We design data-driven campaigns and smart automation systems that grow your reach and convert leads on autopilot.",
+    title: ["Presentation", "Design"],
+    desc: "We turn your ideas into polished, on-brand decks that command attention — whether it's a client pitch, investor deck, or internal report.",
   },
 ];
 

@@ -1,41 +1,39 @@
 import { useEffect, useRef, useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, FreeMode } from "swiper/modules";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import "swiper/css";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const PORTFOLIO_ITEMS = [
   {
     id: 1,
-    image: "https://res.cloudinary.com/dzi3u164c/image/upload/q_auto/f_auto/v1776599999/Presentation-16_hzmygv.jpg",
+    image: "https://res.cloudinary.com/dzi3u164c/image/upload/v1777186805/Presentation-15_jnk5hi.webp",
     tags: ["Flyer Design", "Rack Card", "App UI Design"],
   },
   {
     id: 2,
-    image: "https://res.cloudinary.com/dzi3u164c/image/upload/q_auto/f_auto/v1775120064/2_vtojsw.webp",
+    image: "https://res.cloudinary.com/dzi3u164c/image/upload/v1777185668/Restaurant_Web_mtcii7.webp",
     tags: ["UI UX Design", "Web Design", "Prototyping"],
   },
   {
     id: 3,
-    image: "https://res.cloudinary.com/dzi3u164c/image/upload/q_auto/f_auto/v1775120173/3_vykw9g.webp",
+    image: "https://res.cloudinary.com/dzi3u164c/image/upload/v1777187897/web_ox490e.webp",
     tags: ["React JS", "Next JS", "MERN"],
   },
   {
     id: 4,
-    image: "https://res.cloudinary.com/dzi3u164c/image/upload/q_auto/f_auto/v1776597939/Presentation-14_cjtdan.webp",
+    image: "https://res.cloudinary.com/dzi3u164c/image/upload/v1777187448/Branding_cxgpvp.webp",
     tags: ["Brand Identity", "Brand Book", "Brand Manual"],
   },
   {
     id: 5,
-    image: "https://res.cloudinary.com/dzi3u164c/image/upload/q_auto/f_auto/v1776599891/Presentation-15_afhcci.jpg",
+    image: "https://res.cloudinary.com/dzi3u164c/image/upload/v1777187054/Presentation-16_clipec.webp",
     tags: ["Product Label", "Label Design", "Bottle Label"],
   },
 ];
 
-const SLIDES = [...PORTFOLIO_ITEMS, ...PORTFOLIO_ITEMS, ...PORTFOLIO_ITEMS];
+// Duplicate once — CSS marquee only needs 2× to loop seamlessly
+const SLIDES = [...PORTFOLIO_ITEMS, ...PORTFOLIO_ITEMS];
 
 function useDesktopSizes() {
   const getSizes = () => {
@@ -69,6 +67,7 @@ function PortfolioCard({ item, imgHeight }) {
           alt={item.tags[0]}
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
           loading="lazy"
+          decoding="async"
         />
         <div
           className="absolute inset-0 pointer-events-none transition-opacity duration-500 opacity-100 group-hover:opacity-0"
@@ -91,6 +90,59 @@ function PortfolioCard({ item, imgHeight }) {
   );
 }
 
+// ─── Marquee strip ───────────────────────────────────────────────────────────
+// `translateX(-50%)` moves exactly one full copy of PORTFOLIO_ITEMS,
+// so the loop is invisible — no JS recalculation ever fires.
+const MARQUEE_CSS = `
+  @keyframes portfolio-marquee {
+    from { transform: translate3d(0, 0, 0); }
+    to   { transform: translate3d(-50%, 0, 0); }
+  }
+
+  .portfolio-track {
+    display: flex;
+    width: max-content;
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    animation: portfolio-marquee var(--marquee-duration) linear infinite;
+  }
+
+  /* pause on hover — works whether the cursor is on the track or any card */
+  .portfolio-marquee-outer:hover .portfolio-track {
+    animation-play-state: paused;
+  }
+`;
+
+function MarqueeStrip({ slideWidth, imgHeight, duration }) {
+  return (
+    <div
+      className="portfolio-marquee-outer overflow-hidden"
+      /* gap is baked into padding-right on each slide so CSS can measure it */
+    >
+      <div
+        className="portfolio-track"
+        style={{ "--marquee-duration": `${duration}ms` }}
+      >
+        {SLIDES.map((item, i) => (
+          <div
+            key={`${item.id}-${i}`}
+            style={{
+              width: slideWidth,
+              flexShrink: 0,
+              paddingRight: "24px",
+              boxSizing: "border-box",
+            }}
+          >
+            <PortfolioCard item={item} imgHeight={imgHeight} />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// ─── Main section ────────────────────────────────────────────────────────────
 export default function PortfolioSection() {
   const headingRef = useRef(null);
   const containerRef = useRef(null);
@@ -107,7 +159,6 @@ export default function PortfolioSection() {
 
   useEffect(() => {
     if (!headingRef.current) return;
-
     const ctx = gsap.context(() => {
       gsap.fromTo(
         headingRef.current,
@@ -126,30 +177,31 @@ export default function PortfolioSection() {
         }
       );
     }, containerRef);
-
     return () => ctx.revert();
-  }, [isDesktop]); 
+  }, [isDesktop]);
 
   const { imgHeight, slideWidth } = useDesktopSizes();
 
-  const swiperProps = {
-    modules: [Autoplay, FreeMode],
-    slidesPerView: "auto",
-    spaceBetween: 24,
-    freeMode: { enabled: true, momentum: false },
-    autoplay: {
-      delay: 0,
-      disableOnInteraction: false,
-      pauseOnMouseEnter: true,
-    },
-    loop: true,
-    style: { margin: 0 },
-  };
-
-  // ── MOBILE ──────────────────────────────────────────────────────────
+  // ── MOBILE ────────────────────────────────────────────────────────────
   if (!isDesktop) {
+    const mobileSlideWidth =
+      typeof window !== "undefined" && window.innerWidth >= 768
+        ? "clamp(340px, 52vw, 520px)"
+        : "clamp(160px, 72vw, 360px)";
+
+    const mobileImgHeight =
+      typeof window !== "undefined" && window.innerWidth >= 768
+        ? "clamp(280px, 42vw, 420px)"
+        : "clamp(120px, 72vw, 220px)";
+
     return (
-      <section id="portfolio" ref={containerRef} className="bg-white w-full overflow-hidden mb-12 md:mt-8 sm:mt-4 mt-2">
+      <section
+        id="portfolio"
+        ref={containerRef}
+        className="bg-white w-full overflow-hidden mb-12 md:mt-8 sm:mt-4 mt-2"
+      >
+        <style>{MARQUEE_CSS}</style>
+
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
           <div className="pt-10 pb-6 border-b border-[#efefef] overflow-hidden">
             <h2
@@ -163,34 +215,24 @@ export default function PortfolioSection() {
           </div>
         </div>
 
-        <Swiper {...swiperProps} speed={3500}>
-          {SLIDES.map((item, i) => (
-            <SwiperSlide
-              key={`m-${item.id}-${i}`}
-              style={{
-                width: window.innerWidth >= 768
-                  ? "clamp(340px, 52vw, 520px)"
-                  : "clamp(160px, 72vw, 360px)",
-              }}
-            >
-              <PortfolioCard
-                item={item}
-                imgHeight={
-                  window.innerWidth >= 768
-                    ? "clamp(280px, 42vw, 420px)"
-                    : "clamp(120px, 72vw, 220px)"
-                }
-              />
-            </SwiperSlide>
-          ))}
-        </Swiper>
+        <MarqueeStrip
+          slideWidth={mobileSlideWidth}
+          imgHeight={mobileImgHeight}
+          duration={18000}
+        />
       </section>
     );
   }
 
-  // ── DESKTOP ──────────────────────────────────────────────────────────
+  // ── DESKTOP ───────────────────────────────────────────────────────────
   return (
-    <section id="portfolio" ref={containerRef} className="bg-white w-full overflow-hidden 3xl:mb-52 2xl:mb-52 xl:mb-36 lg:mb-32 3xl:mt-10 2xl:mt-0 xl:mt-28 lg:mt-28 ">
+    <section
+      id="portfolio"
+      ref={containerRef}
+      className="bg-white w-full overflow-hidden 3xl:mb-52 2xl:mb-52 xl:mb-36 lg:mb-32 3xl:mt-10 2xl:mt-0 xl:mt-28 lg:mt-28"
+    >
+      <style>{MARQUEE_CSS}</style>
+
       <div className="border-b border-[#efefef] pb-12 px-3 md:px-10 3xl:px-[26rem] 2xl:px-[10rem] xl:px-[5rem] lg:px-[4rem] overflow-hidden">
         <h2
           ref={headingRef}
@@ -202,13 +244,11 @@ export default function PortfolioSection() {
         </h2>
       </div>
 
-      <Swiper {...swiperProps} speed={4500}>
-        {SLIDES.map((item, i) => (
-          <SwiperSlide key={`d-${item.id}-${i}`} style={{ width: slideWidth }}>
-            <PortfolioCard item={item} imgHeight={imgHeight} />
-          </SwiperSlide>
-        ))}
-      </Swiper>
+      <MarqueeStrip
+        slideWidth={slideWidth}
+        imgHeight={imgHeight}
+        duration={26000}
+      />
     </section>
   );
 }

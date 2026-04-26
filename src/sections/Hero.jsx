@@ -43,9 +43,9 @@ export default function Hero() {
         >
           Crafting Digital
           <br />
-          Experiences That
+          Experiences That  Define
           <br />
-          Define the Future
+          the Future
         </motion.h1>
 
         {/* Service tags */}
