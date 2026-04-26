@@ -81,7 +81,7 @@ const SLIDES = [...TESTIMONIALS, ...TESTIMONIALS, ...TESTIMONIALS];
 
 function TestimonialCard({ item }) {
   return (
-    <div className="relative overflow-hidden w-full h-[350px] sm:h-[400px] md:h-[340px] lg:h-[450px] xl:h-[500px] 2xl:h-[540px] 3xl:h-[800px]">
+    <div className="relative overflow-hidden w-full h-[480px] sm:h-[520px] md:h-[460px] lg:h-[580px] xl:h-[640px] 2xl:h-[700px] 3xl:h-[980px]">
       <img
         src={item.thumbnail}
         alt={item.name}
@@ -96,14 +96,12 @@ function TestimonialCard({ item }) {
         }}
       />
       <div className="absolute bottom-0 left-0 right-0 px-10 pb-10 flex flex-col justify-end">
-        {/* name always at same distance from bottom */}
         <p className="text-white font-semibold 3xl:text-[30px] 2xl:text-[20px] xl:text-[22px] lg:text-[18px] md:text-[15px] text-[14px] leading-tight tracking-[-0.3px]">
           {item.name}
         </p>
         <p className="3xl:text-[18px] 2xl:text-[13px] xl:text-[16px] lg:text-[12px] md:text-[11px] text-[10px] font-medium mt-[3px] mb-3 text-white/[80%]">
           {item.role}
         </p>
-        {/* fixed min-height = 3 lines so all cards align name/role identically */}
         <p
           className="3xl:text-[15px] 2xl:text-[13px] xl:text-[14px] lg:text-[11px] md:text-[10px] text-[9px] leading-[1.65] line-clamp-3 text-white/60"
           style={{ minHeight: "calc(3 * 1.65em)" }}
@@ -117,14 +115,32 @@ function TestimonialCard({ item }) {
 
 function ServiceCard({ icon, title, desc }) {
   return (
-    <div className="flex flex-col p-8 3xl:p-14 bg-[#1E3539] gap-6">
-      <div className="w-12 h-12 flex items-center justify-center">{icon}</div>
-      <h3 className="text-white font-medium leading-[1.45] tracking-[0.01em] 3xl:text-[clamp(24px,2vw,328x)] 2xl:text-[clamp(20px,1.6vw,26px)] xl:text-[22px] lg:text-[20px] text-[18px] 3xl:pt-4">
+    <div className="flex flex-col bg-[#1E3539] px-8 py-10 lg:px-10 lg:py-12 xl:px-12 xl:py-14 2xl:px-14 2xl:py-16 3xl:px-10 3xl:py-10 gap-7 3xl:gap-12">
+      <div className="w-12 h-12 flex items-center justify-center shrink-0">
+        {icon}
+      </div>
+
+      <h3
+        className="text-white font-medium leading-[1.35] tracking-[0.01em] shrink-0
+          3xl:text-[clamp(22px,6vw,22px)]
+          2xl:text-[clamp(20px,1.6vw,28px)]
+          xl:text-[clamp(18px,1.4vw,24px)]
+          lg:text-[20px]
+          text-[18px]"
+      >
         {title[0]}
         <br />
         {title[1]}
       </h3>
-      <p className="3xl:text-[17px] 2xl:text-[14px] xl:text-[13px] lg:text-[12px] text-[12px] leading-[1.7] text-[#B2B2B2] 3xl:pt-2">
+
+      <p
+        className="leading-[1.7] text-[#B2B2B2]
+          3xl:text-[15px]
+          2xl:text-[14px]
+          xl:text-[13px]
+          lg:text-[12px]
+          text-[12px]"
+      >
         {desc}
       </p>
     </div>
@@ -197,7 +213,7 @@ export default function Testimonials() {
         ref={containerRef}
         className="w-full bg-white overflow-hidden md:pt-20 pt-0"
       >
-        <div className="bg-[#182F33] pb-[220px]">
+        <div className="bg-[#182F33] pb-[300px]">
           <div className="max-w-7xl mx-auto px-5 sm:px-8 pt-20 pb-10">
             <div className="flex items-end justify-between gap-4">
               <div className="overflow-hidden">
@@ -224,7 +240,10 @@ export default function Testimonials() {
 
             <div className="flex flex-col gap-3 mt-8">
               {SERVICES.map(({ id, icon, title, desc }) => (
-                <div key={id} className="flex flex-col p-5 gap-4 bg-[#1E3539]">
+                <div
+                  key={id}
+                  className="flex flex-col px-5 py-8 gap-6 bg-[#1E3539]"
+                >
                   <div>{icon}</div>
                   <h3 className="text-white font-bold text-[14px] leading-[1.35]">
                     {title[0]}
@@ -259,7 +278,7 @@ export default function Testimonials() {
           </div>
         </div>
 
-        <div className="-mt-[180px]">
+        <div className="-mt-[250px]">
           <Swiper {...swiperProps} speed={3500}>
             {SLIDES.map((item, i) => (
               <SwiperSlide
@@ -279,7 +298,7 @@ export default function Testimonials() {
   // ── DESKTOP ─────────────────────────────────────────────────────────
   return (
     <section ref={containerRef} className="w-full bg-white overflow-hidden">
-      <div className="bg-[#182F33] pb-[310px]">
+      <div className="bg-[#182F33] pb-[400px]">
         <div className="3xl:pt-64 2xl:pt-48 xl:pt-36 lg:pt-28 pt-20 pb-14 px-3 md:px-10 3xl:px-[26rem] 2xl:px-[10rem] xl:px-[5rem] lg:px-[4rem]">
           <div className="relative">
             <div className="overflow-hidden">
@@ -325,7 +344,7 @@ export default function Testimonials() {
         </div>
       </div>
 
-      <div className="-mt-[250px]">
+      <div className="-mt-[320px]">
         <Swiper {...swiperProps} speed={4500}>
           {SLIDES.map((item, i) => (
             <SwiperSlide

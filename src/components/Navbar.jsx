@@ -3,10 +3,10 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
-  { label: "Services",  sectionId: "hero"      },
-  { label: "Portfolio", sectionId: "portfolio"  },
-  { label: "About Us",  sectionId: "about"      },
-  { label: "FAQ",       sectionId: "faq"        },
+  { label: "Services", sectionId: "hero" },
+  { label: "Portfolio", sectionId: "portfolio" },
+  { label: "About Us", sectionId: "about" },
+  { label: "FAQ", sectionId: "faq" },
 ];
 
 function lenisScrollTo(sectionId) {
@@ -20,16 +20,18 @@ function lenisScrollTo(sectionId) {
 }
 
 export default function Navbar() {
-  const [scrolled, setScrolled]     = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
 
-  const navigate  = useNavigate();
-  const location  = useLocation();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [mobileOpen]);
 
   useEffect(() => {
@@ -44,8 +46,10 @@ export default function Navbar() {
       const el = document.getElementById(sectionId);
       if (!el) return null;
       const obs = new IntersectionObserver(
-        ([entry]) => { if (entry.isIntersecting) setActiveSection(sectionId); },
-        { rootMargin: "-40% 0px -55% 0px" }
+        ([entry]) => {
+          if (entry.isIntersecting) setActiveSection(sectionId);
+        },
+        { rootMargin: "-40% 0px -55% 0px" },
       );
       obs.observe(el);
       return obs;
@@ -62,7 +66,7 @@ export default function Navbar() {
         setTimeout(() => lenisScrollTo(sectionId), 50);
       }
     },
-    [location.pathname, navigate]
+    [location.pathname, navigate],
   );
 
   useEffect(() => {
@@ -79,30 +83,45 @@ export default function Navbar() {
   const isHome = location.pathname === "/";
 
   const overlayVariants = {
-    closed: { clipPath: "inset(0 0 100% 0)", transition: { duration: 0.6, ease: [0.76, 0, 0.24, 1] } },
-    open:   { clipPath: "inset(0 0 0% 0)",   transition: { duration: 0.6, ease: [0.76, 0, 0.24, 1] } },
+    closed: {
+      clipPath: "inset(0 0 100% 0)",
+      transition: { duration: 0.6, ease: [0.76, 0, 0.24, 1] },
+    },
+    open: {
+      clipPath: "inset(0 0 0% 0)",
+      transition: { duration: 0.6, ease: [0.76, 0, 0.24, 1] },
+    },
   };
 
   const linkVariants = {
     closed: { y: 60, opacity: 0 },
-    open:   (i) => ({
+    open: (i) => ({
       y: 0,
       opacity: 1,
-      transition: { delay: 0.15 + i * 0.07, duration: 0.6, ease: [0.33, 1, 0.68, 1] },
+      transition: {
+        delay: 0.15 + i * 0.07,
+        duration: 0.6,
+        ease: [0.33, 1, 0.68, 1],
+      },
     }),
   };
 
   const footerVariants = {
     closed: { opacity: 0, y: 20 },
-    open:   { opacity: 1, y: 0, transition: { delay: 0.5, duration: 0.5, ease: "easeOut" } },
+    open: {
+      opacity: 1,
+      y: 0,
+      transition: { delay: 0.5, duration: 0.5, ease: "easeOut" },
+    },
   };
 
   return (
     <>
       <header className="absolute top-0 left-0 right-0 z-50 px-3 md:px-[1rem] 3xl:px-[25rem] 2xl:px-[9rem] xl:px-[5rem] lg:px-[4rem] 3xl:pt-[10px] 2xl:pt-[10px] xl:pt-[10px] lg:pt-[10px] md:pt-[10px] pt-[10px]">
-        <div className={`mx-auto transition-all duration-500 ${scrolled ? "backdrop-blur-md shadow-lg" : "backdrop-blur-sm"}`}>
+        <div
+          className={`mx-auto transition-all duration-500 ${scrolled ? "" : ""}`}
+        >
           <div className="flex items-center justify-between px-6 md:px-8 h-[65px] 3xl:h-[85px] 2xl:h-[70px] xl:h-[60px] lg:h-[55px] md:h-[55px]">
-
             {/* Logo */}
             <Link to="/" className="flex items-center z-[60] relative">
               <img
@@ -113,8 +132,9 @@ export default function Navbar() {
             </Link>
 
             {/* Desktop Nav */}
-            <div className="hidden md:flex items-center gap-10 lg:gap-14">
-              <nav className="flex items-center gap-7 lg:gap-14">
+            <div className="hidden md:flex items-center justify-between flex-1 ml-10 lg:ml-36">
+              {/* Nav links — left side, near logo */}
+              <nav className="flex items-center gap-7 lg:gap-10">
                 {navLinks.map(({ label, sectionId }) => (
                   <button
                     key={sectionId}
@@ -129,12 +149,16 @@ export default function Navbar() {
                   </button>
                 ))}
               </nav>
-              <button
-                onClick={() => scrollToSection("contact")}
-                className="inline-flex items-center rounded-xl 3xl:px-5 3xl:py-1.5 2xl:px-4 2xl:py-1 xl:px-4 xl:py-1 lg:px-3 lg:py-1 md:px-3 md:py-1 text-[14px] 3xl:text-[16px] 2xl:text-[13px] xl:text-[13px] lg:text-[14px] md:text-[14px] text-[#0a0a0a] bg-white hover:bg-[#e8e8e8] transition-colors duration-200 font-medium"
+
+              {/* hire — right side */}
+              <a
+                href="https://www.upwork.com/your-profile"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center rounded-xl 3xl:px-5 3xl:py-1.5 2xl:px-4 2xl:py-1 xl:px-4 xl:py-1 lg:px-3 lg:py-1 md:px-3 md:py-1 text-[14px] 3xl:text-[16px] 2xl:text-[13px] xl:text-[13px] lg:text-[14px] md:text-[14px] text-[#0a0a0a] bg-white hover:bg-[#e8e8e8] transition-colors duration-200 font-medium no-underline"
               >
-                Let's Talk
-              </button>
+                Hire Us
+              </a>
             </div>
 
             {/* Hamburger */}
@@ -144,22 +168,29 @@ export default function Navbar() {
               aria-label="Toggle menu"
             >
               <motion.span
-                animate={mobileOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
+                animate={
+                  mobileOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }
+                }
                 transition={{ duration: 0.3, ease: [0.76, 0, 0.24, 1] }}
                 className="block w-6 h-[1.5px] bg-white origin-center"
               />
               <motion.span
-                animate={mobileOpen ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
+                animate={
+                  mobileOpen
+                    ? { opacity: 0, scaleX: 0 }
+                    : { opacity: 1, scaleX: 1 }
+                }
                 transition={{ duration: 0.2 }}
                 className="block w-6 h-[1.5px] bg-white"
               />
               <motion.span
-                animate={mobileOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
+                animate={
+                  mobileOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }
+                }
                 transition={{ duration: 0.3, ease: [0.76, 0, 0.24, 1] }}
                 className="block w-6 h-[1.5px] bg-white origin-center"
               />
             </button>
-
           </div>
         </div>
       </header>
@@ -177,7 +208,11 @@ export default function Navbar() {
             {/* X Close button inside overlay */}
             <motion.button
               initial={{ opacity: 0, scale: 0.7 }}
-              animate={{ opacity: 1, scale: 1, transition: { delay: 0.3, duration: 0.3 } }}
+              animate={{
+                opacity: 1,
+                scale: 1,
+                transition: { delay: 0.3, duration: 0.3 },
+              }}
               exit={{ opacity: 0, scale: 0.7 }}
               onClick={() => setMobileOpen(false)}
               className="absolute top-5 right-6 w-10 h-10 flex items-center justify-center rounded-full border border-white/20 bg-white/5 backdrop-blur-sm cursor-pointer"
@@ -191,7 +226,10 @@ export default function Navbar() {
             {/* Nav Links */}
             <nav className="flex flex-col gap-1 flex-1">
               {navLinks.map(({ label, sectionId }, i) => (
-                <div key={sectionId} className="overflow-hidden border-b border-white/[8%] py-4">
+                <div
+                  key={sectionId}
+                  className="overflow-hidden border-b border-white/[8%] py-4"
+                >
                   <motion.button
                     custom={i}
                     variants={linkVariants}
@@ -201,12 +239,18 @@ export default function Navbar() {
                     onClick={() => scrollToSection(sectionId)}
                     className="w-full text-left bg-transparent border-none outline-none cursor-pointer flex items-center justify-between group mt-6"
                   >
-                    <span className={`text-[clamp(36px,10vw,36px)] font-semibold tracking-[-1px] leading-none transition-colors duration-200 ${
-                      isHome && activeSection === sectionId ? "text-[#73AC56]" : "text-white group-hover:text-[#73AC56]"
-                    }`}>
+                    <span
+                      className={`text-[clamp(36px,10vw,36px)] font-semibold tracking-[-1px] leading-none transition-colors duration-200 ${
+                        isHome && activeSection === sectionId
+                          ? "text-[#73AC56]"
+                          : "text-white group-hover:text-[#73AC56]"
+                      }`}
+                    >
                       {label}
                     </span>
-                    <span className="text-white/30 text-2xl group-hover:text-[#73AC56] transition-colors duration-200">↗</span>
+                    <span className="text-white/30 text-2xl group-hover:text-[#73AC56] transition-colors duration-200">
+                      ↗
+                    </span>
                   </motion.button>
                 </div>
               ))}
@@ -221,7 +265,9 @@ export default function Navbar() {
               className="flex items-center justify-between pt-8"
             >
               <div className="flex flex-col gap-1 mt-2">
-                <span className="text-white/40 text-[10px] uppercase tracking-[0.15em]">Ready to start?</span>
+                <span className="text-white/40 text-[10px] uppercase tracking-[0.15em]">
+                  Ready to start?
+                </span>
               </div>
               <button
                 onClick={() => scrollToSection("contact")}
@@ -230,7 +276,6 @@ export default function Navbar() {
                 Let's Talk →
               </button>
             </motion.div>
-
           </motion.div>
         )}
       </AnimatePresence>

@@ -76,14 +76,13 @@ export default function ClientLogos() {
 
         {/* ── Heading ── */}
         <div className="flex flex-col items-center text-center mb-10 md:mb-14">
-          <p className="text-black/40 uppercase tracking-[0.2em] text-[10px] md:text-[11px] font-medium mb-3">
-            Trusted across platforms
-          </p>
-          <h2 className="3xl:text-[clamp(52px,10vw,90px)] 2xl:text-[clamp(52px,10vw,80px)] xl:text-[clamp(45px,3.8vw,58px)] lg:text-[clamp(40px,3.8vw,58px)] md:text-[clamp(36px,3.8vw,58px)] font-bold text-[#182F33] leading-[1.0] tracking-[-2px] pb-5">
-            Where our work
-            <br />
-            gets recognized
-          </h2>
+          <p
+  className="text-black/40 uppercase tracking-[0.2em] text-[10px] md:text-[16px] font-medium mb-3 text-[#182F33]"
+  style={{ fontFamily: "'Awesome Serif VAR', serif" }}
+>
+  Where our work gets recognized
+</p>
+          
         </div>
 
         {/* ── Logo ticker ── */}
