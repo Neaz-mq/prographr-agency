@@ -149,7 +149,7 @@ export default function PortfolioSection() {
   // ── MOBILE ──────────────────────────────────────────────────────────
   if (!isDesktop) {
     return (
-      <section id="portfolio" ref={containerRef} className="bg-white w-full overflow-hidden mb-12">
+      <section id="portfolio" ref={containerRef} className="bg-white w-full overflow-hidden mb-12 md:mt-8 sm:mt-4 mt-2">
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
           <div className="pt-10 pb-6 border-b border-[#efefef] overflow-hidden">
             <h2
@@ -190,7 +190,7 @@ export default function PortfolioSection() {
 
   // ── DESKTOP ──────────────────────────────────────────────────────────
   return (
-    <section id="portfolio" ref={containerRef} className="bg-white w-full overflow-hidden 3xl:mb-52 2xl:mb-52 xl:mb-36 lg:mb-32 3xl:mt-0 2xl:mt-0 xl:mt-20 lg:mt-20">
+    <section id="portfolio" ref={containerRef} className="bg-white w-full overflow-hidden 3xl:mb-52 2xl:mb-52 xl:mb-36 lg:mb-32 3xl:mt-10 2xl:mt-0 xl:mt-28 lg:mt-28 ">
       <div className="border-b border-[#efefef] pb-12 px-3 md:px-10 3xl:px-[26rem] 2xl:px-[10rem] xl:px-[5rem] lg:px-[4rem] overflow-hidden">
         <h2
           ref={headingRef}

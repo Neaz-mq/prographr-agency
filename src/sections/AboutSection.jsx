@@ -355,7 +355,7 @@ export default function AboutSection() {
           </div>
         </div>
 
-        <div className="w-full overflow-hidden relative 3xl:h-[750px] 2xl:h-[600px] xl:h-[320px] lg:h-[360px]">
+        <div className="w-full overflow-hidden relative 3xl:h-[750px] 2xl:h-[500px] xl:h-[320px] lg:h-[360px]">
           <div
             ref={cardsWrapRef}
             className="flex items-stretch h-full will-change-transform"

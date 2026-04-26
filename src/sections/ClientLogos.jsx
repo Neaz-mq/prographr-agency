@@ -19,7 +19,7 @@ const LogoTrack = () => (
         <img
           src={logo.src}
           alt={logo.alt}
-          className="lg:h-14 h-10 md:h-12  3xl:h-20 2xl:h-14 xl:h-14 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity duration-200"
+          className="lg:h-14 h-11 md:h-12  3xl:h-20 2xl:h-14 xl:h-14 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity duration-200"
           style={{
             ...(logo.mono ? { filter: MONO_FILTER } : {}),
             ...(logo.scale ? { transform: `scale(${logo.scale})` } : {}),
