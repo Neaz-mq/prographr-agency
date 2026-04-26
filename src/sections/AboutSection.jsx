@@ -204,7 +204,7 @@ export default function AboutSection() {
         >
           <div className="flex flex-row items-start justify-between gap-4 md:pt-8 pt-5">
             <div className="shrink-0">
-              <h2 className="text-[clamp(40px,10vw,64px)] font-bold text-[#182F33] leading-[1.05] tracking-[-1px] ">
+              <h2 className="text-[clamp(28px,10vw,40px)] font-bold text-[#182F33] leading-[1.05] tracking-[-1px] ">
                 About
                 <br />
                 Us

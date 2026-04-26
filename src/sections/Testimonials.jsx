@@ -41,31 +41,39 @@ const SERVICES = [
 const TESTIMONIALS = [
   {
     id: 1,
-    thumbnail: "https://res.cloudinary.com/dzi3u164c/image/upload/v1777105532/Chantel_Gorton_in3lxh.png",
+    thumbnail:
+      "https://res.cloudinary.com/dzi3u164c/image/upload/v1777105532/Chantel_Gorton_in3lxh.png",
     name: "Chantel Gorton",
     role: "WorkRightNW",
-    review: "We have been working with Prographr for over 5 years now and has been instrumental in our branding, packaging and all creative design projects. They created our logos, marketing and branding assets, retail product packaging and product photo editing for retail and online sales. They are easy to work with and always available, has very strong work ethic and integrity which is critical when it comes to consulting and freelance services. Their output are of great quality and exceeds our expectations.",
+    review:
+      "We have been working with Prographr for over 5 years now and has been instrumental in our branding, packaging and all creative design projects. They created our logos, marketing and branding assets, retail product packaging and product photo editing for retail and online sales. They are easy to work with and always available, has very strong work ethic and integrity which is critical when it comes to consulting and freelance services. Their output are of great quality and exceeds our expectations.",
   },
   {
     id: 2,
-    thumbnail: "https://res.cloudinary.com/dzi3u164c/image/upload/v1777105580/Suresh_nvvz9n.png",
+    thumbnail:
+      "https://res.cloudinary.com/dzi3u164c/image/upload/v1777105580/Suresh_nvvz9n.png",
     name: "Suresh Kanthaswamy",
     role: "Envelor Inc",
-    review: "We have been using Prographr for over 5 years now and has been instrumental in our branding, packaging and all creative design projects. They are always available, has very strong work ethic and integrity. Great quality and exceeds our expectations.",
+    review:
+      "We have been using Prographr for over 5 years now and has been instrumental in our branding, packaging and all creative design projects. They are always available, has very strong work ethic and integrity. Great quality and exceeds our expectations.",
   },
   {
     id: 3,
-    thumbnail: "https://res.cloudinary.com/dzi3u164c/image/upload/v1777105468/blue-rents_1_ygjwjr.png",
+    thumbnail:
+      "https://res.cloudinary.com/dzi3u164c/image/upload/v1777105468/blue-rents_1_ygjwjr.png",
     name: "Charles A. Cameron",
     role: "Real Estate Developer",
-    review: "Doing real estate business without business card was difficult for me. I found a excellent business card template here and modified by the design owner. The designer did a fantastic job for me. Thanks...",
+    review:
+      "Doing real estate business without business card was difficult for me. I found a excellent business card template here and modified by the design owner. The designer did a fantastic job for me. Thanks...",
   },
   {
     id: 4,
-    thumbnail: "https://res.cloudinary.com/dzi3u164c/image/upload/v1777105560/Dr._Rado-Kotorov-CEO_zpfry2.webp",
+    thumbnail:
+      "https://res.cloudinary.com/dzi3u164c/image/upload/v1777105560/Dr._Rado-Kotorov-CEO_zpfry2.webp",
     name: "Rado Kotorov",
     role: "Storied Data Inc.",
-    review: "We work for a long time together. And it is most of the time outstanding.",
+    review:
+      "We work for a long time together. And it is most of the time outstanding.",
   },
 ];
 
@@ -73,7 +81,7 @@ const SLIDES = [...TESTIMONIALS, ...TESTIMONIALS, ...TESTIMONIALS];
 
 function TestimonialCard({ item }) {
   return (
-    <div className="relative overflow-hidden w-full h-[380px] sm:h-[400px] md:h-[400px] lg:h-[420px] xl:h-[500px] 2xl:h-[520px] 3xl:h-[800px]">
+    <div className="relative overflow-hidden w-full h-[350px] sm:h-[400px] md:h-[340px] lg:h-[450px] xl:h-[500px] 2xl:h-[540px] 3xl:h-[800px]">
       <img
         src={item.thumbnail}
         alt={item.name}
@@ -82,19 +90,22 @@ function TestimonialCard({ item }) {
       />
       <div
         className="absolute inset-0 pointer-events-none"
-        style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.04) 20%, rgba(0,0,0,0.55) 55%, rgba(0,0,0,0.88) 100%)" }}
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(0,0,0,0.04) 20%, rgba(0,0,0,0.55) 55%, rgba(0,0,0,0.88) 100%)",
+        }}
       />
       <div className="absolute bottom-0 left-0 right-0 px-10 pb-10 flex flex-col justify-end">
         {/* name always at same distance from bottom */}
-        <p className="text-white font-semibold 3xl:text-[30px] 2xl:text-[30px] xl:text-[22px] lg:text-[22px] md:text-[17px] text-[16px] leading-tight tracking-[-0.3px]">
+        <p className="text-white font-semibold 3xl:text-[30px] 2xl:text-[20px] xl:text-[22px] lg:text-[18px] md:text-[15px] text-[14px] leading-tight tracking-[-0.3px]">
           {item.name}
         </p>
-        <p className="3xl:text-[18px] 2xl:text-[18px] xl:text-[16px] lg:text-[13px] md:text-[11px] font-medium mt-[3px] mb-3 text-white/[80%]">
+        <p className="3xl:text-[18px] 2xl:text-[13px] xl:text-[16px] lg:text-[12px] md:text-[11px] text-[10px] font-medium mt-[3px] mb-3 text-white/[80%]">
           {item.role}
         </p>
         {/* fixed min-height = 3 lines so all cards align name/role identically */}
         <p
-          className="3xl:text-[15px] 2xl:text-[15px] xl:text-[14px] lg:text-[12px] md:text-[11px] text-[9px] leading-[1.65] line-clamp-3 text-white/60"
+          className="3xl:text-[15px] 2xl:text-[13px] xl:text-[14px] lg:text-[11px] md:text-[10px] text-[9px] leading-[1.65] line-clamp-3 text-white/60"
           style={{ minHeight: "calc(3 * 1.65em)" }}
         >
           {item.review}
@@ -107,9 +118,7 @@ function TestimonialCard({ item }) {
 function ServiceCard({ icon, title, desc }) {
   return (
     <div className="flex flex-col p-8 3xl:p-14 bg-[#1E3539] gap-6">
-      <div className="w-12 h-12 flex items-center justify-center">
-        {icon}
-      </div>
+      <div className="w-12 h-12 flex items-center justify-center">{icon}</div>
       <h3 className="text-white font-medium leading-[1.45] tracking-[0.01em] 3xl:text-[clamp(24px,2vw,328x)] 2xl:text-[clamp(20px,1.6vw,26px)] xl:text-[22px] lg:text-[20px] text-[18px] 3xl:pt-4">
         {title[0]}
         <br />
@@ -138,7 +147,9 @@ export default function Testimonials() {
   }, []);
 
   useEffect(() => {
-    const refs = [builtHeadingRef.current, successHeadingRef.current].filter(Boolean);
+    const refs = [builtHeadingRef.current, successHeadingRef.current].filter(
+      Boolean,
+    );
     if (!refs.length) return;
 
     const ctx = gsap.context(() => {
@@ -147,9 +158,17 @@ export default function Testimonials() {
           el,
           { y: "110%", skewY: 7, opacity: 0 },
           {
-            y: "0%", skewY: 0, opacity: 1, duration: 1.5, ease: "expo.out",
-            scrollTrigger: { trigger: el, start: "top 95%", toggleActions: "play none none none" },
-          }
+            y: "0%",
+            skewY: 0,
+            opacity: 1,
+            duration: 1.5,
+            ease: "expo.out",
+            scrollTrigger: {
+              trigger: el,
+              start: "top 95%",
+              toggleActions: "play none none none",
+            },
+          },
         );
       });
     }, containerRef);
@@ -162,7 +181,11 @@ export default function Testimonials() {
     slidesPerView: "auto",
     spaceBetween: 36,
     freeMode: { enabled: true, momentum: false },
-    autoplay: { delay: 0, disableOnInteraction: false, pauseOnMouseEnter: true },
+    autoplay: {
+      delay: 0,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true,
+    },
     loop: true,
     style: { margin: 0 },
   };
@@ -170,34 +193,47 @@ export default function Testimonials() {
   // ── MOBILE ──────────────────────────────────────────────────────────
   if (!isDesktop) {
     return (
-      <section ref={containerRef} className="w-full bg-white overflow-hidden md:pt-10 pt-0">
-        <div className="bg-[#0a0a0a] pb-[220px]">
+      <section
+        ref={containerRef}
+        className="w-full bg-white overflow-hidden md:pt-20 pt-0"
+      >
+        <div className="bg-[#182F33] pb-[220px]">
           <div className="max-w-7xl mx-auto px-5 sm:px-8 pt-20 pb-10">
             <div className="flex items-end justify-between gap-4">
               <div className="overflow-hidden">
                 <h2
                   ref={builtHeadingRef}
                   className="font-extrabold leading-[1.12] text-white tracking-[-0.8px]"
-                  style={{ fontSize: "clamp(26px,7vw,38px)" }}
+                  style={{ fontSize: "clamp(28px,10vw,40px)" }}
                 >
                   Built to Scale:
-                  <br />Solutions for
-                  <br />Your Evolution
+                  <br />
+                  Solutions for
+                  <br />
+                  Your Evolution
                 </h2>
               </div>
               <p className="text-right leading-relaxed shrink-0 text-[12px] pb-1 text-white/[38%]">
-                A Showcase<br />of Our Latest<br />Completed Works
+                A Showcase
+                <br />
+                of Our Latest
+                <br />
+                Completed Works
               </p>
             </div>
 
             <div className="flex flex-col gap-3 mt-8">
               {SERVICES.map(({ id, icon, title, desc }) => (
-                <div key={id} className="flex flex-col p-5 gap-4 border border-white/[10%] bg-[#111111]">
+                <div key={id} className="flex flex-col p-5 gap-4 bg-[#1E3539]">
                   <div>{icon}</div>
                   <h3 className="text-white font-bold text-[14px] leading-[1.35]">
-                    {title[0]}<br />{title[1]}
+                    {title[0]}
+                    <br />
+                    {title[1]}
                   </h3>
-                  <p className="text-[11px] leading-relaxed text-white/[50%]">{desc}</p>
+                  <p className="text-[11px] leading-relaxed text-white/[50%]">
+                    {desc}
+                  </p>
                 </div>
               ))}
             </div>
@@ -209,9 +245,11 @@ export default function Testimonials() {
                 <h2
                   ref={successHeadingRef}
                   className="font-extrabold leading-[1.12] text-white tracking-[-0.8px]"
-                  style={{ fontSize: "clamp(26px,7vw,38px)" }}
+                  style={{ fontSize: "clamp(28px,10vw,40px)" }}
                 >
-                  Success Stories<br />That Inspire Us
+                  Success Stories
+                  <br />
+                  That Inspire Us
                 </h2>
               </div>
               <button className="shrink-0 text-white font-semibold uppercase transition-colors duration-200 hover:bg-white hover:text-black text-[8px] tracking-[1.8px] px-3 py-[7px] border border-white/30 self-end mb-1">
@@ -224,7 +262,10 @@ export default function Testimonials() {
         <div className="-mt-[180px]">
           <Swiper {...swiperProps} speed={3500}>
             {SLIDES.map((item, i) => (
-              <SwiperSlide key={`m-${item.id}-${i}`} style={{ width: "clamp(200px, 62vw, 260px)" }}>
+              <SwiperSlide
+                key={`m-${item.id}-${i}`}
+                style={{ width: "clamp(200px, 62vw, 260px)" }}
+              >
                 <TestimonialCard item={item} />
               </SwiperSlide>
             ))}
@@ -239,7 +280,7 @@ export default function Testimonials() {
   return (
     <section ref={containerRef} className="w-full bg-white overflow-hidden">
       <div className="bg-[#182F33] pb-[310px]">
-        <div className="3xl:pt-64 2xl:pt-52 xl:pt-36 lg:pt-36 pt-20 pb-14 px-3 md:px-10 3xl:px-[26rem] 2xl:px-[10rem] xl:px-[5rem] lg:px-[4rem]">
+        <div className="3xl:pt-64 2xl:pt-48 xl:pt-36 lg:pt-28 pt-20 pb-14 px-3 md:px-10 3xl:px-[26rem] 2xl:px-[10rem] xl:px-[5rem] lg:px-[4rem]">
           <div className="relative">
             <div className="overflow-hidden">
               <h2
@@ -247,15 +288,18 @@ export default function Testimonials() {
                 className="font-medium leading-[1.2] text-white 3xl:max-w-[1260px] max-w-[760px] 3xl:text-[clamp(52px,10vw,90px)] 2xl:text-[clamp(52px,10vw,80px)] xl:text-[clamp(45px,3.8vw,58px)] lg:text-[clamp(40px,3.8vw,58px)] md:text-[clamp(36px,3.8vw,58px)] tracking-[0.02em]"
               >
                 Built to Scale: Solutions
-                <br />for Your Evolution
+                <br />
+                for Your Evolution
               </h2>
             </div>
-            <p className="absolute bottom-0 3xl:top-80 2xl:top-60 xl:top-60 lg:top-48 right-0 text-md 3xl:text-xl text-right leading-relaxed text-[#B2B2B2]">
-              A Showcase<br />of Our Latest Completed Works
+            <p className="absolute bottom-0 3xl:top-80 2xl:top-60 xl:top-40 lg:top-40 right-0 text-md 3xl:text-xl text-right leading-relaxed text-[#B2B2B2]">
+              A Showcase
+              <br />
+              of Our Latest Completed Works
             </p>
           </div>
 
-          <div className="grid grid-cols-3 mt-72 gap-6 3xl:gap-10">
+          <div className="grid grid-cols-3 3xl:mt-72 2xl:mt-48 xl:mt-48 lg:mt-48 gap-6 3xl:gap-10">
             {SERVICES.map(({ id, icon, title, desc }) => (
               <ServiceCard key={id} icon={icon} title={title} desc={desc} />
             ))}
@@ -269,7 +313,9 @@ export default function Testimonials() {
                 ref={successHeadingRef}
                 className="font-medium leading-[1.2] text-white 3xl:max-w-[1260px] max-w-[760px] 3xl:text-[clamp(52px,10vw,90px)] 2xl:text-[clamp(52px,10vw,80px)] xl:text-[clamp(45px,3.8vw,58px)] lg:text-[clamp(40px,3.8vw,58px)] md:text-[clamp(36px,3.8vw,58px)] tracking-[0.02em]"
               >
-                Success Stories That<br />Inspire Us
+                Success Stories That
+                <br />
+                Inspire Us
               </h2>
             </div>
             <button className="text-white font-semibold uppercase transition-colors duration-200 hover:bg-white hover:text-black shrink-0 self-end mb-1 3xl:text-[15px] 2xl:text-[13px] xl:text-[11px] lg:text-[11px] tracking-[2px] text-[9px] px-6 py-[10px] border border-white/30">
@@ -284,7 +330,7 @@ export default function Testimonials() {
           {SLIDES.map((item, i) => (
             <SwiperSlide
               key={`d-${item.id}-${i}`}
-              className="!w-[240px] sm:!w-[260px] md:!w-[280px] lg:!w-[420px] xl:!w-[500px] 2xl:!w-[340px] 3xl:!w-[600px]"
+              className="!w-[260px] sm:!w-[260px] md:!w-[320px] lg:!w-[380px] xl:!w-[370px] 2xl:!w-[420px] 3xl:!w-[600px]"
             >
               <TestimonialCard item={item} />
             </SwiperSlide>
