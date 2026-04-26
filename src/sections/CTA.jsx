@@ -68,7 +68,7 @@ export default function CTA() {
         <div className="overflow-hidden">
           <h2
             ref={headingRef}
-            className="text-[#0a0a0a] font-semibold mb-2 text-[clamp(36px,6vw,60px)] 3xl:text-[clamp(52px,10vw,90px)] 2xl:text-[clamp(52px,10vw,80px)] xl:text-[clamp(45px,3.8vw,58px)] lg:text-[clamp(40px,3.8vw,58px)] md:text-[clamp(36px,3.8vw,58px)]"
+            className="text-[#0a0a0a] font-semibold mb-2 text-[clamp(36px,6vw,58px)] 3xl:text-[clamp(52px,10vw,90px)] 2xl:text-[clamp(52px,10vw,80px)] xl:text-[clamp(45px,3.8vw,58px)] lg:text-[clamp(40px,3.8vw,58px)] md:text-[clamp(36px,3.8vw,58px)]"
           >
             Let's talk
           </h2>
@@ -147,7 +147,7 @@ export default function CTA() {
             <button
               type="submit"
               disabled={status === "sending"}
-              className="bg-[#182F33] text-white text-[14px] 3xl:text-xl 2xl:text-base xl:text-base lg:text-base md:text-base font-medium 3xl:px-6 3xl:py-3 2xl:px-5 2xl:py-2 xl:px-4 xl:py-2 lg:px-3 lg:py-1.5 md:px-2.5 md:py-1 px-2.5 py-1 hover:bg-[#222] transition-colors duration-200 disabled:opacity-60 disabled:cursor-not-allowed tracking-[0.02em]"
+              className="bg-[#182F33] text-white text-[14px] 3xl:text-xl 2xl:text-base xl:text-base lg:text-base md:text-base font-medium 3xl:px-6 3xl:py-3 2xl:px-5 2xl:py-2 xl:px-4 xl:py-2 lg:px-3 lg:py-1.5 md:px-2.5 md:py-1 px-2.5 py-1.5 hover:bg-[#222] transition-colors duration-200 disabled:opacity-60 disabled:cursor-not-allowed tracking-[0.02em]"
             >
               {status === "sending" ? "Sending..." : "Send Now"}
             </button>

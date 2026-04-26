@@ -53,12 +53,12 @@ export default function Footer() {
         <div className="md:hidden">
           <div className="flex items-center gap-2 mb-10">
             <img src="/logo.webp" alt="Prographr" className="h-7 w-7 object-contain" />
-            <span className="text-white text-base tracking-wide">Prographr</span>
+            
           </div>
 
           <div className="grid grid-cols-2 gap-8 mb-8">
             <div>
-              <h4 className="text-white font-medium text-sm mb-4">Service</h4>
+              <h4 className="text-white font-medium text-sm mb-4">Services</h4>
               <ul className="space-y-3">
                 {serviceLinks.map((s) => (
                   <li key={s}>
