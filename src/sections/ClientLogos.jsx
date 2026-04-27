@@ -2,12 +2,12 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 
 const logos = [
-  { src: "/Upwork.svg",     alt: "Upwork",      mono: true },
-  { src: "/Dribbble.svg",   alt: "Dribbble",    mono: true },
-  { src: "/Envato.svg",     alt: "Envato",      mono: true },
-  { src: "/Fiverr.svg",     alt: "Fiverr",      mono: true },
-  { src: "/Freelancer.svg", alt: "Freelancer",  mono: true },
-  { src: "/fr.svg",         alt: "Freepik",     mono: true, scale: "0.55" },
+  { src: "/Upwork.svg", alt: "Upwork", mono: true },
+  { src: "/Dribbble.svg", alt: "Dribbble", mono: true },
+  { src: "/Envato.svg", alt: "Envato", mono: true },
+  { src: "/Fiverr.svg", alt: "Fiverr", mono: true },
+  { src: "/Freelancer.svg", alt: "Freelancer", mono: true },
+  { src: "/fr.svg", alt: "Freepik", mono: true, scale: "0.55" },
 ];
 
 const MONO_FILTER = "grayscale(1) brightness(0) contrast(100)";
@@ -15,7 +15,10 @@ const MONO_FILTER = "grayscale(1) brightness(0) contrast(100)";
 const LogoTrack = () => (
   <div className="flex items-center shrink-0">
     {logos.map((logo, i) => (
-      <div key={i} className="shrink-0 3xl:px-7 2xl:px-7 xl:px-7 lg:px-7 md:px-6 sm:px-4 px-2">
+      <div
+        key={i}
+        className="shrink-0 3xl:px-7 2xl:px-7 xl:px-7 lg:px-7 md:px-6 sm:px-4 px-2"
+      >
         <img
           src={logo.src}
           alt={logo.alt}
@@ -58,7 +61,10 @@ export default function ClientLogos() {
     const loadPromises = imgs.map((img) =>
       img.complete
         ? Promise.resolve()
-        : new Promise((res) => { img.onload = res; img.onerror = res; })
+        : new Promise((res) => {
+            img.onload = res;
+            img.onerror = res;
+          }),
     );
 
     Promise.all(loadPromises).then(() => {
@@ -70,27 +76,27 @@ export default function ClientLogos() {
     };
   }, []);
 
- return (
+  return (
     <section className="bg-white 3xl:pt-28 2xl:pt-20 xl:pt-20 lg:pt-20 md:pt-14 sm:pt-16 pt-12 pb-6 md:pb-8 3xl:pb-40">
       <div className="md:px-[2.5rem] 3xl:px-[26rem] 2xl:px-[10rem] xl:px-[5rem] lg:px-[4rem] mx-auto px-6">
-
         {/* ── Heading ── */}
-        <div className="flex flex-col items-center text-center mb-10 md:mb-14">
+        <div className="flex flex-col items-center text-center mb-6 md:mb-14">
           <p
-  className="text-black/40 uppercase tracking-[0.2em] text-[10px] md:text-[16px] font-medium mb-3 text-[#182F33]"
-  style={{ fontFamily: "'Awesome Serif VAR', serif" }}
->
-  Where our work gets recognized
-</p>
-          
+            className="text-[#73AC56] uppercase tracking-[0.2em] text-[10px] md:text-[16px] font-medium mb-3"
+            style={{ fontFamily: "'Awesome Serif VAR', serif" }}
+          >
+            Where our work gets recognized
+          </p>
         </div>
 
         {/* ── Logo ticker ── */}
         <div
           className="relative overflow-hidden"
           style={{
-            maskImage: "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
-            WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
+            maskImage:
+              "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
+            WebkitMaskImage:
+              "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
           }}
         >
           <div ref={trackRef} className="flex will-change-transform">

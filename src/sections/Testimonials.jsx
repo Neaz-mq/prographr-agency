@@ -81,7 +81,7 @@ const SLIDES = [...TESTIMONIALS, ...TESTIMONIALS, ...TESTIMONIALS];
 
 function TestimonialCard({ item }) {
   return (
-    <div className="relative overflow-hidden w-full h-[480px] sm:h-[520px] md:h-[460px] lg:h-[580px] xl:h-[640px] 2xl:h-[700px] 3xl:h-[980px]">
+    <div className="relative overflow-hidden w-full h-[300px] sm:h-[320px] md:h-[320px] lg:h-[400px] xl:h-[440px] 2xl:h-[500px] 3xl:h-[720px]">
       <img
         src={item.thumbnail}
         alt={item.name}
@@ -271,7 +271,7 @@ export default function Testimonials() {
                   That Inspire Us
                 </h2>
               </div>
-              <button className="shrink-0 text-white font-semibold uppercase transition-colors duration-200 hover:bg-white hover:text-black text-[8px] tracking-[1.8px] px-3 py-[7px] border border-white/30 self-end mb-1">
+              <button className="shrink-0 text-white font-semibold uppercase transition-colors duration-200 bg-[#73AC56] hover:text-black text-[8px] tracking-[1.8px] px-3 py-[7px] self-end mb-1">
                 Client Stories
               </button>
             </div>
@@ -337,7 +337,7 @@ export default function Testimonials() {
                 Inspire Us
               </h2>
             </div>
-            <button className="text-white font-semibold uppercase transition-colors duration-200 hover:bg-white hover:text-black shrink-0 self-end mb-1 3xl:text-[15px] 2xl:text-[13px] xl:text-[11px] lg:text-[11px] tracking-[2px] text-[9px] px-6 py-[10px] border border-white/30">
+            <button className="text-white font-semibold uppercase transition-colors duration-200 hover:bg-white hover:text-black shrink-0 self-end mb-1 3xl:text-[15px] 2xl:text-[13px] xl:text-[11px] lg:text-[11px] tracking-[2px] text-[9px] px-6 py-[10px]  bg-[#73AC56]">
               Client Stories
             </button>
           </div>
@@ -349,7 +349,7 @@ export default function Testimonials() {
           {SLIDES.map((item, i) => (
             <SwiperSlide
               key={`d-${item.id}-${i}`}
-              className="!w-[260px] sm:!w-[260px] md:!w-[320px] lg:!w-[380px] xl:!w-[370px] 2xl:!w-[420px] 3xl:!w-[600px]"
+              className="!w-[330px] sm:!w-[320px] md:!w-[320px] lg:!w-[380px] xl:!w-[370px] 2xl:!w-[420px] 3xl:!w-[600px]"
             >
               <TestimonialCard item={item} />
             </SwiperSlide>

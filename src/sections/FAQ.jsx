@@ -139,15 +139,14 @@ export default function FAQ() {
                     isOpen ? "max-h-60 pb-6" : "max-h-0"
                   }`}
                 >
-                  <p className="text-[#888] 3xl:text-base 2xl:text-base xl:text-sm lg:text-[12px] md:text-[12px] text-[11px] leading-relaxed">
+                  <p className="text-white/70 3xl:text-base 2xl:text-base xl:text-sm lg:text-[12px] md:text-[12px] text-[11px] leading-relaxed">
                     {faq.a}
                   </p>
                 </div>
               </div>
             );
           })}
-          {/* bottom border to close the last item */}
-          <div className="border-t border-white/[8%]" />
+         
         </div>
       </div>
     </section>

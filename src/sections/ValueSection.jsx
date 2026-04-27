@@ -74,7 +74,7 @@ function ValueItem({
       onMouseLeave={onLeave}
       className="group relative flex items-center justify-between gap-8 py-3 lg:py-16 cursor-pointer border-b border-black/10 last:border-b-0"
     >
-      <span className="text-black transition-colors duration-300 group-hover:text-black/50 select-none shrink-0 flex-1 min-w-0 3xl:text-[clamp(30px,2.4vw,24px)] 2xl:text-[clamp(16px,2.4vw,22px)] xl:text-[clamp(16px,2.4vw,22px)] lg:text-[clamp(16px,2.4vw,22px)]">
+      <span className="text-black transition-colors duration-300 group-hover:text-black/50 select-none shrink-0 flex-1 min-w-0 3xl:text-[clamp(30px,2.4vw,24px)] 2xl:text-[clamp(16px,2.4vw,22px)] xl:text-[clamp(16px,2.4vw,22px)] lg:text-[clamp(16px,2.4vw,20px)]">
         {item.label}
       </span>
 
