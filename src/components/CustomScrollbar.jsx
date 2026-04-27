@@ -29,9 +29,9 @@ export default function CustomScrollbar() {
       const thumbHeight = Math.min(
         Math.max(
           (doc.clientHeight / doc.scrollHeight) * trackHeight,
-          20   // minimum height
+          20  
         ),
-        60     // maximum height — keeps it short like reference sites
+        60    
       );
       const thumbTop =
         scrollHeight > 0
