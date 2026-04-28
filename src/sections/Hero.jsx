@@ -41,11 +41,47 @@ export default function Hero() {
           {...fadeUp(0.1)}
           className="font-medium text-white tracking-wide text-center leading-[1.65] sm:leading-[1.35] md:leading-[1.45] lg:leading-[1.25] text-[1.9rem] sm:text-[2.8rem] md:text-[3rem] lg:text-[3.5rem] xl:text-[4.2rem] 2xl:text-[3.7rem] 3xl:text-[6.2rem]"
         >
-          Crafting Digital
+          Crafting{" "}
+          <em
+            style={{
+              fontFamily: "'Playfair Display', serif",
+              fontStyle: "italic",
+              fontWeight: 700,
+            }}
+          >
+            Digital
+          </em>
           <br />
-          Experiences That  Define
+          <em
+            style={{
+              fontFamily: "'Playfair Display', serif",
+              fontStyle: "italic",
+              fontWeight: 700,
+            }}
+          >
+            Experiences
+          </em>{" "}
+          That{" "}
+          <em
+            style={{
+              fontFamily: "'Playfair Display', serif",
+              fontStyle: "italic",
+              fontWeight: 700,
+            }}
+          >
+            Define
+          </em>
           <br />
-          the Future
+          the{" "}
+          <em
+            style={{
+              fontFamily: "'Playfair Display', serif",
+              fontStyle: "italic",
+              fontWeight: 700,
+            }}
+          >
+            Future
+          </em>
         </motion.h1>
 
         {/* Service tags */}

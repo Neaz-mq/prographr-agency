@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet" />
 
     <script>
       (function () {
@@ -21,11 +22,9 @@
         const img = new Image();
         img.src = "/logo.webp?v=" + Date.now();
         img.onload = function () {
-          // #182F33 background fills entire 64x64
           ctx.fillStyle = "#182F33";
           ctx.fillRect(0, 0, 64, 64);
 
-          // Draw logo smaller with padding (10px on each side)
           const padding = 8;
           ctx.drawImage(img, padding, padding, 64 - padding * 2, 64 - padding * 2);
 
