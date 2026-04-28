@@ -19,7 +19,6 @@ function lenisScrollTo(sectionId) {
   }
 }
 
-// ── Upwork SVG Logo ──────────────────────────────────────────────
 function UpworkIcon({ size = 42 }) {
   return (
     <svg
@@ -48,11 +47,9 @@ export default function Navbar() {
   const [mobileHireExpanded, setMobileHireExpanded] = useState(false);
 
   const mobileHireTimerRef = useRef(null);
-
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Clean up timers on unmount
   useEffect(() => {
     return () => {
       if (mobileHireTimerRef.current) clearTimeout(mobileHireTimerRef.current);
@@ -61,9 +58,7 @@ export default function Navbar() {
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
+    return () => { document.body.style.overflow = ""; };
   }, [mobileOpen]);
 
   useEffect(() => {
@@ -78,9 +73,7 @@ export default function Navbar() {
       const el = document.getElementById(sectionId);
       if (!el) return null;
       const obs = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) setActiveSection(sectionId);
-        },
+        ([entry]) => { if (entry.isIntersecting) setActiveSection(sectionId); },
         { rootMargin: "-40% 0px -55% 0px" },
       );
       obs.observe(el);
@@ -95,17 +88,19 @@ export default function Navbar() {
     if (mobileHireTimerRef.current) clearTimeout(mobileHireTimerRef.current);
   }, []);
 
-  // ── Desktop: hover in = show Upwork, hover out = show Hire Us ──
   const handleHireHover = useCallback(() => setHireExpanded(true), []);
   const handleHireLeave = useCallback(() => setHireExpanded(false), []);
 
-  // ── Mobile: tap triggers expand + 10s auto-reset ──
   const handleMobileHireTap = useCallback(() => {
     if (mobileHireTimerRef.current) clearTimeout(mobileHireTimerRef.current);
-    setMobileHireExpanded(true);
-    mobileHireTimerRef.current = setTimeout(() => {
-      setMobileHireExpanded(false);
-    }, 5000);
+    setMobileHireExpanded((prev) => {
+      if (!prev) {
+        mobileHireTimerRef.current = setTimeout(() => {
+          setMobileHireExpanded(false);
+        }, 5000);
+      }
+      return !prev;
+    });
   }, []);
 
   const scrollToSection = useCallback(
@@ -168,29 +163,56 @@ export default function Navbar() {
     },
   };
 
-  // ── Shared morph animation variants ──
-  const morphExit = {
-    y: -14,
-    opacity: 0,
-    filter: "blur(4px)",
-    transition: { duration: 0.3, ease: [0.33, 1, 0.68, 1] },
+  // ── Shared pill animation config ──
+  const PILL_WIDTH = 110;
+  const CIRCLE_SIZE = 42;
+
+  const pillTransition = (expanded) => ({
+    width: {
+      type: "spring",
+      stiffness: 400,
+      damping: 40,
+      mass: 1,
+      delay: expanded ? 0.1 : 0.05,
+    },
+  });
+
+  const textAnimate = {
+    initial: { opacity: 0, scale: 0.8, filter: "blur(6px)" },
+    animate: {
+      opacity: 1,
+      scale: 1,
+      filter: "blur(0px)",
+      transition: { type: "spring", stiffness: 300, damping: 28, delay: 0.18 },
+    },
+    exit: {
+      opacity: 0,
+      scale: 0.75,
+      filter: "blur(8px)",
+      transition: { duration: 0.14, ease: [0.55, 0, 1, 0.45] },
+    },
   };
-  const morphEnter = {
-    y: 0,
-    opacity: 1,
-    filter: "blur(0px)",
-    transition: { duration: 0.35, ease: [0.33, 1, 0.68, 1] },
-  };
-  const morphInitial = {
-    y: 14,
-    opacity: 0,
-    filter: "blur(4px)",
+
+  const iconAnimate = {
+    initial: { opacity: 0, scale: 0.3, filter: "blur(10px)" },
+    animate: {
+      opacity: 1,
+      scale: 1,
+      filter: "blur(0px)",
+      transition: { type: "spring", stiffness: 350, damping: 22, delay: 0.32 },
+    },
+    exit: {
+      opacity: 0,
+      scale: 0.3,
+      filter: "blur(10px)",
+      transition: { duration: 0.14, ease: [0.55, 0, 1, 0.45] },
+    },
   };
 
   return (
     <>
       <header className="absolute top-0 left-0 right-0 z-50 px-3 md:px-[1rem] 3xl:px-[25rem] 2xl:px-[9rem] xl:px-[5rem] lg:px-[4rem] 3xl:pt-[10px] 2xl:pt-[10px] xl:pt-[10px] lg:pt-[10px] md:pt-[10px] pt-[10px]">
-        <div className={`mx-auto transition-all duration-500`}>
+        <div className="mx-auto transition-all duration-500">
           <div className="flex items-center justify-between px-6 md:px-8 h-[65px] 3xl:h-[85px] 2xl:h-[70px] xl:h-[60px] lg:h-[55px] md:h-[55px]">
             {/* Logo */}
             <Link to="/" className="flex items-center z-[60] relative">
@@ -203,7 +225,6 @@ export default function Navbar() {
 
             {/* Desktop Nav */}
             <div className="hidden md:flex items-center justify-between flex-1 ml-10 lg:ml-36">
-              {/* Nav links */}
               <nav className="flex items-center gap-7 lg:gap-10">
                 {navLinks.map(({ label, sectionId }) => (
                   <button
@@ -220,48 +241,43 @@ export default function Navbar() {
                 ))}
               </nav>
 
-              {/* ── Desktop Hire Us — pill morphs into Upwork circle on hover ── */}
-              <motion.div
-                className="relative rounded-full overflow-hidden cursor-pointer flex items-center justify-center"
-                onMouseEnter={handleHireHover}
-                onMouseLeave={handleHireLeave}
-                animate={{
-                  width: hireExpanded ? 36 : 92,
-                  outlineColor: hireExpanded ? "rgba(109,218,68,0)" : "rgba(109,218,68,1)",
-                }}
-                transition={{ duration: 0.45, ease: [0.76, 0, 0.24, 1] }}
-                style={{ height: 36, outline: "1.8px solid rgba(109,218,68,1)" }}
-              >
-                <AnimatePresence mode="wait">
-                  {!hireExpanded ? (
-                    /* Default: "Hire Us" text */
-                    <motion.span
-                      key="hire-text"
-                      initial={{ opacity: 0, filter: "blur(4px)" }}
-                      animate={{ opacity: 1, filter: "blur(0px)", transition: { duration: 0.25, delay: 0.15, ease: "easeOut" } }}
-                      exit={{ opacity: 0, filter: "blur(4px)", transition: { duration: 0.15, ease: "easeIn" } }}
-                      className="text-[14px] text-white font-medium select-none whitespace-nowrap"
-                    >
-                      Hire Us
-                    </motion.span>
-                  ) : (
-                    /* Hover: Upwork icon — circle fully formed by now */
-                    <motion.a
-                      key="upwork-icon"
-                      href="https://www.upwork.com/your-profile"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      initial={{ opacity: 0, scale: 0.6 }}
-                      animate={{ opacity: 1, scale: 1, transition: { duration: 0.25, delay: 0.2, ease: [0.33, 1, 0.68, 1] } }}
-                      exit={{ opacity: 0, scale: 0.6, transition: { duration: 0.15, ease: "easeIn" } }}
-                      onClick={() => setHireExpanded(false)}
-                      className="flex items-center justify-center no-underline"
-                    >
-                      <UpworkIcon size={36} />
-                    </motion.a>
-                  )}
-                </AnimatePresence>
-              </motion.div>
+              {/* Desktop Hire Us */}
+              <div style={{ width: PILL_WIDTH, display: "flex", justifyContent: "center" }}>
+                <motion.div
+                  className="relative overflow-hidden cursor-pointer flex items-center justify-center"
+                  onMouseEnter={handleHireHover}
+                  onMouseLeave={handleHireLeave}
+                  animate={{ width: hireExpanded ? CIRCLE_SIZE : PILL_WIDTH }}
+                  transition={pillTransition(hireExpanded)}
+                  style={{ height: CIRCLE_SIZE, background: "#6FDA44", flexShrink: 0, borderRadius: 999 }}
+                >
+                  <AnimatePresence mode="wait">
+                    {!hireExpanded ? (
+                      <motion.span
+                        key="hire-text"
+                        {...textAnimate}
+                        style={{ position: "relative", zIndex: 1, color: "#ffffff" }}
+                        className="text-[15px] select-none whitespace-nowrap"
+                      >
+                        Hire Us
+                      </motion.span>
+                    ) : (
+                      <motion.a
+                        key="upwork-icon"
+                        href="https://www.upwork.com/your-profile"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        {...iconAnimate}
+                        onClick={() => setHireExpanded(false)}
+                        className="flex items-center justify-center no-underline"
+                        style={{ position: "relative", zIndex: 1 }}
+                      >
+                        <UpworkIcon size={CIRCLE_SIZE} />
+                      </motion.a>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+              </div>
             </div>
 
             {/* Hamburger */}
@@ -297,7 +313,7 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* ── Full-screen Mobile Overlay ── */}
+      {/* Mobile Overlay */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
@@ -307,7 +323,7 @@ export default function Navbar() {
             exit="closed"
             className="fixed inset-0 z-[55] bg-[#182F33] flex flex-col px-8 pt-28 pb-10 md:hidden"
           >
-            {/* Close (X) button */}
+            {/* Close button */}
             <motion.button
               initial={{ opacity: 0, scale: 0.7 }}
               animate={{ opacity: 1, scale: 1, transition: { delay: 0.3, duration: 0.3 } }}
@@ -322,10 +338,7 @@ export default function Navbar() {
 
             <nav className="flex flex-col gap-1 flex-1">
               {navLinks.map(({ label, sectionId }, i) => (
-                <div
-                  key={sectionId}
-                  className="overflow-hidden border-b border-white/[8%] py-4"
-                >
+                <div key={sectionId} className="overflow-hidden border-b border-white/[8%] py-4">
                   <motion.button
                     custom={i}
                     variants={linkVariants}
@@ -352,7 +365,7 @@ export default function Navbar() {
               ))}
             </nav>
 
-            {/* ── Mobile Footer: Hire Us with same morph logic ── */}
+            {/* Mobile Footer */}
             <motion.div
               variants={footerVariants}
               initial="closed"
@@ -366,47 +379,41 @@ export default function Navbar() {
                 </span>
               </div>
 
-              {/* Mobile Hire Us morph pill */}
-              <div className="relative border border-white/30 rounded-xl overflow-hidden">
-                <AnimatePresence mode="wait">
-                  {!mobileHireExpanded ? (
-                    <motion.div
-                      key="mobile-hire"
-                      initial={morphInitial}
-                      animate={morphEnter}
-                      exit={morphExit}
-                    >
-                      <button
-                        onClick={handleMobileHireTap}
-                        className="inline-flex items-center px-5 py-2.5 text-[13px] font-semibold text-white bg-transparent border-none outline-none cursor-pointer"
+              {/* Mobile Hire Us — same spring pill animation */}
+              <div style={{ width: PILL_WIDTH, display: "flex", justifyContent: "center" }}>
+                <motion.div
+                  className="relative overflow-hidden cursor-pointer flex items-center justify-center"
+                  onClick={handleMobileHireTap}
+                  animate={{ width: mobileHireExpanded ? CIRCLE_SIZE : PILL_WIDTH }}
+                  transition={pillTransition(mobileHireExpanded)}
+                  style={{ height: CIRCLE_SIZE, background: "#6FDA44", flexShrink: 0, borderRadius: 999 }}
+                >
+                  <AnimatePresence mode="wait">
+                    {!mobileHireExpanded ? (
+                      <motion.span
+                        key="mobile-hire-text"
+                        {...textAnimate}
+                        style={{ position: "relative", zIndex: 1, color: "#ffffff" }}
+                        className="text-[15px] select-none whitespace-nowrap"
                       >
                         Hire Us
-                      </button>
-                    </motion.div>
-                  ) : (
-                    <motion.div
-                      key="mobile-upwork"
-                      initial={morphInitial}
-                      animate={morphEnter}
-                      exit={morphExit}
-                      className="flex items-center"
-                    >
-                      <span className="px-4 py-2.5 text-[13px] text-white font-semibold select-none">
-                        Hire Us
-                      </span>
-                      <a
+                      </motion.span>
+                    ) : (
+                      <motion.a
+                        key="mobile-upwork-icon"
                         href="https://www.upwork.com/your-profile"
                         target="_blank"
                         rel="noopener noreferrer"
+                        {...iconAnimate}
                         onClick={closeMobileMenu}
-                        className="inline-flex items-center gap-1.5 px-4 py-2 text-[13px] text-white font-semibold bg-[#73AC56] hover:bg-[#62994a] transition-colors duration-200 no-underline rounded-xl my-1 mr-1"
+                        className="flex items-center justify-center no-underline"
+                        style={{ position: "relative", zIndex: 1 }}
                       >
-                        <UpworkIcon size={15} />
-                        Upwork
-                      </a>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                        <UpworkIcon size={CIRCLE_SIZE} />
+                      </motion.a>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
               </div>
             </motion.div>
           </motion.div>

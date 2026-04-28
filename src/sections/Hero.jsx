@@ -39,14 +39,22 @@ export default function Hero() {
         {/* Heading */}
         <motion.h1
           {...fadeUp(0.1)}
-          className="font-medium text-white tracking-wide text-center leading-[1.65] sm:leading-[1.35] md:leading-[1.45] lg:leading-[1.25] text-[1.9rem] sm:text-[2.8rem] md:text-[3rem] lg:text-[3.5rem] xl:text-[4.2rem] 2xl:text-[3.7rem] 3xl:text-[6.2rem]"
+          className="font-medium text-white tracking-[0.02rem] text-center leading-[1.65] sm:leading-[1.35] md:leading-[1.45] lg:leading-[1.25] text-[1.9rem] sm:text-[2.8rem] md:text-[3rem] lg:text-[3.5rem] xl:text-[4.2rem] 2xl:text-[3.7rem] 3xl:text-[6rem]"
         >
-          Crafting{" "}
+          <span
+            style={{
+              fontFamily: "'Inter', sans-serif",
+              fontStyle: "normal",
+              fontWeight: 500,
+            }}
+          >
+            Crafting{" "}
+          </span>
           <em
             style={{
               fontFamily: "'Playfair Display', serif",
               fontStyle: "italic",
-              fontWeight: 700,
+              fontWeight: 500,
             }}
           >
             Digital
@@ -56,28 +64,45 @@ export default function Hero() {
             style={{
               fontFamily: "'Playfair Display', serif",
               fontStyle: "italic",
-              fontWeight: 700,
+              fontWeight: 500,
             }}
           >
             Experiences
-          </em>{" "}
-          That{" "}
+          </em>
+          <span
+            style={{
+              fontFamily: "'Inter', sans-serif",
+              fontStyle: "normal",
+              fontWeight: 500,
+            }}
+          >
+            {" "}
+            That{" "}
+          </span>
           <em
             style={{
               fontFamily: "'Playfair Display', serif",
               fontStyle: "italic",
-              fontWeight: 700,
+              fontWeight: 500,
             }}
           >
             Define
           </em>
           <br />
-          the{" "}
+          <span
+            style={{
+              fontFamily: "'Inter', sans-serif",
+              fontStyle: "normal",
+              fontWeight: 500,
+            }}
+          >
+            the{" "}
+          </span>
           <em
             style={{
               fontFamily: "'Playfair Display', serif",
               fontStyle: "italic",
-              fontWeight: 700,
+              fontWeight: 500,
             }}
           >
             Future

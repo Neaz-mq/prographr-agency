@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 const PORTFOLIO_ITEMS = [
   {
     id: 1,
-    image: "https://res.cloudinary.com/dzi3u164c/image/upload/q_auto/f_auto/v1776599999/Presentation-16_hzmygv.jpg",
+    image: "https://res.cloudinary.com/dzi3u164c/image/upload/v1777377826/Print_dkimuj.jpg",
     tags: ["Flyer Design", "Rack Card", "App UI Design"],
   },
   {
@@ -25,7 +25,7 @@ const PORTFOLIO_ITEMS = [
   },
   {
     id: 4,
-    image: "https://res.cloudinary.com/dzi3u164c/image/upload/v1777187448/Branding_cxgpvp.webp",
+    image: "https://res.cloudinary.com/dzi3u164c/image/upload/v1777377855/Cover_x5delv.jpg",
     tags: ["Brand Identity", "Brand Book", "Brand Manual"],
   },
   {
