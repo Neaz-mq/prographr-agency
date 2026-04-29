@@ -28,7 +28,7 @@ function UpworkIcon({ size = 42 }) {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <circle cx="33" cy="33" r="33" fill="#6FDA44" />
+      <circle cx="33" cy="33" r="33" fill="#73AC56" />
       <g transform="translate(14.87, 21.76) scale(1.6)">
         <path
           d="M0,.29h2.31c0,1,0,2.01,0,3.01,0,1.31-.22,2.88.51,4.03.5.78,1.36,1.17,2.28,1.07,1.46-.16,2.07-1.47,2.15-2.8V.29s4.02,0,4.02,0c.31,1.21.63,2.43,1.22,3.54.46-1.93,1.93-3.37,3.89-3.73,3.74-.69,6.79,2.31,6.19,6.06-.61,3.83-4.95,5.51-8.12,3.39l-.67-.47-.81,4.98h-2.34c.39-2.35.82-4.69,1.23-7.04-1.05-1.52-1.82-3.25-2.29-5.04-.03,0-.02.04-.02.06-.09,2.36.44,4.79-1.14,6.78-1.14,1.43-3.01,1.94-4.77,1.54C1.45,9.84.1,7.84.02,5.64l-.02-.04V.29ZM17.32,2.07c-2.3.12-2.86,2.54-3.12,4.42.82,1.32,2.52,2.26,4.09,1.81,3.12-.9,2.62-6.41-.97-6.23Z"
@@ -249,7 +249,7 @@ export default function Navbar() {
                   onMouseLeave={handleHireLeave}
                   animate={{ width: hireExpanded ? CIRCLE_SIZE : PILL_WIDTH }}
                   transition={pillTransition(hireExpanded)}
-                  style={{ height: CIRCLE_SIZE, background: "#6FDA44", flexShrink: 0, borderRadius: 999 }}
+                  style={{ height: CIRCLE_SIZE, background: "#73AC56", flexShrink: 0, borderRadius: 999 }}
                 >
                   <AnimatePresence mode="wait">
                     {!hireExpanded ? (
