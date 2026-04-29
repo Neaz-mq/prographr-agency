@@ -1,9 +1,11 @@
 import { useNavigate, useLocation } from "react-router-dom";
 
 const SOCIAL_LINKS = [
+   { href: "https://www.linkedin.com/company/prographr/", label: "Facebook" },
+   { href: "https://www.linkedin.com/company/prographr/", label: "Pinterest" },
+   { href: "https://www.linkedin.com/company/prographr/", label: "Instagram" },
   { href: "https://www.linkedin.com/company/prographr/", label: "LinkedIn" },
-  { href: "https://graphicriver.net/user/prographr/portfolio", label: "GraphicRiver" },
-  { href: "https://www.behance.net/prographr/", label: "Behance" },
+  { href: "https://www.behance.net/prographr/", label: "Twitter" },
 ];
 
 function useSectionScroll() {
