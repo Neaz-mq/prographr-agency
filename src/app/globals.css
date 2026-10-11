@@ -11,8 +11,8 @@
   --color-foreground: var(--foreground);
 
   --color-ink: #121212; /* button, logo, text */
-  --color-chip: #f0f0f0; /* badge, Explore work button */
-  --color-brand: #146ef5; /* PLACEHOLDER: blue accent, Figma theke confirm korben */
+  --color-chip: #f0f0f0; /* badge, card, Explore work button */
+  --color-accent: #0b76f3; /* blue accent (Figma) */
   --color-muted: #6b6b6b; /* PLACEHOLDER */
 }
 
@@ -36,11 +36,38 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+/* Marquee: pure CSS, shudhu transform animate hoy (GPU, lag hoy na) */
+@keyframes marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.marquee-track {
+  animation: marquee 45s linear infinite;
+  will-change: transform;
+}
+
+@media (hover: hover) {
+  .marquee:hover .marquee-track {
+    animation-play-state: paused;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .marquee-track {
+    animation: none !important;
   }
 }

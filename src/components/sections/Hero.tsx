@@ -2,10 +2,11 @@ import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { Header } from "@/components/layout/Header";
+import { HeroShowcase } from "./HeroShowcase";
 
 export function Hero() {
   return (
-    <section className="pb-12 pt-10 md:pb-[3.75rem]">
+    <section className="pb-10 pt-10 md:pb-[4.375rem]">
       <Container>
         <Header />
 
@@ -20,10 +21,10 @@ export function Hero() {
               <Image
                 src="/icons/figma-webflow.svg"
                 alt=""
-                width={127}
+                width={89}
                 height={50}
                 aria-hidden="true"
-                className="mx-[0.05em] inline-block h-[0.825em] w-auto align-middle"
+                className="mx-[0.05em] inline-block h-[0.85em] w-auto align-middle"
               />{" "}
               Inspire.
             </h1>
@@ -41,6 +42,8 @@ export function Hero() {
           </div>
         </div>
       </Container>
+
+      <HeroShowcase />
     </section>
   );
 }
