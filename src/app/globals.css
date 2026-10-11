@@ -51,6 +51,37 @@ body {
   will-change: transform;
 }
 
+/* Live status dot: bahire ring ta ripple hoye fade out hoy, majher dot halka "breathe" kore */
+@keyframes status-ripple {
+  0% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  70%,
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+
+@keyframes status-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.82);
+  }
+}
+
+.status-ripple {
+  animation: status-ripple 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.status-dot {
+  animation: status-breathe 2s ease-in-out infinite;
+}
+
 @media (hover: hover) {
   .marquee:hover .marquee-track {
     animation-play-state: paused;
@@ -67,7 +98,13 @@ body {
     scroll-behavior: auto !important;
   }
 
-  .marquee-track {
+  .marquee-track,
+  .status-ripple,
+  .status-dot {
     animation: none !important;
+  }
+
+  .status-ripple {
+    opacity: 0 !important;
   }
 }

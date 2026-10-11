@@ -136,8 +136,9 @@ export function HeroShowcase() {
       <Container>
         <div className="mt-8 flex flex-col items-center gap-3 text-center md:mt-[3.5625rem] lg:flex-row lg:justify-center lg:gap-12 xl:gap-[12.7rem]">
           <p className="flex items-center gap-[0.5625rem] text-base leading-[1.2] text-ink/70 md:text-xl">
-            <span className="grid size-[1.4375rem] shrink-0 place-items-center rounded-full bg-accent/20" aria-hidden="true">
-              <span className="size-2.5 rounded-full bg-accent blur-[1px]" />
+            <span className="relative grid size-[1.4375rem] shrink-0 place-items-center rounded-full bg-accent/20" aria-hidden="true">
+              <span className="status-ripple absolute inset-0 rounded-full bg-accent/40" />
+              <span className="status-dot relative size-2.5 rounded-full bg-accent shadow-[0_0_8px_2px_rgb(11_118_243/0.45)]" />
             </span>
             Open for new project and collaboration
           </p>
