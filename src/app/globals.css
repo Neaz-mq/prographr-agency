@@ -51,35 +51,53 @@ body {
   will-change: transform;
 }
 
-/* Live status dot: bahire ring ta ripple hoye fade out hoy, majher dot halka "breathe" kore */
-@keyframes status-ripple {
+/* Live status dot (premium pulse)
+   - Ring ta nijer MAX size-e (2.125rem) toiri, scale kore choto theke boro hoy.
+     Tai 2K/4K screen-eo edge sharp thake (choto layer boro kore blur kora hoy na).
+   - Ring ar core EKI duration (2.6s) + EKI timeline-e cholbe, tai ek shathe "heartbeat"-er moto lage.
+   - Scale ar fade alada curve-e: scale ease-out (tez shuru, narom shesh), fade ease-in-out (kokhono hothat gayeb hoy na).
+   - Shudhu transform + opacity animate hoy (GPU), box-shadow/filter kokhono animate hoy na. */
+@keyframes status-ripple-scale {
   0% {
-    transform: scale(1);
-    opacity: 0.55;
+    transform: scale(0.294); /* 0.625rem core / 2.125rem ring: shuru-te core-er thik pichone lukano */
   }
   70%,
   100% {
-    transform: scale(2.6);
-    opacity: 0;
+    transform: scale(1);
   }
 }
 
-@keyframes status-breathe {
+@keyframes status-ripple-fade {
+  0% {
+    opacity: 0.5;
+  }
+  70%,
+  100% {
+    opacity: 0; /* 70%-100% shanto biram, tarpor ekdom smooth abar shuru */
+  }
+}
+
+@keyframes status-core {
   0%,
+  40%,
   100% {
     transform: scale(1);
   }
-  50% {
-    transform: scale(0.82);
+  14% {
+    transform: scale(1.14);
   }
 }
 
 .status-ripple {
-  animation: status-ripple 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  animation:
+    status-ripple-scale 2.6s cubic-bezier(0.22, 0.61, 0.36, 1) infinite,
+    status-ripple-fade 2.6s ease-in-out infinite;
+  will-change: transform, opacity;
 }
 
 .status-dot {
-  animation: status-breathe 2s ease-in-out infinite;
+  animation: status-core 2.6s ease-in-out infinite;
+  will-change: transform;
 }
 
 @media (hover: hover) {

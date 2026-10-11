@@ -6,7 +6,7 @@ import { HeroShowcase } from "./HeroShowcase";
 
 export function Hero() {
   return (
-    <section className="pb-10 pt-10 md:pb-[4.375rem]">
+    <section className="pb-10 pt-5 md:pb-[4.375rem] md:pt-6">
       <Container>
         <Header />
 

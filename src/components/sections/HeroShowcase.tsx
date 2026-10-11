@@ -136,9 +136,13 @@ export function HeroShowcase() {
       <Container>
         <div className="mt-8 flex flex-col items-center gap-3 text-center md:mt-[3.5625rem] lg:flex-row lg:justify-center lg:gap-12 xl:gap-[12.7rem]">
           <p className="flex items-center gap-[0.5625rem] text-base leading-[1.2] text-ink/70 md:text-xl">
-            <span className="relative grid size-[1.4375rem] shrink-0 place-items-center rounded-full bg-accent/20" aria-hidden="true">
-              <span className="status-ripple absolute inset-0 rounded-full bg-accent/40" />
-              <span className="status-dot relative size-2.5 rounded-full bg-accent shadow-[0_0_8px_2px_rgb(11_118_243/0.45)]" />
+            {/* Plain block container (grid na). Ring ar core dui-i left/top 50% + nijer aadha size-er negative margin diye center kora,
+                tai ring container-er cheye boro hole-o position nare na. */}
+            <span className="relative size-[1.4375rem] shrink-0 rounded-full bg-accent/20" aria-hidden="true">
+              {/* Ring: 2.125rem, aadha = 1.0625rem. Core-er pichone thake (age likha, tai niche porbe) */}
+              <span className="status-ripple absolute left-1/2 top-1/2 -ml-[1.0625rem] -mt-[1.0625rem] size-[2.125rem] rounded-full bg-accent" />
+              {/* Core dot: 0.625rem, aadha = 0.3125rem */}
+              <span className="status-dot absolute left-1/2 top-1/2 -ml-[0.3125rem] -mt-[0.3125rem] size-2.5 rounded-full bg-accent shadow-[0_0_0.5rem_0.125rem_rgb(11_118_243/0.45)]" />
             </span>
             Open for new project and collaboration
           </p>

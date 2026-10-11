@@ -11,7 +11,9 @@ export function FloatingNav() {
   const menuLinks = [{ label: "Home", href: "/" }, ...siteConfig.navLinks];
 
   return (
-    <div className="pointer-events-none fixed inset-x-0 bottom-[max(1rem,env(safe-area-inset-bottom))] z-50 md:bottom-[max(1.5rem,env(safe-area-inset-bottom))]">
+    // bottom gap = Hero-r top padding (pt-5 / md:pt-6), jeno upor-niche gap soman thake.
+    // Hero-r pt bodlale ekhaneo bodlate hobe. iPhone-er home bar-er jonno safe-area beshi hole seta nebe.
+    <div className="pointer-events-none fixed inset-x-0 bottom-[max(1.25rem,env(safe-area-inset-bottom))] z-50 md:bottom-[max(1.5rem,env(safe-area-inset-bottom))]">
       <Container className="flex items-center justify-between gap-2">
         <BackToTop />
 
