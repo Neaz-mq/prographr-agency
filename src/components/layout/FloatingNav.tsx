@@ -12,13 +12,13 @@ export function FloatingNav() {
 
   return (
     <div className="pointer-events-none fixed inset-x-0 bottom-[max(1rem,env(safe-area-inset-bottom))] z-50 md:bottom-[3.73rem]">
-      <Container className="flex items-center justify-center md:justify-between">
-        {/* Back to top: shudhu tablet/desktop-e */}
-        <div className="hidden md:block">
-          <BackToTop />
-        </div>
+      <Container className="flex items-center justify-between gap-2">
+        <BackToTop />
 
-        <nav aria-label="Quick navigation" className="pointer-events-auto flex items-center gap-2 rounded-xl bg-black p-1.5">
+        <nav
+          aria-label="Quick navigation"
+          className="pointer-events-auto flex min-w-0 items-center gap-1.5 rounded-xl bg-black p-1.5 md:gap-2"
+        >
           {/* Mobile: menu button | Tablet+: logo */}
           <MobileMenu links={menuLinks} />
           <Link href="/" aria-label="Home" className="hidden size-10 place-items-center rounded-lg bg-[#222222] md:grid">
@@ -31,7 +31,7 @@ export function FloatingNav() {
               href={link.href}
               className={cn(
                 "h-10 items-center justify-center rounded-lg border-[0.5px] border-white/10 px-3 text-base leading-none text-white transition-colors duration-300 hover:bg-white/10",
-                link.mobile ? "flex" : "hidden md:flex"
+                link.mobile ? "hidden min-[380px]:flex md:flex" : "hidden md:flex"
               )}
             >
               {link.label}
@@ -40,19 +40,18 @@ export function FloatingNav() {
 
           <Link
             href="#contact"
-            className="flex h-10 items-center justify-center rounded-lg bg-white px-4 text-base font-medium leading-none text-black transition-transform duration-300 hover:scale-[1.03]"
+            className="flex h-10 shrink-0 items-center justify-center rounded-lg bg-white px-3 text-base font-medium leading-none text-black transition-transform duration-300 hover:scale-[1.03] md:px-4"
           >
             Let&rsquo;s talk
           </Link>
         </nav>
 
-        {/* WhatsApp: mobile-e pill-er upore dane, tablet+ e design-er moto dane */}
         <a
           href={whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Chat with us on WhatsApp"
-          className="pointer-events-auto absolute bottom-full right-4 mb-3 grid size-11 place-items-center rounded-full bg-black transition-transform duration-300 hover:-translate-y-1 md:relative md:bottom-auto md:right-auto md:mb-0 md:size-[3.25rem]"
+          className="pointer-events-auto relative grid size-10 shrink-0 place-items-center rounded-full bg-black transition-transform duration-300 hover:-translate-y-1 min-[380px]:size-11 md:size-[3.25rem]"
         >
           <Image src="/icons/logo-mark.svg" alt="" width={20} height={20} className="size-5 brightness-0 invert" />
           <span className="absolute right-0 top-0 size-3 rounded-full border border-white bg-[#22C55E]" />
