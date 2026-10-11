@@ -71,7 +71,7 @@ export const projects: Project[] = [
   {
     slug: "nexbank",
     title: "Smart Banking & Financial Management Platform",
-    description: "Paynex is a modern smart banking and financial management platform...",
+    description: "NexBank is a modern smart banking and financial management platform...",
     tags: [
       { label: "Financial Dashboard", icon: DashboardIcon },
       { label: "Income & Expense Tracking", icon: ChartUpIcon },

@@ -82,10 +82,15 @@ export function DashboardIcon({ className }: IconProps) {
   );
 }
 
+/* Figma "judge" icon (24x24): 45° ghorano rounded head, divider, handle, ar base line */
 export function GavelIcon({ className }: IconProps) {
   return (
     <svg {...lineProps} className={className}>
-      <path d="m8 11.5 4.5-4.5 5.5 5.5-4.5 4.5L8 11.5ZM10 3l5 5M15.5 15.5 21.5 21.5M3 21.5h8" />
+      <g transform="translate(11.53 10.04) rotate(-45)">
+        <rect x="-6.8" y="-4" width="13.6" height="8" rx="1.6" />
+        <path d="M-3.6 -4V4" />
+      </g>
+      <path d="m15.06 13.56 4.95 4.95M2 21h6" />
     </svg>
   );
 }
