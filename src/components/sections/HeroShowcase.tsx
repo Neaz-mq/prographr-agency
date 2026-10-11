@@ -1,13 +1,20 @@
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { CloudImage } from "@/components/ui/CloudImage";
-import { LayersIcon, MedalIcon } from "@/components/ui/icons";
+import { LayersIcon } from "@/components/ui/icons";
 import { images } from "@/lib/images";
 import { cn } from "@/lib/utils";
 
 /* Figma-r card width (px) theke next/image-er `sizes` toiri, jeno shob screen-e sharp ar halka thake */
 const sizesFor = (base: number) =>
   `(min-width: 2200px) ${Math.round(base * 1.65)}px, (min-width: 1600px) ${Math.round(base * 1.3)}px, (min-width: 768px) ${base}px, ${Math.round(base * 0.82)}px`;
+
+/* Figma theke export kora icon (public/icons/), card-er white box-er bhitore boshe */
+function CardIcon({ src }: { src: string }) {
+  return (
+    <Image src={src} alt="" width={30} height={30} aria-hidden="true" className="size-[1.875em]" />
+  );
+}
 
 type StatCardProps = {
   variant: "light" | "dark" | "tint";
@@ -89,16 +96,7 @@ function CardSet({ hidden = false }: { hidden?: boolean }) {
       <li className="flex">
         <StatCard
           variant="dark"
-          icon={
-            <Image
-              src="/icons/people.svg"
-              alt=""
-              width={30}
-              height={30}
-              aria-hidden="true"
-              className="size-[1.875em]"
-            />
-          }
+          icon={<CardIcon src="/icons/people.svg" />}
           label="Total Clients"
           value="230+"
           description="Building Meaningful Partnerships That Last Through Design"
@@ -115,7 +113,7 @@ function CardSet({ hidden = false }: { hidden?: boolean }) {
       <li className="flex">
         <StatCard
           variant="tint"
-          icon={<MedalIcon className="size-[1.875em] text-accent" />}
+          icon={<CardIcon src="/icons/medal-star.svg" />}
           label="Experience"
           value="6 Years+"
           description="Creating intuitive experiences that move businesses forward."
