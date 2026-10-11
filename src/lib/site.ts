@@ -1,7 +1,6 @@
 export const siteConfig = {
   name: "Prographr",
-  // Country code shoho, + ba space chhara. Example: 8801712345678
-  whatsappNumber: "8801XXXXXXXXX",
+  whatsappNumber: "8801723822082",
   whatsappMessage: "Hi Prographr, I'd like to talk about a project.",
   navLinks: [
     { label: "Project", href: "#projects", mobile: true },
