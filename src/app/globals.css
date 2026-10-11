@@ -2,7 +2,7 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #0a0a0a;
+  --foreground: #121212;
 }
 
 @theme inline {
@@ -10,10 +10,10 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
-  /* PLACEHOLDER: Figma theke exact hex diye replace korben */
-  --color-brand: #0a84ff;
-  --color-surface: #f7f7f7;
-  --color-muted: #6b6b6b;
+  --color-ink: #121212; /* button, logo, text */
+  --color-chip: #f0f0f0; /* badge, Explore work button */
+  --color-brand: #146ef5; /* PLACEHOLDER: blue accent, Figma theke confirm korben */
+  --color-muted: #6b6b6b; /* PLACEHOLDER */
 }
 
 /* Fluid scale: 1440px-e 16px (Figma-r moto), boro screen-e proportionally barbe */
@@ -34,13 +34,6 @@ body {
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-}
-
-img,
-video,
-svg {
-  max-width: 100%;
-  height: auto;
 }
 
 @media (prefers-reduced-motion: reduce) {

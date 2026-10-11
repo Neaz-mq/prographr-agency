@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { FloatingNav } from "@/components/layout/FloatingNav";
 
 const clashGrotesk = localFont({
   src: "../fonts/ClashGrotesk-Variable.woff2",
@@ -18,7 +19,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={clashGrotesk.variable}>
-      <body suppressHydrationWarning>{children}</body>
+      <body suppressHydrationWarning>
+        {children}
+        <FloatingNav />
+      </body>
     </html>
   );
 }
