@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { CloudImage } from "@/components/ui/CloudImage";
-import { LayersIcon } from "@/components/ui/icons";
 import { images } from "@/lib/images";
 import { cn } from "@/lib/utils";
 
@@ -69,7 +68,7 @@ function CardSet({ hidden = false }: { hidden?: boolean }) {
       <li className="flex">
         <StatCard
           variant="light"
-          icon={<LayersIcon className="size-[1.875em] text-accent" />}
+          icon={<CardIcon src="/icons/layer.svg" />}
           label="Total Project"
           value="120+"
           description="Ideas transformed into impactful digital products."
