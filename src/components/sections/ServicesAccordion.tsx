@@ -89,9 +89,14 @@ function ToggleIcon({ open }: { open: boolean }) {
   );
 }
 
+/* Desktop-e image-er visible area: 1134 x 402 (2.82 : 1). ratio er cheye kom hole image height-fit hoy, beshi hole width-fit */
+const FRAME_RATIO = 1134 / 402;
+
 function ServiceMedia({ service, open }: { service: Service; open: boolean }) {
   const image = service.image;
   const [loaded, setLoaded] = useState(false);
+  /* Frame-er cheye "uchu" image (ratio < frame ratio): frame-er height image-er sathe barbe, jate side padding chhoto thake ar upor-niche kata na jay */
+  const growFrame = !!image?.ratio && image.ratio < FRAME_RATIO;
 
   /* Cache-e thakle onLoad fire hoy na-o hote pare, tai mount-e `complete` check kori */
   const markIfComplete = useCallback((img: HTMLImageElement | null) => {
@@ -100,15 +105,43 @@ function ServiceMedia({ service, open }: { service: Service; open: boolean }) {
 
   return (
     /* Figma: Image Wrapper 1200 x 488, radius 30px, bg #121212. Sob service-er frame ek-i size */
-    <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[1.25rem] bg-ink sm:aspect-[1200/488] md:rounded-[1.875rem]">
+    <div
+      className={cn(
+        "relative aspect-[4/3] w-full overflow-hidden rounded-[1.25rem] bg-ink md:rounded-[1.875rem]",
+        growFrame ? "sm:aspect-auto" : "sm:aspect-[1200/488]"
+      )}
+    >
       {image ? (
         /* Bhitore 1181 x 449 image (~0.8% x 4%).
            preFramed (Brand Identity): image-e-i black bg + padding + rounded ache, tai shorashori fill.
            Baki raw image: code theke black panel + padding (~24px) + rounded corner, Brand-er moto look.
            Raw image-er visible area ~1134 x 402 (2.82 : 1), ei ratio-r image hole kono ongsho kate na */
-        <div className="absolute inset-[4%] sm:inset-x-[0.8%] sm:inset-y-[4%]">
-          <div className={cn("size-full", !image.preFramed && "bg-black p-[3%] sm:p-[2%]")}>
-            <div className={cn("relative size-full overflow-hidden", !image.preFramed && "rounded-xl sm:rounded-[1.3rem]")}>
+        <div
+          className={cn(
+            "absolute inset-[4%]",
+            /* growFrame: sm+ e normal flow, charidik-e ek-i 0.8% margin (side padding-er shathe top/bottom-o soman) */
+            growFrame ? "sm:relative sm:inset-auto sm:m-[0.8%]" : "sm:inset-x-[0.8%] sm:inset-y-[4%]"
+          )}
+        >
+          <div
+            className={cn(
+              "size-full",
+              growFrame && "sm:h-auto",
+              !image.preFramed && "bg-black p-[3%] sm:p-[2%]",
+              !!image.ratio && "sm:flex sm:items-center sm:justify-center"
+            )}
+          >
+            {/* ratio dile sm+ e wrapper nijei image-er ratio-te hoy (height auto), tai kono ongsho kate na ar rounded corner image-er-i thake */}
+            <div
+              style={image.ratio ? { aspectRatio: image.ratio } : undefined}
+              className={cn(
+                "relative size-full overflow-hidden",
+                /* Duto case-i width-fit: image pura width nei, height ratio theke ashe. Wide image-e frame fixed (uporniche black), uchu image-e frame barbe */
+                !!image.ratio && "sm:h-auto",
+                !!image.ratio && !growFrame && "sm:max-h-full",
+                !image.preFramed && "rounded-xl sm:rounded-[1.3rem]"
+              )}
+            >
               <Image
                 ref={markIfComplete}
                 src={image.src}

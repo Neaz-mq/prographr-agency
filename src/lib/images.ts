@@ -10,11 +10,11 @@ export const images = {
   projectNexbank: "Header_lr9zw0",
 
   /* Services section (Cloudinary public ID, extension chara) */
-  serviceUiUx: "UI_UX_sc3xzo",
+  serviceUiUx: "843c323a-9c0a-4cca-b08a-74197bf88f2a_mnkepw",
   serviceBrandIdentity: "image_6349883_ejobk8",
   serviceWeb: "Software_ufaqbi",
-  serviceMobile: "Mobile_app_lbcuks",
-  serviceProducts: "Product_development_gt9kmh",
+  serviceMobile: "mobile_app_ptoy9i",
+  serviceProducts: "product_solution_quye9z",
   serviceSoftware: "Software_Development_ddz8u4",
   serviceMaintenance: "Software_Maintenance_wide_pvdf2w",
 };
