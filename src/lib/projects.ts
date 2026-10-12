@@ -28,7 +28,7 @@ export type Project = {
 export const projects: Project[] = [
   {
     slug: "paynex",
-    title: "AI Clint Management Web Design",
+    title: "AI Client Management Web Design",
     description: "Paynex is a modern smart banking and financial management platform designed...",
     tags: [
       { label: "AI Automation", icon: MagicPenIcon },
