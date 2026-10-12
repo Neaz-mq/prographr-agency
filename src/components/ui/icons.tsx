@@ -132,3 +132,75 @@ export function DocumentIcon({ className }: IconProps) {
     </svg>
   );
 }
+
+/* ---------- Why Choose Us section icons (Figma: vuesax/bold, 30px, fill = accent) ----------
+   Cutout color: icon-er bhitore "kata" ongsho (jemon badge-er gap) card-er icon box-er bg (#FAFAFA) er moto hoy.
+   Onno bg-te boshale --icon-cutout CSS variable diye bodlano jay. */
+const CUTOUT = "var(--icon-cutout, #FAFAFA)";
+
+const boldProps = {
+  viewBox: "0 0 30 30",
+  fill: "currentColor",
+  "aria-hidden": true,
+} as const;
+
+/* vuesax/bold/note: clipboard */
+export function NoteBoldIcon({ className }: IconProps) {
+  return (
+    <svg {...boldProps} className={className}>
+      <path
+        fillRule="evenodd"
+        d="M9.5 5.7h11A4.5 4.5 0 0 1 25 10.2V23a4.5 4.5 0 0 1-4.5 4.5h-11A4.5 4.5 0 0 1 5 23V10.2a4.5 4.5 0 0 1 4.5-4.5ZM10 14h10v1.8H10V14Zm0 4.5h6.5v1.8H10v-1.8Z"
+      />
+      <rect x="10" y="2.5" width="10" height="5.6" rx="2.8" style={{ stroke: CUTOUT, strokeWidth: 1.6 }} />
+    </svg>
+  );
+}
+
+/* vuesax/bold/layer: Figma export-er hubohu path (public/icons/layer.svg) */
+export function LayerBoldIcon({ className }: IconProps) {
+  return (
+    <svg {...boldProps} className={className}>
+      <path d="M24.2126 6.11094L16.8876 2.84844C15.8126 2.37344 14.1876 2.37344 13.1126 2.84844L5.7876 6.11094C3.9376 6.93594 3.6626 8.06094 3.6626 8.66094C3.6626 9.26094 3.9376 10.3859 5.7876 11.2109L13.1126 14.4734C13.6501 14.7109 14.3251 14.8359 15.0001 14.8359C15.6751 14.8359 16.3501 14.7109 16.8876 14.4734L24.2126 11.2109C26.0626 10.3859 26.3376 9.26094 26.3376 8.66094C26.3376 8.06094 26.0751 6.93594 24.2126 6.11094Z" />
+      <path d="M14.9999 21.3C14.5249 21.3 14.0499 21.2 13.6124 21.0125L5.1874 17.2625C3.8999 16.6875 2.8999 15.15 2.8999 13.7375C2.8999 13.225 3.3124 12.8125 3.8249 12.8125C4.3374 12.8125 4.7499 13.225 4.7499 13.7375C4.7499 14.4125 5.3124 15.2875 5.9374 15.5625L14.3624 19.3125C14.7624 19.4875 15.2249 19.4875 15.6249 19.3125L24.0499 15.5625C24.6749 15.2875 25.2374 14.425 25.2374 13.7375C25.2374 13.225 25.6499 12.8125 26.1624 12.8125C26.6749 12.8125 27.0874 13.225 27.0874 13.7375C27.0874 15.1375 26.0874 16.6875 24.7999 17.2625L16.3749 21.0125C15.9499 21.2 15.4749 21.3 14.9999 21.3Z" />
+      <path d="M14.9999 27.4992C14.5249 27.4992 14.0499 27.3992 13.6124 27.2117L5.1874 23.4617C3.7999 22.8492 2.8999 21.4617 2.8999 19.9367C2.8999 19.4242 3.3124 19.0117 3.8249 19.0117C4.3374 19.0117 4.7499 19.4242 4.7499 19.9367C4.7499 20.7242 5.2124 21.4367 5.9374 21.7617L14.3624 25.5117C14.7624 25.6867 15.2249 25.6867 15.6249 25.5117L24.0499 21.7617C24.7624 21.4492 25.2374 20.7242 25.2374 19.9367C25.2374 19.4242 25.6499 19.0117 26.1624 19.0117C26.6749 19.0117 27.0874 19.4242 27.0874 19.9367C27.0874 21.4617 26.1874 22.8367 24.7999 23.4617L16.3749 27.2117C15.9499 27.3992 15.4749 27.4992 14.9999 27.4992Z" />
+    </svg>
+  );
+}
+
+/* vuesax/bold/programming-arrow: branch + merge arrow */
+export function ProgrammingArrowBoldIcon({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 30 30" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+      <circle cx="6" cy="5.5" r="3" />
+      <circle cx="6" cy="24.5" r="3" />
+      <circle cx="24" cy="24.5" r="3" />
+      <path d="M6 8.5v13M24 21.5V13a5 5 0 0 0-5-5h-5M17.5 4.8 14 8l3.5 3.2" />
+    </svg>
+  );
+}
+
+/* vuesax/bold/status-up: bar chart in rounded square */
+export function StatusUpBoldIcon({ className }: IconProps) {
+  return (
+    <svg {...boldProps} className={className}>
+      <path
+        fillRule="evenodd"
+        d="M7.5 2.5h15a5 5 0 0 1 5 5v15a5 5 0 0 1-5 5h-15a5 5 0 0 1-5-5v-15a5 5 0 0 1 5-5ZM8 17h2.4v5H8v-5Zm5.8-4h2.4v9h-2.4v-9Zm5.8-4H22v13h-2.4V9Z"
+      />
+    </svg>
+  );
+}
+
+/* vuesax/bold/note-favorite: calendar + check badge */
+export function NoteFavoriteBoldIcon({ className }: IconProps) {
+  return (
+    <svg {...boldProps} className={className}>
+      <rect x="2.5" y="4.4" width="22.5" height="23.1" rx="5" />
+      <rect x="7.9" y="1.8" width="2.2" height="5" rx="1.1" style={{ stroke: CUTOUT, strokeWidth: 1.4 }} />
+      <rect x="17.9" y="1.8" width="2.2" height="5" rx="1.1" style={{ stroke: CUTOUT, strokeWidth: 1.4 }} />
+      <circle cx="23" cy="23" r="5.6" style={{ stroke: CUTOUT, strokeWidth: 1.8 }} />
+      <path d="M20.2 23.1l1.1-1.1 1.7 1.7 3.2-3.2 1.1 1.1-4.3 4.3-2.8-2.8Z" style={{ fill: CUTOUT }} />
+    </svg>
+  );
+}
