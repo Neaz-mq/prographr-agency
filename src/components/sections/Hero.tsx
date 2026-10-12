@@ -1,8 +1,8 @@
-import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { Header } from "@/components/layout/Header";
 import { HeroShowcase } from "./HeroShowcase";
+import { HeroDuo } from "./HeroDuo";
 
 export function Hero() {
   return (
@@ -18,14 +18,7 @@ export function Hero() {
           <div className="mt-6 flex flex-col items-center gap-4">
             <h1 className="max-w-[66.4rem] text-center text-[2rem] font-medium leading-[1.1] text-black sm:text-5xl lg:text-[3.75rem]">
               Turning Bold Ideas Into Exceptional Digital Experiences{" "}
-              <Image
-                src="/icons/figma-webflow.svg"
-                alt=""
-                width={89}
-                height={50}
-                aria-hidden="true"
-                className="mx-[0.05em] inline-block h-[0.85em] w-auto align-middle"
-              />{" "}
+              <HeroDuo />{" "}
               Inspire.
             </h1>
             <p className="max-w-[40.4rem] text-center text-base leading-[1.6] text-black/70">
