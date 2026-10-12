@@ -16,5 +16,5 @@ export const images = {
   serviceMobile: "mobile_app_ptoy9i",
   serviceProducts: "product_solution_quye9z",
   serviceSoftware: "Software_Development_ddz8u4",
-  serviceMaintenance: "Software_Maintenance_wide_pvdf2w",
+  serviceMaintenance: "software_maintenance_mgobxm",
 };
