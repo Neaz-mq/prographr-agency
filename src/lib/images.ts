@@ -10,13 +10,11 @@ export const images = {
   projectNexbank: "Header_lr9zw0",
 
   /* Services section (Cloudinary public ID, extension chara) */
+  serviceUiUx: "UI_UX_sc3xzo",
   serviceBrandIdentity: "image_6349883_ejobk8",
-
-  /* Services section PLACEHOLDER (Unsplash photo ID, images.unsplash.com/<id>). Real design ashle Cloudinary ID diye replace koro */
-  serviceUiUx: "photo-1558655146-d09347e92766",
-  serviceWeb: "photo-1498050108023-c5249f4df085",
-  serviceMobile: "photo-1511707171634-5f897ff02aa9",
-  serviceSoftware: "photo-1551288049-bebda4e38f71",
-  serviceMaintenance: "photo-1549692520-acc6669e2f0c",
-  serviceProducts: "photo-1547658719-da2b51169166",
+  serviceWeb: "Software_ufaqbi",
+  serviceMobile: "Mobile_app_lbcuks",
+  serviceProducts: "Product_development_gt9kmh",
+  serviceSoftware: "Software_Development_ddz8u4",
+  serviceMaintenance: "Software_Maintenance_wide_pvdf2w",
 };
