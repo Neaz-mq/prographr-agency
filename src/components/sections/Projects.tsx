@@ -7,7 +7,7 @@ import { projects, type Project } from "@/lib/projects";
 /* Figma: "Desktop - 2018" (1440 x 1734), bg #FAFAFA, padding 100px 80px, gap 60px. 1rem = 16px @1440 */
 
 /* Image card-er 628px width-er 574px ongsho (~40vw @lg, 44vw @md, full-width mobile) */
-const IMAGE_SIZES = "(min-width: 1024px) 40vw, (min-width: 768px) 44vw, 92vw";
+const IMAGE_SIZES = "(min-width: 1440px) 574px, (min-width: 1024px) 40vw, (min-width: 768px) 44vw, 92vw";
 
 function ProjectCard({ project }: { project: Project }) {
   return (

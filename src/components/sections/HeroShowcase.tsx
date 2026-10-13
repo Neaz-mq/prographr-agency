@@ -4,9 +4,8 @@ import { CloudImage } from "@/components/ui/CloudImage";
 import { images } from "@/lib/images";
 import { cn } from "@/lib/utils";
 
-/* Figma-r card width (px) theke next/image-er `sizes` toiri, jeno shob screen-e sharp ar halka thake */
-const sizesFor = (base: number) =>
-  `(min-width: 2200px) ${Math.round(base * 1.65)}px, (min-width: 1600px) ${Math.round(base * 1.3)}px, (min-width: 768px) ${base}px, ${Math.round(base * 0.82)}px`;
+/* Figma-r card width (px) theke next/image-er `sizes` toiri. Layout 1440px-e fixed, tai boro screen-e card boro hoy na */
+const sizesFor = (base: number) => `(min-width: 768px) ${base}px, ${Math.round(base * 0.82)}px`;
 
 /* Figma theke export kora icon (public/icons/), card-er white box-er bhitore boshe */
 function CardIcon({ src }: { src: string }) {

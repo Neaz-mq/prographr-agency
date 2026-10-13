@@ -16,9 +16,10 @@
   --color-muted: #6b6b6b; /* PLACEHOLDER */
 }
 
-/* Fluid scale: 1440px-e 16px (Figma-r moto), boro screen-e proportionally barbe */
+/* Fixed 16px: puro project 1440px-e (Figma-r moto) thakbe, boro screen-e scale hoye boro hobe na.
+   Content max 1440px (Container), shudhu full-bleed jinis (jemon hero marquee) ar section-er bg screen-er puro width nibe. */
 html {
-  font-size: clamp(16px, 0.9vw + 3px, 32px);
+  font-size: 16px;
   -webkit-text-size-adjust: 100%;
 }
 
