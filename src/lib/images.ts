@@ -16,7 +16,7 @@ export const images = {
   serviceMobile: "mobile_app_ptoy9i",
   serviceProducts: "product_solution_quye9z",
   serviceSoftware: "Software_Development_ddz8u4",
-  serviceMaintenance: "Software_Maintenance_wide_pvdf2w",
+  serviceMaintenance: "software_maintenance_mgobxm",
 
   /* Team section (Cloudinary public ID, version/extension chara). 3 ta portrait, kichu member-er ekoi chobi reuse hoy */
   teamPortraitA: "b0c34c33f3bd3fd2aed0324546eb717420231082_xxdrvz",
