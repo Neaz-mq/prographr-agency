@@ -16,5 +16,15 @@ export const images = {
   serviceMobile: "mobile_app_ptoy9i",
   serviceProducts: "product_solution_quye9z",
   serviceSoftware: "Software_Development_ddz8u4",
-  serviceMaintenance: "software_maintenance_mgobxm",
+  serviceMaintenance: "Software_Maintenance_wide_pvdf2w",
+
+  /* Team section (Cloudinary public ID, version/extension chara). 3 ta portrait, kichu member-er ekoi chobi reuse hoy */
+  teamPortraitA: "b0c34c33f3bd3fd2aed0324546eb717420231082_xxdrvz",
+  teamPortraitB: "14f98afedf6fe06782685cfc949b6560fa1e5d01_evdbsx",
+  teamPortraitC: "0d5879c075743a1f06645eae23a444feb78fd48f_yc9wdv",
+
+  /* Showcase marquee section (Cloudinary public ID, version/extension chara). Desktop design (border CSS diye ShowcaseMarquee-te boshano hoy), phone-er PNG-te nijer border ache */
+  showcaseDashboard: "Desktop_-_93_wnmdkq",
+  showcasePhone: "iPhone_13_mini_-_1488_k12fpo",
+  showcaseFinPilot: "Desktop_-_57_sjchnw",
 };

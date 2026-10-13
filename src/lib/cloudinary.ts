@@ -13,3 +13,13 @@ export function cloudinaryLoader({ src, width, quality }: LoaderArgs) {
   const q = quality ? `q_${quality}` : "q_auto:good";
   return `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/f_auto,${q},c_limit,w_${width}/${id}`;
 }
+
+/**
+ * Showcase (Figma frame export) image-er jonno: e_trim diye PNG-er charpashe-r faka/transparent ongsho Cloudinary-te kete dey,
+ * tai image-er pashe ar upore-niche onojaniyo gap thake na. e_trim ALADA component (age apply hoy), tarpor resize.
+ */
+export function cloudinaryTrimLoader({ src, width, quality }: LoaderArgs) {
+  const id = src.replace(/^\//, "");
+  const q = quality ? `q_${quality}` : "q_auto:good";
+  return `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/e_trim/f_auto,${q},c_limit,w_${width}/${id}`;
+}

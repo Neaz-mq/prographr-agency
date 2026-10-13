@@ -46,9 +46,31 @@ body {
   }
 }
 
+/* Smoothness: .marquee-e layout/paint contain (repaint ei box-er bhitoreই shimito), track-e GPU layer */
+.marquee {
+  contain: layout paint;
+}
+
 .marquee-track {
   animation: marquee 45s linear infinite;
   will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* Ulta dike (dan-e cholbe). Duration inline style (animationDuration) diye row-wise bodlano jay */
+@keyframes marquee-reverse {
+  from {
+    transform: translate3d(-50%, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.marquee-track-reverse {
+  animation: marquee-reverse 45s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 /* Live status dot (premium pulse)
@@ -215,7 +237,8 @@ body {
 }
 
 @media (hover: hover) {
-  .marquee:hover .marquee-track {
+  .marquee:hover .marquee-track,
+  .marquee:hover .marquee-track-reverse {
     animation-play-state: paused;
   }
 }
@@ -231,6 +254,7 @@ body {
   }
 
   .marquee-track,
+  .marquee-track-reverse,
   .status-ripple,
   .status-dot,
   .duo-slot,
