@@ -1,9 +1,10 @@
 /* Heading-er moddhe Figma + Webflow circle (Design + Development).
-   Animation-er CSS globals.css-e (`.duo*`). Server component, kono JS lagbe na.
+   Animation-er CSS globals.css-e (`.duo*`). Entrance delay prop theke ashe. Server component, kono JS lagbe na.
    Decorative, tai screen reader-er theke lukano. */
-export function HeroDuo() {
+export function HeroDuo({ delay = 400 }: { delay?: number }) {
   return (
-    <span className="duo" aria-hidden="true">
+    /* delay (ms): heading-er word reveal-er shathe sync (globals.css `--duo-delay`) */
+    <span className="duo" aria-hidden="true" style={{ "--duo-delay": `${delay}ms` } as React.CSSProperties}>
       <span className="duo-slot duo-slot--a">
         <span className="duo-float duo-float--a">
           <svg className="duo-face" viewBox="0 0 49.5 49.5" fill="none" xmlns="http://www.w3.org/2000/svg">
