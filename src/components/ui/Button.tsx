@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpRight } from "./icons";
+import { RollButton } from "./RollButton";
 import { cn } from "@/lib/utils";
 
 type ButtonProps = {
@@ -25,26 +25,10 @@ export function Button({ href, children, variant = "dark", size = "md", classNam
     );
   }
 
-  const isSmall = size === "sm";
-
+  /* Dark button: hover-e label upore roll kore + arrow beriye notun arrow dhuke (RollButton). Header-er "Book a call"-er moto */
   return (
-    <Link
-      href={href}
-      className={cn(
-        "group inline-flex items-center gap-2 rounded-xl bg-ink text-sm font-medium leading-[1.2] text-white shadow-[inset_3px_3px_10px_rgba(255,255,255,0.2)] transition-transform duration-300 active:scale-[0.98]",
-        isSmall ? "h-9 pl-3 pr-1" : "h-[2.625rem] pl-4 pr-1",
-        className
-      )}
-    >
+    <RollButton href={href} size={size} className={className}>
       {children}
-      <span className={cn("grid place-items-center rounded-lg bg-white text-black", isSmall ? "size-7" : "size-[2.125rem]")}>
-        <ArrowUpRight
-          className={cn(
-            "transition-transform duration-300 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5",
-            isSmall ? "size-4" : "size-[1.125rem]"
-          )}
-        />
-      </span>
-    </Link>
+    </RollButton>
   );
 }

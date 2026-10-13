@@ -24,6 +24,10 @@ const OMEGA = 13;
 /* v-ke [-1, 1) range-e wrap kore. +-1 mane box-er bairer (clip hoye lukano) */
 const wrap = (v: number) => ((((v + 1) % 2) + 2) % 2) - 1;
 
+/* Arrow-er soft crossfade: jekhane achhe (y=0) sekhane puro dekha jay, box theke jotoi door jay totoi halka hoye jay.
+   Tai roll-er shomoy duto arrow ekshathe sharp dekha jay na, ekta mishe giye arekta ashe. 80 = koto% dure gele ekdom gayeb */
+const iconFade = (y: number) => Math.max(0, 1 - Math.abs(y) / 80);
+
 /* parity (0 ba 1)-er shathe mele emon nikototon integer. Tie hole shamne (forward) */
 const nearestWithParity = (p: number, parity: number) => {
   const below = Math.floor((p - parity) / 2) * 2 + parity;
@@ -33,7 +37,7 @@ const nearestWithParity = (p: number, parity: number) => {
 
 type RollButtonProps = {
   href: string;
-  children: string;
+  children: React.ReactNode; // string ba sr-only span-shoho content (label duita copy-te render hoy, 2nd copy aria-hidden)
   size?: "sm" | "md";
   className?: string;
 };
@@ -52,8 +56,14 @@ export function RollButton({ href, children, size = "md", className }: RollButto
     if (textA.current) textA.current.style.transform = `translate3d(0, ${ya}%, 0)`;
     if (textB.current) textB.current.style.transform = `translate3d(0, ${yb}%, 0)`;
     // Arrow: dik top-right <-> bottom-left (x = -y)
-    if (iconA.current) iconA.current.style.transform = `translate3d(${-ya}%, ${ya}%, 0)`;
-    if (iconB.current) iconB.current.style.transform = `translate3d(${-yb}%, ${yb}%, 0)`;
+    if (iconA.current) {
+      iconA.current.style.transform = `translate3d(${-ya}%, ${ya}%, 0)`;
+      iconA.current.style.opacity = String(iconFade(ya));
+    }
+    if (iconB.current) {
+      iconB.current.style.transform = `translate3d(${-yb}%, ${yb}%, 0)`;
+      iconB.current.style.opacity = String(iconFade(yb));
+    }
   }, []);
 
   const tick = useCallback(
@@ -139,17 +149,17 @@ export function RollButton({ href, children, size = "md", className }: RollButto
         </span>
       </span>
 
-      {/* Arrow box: duita arrow ekoi cell-e, box-er bairer ongsho clip */}
+      {/* Arrow box: duita arrow ekoi cell-e. Wrapper box-er puro size (size-full), tai 100% roll = box-er shomaan, copy rest-e puro lukano thake */}
       <span
         className={cn(
           "grid place-items-center overflow-hidden rounded-lg bg-white text-black",
           isSmall ? "size-7" : "size-[2.125rem]"
         )}
       >
-        <span ref={iconA} className="roll-icon col-start-1 row-start-1 grid">
+        <span ref={iconA} className="roll-icon col-start-1 row-start-1 grid size-full place-items-center">
           <ArrowUpRight className={iconClass} />
         </span>
-        <span ref={iconB} aria-hidden="true" className="roll-icon roll-copy-icon col-start-1 row-start-1 grid">
+        <span ref={iconB} aria-hidden="true" className="roll-icon roll-copy-icon col-start-1 row-start-1 grid size-full place-items-center">
           <ArrowUpRight className={iconClass} />
         </span>
       </span>

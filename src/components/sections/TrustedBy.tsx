@@ -13,6 +13,30 @@ const logos = [
   { src: "/logos/contentful.svg", alt: "Contentful", width: 151, height: 29, widthClass: "w-[9.46rem]" },
 ];
 
+/* Marquee: logo-set ek-i jinis kotobar repeat kora. Track -50% porjonto jay, tai seamless hote half >= region-er width lagbe.
+   Ek set ~840px, region boro screen-e ~1800px porjonto hoy, tai 6 set (half = 3 set ~ 2500px) rakhi. */
+const SET_COUNT = 6;
+const MARQUEE_SECONDS = 50; // boro = dhire. Hero marquee-r speed-er kachakachi (~50px/s)
+
+function LogoSet({ hidden = false }: { hidden?: boolean }) {
+  return (
+    /* gap == pr, tai set-er shesh ar porer set-er shuru-r majhe gap ekoi thake (seamless) */
+    <ul aria-hidden={hidden || undefined} className="flex shrink-0 items-center gap-10 pr-10 xl:gap-[6.5rem] xl:pr-[6.5rem]">
+      {logos.map((logo) => (
+        <li key={logo.src} className="flex shrink-0 items-center">
+          <Image
+            src={logo.src}
+            alt={hidden ? "" : logo.alt}
+            width={logo.width}
+            height={logo.height}
+            className={`h-auto ${logo.widthClass}`}
+          />
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 export function TrustedBy() {
   return (
     <section aria-label="Companies we collaborate with" className="bg-[#FAFAFA]">
@@ -36,20 +60,15 @@ export function TrustedBy() {
           </p>
         </div>
 
-        {/* Right: logos */}
-        <ul className="flex flex-1 flex-wrap items-center justify-center gap-x-10 gap-y-6 px-4 py-8 sm:px-8 xl:flex-nowrap xl:justify-between xl:gap-0 xl:py-0 xl:pl-0 xl:pr-20">
-          {logos.map((logo) => (
-            <li key={logo.src} className="flex shrink-0 items-center">
-              <Image
-                src={logo.src}
-                alt={logo.alt}
-                width={logo.width}
-                height={logo.height}
-                className={`h-auto ${logo.widthClass}`}
-              />
-            </li>
-          ))}
-        </ul>
+        {/* Right: logo marquee (right -> left). xl-e screen-er daan edge porjonto full-bleed, dui pashe soft fade.
+            Hover-e pause (.marquee:hover), reduced-motion-e ruke jay (globals.css) */}
+        <div className="marquee fade-edges min-w-0 overflow-hidden py-8 xl:mr-[calc((100%-100vw)/2)] xl:flex-1 xl:py-0">
+          <div className="marquee-track flex w-max" style={{ animationDuration: `${MARQUEE_SECONDS}s` }}>
+            {Array.from({ length: SET_COUNT }, (_, i) => (
+              <LogoSet key={i} hidden={i > 0} />
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -47,6 +47,12 @@ body {
   }
 }
 
+/* Marquee-r dui pashe soft fade: logo gulo pichon theke ashe ar shesh e mishe jay (hard cut hoy na) */
+.fade-edges {
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 7%, #000 93%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0, #000 7%, #000 93%, transparent 100%);
+}
+
 /* Smoothness: .marquee-e layout/paint contain (repaint ei box-er bhitoreই shimito), track-e GPU layer */
 .marquee {
   contain: layout paint;
