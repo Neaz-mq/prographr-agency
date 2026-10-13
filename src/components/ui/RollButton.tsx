@@ -16,7 +16,10 @@ import { cn } from "@/lib/utils";
    - Hover = p bijor (odd), hover chhara = p jor (even). Beshi tara-tari hole nikoter correct-parity target-e ghore.
    - rAF shudhu animation cholar shomoy chole, shesh hole thame. Re-render hoy na (direct transform). */
 
-const OMEGA = 36; // spring speed. Boro = tez, choto = dhire (36 ~ 0.2s settle)
+/* Spring speed. Boro = tez, choto = dhire. Roll-er distance chhoto (label-er ek line), tai beshi tez hole jhalok-er moto lage.
+   36 = 0.1s-e 90% (khub tez), 13 = 0.3s-e 90% / 0.5s-e shesh (smooth, premium).
+   Tune: 16 = ektu tez (0.24s), 10 = aro dhire (0.39s). */
+const OMEGA = 13;
 
 /* v-ke [-1, 1) range-e wrap kore. +-1 mane box-er bairer (clip hoye lukano) */
 const wrap = (v: number) => ((((v + 1) % 2) + 2) % 2) - 1;
