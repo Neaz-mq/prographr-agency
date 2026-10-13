@@ -74,6 +74,22 @@ body {
   backface-visibility: hidden;
 }
 
+/* Roll button (RollButton.tsx): movement JS spring theke ashe (inline transform).
+   Ekhane shudhu idle state: copy lukano (label niche-e, arrow bottom-left-e), jate JS load hobar age-o thik dekhay. */
+.roll-text,
+.roll-icon {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.roll-copy-text {
+  transform: translate3d(0, 100%, 0);
+}
+
+.roll-copy-icon {
+  transform: translate3d(-100%, 100%, 0);
+}
+
 /* Live status dot (premium pulse)
    - Ring ta nijer MAX size-e (2.125rem) toiri, scale kore choto theke boro hoy.
      Tai 2K/4K screen-eo edge sharp thake (choto layer boro kore blur kora hoy na).
