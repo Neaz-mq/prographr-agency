@@ -21,8 +21,9 @@ const words = [
   "Software",
 ];
 
-/* Desktop card: CSS frame (Figma: 630.22 x 472.87, border 5.02px #000, radius 23.43px, bg white) + bhitore design image.
-   Inner image-er position Figma theke (frame-er border-er bhitor theke, px / 16 = em). Frame-er bairer ongsho overflow-hidden diye kata. */
+/* Desktop card: CSS frame (Figma: 630.22 x 472.87, border 5.02px #000, radius 23.43px, bg white) + bhitore pura design image.
+   Image kata hoy na: frame-er bhitore object-contain diye puro-ta dekhay (Figma-te design-ta frame-er bairer dike chhilo, ekhane pura dekhano hoyeche).
+   Desktop - 93 PNG 2956 x 2301, charpashe 3.25% shadow margin ache, tai inset-0 diye diyei sundor margin pay. */
 type FramedShot = { kind: "framed"; src: string; alt: string; innerClassName: string; sizes: string };
 
 /* Phone card: PNG-te nijer border ache. Height fixed (em), width natural aspect onujayi auto, tai kono faka thake na */
@@ -30,30 +31,35 @@ type PlainShot = { kind: "plain"; src: string; alt: string; width: number; heigh
 
 type Shot = FramedShot | PlainShot;
 
+/* Phone card: loop-er seam-eo (set-er shesh o notun set-er shuru) duto dashboard pashapashi na ashe, tai phone protita dashboard-er majhe boshe */
+const phoneShot: PlainShot = {
+  kind: "plain",
+  src: images.showcasePhone, // iPhone 13 mini (218.44 x 473)
+  alt: "Health insurance mobile app design",
+  width: 218,
+  height: 473,
+  heightClass: "h-[29.5625em]",
+  sizes: "(min-width: 768px) 219px, 137px",
+};
+
+/* Sequence: Dashboard, Phone, Dashboard, Phone, (loop) Dashboard, Phone ... */
 const shots: Shot[] = [
   {
     kind: "framed",
-    src: images.showcaseDashboard, // Desktop - 93 (691 x 527.23, left 29.95, top 30)
+    src: images.showcaseDashboard, // Desktop - 93 (PNG 2956 x 2301, nijer shadow margin shoho)
     alt: "MoneyBoard finance dashboard web design",
-    innerClassName: "left-[1.5581em] top-[1.5613em] h-[32.9519em] w-[43.1875em]",
-    sizes: "(min-width: 768px) 692px, 432px",
+    innerClassName: "inset-0",
+    sizes: "(min-width: 768px) 620px, 394px",
   },
-  {
-    kind: "plain",
-    src: images.showcasePhone, // iPhone 13 mini (218.44 x 473)
-    alt: "Health insurance mobile app design",
-    width: 218,
-    height: 473,
-    heightClass: "h-[29.5625em]",
-    sizes: "(min-width: 768px) 219px, 137px",
-  },
+  phoneShot,
   {
     kind: "framed",
-    src: images.showcaseFinPilot, // Desktop - 57 (691.34 x 466.18, left 33.78, top 33.47)
+    src: images.showcaseFinPilot, // Desktop - 57 (Figma: 691.34 x 466.18). Shadow margin nai, tai charpashe 1.5em faka dewa
     alt: "FinPilot finance dashboard web design",
-    innerClassName: "left-[1.7975em] top-[1.7781em] h-[29.1363em] w-[43.2088em]",
-    sizes: "(min-width: 768px) 693px, 433px",
+    innerClassName: "inset-[1.5em]",
+    sizes: "(min-width: 768px) 620px, 394px",
   },
+  phoneShot,
 ];
 
 /* Ekta marquee row. Duita copy (duitar width soman) rakhle -50% translate-e seamless loop hoy. Dwitiyo copy screen reader theke lukano */
@@ -103,8 +109,8 @@ function WordSet({ hidden }: { hidden: boolean }) {
 function ShotSet({ hidden }: { hidden: boolean }) {
   return (
     <ul aria-hidden={hidden || undefined} className="flex shrink-0 items-center gap-[2.5em] pr-[2.5em]">
-      {shots.map((shot) => (
-        <li key={shot.src} className="flex shrink-0">
+      {shots.map((shot, index) => (
+        <li key={`${shot.src}-${index}`} className="flex shrink-0">
           {shot.kind === "framed" ? (
             <div className="relative isolate box-border h-[29.5544em] w-[39.3888em] shrink-0 overflow-hidden rounded-[1.4647em] border-[0.3138em] border-black bg-white">
               <div className={cn("absolute", shot.innerClassName)}>
@@ -116,7 +122,7 @@ function ShotSet({ hidden }: { hidden: boolean }) {
                   loading="eager"
                   fetchPriority="low"
                   draggable={false}
-                  className="select-none object-cover"
+                  className="select-none object-contain"
                 />
               </div>
             </div>
