@@ -6,6 +6,7 @@ import { RevealOnView } from "@/components/ui/RevealOnView";
 import { RevealWords } from "@/components/ui/RevealWords";
 import { reveal } from "@/lib/reveal";
 import { projects, type Project } from "@/lib/projects";
+import { StackedPanels } from "@/components/sections/StackedPanels";
 
 /* Figma: "Desktop - 2018" (1440 x 1734), bg #FAFAFA, padding 100px 80px, gap 60px. 1rem = 16px @1440 */
 
@@ -131,6 +132,39 @@ function ProjectCard({ project }: { project: Project }) {
   );
 }
 
+/* Projects-ke 2 ta kore row-te bhag kori: protita row ekta stacking panel */
+function chunk<T>(items: T[], size: number): T[][] {
+  const out: T[][] = [];
+  for (let i = 0; i < items.length; i += size) out.push(items.slice(i, i + size));
+  return out;
+}
+
+const rows = chunk(projects, 2);
+
+/* Ek panel = 2 ta card pashapashi (Figma: gap 24px, mobile-e ekta-r niche arekta).
+   Shudhu prothom panel scroll-e fade + rise kore ashe; baki panel nijei niche theke uthe ashe, tai tader opacity animation nai */
+function ProjectRow({ row, animateIn }: { row: Project[]; animateIn: boolean }) {
+  const grid = (
+    <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-2 md:gap-5">
+      {row.map((project) => (
+        <div key={project.slug} className="flex">
+          <ProjectCard project={project} />
+        </div>
+      ))}
+    </div>
+  );
+
+  if (!animateIn) return grid;
+
+  return (
+    <RevealOnView className="w-full" threshold={0.12} rootMargin="0px 0px -6% 0px">
+      <div className="sr-up w-full" style={reveal(0, { duration: 900, y: 40 })}>
+        {grid}
+      </div>
+    </RevealOnView>
+  );
+}
+
 export function Projects() {
   return (
     <section id="projects" aria-labelledby="projects-heading" className="scroll-mt-24 bg-[#FAFAFA] py-16 md:py-[6.25rem]">
@@ -168,19 +202,13 @@ export function Projects() {
           </div>
         </RevealOnView>
 
-        {/* 2 column grid (Figma: 628px card, gap 24px). Card barle row barhe */}
-        <ul className="grid w-full grid-cols-1 gap-6 md:grid-cols-2">
-          {projects.map((project, i) => (
-            <li key={project.slug} className="flex">
-              {/* Protita card nijer observer-e: scroll kore dekha gele upor theke niche ek ek kore ashe. Duita column-e halka stagger */}
-              <RevealOnView className="flex w-full" threshold={0.12} rootMargin="0px 0px -6% 0px">
-                <div className="sr-up flex w-full" style={reveal(110 * (i % 2), { duration: 900, y: 40 })}>
-                  <ProjectCard project={project} />
-                </div>
-              </RevealOnView>
-            </li>
+        {/* Stacking panels (oripio-r moto): protita panel-e 2 ta card. Scroll korle porer panel niche theke uthe ager-tar upor boshe,
+            ager panel halka choto + dim hoy. Mobile-e shadharon vabe uporer niche (StackedPanels.tsx dekho) */}
+        <StackedPanels>
+          {rows.map((row, i) => (
+            <ProjectRow key={row[0].slug} row={row} animateIn={i === 0} />
           ))}
-        </ul>
+        </StackedPanels>
       </Container>
     </section>
   );
