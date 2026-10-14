@@ -51,28 +51,42 @@ type ImageCardProps = {
   widthClass: string;
   sizes: string;
   priority?: boolean;
+  /** cover (default): card puro bhore, image-er ratio card-er theke alada hole dui pash kate.
+      contain: puro image dekha jay, kono kata nai (ratio alada hole upor-niche/dui pashe card-er #F0F0F0 faka thake) */
+  fit?: "cover" | "contain";
+  /** true hole Cloudinary image-er charpashe-r white/faka margin kete dey (e_trim), tai image-er asol design (plate) card-er edge porjonto bhore.
+      Shudhu jei image-e white margin ache segulote dao (jemon heroGalleryA). Margin na thakle kono effect nai */
+  trim?: boolean;
 };
 
-function ImageCard({ src, alt, widthClass, sizes, priority }: ImageCardProps) {
+function ImageCard({ src, alt, widthClass, sizes, priority, fit = "cover", trim = false }: ImageCardProps) {
   return (
     <div className={cn("relative h-[20.3125em] shrink-0 overflow-hidden rounded-[1.25em] bg-chip", widthClass)}>
-      <CloudImage src={src} alt={alt} fill sizes={sizes} priority={priority} className="object-cover" />
+      <CloudImage
+        src={src}
+        alt={alt}
+        fill
+        sizes={sizes}
+        priority={priority}
+        trim={trim}
+        className={fit === "contain" ? "object-contain" : "object-cover"}
+      />
     </div>
   );
 }
 
+/* Notun 3 ta image-er width (Figma-r em). Ager 3 ta image-er size ager moto-i, shegulo-te kono change nai.
+   Figma-te ei 3 tar width alada hole ekhane bodlao (302 = w-[18.875em], 422 = w-[26.375em], 458 = w-[28.625em]) */
+const GALLERY_WIDTH_CLASS = "w-[26.375em]";
+const GALLERY_SIZES = sizesFor(422);
+
+/* Order: protita stat card-er age ar pore image thake, duto stat card pashapashi hoy na.
+   Team, Cuisine, Total Clients, Paynex, Experience, [MoneyBoard], Total Project, [Image C], tarpor loop */
 function CardSet({ hidden = false }: { hidden?: boolean }) {
+  const galleryAlt = hidden ? "" : "Prographr project design showcase";
+
   return (
     <ul aria-hidden={hidden || undefined} className="flex shrink-0 gap-[1.5em] pr-[1.5em]">
-      <li className="flex">
-        <StatCard
-          variant="light"
-          icon={<CardIcon src="/icons/layer.svg" />}
-          label="Total Project"
-          value="120+"
-          description="Ideas transformed into impactful digital products."
-        />
-      </li>
       <li className="flex">
         <ImageCard
           src={images.heroTeam}
@@ -116,6 +130,23 @@ function CardSet({ hidden = false }: { hidden?: boolean }) {
           value="6 Years+"
           description="Creating intuitive experiences that move businesses forward."
         />
+      </li>
+      <li className="flex">
+        {/* MoneyBoard dashboard (heroGalleryA), Experience-er pore. Original-e charpashe ~100px white margin ache (3086x2402 -> trim-er pore 2886x2202, ratio ~1.31 = card-er ratio),
+            tai trim diye margin kete cover kora: plate card-er edge porjonto bhore, Cuisine/Paynex-er moto full-bleed dekhay */}
+        <ImageCard src={images.heroGalleryA} alt={galleryAlt} widthClass={GALLERY_WIDTH_CLASS} sizes={GALLERY_SIZES} trim />
+      </li>
+      <li className="flex">
+        <StatCard
+          variant="light"
+          icon={<CardIcon src="/icons/layer.svg" />}
+          label="Total Project"
+          value="120+"
+          description="Ideas transformed into impactful digital products."
+        />
+      </li>
+      <li className="flex">
+        <ImageCard src={images.heroGalleryC} alt={galleryAlt} widthClass={GALLERY_WIDTH_CLASS} sizes={GALLERY_SIZES} />
       </li>
     </ul>
   );

@@ -9,20 +9,89 @@ import { projects, type Project } from "@/lib/projects";
 /* Image card-er 628px width-er 574px ongsho (~40vw @lg, 44vw @md, full-width mobile) */
 const IMAGE_SIZES = "(min-width: 1440px) 574px, (min-width: 1024px) 40vw, (min-width: 768px) 44vw, 92vw";
 
+/* "inset" image: card-er width minus dui pashe-r padding (~540-565px @1440) */
+const INSET_SIZES = "(min-width: 1440px) 565px, (min-width: 768px) 42vw, 84vw";
+
+/* "full" image: card-er puro width (628px @1440, tablet-e ~46vw, mobile-e ~92vw) */
+const FULL_SIZES = "(min-width: 1440px) 628px, (min-width: 768px) 46vw, 92vw";
+
+/* Figma image area (628 x 375). "free" media-r px-ke % e convert kori, tai card jotoi choto/boro hok proportion thik thake */
+const AREA_W = 628;
+const AREA_H = 375;
+
+function ProjectMedia({ project }: { project: Project }) {
+  const media = project.media ?? { kind: "window" as const };
+  const imgClass = "origin-top object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.03]";
+
+  if (media.kind === "inset") {
+    /* Phone mockup: e_trim diye image tight, pashe `side`px / upore `top`px padding (Figma-r moto, SolvexAI/NexBank card-er moto gap).
+       Image-er height natural (auto), tai ratio jai hok kono kata nai. Niche area-r edge-e clip hoy, jemon Figma-te */
+    return (
+      <div
+        className="absolute"
+        style={{
+          left: `${(media.side / AREA_W) * 100}%`,
+          right: `${(media.side / AREA_W) * 100}%`,
+          top: `${(media.top / AREA_H) * 100}%`,
+        }}
+      >
+        <CloudImage
+          trim
+          src={project.image}
+          alt={project.imageAlt}
+          width={0}
+          height={0}
+          sizes={INSET_SIZES}
+          className={`block h-auto w-full ${imgClass}`}
+        />
+      </div>
+    );
+  }
+
+  if (media.kind === "full") {
+    /* Image-i puro area-r export: area-r puro jayga bhore (parent relative + overflow-hidden), kono inset/crop nai.
+       object-top: height/ratio ektu alada hole-o upor alignment thik thake, shudhu niche (phone clip hoy ekhane) ektu kate */
+    return <CloudImage src={project.image} alt={project.imageAlt} fill sizes={FULL_SIZES} className={imgClass} />;
+  }
+
+  if (media.kind === "free") {
+    /* Phone mockup: card-er upor diye bairer dike barhe, parent-er overflow-hidden clip kore (Figma-r moto) */
+    const { left, top, width, height } = media;
+    return (
+      <div
+        className="absolute"
+        style={{
+          left: `${(left / AREA_W) * 100}%`,
+          top: `${(top / AREA_H) * 100}%`,
+          width: `${(width / AREA_W) * 100}%`,
+          aspectRatio: `${width} / ${height}`,
+        }}
+      >
+        <CloudImage
+          src={project.image}
+          alt={project.imageAlt}
+          fill
+          sizes={`(min-width: 1440px) ${Math.round(width)}px, (min-width: 768px) ${Math.round((46 * width) / AREA_W)}vw, ${Math.round((92 * width) / AREA_W)}vw`}
+          className={imgClass}
+        />
+      </div>
+    );
+  }
+
+  /* Window: white-border-wala screenshot (574px), niche porjonto cut kora, top corner rounded */
+  return (
+    <div className="absolute inset-x-[4.3%] bottom-0 top-[7.07%] overflow-hidden rounded-t-[0.92rem]">
+      <CloudImage src={project.image} alt={project.imageAlt} fill sizes={IMAGE_SIZES} className={imgClass} />
+    </div>
+  );
+}
+
 function ProjectCard({ project }: { project: Project }) {
   return (
     <article className="group flex h-full w-full flex-col gap-5 rounded-[1.25rem] bg-white pb-4">
-      {/* Image area: 628 x 375, bg #F0F0F0. Bhitore white-border-wala screenshot (574px) niche porjonto cut kora */}
+      {/* Image area: 628 x 375, bg #F0F0F0 */}
       <div className="relative aspect-[628/375] shrink-0 overflow-hidden rounded-t-[1.25rem] bg-chip">
-        <div className="absolute inset-x-[4.3%] bottom-0 top-[7.07%] overflow-hidden rounded-t-[0.92rem]">
-          <CloudImage
-            src={project.image}
-            alt={project.imageAlt}
-            fill
-            sizes={IMAGE_SIZES}
-            className="origin-top object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.03]"
-          />
-        </div>
+        <ProjectMedia project={project} />
       </div>
 
       <div className="flex flex-1 flex-col justify-between gap-[1.875rem]">
@@ -83,7 +152,7 @@ export function Projects() {
           <Button href="#projects">Explore more</Button>
         </div>
 
-        {/* 2 x 2 grid (Figma: 628px card, gap 24px) */}
+        {/* 2 column grid (Figma: 628px card, gap 24px). Card barle row barhe */}
         <ul className="grid w-full grid-cols-1 gap-6 md:grid-cols-2">
           {projects.map((project) => (
             <li key={project.slug} className="flex">

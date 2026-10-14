@@ -235,3 +235,43 @@ export function ChevronRightIcon({ className }: IconProps) {
     </svg>
   );
 }
+
+/* ---------- MoodMap / Finora card tag icons (Figma: vuesax/linear, 14px) ---------- */
+export function EmojiHappyIcon({ className }: IconProps) {
+  return (
+    <svg {...lineProps} className={className}>
+      <circle cx="12" cy="12" r="9.5" />
+      <path d="M8.5 9.3v1.4M15.5 9.3v1.4" />
+      <path d="M8.2 14.2c.9 1.9 2.2 2.8 3.8 2.8s2.9-.9 3.8-2.8z" />
+    </svg>
+  );
+}
+
+export function CoinIcon({ className }: IconProps) {
+  return (
+    <svg {...lineProps} className={className}>
+      <circle cx="12" cy="12" r="9.5" />
+      <path d="M8.4 9a4.6 4.6 0 0 0 0 6M15.6 9a4.6 4.6 0 0 1 0 6" />
+      <path d="M10 12h4M12 9.6v4.8" />
+    </svg>
+  );
+}
+
+export function WalletIcon({ className }: IconProps) {
+  return (
+    <svg {...lineProps} className={className}>
+      <path d="M17.5 7.5V6.2c0-1.2-1-2.2-2.2-2.2H6.5A3.5 3.5 0 0 0 3 7.5" />
+      <rect x="3" y="7.5" width="18" height="13" rx="3.5" />
+      <path d="M21 12.5h-4a2 2 0 0 0 0 4h4M7.5 14h4" />
+    </svg>
+  );
+}
+
+export function MagicStarIcon({ className }: IconProps) {
+  return (
+    <svg {...lineProps} className={className}>
+      <path d="M10.5 3.5l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" />
+      <path d="M19 16.5v4M17 18.5h4" />
+    </svg>
+  );
+}
