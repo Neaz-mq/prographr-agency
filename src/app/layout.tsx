@@ -10,6 +10,8 @@ const clashGrotesk = localFont({
   display: "swap",
 });
 
+// export
+
 export const metadata: Metadata = {
   title: "Prographr — Product Design and Development Agency",
   description:
