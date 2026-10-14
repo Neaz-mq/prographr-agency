@@ -2,6 +2,9 @@ import { Container } from "@/components/ui/Container";
 import { CloudImage } from "@/components/ui/CloudImage";
 import { Button } from "@/components/ui/Button";
 import { SparkleIcon } from "@/components/ui/icons";
+import { RevealOnView } from "@/components/ui/RevealOnView";
+import { RevealWords } from "@/components/ui/RevealWords";
+import { reveal } from "@/lib/reveal";
 import { projects, type Project } from "@/lib/projects";
 
 /* Figma: "Desktop - 2018" (1440 x 1734), bg #FAFAFA, padding 100px 80px, gap 60px. 1rem = 16px @1440 */
@@ -132,10 +135,13 @@ export function Projects() {
   return (
     <section id="projects" aria-labelledby="projects-heading" className="scroll-mt-24 bg-[#FAFAFA] py-16 md:py-[6.25rem]">
       <Container className="flex flex-col items-center gap-10 md:gap-[3.75rem]">
-        {/* Header */}
-        <div className="flex flex-col items-center gap-8">
+        {/* Header: scroll-e viewport-e ashle upor theke niche stagger kore ashe: badge -> heading (word by word) -> button */}
+        <RevealOnView className="flex flex-col items-center gap-8" threshold={0.3}>
           <div className="flex flex-col items-center gap-4">
-            <p className="flex items-center gap-3 text-base font-medium leading-none text-ink">
+            <p
+              className="sr flex items-center gap-3 text-base font-medium leading-none text-ink"
+              style={reveal(0, { blur: 6, y: 12 })}
+            >
               <span className="grid size-8 place-items-center rounded-full bg-accent" aria-hidden="true">
                 <SparkleIcon className="size-4 text-white" />
               </span>
@@ -145,18 +151,33 @@ export function Projects() {
               id="projects-heading"
               className="max-w-[60.375rem] text-center text-[2rem] font-medium leading-[1.2] text-black sm:text-5xl lg:text-[3.75rem]"
             >
-              Designing Digital Experiences That Connect Brands With
+              <RevealWords
+                variant="scroll"
+                text="Designing Digital Experiences That Connect Brands With"
+                start={120}
+                step={45}
+                duration={650}
+                blur={8}
+                y={14}
+              />
             </h2>
           </div>
           {/* TODO: all-projects page hole href="/projects" kore dao */}
-          <Button href="#projects">Explore more</Button>
-        </div>
+          <div className="sr" style={reveal(560, { blur: 6, y: 14 })}>
+            <Button href="#projects">Explore more</Button>
+          </div>
+        </RevealOnView>
 
         {/* 2 column grid (Figma: 628px card, gap 24px). Card barle row barhe */}
         <ul className="grid w-full grid-cols-1 gap-6 md:grid-cols-2">
-          {projects.map((project) => (
+          {projects.map((project, i) => (
             <li key={project.slug} className="flex">
-              <ProjectCard project={project} />
+              {/* Protita card nijer observer-e: scroll kore dekha gele upor theke niche ek ek kore ashe. Duita column-e halka stagger */}
+              <RevealOnView className="flex w-full" threshold={0.12} rootMargin="0px 0px -6% 0px">
+                <div className="sr-up flex w-full" style={reveal(110 * (i % 2), { duration: 900, y: 40 })}>
+                  <ProjectCard project={project} />
+                </div>
+              </RevealOnView>
             </li>
           ))}
         </ul>
