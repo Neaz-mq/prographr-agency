@@ -4,6 +4,7 @@ import { useEffect, useId, useState } from "react";
 import Link from "next/link";
 import { ArrowUpRight, CloseIcon, MenuIcon } from "@/components/ui/icons";
 import { cn } from "@/lib/utils";
+import { lockScroll, unlockScroll } from "@/lib/smooth-scroll";
 
 type MobileMenuProps = {
   links: { label: string; href: string }[];
@@ -21,14 +22,16 @@ export function MobileMenu({ links }: MobileMenuProps) {
     };
     document.addEventListener("keydown", onKeyDown);
 
-    // Menu khola thakle background scroll bondho
+    // Menu khola thakle background scroll bondho (Lenis thakle seta stop kore, nahole overflow hidden)
     const root = document.documentElement;
     const previousOverflow = root.style.overflow;
-    root.style.overflow = "hidden";
+    const lenisLocked = lockScroll();
+    if (!lenisLocked) root.style.overflow = "hidden";
 
     return () => {
       document.removeEventListener("keydown", onKeyDown);
-      root.style.overflow = previousOverflow;
+      if (lenisLocked) unlockScroll();
+      else root.style.overflow = previousOverflow;
     };
   }, [open]);
 
@@ -60,6 +63,7 @@ export function MobileMenu({ links }: MobileMenuProps) {
         id={panelId}
         role="dialog"
         aria-label="Site menu"
+        data-lenis-prevent
         className={cn(
           "fixed inset-x-4 bottom-[calc(5.25rem+env(safe-area-inset-bottom))] z-20 max-h-[calc(100dvh-7.5rem)] overflow-y-auto rounded-2xl border border-white/10 bg-black p-2 text-white shadow-2xl transition-[opacity,transform,visibility] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] md:hidden",
           open ? "visible translate-y-0 opacity-100" : "invisible translate-y-3 opacity-0"

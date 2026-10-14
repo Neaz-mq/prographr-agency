@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { FloatingNav } from "@/components/layout/FloatingNav";
+import { SmoothScroll } from "@/components/layout/SmoothScroll";
 
 const clashGrotesk = localFont({
   src: "../fonts/ClashGrotesk-Variable.woff2",
@@ -24,6 +25,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={clashGrotesk.variable}>
       <body suppressHydrationWarning>
+        <SmoothScroll />
         {children}
         <FloatingNav />
       </body>
