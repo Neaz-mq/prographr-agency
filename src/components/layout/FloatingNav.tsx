@@ -53,10 +53,13 @@ export function FloatingNav() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Chat with us on WhatsApp"
-          className="pointer-events-auto relative grid size-10 shrink-0 place-items-center rounded-full bg-black transition-transform duration-300 hover:-translate-y-1 min-[380px]:size-11 md:size-[3.25rem]"
+          className="group pointer-events-auto grid size-10 shrink-0 place-items-center min-[380px]:size-11 md:size-[3.25rem]"
         >
-          <Image src="/icons/logo-mark.svg" alt="" width={20} height={20} className="size-5 brightness-0 invert" />
-          <span className="absolute right-0 top-0 size-3 rounded-full border border-white bg-[#22C55E]" />
+          {/* hit area sthir, shudhu bhitorer disc uthe: hover-e kapa (jitter) hoy na */}
+          <span className="relative grid size-full place-items-center rounded-full bg-black transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform group-hover:-translate-y-1 group-focus-visible:-translate-y-1">
+            <Image src="/icons/logo-mark.svg" alt="" width={20} height={20} className="size-5 brightness-0 invert" />
+            <span className="absolute right-0 top-0 size-3 rounded-full border border-white bg-[#22C55E]" />
+          </span>
         </a>
       </Container>
     </div>

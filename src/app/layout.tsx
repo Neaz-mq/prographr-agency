@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { FloatingNav } from "@/components/layout/FloatingNav";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
+import { Preloader } from "@/components/layout/Preloader";
 
 const clashGrotesk = localFont({
   src: "../fonts/ClashGrotesk-Variable.woff2",
@@ -23,9 +24,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={clashGrotesk.variable}>
+    <html lang="en" className={clashGrotesk.variable} data-preloading="">
       <body suppressHydrationWarning>
         <SmoothScroll />
+        <Preloader />
         {children}
         <FloatingNav />
       </body>

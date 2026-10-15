@@ -5,6 +5,7 @@ import Image, { getImageProps } from "next/image";
 import { cloudinaryLoader } from "@/lib/cloudinary";
 import type { Service, ServiceImage } from "@/lib/services";
 import { cn } from "@/lib/utils";
+import { reveal } from "@/lib/reveal";
 
 /* Real <Image> ar warm-up (prefetch), dutoi ei ek-i `sizes` use kore. Tai browser ek-i URL pick kore ar cache hit hoy */
 const MEDIA_SIZES = "(min-width: 1280px) 1200px, (min-width: 640px) 90vw, 92vw";
@@ -76,7 +77,20 @@ function useWarmServiceImages(ref: RefObject<HTMLElement | null>, services: Serv
    Open hole vertical line scale-y-0 + rotate hoye mile jay, tai plus → minus smooth morph hoy. */
 function ToggleIcon({ open }: { open: boolean }) {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="size-6" aria-hidden="true">
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      aria-hidden="true"
+      className={cn(
+        "size-6 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none",
+        /* Closed row-te hover/focus korle + puro 90deg ghore, tai shuru ar shesh duto-i "+" thake (shudhu ghurar shomoy majhkhane ×-er moto dekhay).
+           45deg dile hover-e ×-i theke jay. Mouse soraley ulte ghure abar +. Open row-te minus-i thake */
+        !open && "group-hover:rotate-90 group-focus-visible:rotate-90"
+      )}
+    >
       <path d="M3.75 12h16.5" />
       <path
         d="M12 3.75v16.5"
@@ -198,7 +212,7 @@ export function ServicesAccordion({ services, defaultOpenId = null }: ServicesAc
 
   return (
     <ul ref={listRef} onKeyDown={onKeyDown} className="flex w-full flex-col gap-4 md:gap-8 lg:gap-12">
-      {services.map((service) => {
+      {services.map((service, index) => {
         const open = openId === service.id;
         const triggerId = `${baseId}-trigger-${service.id}`;
         const panelId = `${baseId}-panel-${service.id}`;
@@ -207,8 +221,9 @@ export function ServicesAccordion({ services, defaultOpenId = null }: ServicesAc
         return (
           <li
             key={service.id}
+            style={reveal(Math.min(index, 6) * 90, { duration: 900, y: 36 })}
             className={cn(
-              "rounded-[1.25rem] px-4 transition-[background-color,padding] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none md:rounded-[1.875rem] md:px-10",
+              "sr-up rounded-[1.25rem] px-4 transition-[background-color,padding] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none md:rounded-[1.875rem] md:px-10",
               open ? "bg-[#FAFAFA] py-5 md:py-10" : "bg-transparent py-0"
             )}
           >
