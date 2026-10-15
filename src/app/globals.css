@@ -71,6 +71,13 @@ body {
   mask-image: linear-gradient(to right, transparent 0, #000 7%, #000 93%, transparent 100%);
 }
 
+/* Boro card-er marquee (ShowcaseMarquee image row): card boro (~630px) tai fade-o beshi chaua (12%), jeno kata kata na lage,
+   card dhire dhire pichon theke ashe ar shesh e mishe jay. Opacity-r upor mask, tai card-er border/shadow-o sundor fade hoy */
+.fade-edges-wide {
+  -webkit-mask-image: linear-gradient(to right, transparent 0, rgba(0, 0, 0, 0.35) 4%, #000 12%, #000 88%, rgba(0, 0, 0, 0.35) 96%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0, rgba(0, 0, 0, 0.35) 4%, #000 12%, #000 88%, rgba(0, 0, 0, 0.35) 96%, transparent 100%);
+}
+
 /* Smoothness: .marquee-e layout/paint contain (repaint ei box-er bhitoreই shimito), track-e GPU layer */
 .marquee {
   contain: layout paint;

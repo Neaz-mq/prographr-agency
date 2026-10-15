@@ -15,6 +15,11 @@ export const images = {
   projectMoodmap: "Untitled_1_1_yobyfr",
   projectFinora: "image_6350932_g6kft0",
 
+  /* Testimonial section: client-er website screenshot (Cloudinary public ID, extension chara) */
+  testimonialA: "Frame_2147235337_ajjky7",
+  testimonialB: "Desktop_-_39_rxl49t",
+  testimonialC: "Home_knz5bd",
+
   /* Services section (Cloudinary public ID, extension chara) */
   serviceUiUx: "843c323a-9c0a-4cca-b08a-74197bf88f2a_mnkepw",
   serviceBrandIdentity: "image_6349883_ejobk8",

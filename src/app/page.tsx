@@ -4,6 +4,7 @@ import { Projects } from "@/components/sections/Projects";
 import { Services } from "@/components/sections/Services";
 import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
 import { Team } from "@/components/sections/Team";
+import { Testimonials } from "@/components/sections/Testimonials";
 import { ShowcaseMarquee } from "@/components/sections/ShowcaseMarquee";
 
 export default function Home() {
@@ -16,6 +17,7 @@ export default function Home() {
       <WhyChooseUs />
       <Team />
       <ShowcaseMarquee />
+      <Testimonials />
     </main>
   );
 }

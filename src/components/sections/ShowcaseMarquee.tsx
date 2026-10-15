@@ -147,14 +147,16 @@ function ShotSet({ hidden }: { hidden: boolean }) {
 }
 
 export function ShowcaseMarquee() {
+  /* Uporer ar niche-r text row duita full-bleed (screen-er puro width, Container-er baire), majher image row Figma-r moto 1280px container-e clip kora */
   return (
-    <section aria-label="Our design work and services" className="bg-[#FAFAFA] py-16 md:py-[6.25rem]">
-      <Container className="flex flex-col gap-8 md:gap-[3.75rem]">
-        {/* Row 1: text, bam-e cholbe */}
-        <MarqueeRow duration="48s" renderSet={(hidden) => <WordSet hidden={hidden} />} />
+    <section aria-label="Our design work and services" className="flex flex-col gap-8 overflow-x-clip bg-[#FAFAFA] py-16 md:gap-[3.75rem] md:py-[6.25rem]">
+      {/* Row 1: text, bam-e cholbe */}
+      <MarqueeRow duration="48s" renderSet={(hidden) => <WordSet hidden={hidden} />} />
 
-        {/* Row 2: image, dan-e cholbe (ulta dike). -ml: Figma-r moto shuru-te prothom desktop-er ektu ongsho kata thake */}
-        <div className="text-[0.625rem] sm:text-xs md:text-base">
+      {/* Row 2: image, dan-e cholbe (ulta dike). -ml: Figma-r moto shuru-te prothom desktop-er ektu ongsho kata thake */}
+      <Container>
+        {/* fade-edges-wide: duipashe hard cut-er bodole soft fade, jeno card slide kore ashar shomoy kata kata na lage */}
+        <div className="fade-edges-wide text-[0.625rem] sm:text-xs md:text-base">
           <MarqueeRow
             reverse
             duration="70s"
@@ -162,10 +164,10 @@ export function ShowcaseMarquee() {
             renderSet={(hidden) => <ShotSet hidden={hidden} />}
           />
         </div>
-
-        {/* Row 3: text, bam-e cholbe */}
-        <MarqueeRow duration="48s" renderSet={(hidden) => <WordSet hidden={hidden} />} />
       </Container>
+
+      {/* Row 3: text, bam-e cholbe */}
+      <MarqueeRow duration="48s" renderSet={(hidden) => <WordSet hidden={hidden} />} />
     </section>
   );
 }
