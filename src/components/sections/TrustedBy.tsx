@@ -62,7 +62,7 @@ export function TrustedBy() {
 
         {/* Right: logo marquee (right -> left). xl-e screen-er daan edge porjonto full-bleed, dui pashe soft fade.
             Hover-e pause (.marquee:hover), reduced-motion-e ruke jay (globals.css) */}
-        <div className="marquee fade-edges min-w-0 overflow-hidden py-8 xl:mr-[calc((100%-100vw)/2)] xl:flex-1 xl:py-0">
+        <div suppressHydrationWarning className="marquee fade-edges min-w-0 overflow-hidden py-8 xl:mr-[calc((100%-100vw)/2)] xl:flex-1 xl:py-0">
           <div className="marquee-track flex w-max" style={{ animationDuration: `${MARQUEE_SECONDS}s` }}>
             {Array.from({ length: SET_COUNT }, (_, i) => (
               <LogoSet key={i} hidden={i > 0} />

@@ -158,7 +158,7 @@ export function HeroShowcase() {
       {/* Full-bleed marquee. Mobile-e card choto (em scale), 768px+ e Figma-r size.
           Direction: left -> right (`marquee-track-reverse`). Eta -50% theke shuru hoy, tai prothom screen-e DUI number set dekha jay.
           Ei karone real set (priority image shoho) dui number-e, ar hidden copy age. Visual-e kono parthokko nai (dui set ek-i). */}
-      <div className="marquee overflow-hidden text-[0.8125rem] md:text-base">
+      <div className="marquee overflow-hidden text-[0.8125rem] md:text-base" suppressHydrationWarning>
         <div className="marquee-track-reverse flex w-max">
           <CardSet hidden />
           <CardSet />

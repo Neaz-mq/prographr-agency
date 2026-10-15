@@ -169,7 +169,7 @@ export function StackedPanels({ children, className }: { children: ReactNode; cl
             <div
               data-stack-dim
               aria-hidden="true"
-              className="pointer-events-none absolute -inset-px hidden rounded-[1.75rem] bg-black opacity-0 md:block"
+              className="pointer-events-none absolute -inset-px hidden rounded-[1.75rem] bg-black opacity-0 md:block md:will-change-[opacity]"
             />
           </div>
         </li>

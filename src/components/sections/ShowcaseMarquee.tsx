@@ -75,7 +75,7 @@ function MarqueeRow({
   className?: string;
 }) {
   return (
-    <div className="marquee overflow-hidden">
+    <div className="marquee overflow-hidden" suppressHydrationWarning>
       <div
         className={cn("flex w-max", reverse ? "marquee-track-reverse" : "marquee-track", className)}
         style={{ animationDuration: duration }}
@@ -121,6 +121,7 @@ function ShotSet({ hidden }: { hidden: boolean }) {
                   sizes={shot.sizes}
                   loading="eager"
                   fetchPriority="low"
+                  decoding="async"
                   draggable={false}
                   className="select-none object-contain"
                 />
@@ -136,6 +137,7 @@ function ShotSet({ hidden }: { hidden: boolean }) {
               sizes={shot.sizes}
               loading="eager"
               fetchPriority="low"
+              decoding="async"
               draggable={false}
               className={cn("w-auto max-w-none shrink-0 select-none", shot.heightClass)}
             />

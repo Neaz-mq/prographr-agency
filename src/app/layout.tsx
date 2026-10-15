@@ -4,6 +4,7 @@ import "./globals.css";
 import { FloatingNav } from "@/components/layout/FloatingNav";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { Preloader } from "@/components/layout/Preloader";
+import { ScrollPerf } from "@/components/layout/ScrollPerf";
 
 const clashGrotesk = localFont({
   src: "../fonts/ClashGrotesk-Variable.woff2",
@@ -27,6 +28,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html lang="en" className={clashGrotesk.variable} data-preloading="">
       <body suppressHydrationWarning>
         <SmoothScroll />
+        <ScrollPerf />
         <Preloader />
         {children}
         <FloatingNav />
