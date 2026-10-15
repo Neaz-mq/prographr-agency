@@ -5,13 +5,16 @@ import { reveal } from "@/lib/reveal";
 export function Header() {
   return (
     <header className="flex items-center justify-between">
-      {/* Shudhu logo: left theke ~14px slide kore nijer jayga-y ashe + fade-in. Book a call-e kono animation nai */}
+      {/* Logo (left theke) ar Book a call (right theke) ~14px slide + fade-in, dutoi ekoi shomoy (delay 0).
+          Ager moto button age theke dekha jeto ar logo pore ashto, tai preloader-er por upore "gap" mone hoto. */}
       <div className="slide-in-left" style={reveal(0, { duration: 600, x: -14 })}>
         <Logo />
       </div>
-      <RollButton href="#contact" size="sm">
-        Book a call
-      </RollButton>
+      <div className="slide-in-left" style={reveal(0, { duration: 600, x: 14 })}>
+        <RollButton href="#contact" size="sm">
+          Book a call
+        </RollButton>
+      </div>
     </header>
   );
 }

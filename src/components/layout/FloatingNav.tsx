@@ -5,6 +5,7 @@ import { MobileMenu } from "./MobileMenu";
 import { Container } from "@/components/ui/Container";
 import { siteConfig } from "@/lib/site";
 import { cn } from "@/lib/utils";
+import { reveal } from "@/lib/reveal";
 
 export function FloatingNav() {
   const whatsappUrl = `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(siteConfig.whatsappMessage)}`;
@@ -13,7 +14,11 @@ export function FloatingNav() {
   return (
     // bottom gap = Hero-r top padding (pt-5 / md:pt-6), jeno upor-niche gap soman thake.
     // Hero-r pt bodlale ekhaneo bodlate hobe. iPhone-er home bar-er jonno safe-area beshi hole seta nebe.
-    <div className="pointer-events-none fixed inset-x-0 bottom-[max(1.25rem,env(safe-area-inset-bottom))] z-50 md:bottom-[max(1.5rem,env(safe-area-inset-bottom))]">
+    // `reveal-up`: preloader-er por nav Header (logo + Book a call)-er shathe ekoi shomoy ashe, jate kono ongsho age/pore dekha diye gap na toiri kore.
+    <div
+      className="reveal-up pointer-events-none fixed inset-x-0 bottom-[max(1.25rem,env(safe-area-inset-bottom))] z-50 md:bottom-[max(1.5rem,env(safe-area-inset-bottom))]"
+      style={reveal(0, { duration: 800, y: 20 })}
+    >
       <Container className="flex items-center justify-between gap-2">
         <BackToTop />
 

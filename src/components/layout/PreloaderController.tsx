@@ -4,6 +4,7 @@ import { useEffect } from "react";
 
 const MIN_VISIBLE = 4300; // entry animation shesh hobar por-o ektu thake, jate logo ta bhalo kore dekha jay
 const MAX_VISIBLE = 8000; // internet khub slow hole-o ete-i chole jabe, user atke thakbe na
+const REVEAL_LEAD_MS = 250; // overlay-r fade-out shuru howar koto ms pore page-er reveal animation shuru hobe (overlay-r shathe crossfade)
 const EXIT_FALLBACK_MS = 3000; // overlay-r `pl-out` animationend kono karone na fire hole eto pore-i zor kore shesh kora hobe
 
 /* Preloader-er "brain":
@@ -44,11 +45,14 @@ export function PreloaderController() {
     window.addEventListener("keydown", onKey, true);
     window.addEventListener("scroll", onScroll);
 
+    // data-preloading shorle hero/nav/section-er load animation gulo shuru hoy
+    const unpause = () => root.removeAttribute("data-preloading");
+
     let released = false;
     const release = () => {
       if (released) return;
       released = true;
-      root.removeAttribute("data-preloading");
+      unpause();
       window.removeEventListener("wheel", block, opts);
       window.removeEventListener("touchmove", block, opts);
       window.removeEventListener("keydown", onKey, true);
@@ -68,6 +72,11 @@ export function PreloaderController() {
         el.hidden = true;
         release();
       };
+      // Overlay-r fade-out (`pl-out`) shuru hole-i page-er reveal shuru kori, overlay puro mishe jawar opekkha kori na.
+      // Ager moto shesh howar por shuru hole nav/button age dekha jeto, logo + hero pore ashto, majhkhane faka lagto.
+      el.addEventListener("animationstart", (e) => {
+        if (e.target === el && e.animationName === "pl-out") timers.push(window.setTimeout(unpause, REVEAL_LEAD_MS));
+      });
       el.addEventListener(
         "animationend",
         (e) => {
