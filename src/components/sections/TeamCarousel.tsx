@@ -33,9 +33,13 @@ export function TeamCarousel() {
         el.style.opacity = active === -1 || i === active ? "1" : "0";
       });
     };
+    /* Prev arrow: prothom slide-e thakle gray + click kora jay na. 2nd slide-e gele (autoplay ba Next click e) active hoy.
+       Embla `loop: true`-te canScrollPrev() shobsomoy true thake, tai selectedScrollSnap() dekhe nijera thik kori.
+       Next arrow loop-er jonno shobsomoy active (slide korar moto jinis thakle). */
     const updateButtons = (api: EmblaApi) => {
-      setCanPrev(api.canScrollPrev());
-      setCanNext(api.canScrollNext());
+      const hasSlides = api.scrollSnapList().length > 1;
+      setCanPrev(hasSlides && api.selectedScrollSnap() > 0);
+      setCanNext(hasSlides && api.canScrollNext());
     };
 
     /* Autoplay cholle bar-er fill niche-r effect-e time diye hoy. Shudhu reduced-motion-e (autoplay nai) scroll-er shathe fill hoy */
