@@ -36,13 +36,16 @@ const nearestWithParity = (p: number, parity: number) => {
 };
 
 type RollButtonProps = {
-  href: string;
+  /* href dile <Link>, na dile <button> render hoy (jemon form submit: footer-er Subscribe) */
+  href?: string;
+  type?: "button" | "submit";
+  disabled?: boolean;
   children: React.ReactNode; // string ba sr-only span-shoho content (label duita copy-te render hoy, 2nd copy aria-hidden)
   size?: "sm" | "md";
   className?: string;
 };
 
-export function RollButton({ href, children, size = "md", className }: RollButtonProps) {
+export function RollButton({ href, type = "button", disabled, children, size = "md", className }: RollButtonProps) {
   const textA = useRef<HTMLSpanElement>(null);
   const textB = useRef<HTMLSpanElement>(null);
   const iconA = useRef<HTMLSpanElement>(null);
@@ -126,19 +129,20 @@ export function RollButton({ href, children, size = "md", className }: RollButto
 
   const iconClass = isSmall ? "size-4" : "size-[1.125rem]";
 
-  return (
-    <Link
-      href={href}
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-      onFocus={() => setHover(true)}
-      onBlur={() => setHover(false)}
-      className={cn(
-        "roll-btn inline-flex items-center gap-2 rounded-xl bg-ink text-sm font-medium leading-[1.2] text-white shadow-[inset_3px_3px_10px_rgba(255,255,255,0.2)] transition-transform duration-300 active:scale-[0.98]",
-        isSmall ? "h-9 pl-3 pr-1" : "h-[2.625rem] pl-4 pr-1",
-        className
-      )}
-    >
+  const rootProps = {
+    onMouseEnter: () => setHover(true),
+    onMouseLeave: () => setHover(false),
+    onFocus: () => setHover(true),
+    onBlur: () => setHover(false),
+    className: cn(
+      "roll-btn inline-flex items-center gap-2 rounded-xl bg-ink text-sm font-medium leading-[1.2] text-white shadow-[inset_3px_3px_10px_rgba(255,255,255,0.2)] transition-transform duration-300 active:scale-[0.98]",
+      isSmall ? "h-9 pl-3 pr-1" : "h-[2.625rem] pl-4 pr-1",
+      className
+    ),
+  };
+
+  const inner = (
+    <>
       {/* Label: duita copy ekoi cell-e (grid), overflow-hidden diye clip */}
       <span className="grid overflow-hidden">
         <span ref={textA} className="roll-text col-start-1 row-start-1 py-[0.12em]">
@@ -163,6 +167,16 @@ export function RollButton({ href, children, size = "md", className }: RollButto
           <ArrowUpRight className={iconClass} />
         </span>
       </span>
+    </>
+  );
+
+  return href !== undefined ? (
+    <Link href={href} {...rootProps}>
+      {inner}
     </Link>
+  ) : (
+    <button type={type} disabled={disabled} {...rootProps}>
+      {inner}
+    </button>
   );
 }

@@ -165,6 +165,19 @@ function ProjectRow({ row, animateIn }: { row: Project[]; animateIn: boolean }) 
   );
 }
 
+/* Stacking panels (oripio-r moto): protita panel-e 2 ta card. Scroll korle porer panel niche theke uthe ager-tar upor boshe,
+   ager panel halka choto + dim hoy. Mobile-e shadharon vabe uporer niche (StackedPanels.tsx dekho).
+   Home-er Projects section ar /projects page, duto jaygay-i ekoi stack use hoy. */
+export function ProjectStack() {
+  return (
+    <StackedPanels>
+      {rows.map((row, i) => (
+        <ProjectRow key={row[0].slug} row={row} animateIn={i === 0} />
+      ))}
+    </StackedPanels>
+  );
+}
+
 export function Projects() {
   return (
     <section id="projects" aria-labelledby="projects-heading" className="scroll-mt-24 bg-[#FAFAFA] py-16 md:py-[6.25rem]">
@@ -196,19 +209,12 @@ export function Projects() {
               />
             </h2>
           </div>
-          {/* TODO: all-projects page hole href="/projects" kore dao */}
           <div className="sr" style={reveal(560, { blur: 6, y: 14 })}>
-            <Button href="#projects">Explore more</Button>
+            <Button href="/projects">Explore more</Button>
           </div>
         </RevealOnView>
 
-        {/* Stacking panels (oripio-r moto): protita panel-e 2 ta card. Scroll korle porer panel niche theke uthe ager-tar upor boshe,
-            ager panel halka choto + dim hoy. Mobile-e shadharon vabe uporer niche (StackedPanels.tsx dekho) */}
-        <StackedPanels>
-          {rows.map((row, i) => (
-            <ProjectRow key={row[0].slug} row={row} animateIn={i === 0} />
-          ))}
-        </StackedPanels>
+        <ProjectStack />
       </Container>
     </section>
   );

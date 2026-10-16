@@ -24,9 +24,11 @@ export function Contact() {
             <BookingSection />
           </div>
 
-          {/* Banner pill */}
+          {/* Banner pill. Figma: text 23.98px/36px, letter-spacing 0.02em, weight 400 + 500 (bold), word-spacing normal.
+              Text ~51.3em lamba, tai lg+ e nowrap + font-size container-er width onujayi fluid (max 23.98px),
+              jeno word-spacing chhoto na kore o ekdom ek line-e ashe */}
           <p
-            className="sr-up rounded-[1.75rem] bg-[#F0F0F0] px-5 py-4 text-center text-base capitalize leading-normal tracking-[0.02em] text-black md:rounded-full md:px-4 md:py-[1.0625rem] min-[1400px]:whitespace-nowrap min-[1400px]:[word-spacing:-0.1em] md:text-[1.5rem] md:leading-9"
+            className="sr-up rounded-[1.75rem] bg-[#F0F0F0] px-5 py-4 text-center text-base capitalize leading-normal tracking-[0.02em] text-black md:rounded-full md:px-4 md:py-[1.0625rem] md:text-[1.25rem] md:leading-[1.5] lg:px-6 lg:whitespace-nowrap lg:text-[length:min(1.4989rem,calc((100vw_-_13rem)_/_51.8))]"
             style={reveal(250, { duration: 900, y: 24 })}
           >
             Why Risk It With The <strong className="font-medium">Wrong Partner</strong> ? Get 100% Value And Guarantee. Don’t Miss Out - Secure Your{" "}

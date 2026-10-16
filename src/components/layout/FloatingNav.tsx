@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { BackToTop } from "./BackToTop";
 import { MobileMenu } from "./MobileMenu";
+import { NavLink } from "./NavLink";
 import { Container } from "@/components/ui/Container";
 import { siteConfig } from "@/lib/site";
 import { cn } from "@/lib/utils";
@@ -33,16 +34,17 @@ export function FloatingNav() {
           </Link>
 
           {siteConfig.navLinks.map((link) => (
-            <Link
+            <NavLink
               key={link.label}
               href={link.href}
               className={cn(
                 "h-10 items-center justify-center rounded-lg border-[0.5px] border-white/10 px-3 text-base leading-none text-white transition-colors duration-300 hover:bg-white/10",
                 link.mobile ? "hidden min-[380px]:flex md:flex" : "hidden md:flex"
               )}
+              activeClassName="bg-white/10"
             >
               {link.label}
-            </Link>
+            </NavLink>
           ))}
 
           <Link

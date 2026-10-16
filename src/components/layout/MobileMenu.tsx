@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useId, useState } from "react";
-import Link from "next/link";
+import { NavLink } from "./NavLink";
 import { ArrowUpRight, CloseIcon, MenuIcon } from "@/components/ui/icons";
 import { cn } from "@/lib/utils";
 import { lockScroll, unlockScroll } from "@/lib/smooth-scroll";
@@ -72,14 +72,15 @@ export function MobileMenu({ links }: MobileMenuProps) {
         <ul>
           {links.map((link) => (
             <li key={link.label}>
-              <Link
+              <NavLink
                 href={link.href}
                 onClick={() => setOpen(false)}
                 className="flex items-center justify-between rounded-xl px-4 py-4 text-xl font-medium transition-colors hover:bg-white/10"
+                activeClassName="bg-white/10"
               >
                 {link.label}
                 <ArrowUpRight className="size-5 opacity-60" />
-              </Link>
+              </NavLink>
             </li>
           ))}
         </ul>

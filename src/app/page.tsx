@@ -8,20 +8,24 @@ import { Testimonials } from "@/components/sections/Testimonials";
 import { ShowcaseMarquee } from "@/components/sections/ShowcaseMarquee";
 import { Faq } from "@/components/sections/Faq";
 import { Contact } from "@/components/sections/Contact";
+import { Footer } from "@/components/layout/Footer";
 
 export default function Home() {
   return (
-    <main>
-      <Hero />
-      <TrustedBy />
-      <Projects />
-      <Services />
-      <WhyChooseUs />
-      <Team />
-      <ShowcaseMarquee />
-      <Testimonials />
-      <Faq />
-      <Contact />
-    </main>
+    <>
+      <main>
+        <Hero />
+        <TrustedBy />
+        <Projects />
+        <Services />
+        <WhyChooseUs />
+        <Team />
+        <ShowcaseMarquee />
+        <Testimonials />
+        <Faq />
+        <Contact />
+      </main>
+      <Footer />
+    </>
   );
 }
