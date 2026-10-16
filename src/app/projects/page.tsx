@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
 import { ProjectsHero } from "@/components/sections/ProjectsHero";
+import { TrustedBy } from "@/components/sections/TrustedBy";
 import { ProjectStack } from "@/components/sections/Projects";
 import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/layout/Footer";
@@ -15,6 +16,9 @@ export default function ProjectsPage() {
     <>
       <main>
         <ProjectsHero />
+
+        {/* Brand section: home page-er ekoi TrustedBy (Figma: hero-r pore) */}
+        <TrustedBy />
 
         {/* Shob project: home-er Projects section-er ekoi stacking card */}
         <section aria-label="All projects" className="bg-[#FAFAFA] py-16 md:py-[6.25rem]">
