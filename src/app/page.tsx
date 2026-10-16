@@ -6,6 +6,8 @@ import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
 import { Team } from "@/components/sections/Team";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { ShowcaseMarquee } from "@/components/sections/ShowcaseMarquee";
+import { Faq } from "@/components/sections/Faq";
+import { Contact } from "@/components/sections/Contact";
 
 export default function Home() {
   return (
@@ -18,6 +20,8 @@ export default function Home() {
       <Team />
       <ShowcaseMarquee />
       <Testimonials />
+      <Faq />
+      <Contact />
     </main>
   );
 }

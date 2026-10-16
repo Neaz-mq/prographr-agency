@@ -14,7 +14,11 @@ const DESKTOP = "(min-width: 768px)";
 const REDUCED = "(prefers-reduced-motion: reduce)";
 
 const STICK_TOP = 40; // px: panel koto upore atkabe (Tailwind md:top-10 er soman)
-const VIEWPORT_GAP = 16; // px: panel viewport-er cheye boro hole niche-r jonno faka
+/* Floating nav (FloatingNav) niche-e fixed: bottom 24px + height 52px. Panel-er niche-r ongsho (project naam, "Full view" button) jeno nav-er niche na pore,
+   tai panel-er bottom ta nav-er upore (+16px gap) rakhi. Ager 16px-e bottom nav-er pichone chole jeto ar dekha jeto na. FloatingNav-er size bodlale eta-o bodlate hobe. */
+const NAV_CLEARANCE = 24 + 52 + 16;
+const MIN_FIT = 0.8; // panel viewport-e na dhukle maximum koto choto kora hobe (tar choto hole upor theke ektu kete jay)
+const VIEWPORT_GAP = NAV_CLEARANCE; // px: panel-er bottom theke viewport-er bottom porjonto kom-pokkhe eto faka
 const SCALE_STEP = 0.04; // protita cover-e koto choto hobe
 const LIFT_STEP = 14; // protita cover-e koto px upore uthbe (peek)
 const DIM_STEP = 0.07; // protita cover-e koto dim hobe
@@ -43,6 +47,7 @@ export function StackedPanels({ children, className }: { children: ReactNode; cl
     let raf = 0;
     let last = 0;
     let stick = STICK_TOP;
+    let fit = 1; // panel boro hole (chhoto laptop) pura panel-take viewport-er (nav-er upor porjonto) bhitore ana-r scale
     /* current[i] = ekhon screen-e je depth dekhachhe (smooth), target[i] = scroll position onujayi asol depth */
     const current: number[] = new Array(items.length).fill(0);
     let snap = true;
@@ -50,7 +55,7 @@ export function StackedPanels({ children, className }: { children: ReactNode; cl
     const apply = (i: number, d: number) => {
       const layer = layers[i];
       const dim = dims[i];
-      if (layer) layer.style.transform = `translate3d(0, ${(-LIFT_STEP * d).toFixed(3)}px, 0) scale(${(1 - SCALE_STEP * d).toFixed(5)})`;
+      if (layer) layer.style.transform = `translate3d(0, ${(-LIFT_STEP * d).toFixed(3)}px, 0) scale(${(fit * (1 - SCALE_STEP * d)).toFixed(5)})`;
       if (dim) dim.style.opacity = (Math.min(DIM_MAX, DIM_STEP * d)).toFixed(4);
     };
 
@@ -63,6 +68,7 @@ export function StackedPanels({ children, className }: { children: ReactNode; cl
         if (dim) dim.style.opacity = "0";
         current[i] = 0;
       });
+      fit = 1;
       snap = true;
     };
 
@@ -75,7 +81,11 @@ export function StackedPanels({ children, className }: { children: ReactNode; cl
         return;
       }
       const tallest = Math.max(...items.map((li) => li.offsetHeight));
-      stick = Math.min(STICK_TOP, window.innerHeight - tallest - VIEWPORT_GAP);
+      /* Age: shudhu top komiye bhoshano hoto, tai boro panel-er upor-er ongsho kete jeto. Ekhon age pura panel ektu choto kore (fit)
+         viewport + nav-er upor-e ane, tarpor-o na dhukle top komai */
+      const room = window.innerHeight - STICK_TOP - VIEWPORT_GAP;
+      fit = clamp(room / tallest, MIN_FIT, 1);
+      stick = Math.min(STICK_TOP, window.innerHeight - tallest * fit - VIEWPORT_GAP);
       items.forEach((li) => {
         li.style.top = `${stick}px`;
       });
@@ -156,8 +166,8 @@ export function StackedPanels({ children, className }: { children: ReactNode; cl
   }, [panels.length]);
 
   return (
-    /* md:pb-[14vh]: shesh panel boshar por stack ta kichukkhon atke thake, tarpor ekshathe scroll kore jay */
-    <ul ref={listRef} className={cn("flex w-full flex-col gap-6 md:gap-8 md:pb-[14vh]", className)}>
+    /* Niche kono extra pb nai: ager 14vh-er jonno shesh card-er pore section-er 100px-er shathe mile boro gap hoto (~250-320px). Ekhon shudhu section-er nijer bottom padding */
+    <ul ref={listRef} className={cn("flex w-full flex-col gap-6 md:gap-8", className)}>
       {panels.map((panel, i) => (
         <li key={i} className="md:sticky md:top-10 md:motion-reduce:static" style={{ zIndex: i + 1 }}>
           <div
