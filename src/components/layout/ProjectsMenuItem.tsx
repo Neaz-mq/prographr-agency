@@ -185,10 +185,18 @@ export function ProjectsMenuItem({
 
   /* Image gulo page idle hole age-i load kore rakhi, jeno prothom hover-e image decode-er jonno panel atke na jay (extra download page-er critical load-er pore) */
   useEffect(() => {
-    const idle = (window as Window & { requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number }).requestIdleCallback;
-    const id = idle ? idle(() => setArmed(true), { timeout: 4000 }) : window.setTimeout(() => setArmed(true), 2500);
+    /* Safari-te requestIdleCallback nai, tai optional type. (Window & {...} dile TS bhabe function shob shomoy ache -> build fail) */
+    type IdleApi = {
+      requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number;
+      cancelIdleCallback?: (id: number) => void;
+    };
+    const w = window as unknown as IdleApi;
+    const hasIdle = typeof w.requestIdleCallback === "function";
+    const id = hasIdle
+      ? (w.requestIdleCallback as NonNullable<IdleApi["requestIdleCallback"]>)(() => setArmed(true), { timeout: 4000 })
+      : window.setTimeout(() => setArmed(true), 2500);
     return () => {
-      if (idle) (window as Window & { cancelIdleCallback?: (id: number) => void }).cancelIdleCallback?.(id);
+      if (hasIdle) w.cancelIdleCallback?.(id);
       else window.clearTimeout(id);
     };
   }, []);
