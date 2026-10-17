@@ -43,4 +43,12 @@ export const images = {
   showcaseDashboard: "Desktop_-_93_wnmdkq",
   showcasePhone: "iPhone_13_mini_-_1488_k12fpo",
   showcaseFinPilot: "Desktop_-_57_sjchnw",
+
+  /* Floating nav "Project" hover menu-r collage (Figma theke export kora 6 ta tile, row onujayi: 1-2, 3-4, 5-6). Cloudinary public ID, extension chara */
+  menuCollage1: "Header_kxrate",
+  menuCollage2: "Cuisine_Case_Study_febsma",
+  menuCollage3: "image_6350934_eqym6h",
+  menuCollage4: "image_6350933_dg9dwe",
+  menuCollage5: "image_6350936_hktl9l",
+  menuCollage6: "image_6350935_kiemvl",
 };

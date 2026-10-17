@@ -3,6 +3,7 @@ import Link from "next/link";
 import { BackToTop } from "./BackToTop";
 import { MobileMenu } from "./MobileMenu";
 import { NavLink } from "./NavLink";
+import { ProjectsMenuItem } from "./ProjectsMenuItem";
 import { Container } from "@/components/ui/Container";
 import { siteConfig } from "@/lib/site";
 import { cn } from "@/lib/utils";
@@ -25,7 +26,7 @@ export function FloatingNav() {
 
         <nav
           aria-label="Quick navigation"
-          className="pointer-events-auto flex min-w-0 items-center gap-1.5 rounded-xl bg-black p-1.5 md:gap-2"
+          className="pointer-events-auto relative flex min-w-0 items-center gap-1.5 rounded-xl bg-black p-1.5 md:gap-2"
         >
           {/* Mobile: menu button | Tablet+: logo */}
           <MobileMenu links={menuLinks} />
@@ -33,19 +34,32 @@ export function FloatingNav() {
             <Image src="/icons/logo-mark.svg" alt="" width={18} height={18} className="size-[1.125rem] brightness-0 invert" />
           </Link>
 
-          {siteConfig.navLinks.map((link) => (
-            <NavLink
-              key={link.label}
-              href={link.href}
-              className={cn(
-                "h-10 items-center justify-center rounded-lg border-[0.5px] border-white/10 px-3 text-base leading-none text-white transition-colors duration-300 hover:bg-white/10",
-                link.mobile ? "hidden min-[380px]:flex md:flex" : "hidden md:flex"
-              )}
-              activeClassName="bg-white/10"
-            >
-              {link.label}
-            </NavLink>
-          ))}
+          {siteConfig.navLinks.map((link) => {
+            const visibility = link.mobile ? "hidden min-[380px]:flex md:flex" : "hidden md:flex";
+            const linkClass =
+              "h-10 items-center justify-center rounded-lg border-[0.5px] border-white/10 px-3 text-base leading-none text-white transition-colors duration-300 hover:bg-white/10";
+
+            /* "Project" / "Services": hover korle upore Figma-r menu panel ashe (ProjectsMenuItem). Click korle ager moto oi page-e jay */
+            if (link.menu) {
+              return (
+                <ProjectsMenuItem
+                  key={link.label}
+                  href={link.href}
+                  label={link.label}
+                  variant={link.menu}
+                  wrapperClassName={visibility}
+                  className={linkClass}
+                  activeClassName="bg-white/10"
+                />
+              );
+            }
+
+            return (
+              <NavLink key={link.label} href={link.href} className={cn(linkClass, visibility)} activeClassName="bg-white/10">
+                {link.label}
+              </NavLink>
+            );
+          })}
 
           <Link
             href="#contact"
