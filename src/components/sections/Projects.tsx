@@ -58,6 +58,26 @@ function ProjectMedia({ project }: { project: Project }) {
     return <CloudImage src={project.image} alt={project.imageAlt} fill sizes={FULL_SIZES} className={imgClass} />;
   }
 
+  if (media.kind === "natural") {
+    /* Figma layer-er exact export: width Figma-r moto, height image-er nijer ratio (crop nai). Niche area-r edge-e clip hoy */
+    const { left, top, width } = media;
+    return (
+      <div
+        className="absolute"
+        style={{ left: `${(left / AREA_W) * 100}%`, top: `${(top / AREA_H) * 100}%`, width: `${(width / AREA_W) * 100}%` }}
+      >
+        <CloudImage
+          src={project.image}
+          alt={project.imageAlt}
+          width={0}
+          height={0}
+          sizes={`(min-width: 1440px) ${Math.round(width)}px, (min-width: 768px) ${Math.round((46 * width) / AREA_W)}vw, ${Math.round((92 * width) / AREA_W)}vw`}
+          className="block h-auto w-full origin-top transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+        />
+      </div>
+    );
+  }
+
   if (media.kind === "free") {
     /* Phone mockup: card-er upor diye bairer dike barhe, parent-er overflow-hidden clip kore (Figma-r moto) */
     const { left, top, width, height } = media;
@@ -90,7 +110,7 @@ function ProjectMedia({ project }: { project: Project }) {
   );
 }
 
-function ProjectCard({ project }: { project: Project }) {
+export function ProjectCard({ project }: { project: Project }) {
   return (
     <article className="group flex h-full w-full flex-col gap-5 rounded-[1.25rem] bg-white pb-4">
       {/* Image area: 628 x 375, bg #F0F0F0 */}
@@ -166,7 +186,7 @@ function ProjectRow({ row, animateIn }: { row: Project[]; animateIn: boolean }) 
 }
 
 /* Stacking panels (oripio-r moto): protita panel-e 2 ta card. Scroll korle porer panel niche theke uthe ager-tar upor boshe,
-   ager panel halka choto + dim hoy. Mobile-e shadharon vabe uporer niche (StackedPanels.tsx dekho).
+   ager panel halka choto hoy (shadow/dim nai). Mobile-e shadharon vabe uporer niche (StackedPanels.tsx dekho).
    Home-er Projects section ar /projects page, duto jaygay-i ekoi stack use hoy. */
 export function ProjectStack() {
   return (

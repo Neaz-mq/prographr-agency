@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 /* Scroll-driven stacking panels (oripio.com-er services section-er moto).
    - Protita panel (ekhane 2 ta card-er ek row) desktop-e `sticky` hoye upore atke thake.
    - Porer panel niche theke uthe ashe ar ager-tar upor diye cover kore.
-   - Cover howar shomoy ager panel(gulo) halka choto (scale), ektu upore (peek) ar ektu dim hoy.
+   - Cover howar shomoy ager panel(gulo) halka choto (scale) ar ektu upore (peek) hoy. Kono shadow ba dim overlay nai.
    Shob kichu scroll-er progress theke, rAF-e shorashori style boshano hoy (React re-render nai, tai smooth).
    Mobile (< md) ba prefers-reduced-motion-e kono sticky/transform nai, panel gulo shadharon vabe uporer niche thake. */
 
@@ -21,8 +21,6 @@ const MIN_FIT = 0.8; // panel viewport-e na dhukle maximum koto choto kora hobe 
 const VIEWPORT_GAP = NAV_CLEARANCE; // px: panel-er bottom theke viewport-er bottom porjonto kom-pokkhe eto faka
 const SCALE_STEP = 0.04; // protita cover-e koto choto hobe
 const LIFT_STEP = 14; // protita cover-e koto px upore uthbe (peek)
-const DIM_STEP = 0.07; // protita cover-e koto dim hobe
-const DIM_MAX = 0.35;
 const SMOOTH_TAU = 110; // ms: boro hole beshi "bhari/premium" glide, choto hole beshi responsive
 const EPSILON = 0.0005; // ei-r cheye kom fark hole animation thamiye dei
 
@@ -41,7 +39,6 @@ export function StackedPanels({ children, className }: { children: ReactNode; cl
 
     const items = Array.from(list.children) as HTMLElement[];
     const layers = items.map((li) => li.querySelector<HTMLElement>("[data-stack-layer]"));
-    const dims = items.map((li) => li.querySelector<HTMLElement>("[data-stack-dim]"));
     const desktop = window.matchMedia(DESKTOP);
     const reduced = window.matchMedia(REDUCED);
     let raf = 0;
@@ -54,18 +51,14 @@ export function StackedPanels({ children, className }: { children: ReactNode; cl
 
     const apply = (i: number, d: number) => {
       const layer = layers[i];
-      const dim = dims[i];
       if (layer) layer.style.transform = `translate3d(0, ${(-LIFT_STEP * d).toFixed(3)}px, 0) scale(${(fit * (1 - SCALE_STEP * d)).toFixed(5)})`;
-      if (dim) dim.style.opacity = (Math.min(DIM_MAX, DIM_STEP * d)).toFixed(4);
     };
 
     const reset = () => {
       items.forEach((li, i) => {
         li.style.top = "";
         const layer = layers[i];
-        const dim = dims[i];
         if (layer) layer.style.transform = "";
-        if (dim) dim.style.opacity = "0";
         current[i] = 0;
       });
       fit = 1;
@@ -172,15 +165,9 @@ export function StackedPanels({ children, className }: { children: ReactNode; cl
         <li key={i} className="md:sticky md:top-10 md:motion-reduce:static" style={{ zIndex: i + 1 }}>
           <div
             data-stack-layer
-            className="relative [transform-origin:50%_0] md:rounded-[1.75rem] md:border md:border-black/[0.06] md:bg-[#FAFAFA] md:p-5 md:shadow-[0_-14px_44px_-14px_rgba(0,0,0,0.16)] md:will-change-transform md:[backface-visibility:hidden]"
+            className="relative [transform-origin:50%_0] md:rounded-[1.75rem] md:border md:border-black/[0.06] md:bg-[#FAFAFA] md:p-5 md:will-change-transform md:[backface-visibility:hidden]"
           >
             {panel}
-            {/* Dim overlay: ager panel(gulo) cover hole ektu dhushor hoy */}
-            <div
-              data-stack-dim
-              aria-hidden="true"
-              className="pointer-events-none absolute -inset-px hidden rounded-[1.75rem] bg-black opacity-0 md:block md:will-change-[opacity]"
-            />
           </div>
         </li>
       ))}

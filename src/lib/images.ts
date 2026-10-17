@@ -14,6 +14,11 @@ export const images = {
   projectNexbank: "Header_lr9zw0",
   projectMoodmap: "Untitled_1_1_yobyfr",
   projectFinora: "image_6350932_g6kft0",
+  /* /projects page-er extra card (MoneyBoard 576 x 440, FlowBank 573 x 402, white border + rounded export) */
+  projectMoneyboard: "image_6350934_c7ljsc",
+  projectFlowbank: "c660b374e9d3666776a8fad13ef595d86ce91527_bxuwdx",
+  projectPrographr: "image_6350935_z1pfpx", // 578 x 476
+  projectRisecap: "image_6350936_xwpupj", // 576 x 410
 
   /* Testimonial section: client-er website screenshot (Cloudinary public ID, extension chara) */
   testimonialA: "Frame_2147235337_ajjky7",

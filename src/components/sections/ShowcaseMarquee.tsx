@@ -1,5 +1,4 @@
 import type { ReactNode } from "react";
-import { Container } from "@/components/ui/Container";
 import { CloudImage } from "@/components/ui/CloudImage";
 import { images } from "@/lib/images";
 import { cn } from "@/lib/utils";
@@ -21,10 +20,10 @@ const words = [
   "Software",
 ];
 
-/* Desktop card: CSS frame (Figma: 630.22 x 472.87, border 5.02px #000, radius 23.43px, bg white) + bhitore pura design image.
-   Image kata hoy na: frame-er bhitore object-contain diye puro-ta dekhay (Figma-te design-ta frame-er bairer dike chhilo, ekhane pura dekhano hoyeche).
-   Desktop - 93 PNG 2956 x 2301, charpashe 3.25% shadow margin ache, tai inset-0 diye diyei sundor margin pay. */
-type FramedShot = { kind: "framed"; src: string; alt: string; innerClassName: string; sizes: string };
+/* Desktop card: CSS frame (height Figma: 472.87, border 5.02px #000, radius 23.43px) + bhitore image FRAME-ER PURO WIDTH/HEIGHT bhore (object-cover), hero-er card-er moto full-bleed.
+   Kono white gap / shadow margin dekha jay na. Protita frame-er width image-er ratio onujayi (widthClass), tai object-cover-e kono ongsho kata-o jay na.
+   Desktop - 93 PNG 2956 x 2301, charpashe 3.25% baked shadow margin ache, tai innerClassName negative inset (-3.5%) diye oi margin frame-er bairey pathiye kete dewa hoyeche. */
+type FramedShot = { kind: "framed"; src: string; alt: string; widthClass: string; innerClassName: string; sizes: string };
 
 /* Phone card: PNG-te nijer border ache. Height fixed (em), width natural aspect onujayi auto, tai kono faka thake na */
 type PlainShot = { kind: "plain"; src: string; alt: string; width: number; height: number; heightClass: string; sizes: string };
@@ -46,18 +45,20 @@ const phoneShot: PlainShot = {
 const shots: Shot[] = [
   {
     kind: "framed",
-    src: images.showcaseDashboard, // Desktop - 93 (PNG 2956 x 2301, nijer shadow margin shoho)
+    src: images.showcaseDashboard, // Desktop - 93 (PNG 2956 x 2301, charpashe 3.25% baked shadow margin, tai -3.5% inset e kete full-bleed kora)
     alt: "MoneyBoard finance dashboard web design",
-    innerClassName: "inset-0",
+    widthClass: "w-[38em]",
+    innerClassName: "-inset-[3.5%]",
     sizes: "(min-width: 768px) 620px, 394px",
   },
   phoneShot,
   {
     kind: "framed",
-    src: images.showcaseFinPilot, // Desktop - 57 (Figma: 691.34 x 466.18). Shadow margin nai, tai charpashe 1.5em faka dewa
+    src: images.showcaseFinPilot, // Desktop - 57 (Figma: 691.34 x 466.18, ratio 1.48). Shadow/margin nai, tai pura frame bhore (inset-0), frame-er width ratio onujayi boro
     alt: "FinPilot finance dashboard web design",
-    innerClassName: "inset-[1.5em]",
-    sizes: "(min-width: 768px) 620px, 394px",
+    widthClass: "w-[43.5em]",
+    innerClassName: "inset-0",
+    sizes: "(min-width: 768px) 700px, 440px",
   },
   phoneShot,
 ];
@@ -112,7 +113,7 @@ function ShotSet({ hidden }: { hidden: boolean }) {
       {shots.map((shot, index) => (
         <li key={`${shot.src}-${index}`} className="flex shrink-0">
           {shot.kind === "framed" ? (
-            <div className="relative isolate box-border h-[29.5544em] w-[39.3888em] shrink-0 overflow-hidden rounded-[1.4647em] border-[0.3138em] border-black bg-white">
+            <div className={cn("relative isolate box-border h-[29.5544em] shrink-0 overflow-hidden rounded-[1.4647em] border-[0.3138em] border-black bg-white", shot.widthClass)}>
               <div className={cn("absolute", shot.innerClassName)}>
                 <CloudImage
                   src={shot.src}
@@ -123,7 +124,7 @@ function ShotSet({ hidden }: { hidden: boolean }) {
                   fetchPriority="low"
                   decoding="async"
                   draggable={false}
-                  className="select-none object-contain"
+                  className="select-none object-cover"
                 />
               </div>
             </div>
@@ -149,24 +150,16 @@ function ShotSet({ hidden }: { hidden: boolean }) {
 }
 
 export function ShowcaseMarquee() {
-  /* Uporer ar niche-r text row duita full-bleed (screen-er puro width, Container-er baire), majher image row Figma-r moto 1280px container-e clip kora */
+  /* Tinta row-i full-bleed (screen-er puro width), hero-er marquee-r moto. Majher image row ager moto 1280px container-e clip kora ar fade chhilo na, ekhon puro width */
   return (
     <section aria-label="Our design work and services" className="flex flex-col gap-8 overflow-x-clip bg-[#FAFAFA] py-16 md:gap-[3.75rem] md:py-[6.25rem]">
       {/* Row 1: text, bam-e cholbe */}
       <MarqueeRow duration="48s" renderSet={(hidden) => <WordSet hidden={hidden} />} />
 
-      {/* Row 2: image, dan-e cholbe (ulta dike). -ml: Figma-r moto shuru-te prothom desktop-er ektu ongsho kata thake */}
-      <Container>
-        {/* fade-edges-wide: duipashe hard cut-er bodole soft fade, jeno card slide kore ashar shomoy kata kata na lage */}
-        <div className="fade-edges-wide text-[0.625rem] sm:text-xs md:text-base">
-          <MarqueeRow
-            reverse
-            duration="70s"
-            className="-ml-[5.65em]"
-            renderSet={(hidden) => <ShotSet hidden={hidden} />}
-          />
-        </div>
-      </Container>
+      {/* Row 2: image, dan-e cholbe (ulta dike). Full-bleed (Container ar fade chhara), hero-er marquee-r moto screen-er ek pash theke arek pash porjonto */}
+      <div className="text-[0.625rem] sm:text-xs md:text-base">
+        <MarqueeRow reverse duration="75s" renderSet={(hidden) => <ShotSet hidden={hidden} />} />
+      </div>
 
       {/* Row 3: text, bam-e cholbe */}
       <MarqueeRow duration="48s" renderSet={(hidden) => <WordSet hidden={hidden} />} />

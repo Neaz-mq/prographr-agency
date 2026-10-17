@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Container } from "@/components/ui/Container";
 import { ProjectsHero } from "@/components/sections/ProjectsHero";
 import { TrustedBy } from "@/components/sections/TrustedBy";
-import { ProjectStack } from "@/components/sections/Projects";
+import { ProjectsGallery } from "@/components/sections/ProjectsGallery";
+import { Testimonials } from "@/components/sections/Testimonials";
+import { Faq } from "@/components/sections/Faq";
 import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/layout/Footer";
 
@@ -20,12 +21,14 @@ export default function ProjectsPage() {
         {/* Brand section: home page-er ekoi TrustedBy (Figma: hero-r pore) */}
         <TrustedBy />
 
-        {/* Shob project: home-er Projects section-er ekoi stacking card */}
-        <section aria-label="All projects" className="bg-[#FAFAFA] py-16 md:py-[6.25rem]">
-          <Container className="flex flex-col items-center">
-            <ProjectStack />
-          </Container>
-        </section>
+        {/* Filter chip + shob project (Figma: Desktop - 2014) */}
+        <ProjectsGallery />
+
+        {/* Testimonial: home page-er ekoi section */}
+        <Testimonials />
+
+        {/* FAQ: home page-er ekoi section */}
+        <Faq />
 
         {/* "Let's talk" / "Book a call" (#contact) ei page-eo kaj korbe */}
         <Contact />
