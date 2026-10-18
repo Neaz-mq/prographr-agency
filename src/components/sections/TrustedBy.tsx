@@ -41,7 +41,7 @@ export function TrustedBy() {
   return (
     <section aria-label="Companies we collaborate with" className="bg-[#FAFAFA]">
       {/* Mobile/tablet: stacked. xl (1280px+): Figma-r row layout, height 112.47px */}
-      <div className="mx-auto flex max-w-[90rem] flex-col xl:h-[7.0294rem] xl:flex-row xl:items-center xl:gap-[4.1231rem]">
+      <div className="mx-auto flex max-w-[90rem] flex-col xl:h-[clamp(5.5rem,calc(var(--h)*0.07768_+_23.52px),7.029rem)] xl:flex-row xl:items-center xl:gap-[4.1231rem]">
         {/* Left: white panel + text */}
         <div className="relative flex h-24 items-center justify-center rounded-b-[1.5rem] bg-white px-4 xl:h-full xl:w-[34.945rem] xl:shrink-0 xl:rounded-none xl:bg-transparent xl:px-0">
           <svg

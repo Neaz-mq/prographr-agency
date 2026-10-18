@@ -2,10 +2,10 @@
 
 import { useEffect } from "react";
 
-const MIN_VISIBLE = 4300; // entry animation shesh hobar por-o ektu thake, jate logo ta bhalo kore dekha jay
-const MAX_VISIBLE = 8000; // internet khub slow hole-o ete-i chole jabe, user atke thakbe na
-const REVEAL_LEAD_MS = 250; // overlay-r fade-out shuru howar koto ms pore page-er reveal animation shuru hobe (overlay-r shathe crossfade)
-const EXIT_FALLBACK_MS = 3000; // overlay-r `pl-out` animationend kono karone na fire hole eto pore-i zor kore shesh kora hobe
+const MIN_VISIBLE = 3400; // entry animation shesh hobar por-o ektu thake, jate logo ta bhalo kore dekha jay
+const MAX_VISIBLE = 6000; // internet khub slow hole-o ete-i chole jabe, user atke thakbe na
+const REVEAL_LEAD_MS = 150; // overlay-r fade-out shuru howar koto ms pore page-er reveal animation shuru hobe (overlay-r shathe crossfade)
+const EXIT_FALLBACK_MS = 2000; // overlay-r `pl-out` animationend kono karone na fire hole eto pore-i zor kore shesh kora hobe
 
 /* Preloader-er "brain":
    - Page load + font ready + minimum time, tinta-i hole exit animation chalay

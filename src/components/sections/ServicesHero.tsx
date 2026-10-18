@@ -9,7 +9,8 @@ import { HeroDuo } from "./HeroDuo";
 /* Figma: "Frame 2147237091" (1280 x 250, hug), column, center, gap 24. /projects-er hero-r ekoi layout, shudhu text alada.
    1) Breadcrumb pill: bg #F0F0F0, radius 100, padding 6 12, gap 4. "Home" 14px rgba(18,18,18,.5) > chevron 12px > "Service" 14px #000
    2) Frame (column, gap 16): H1 60px / 110% / 500, center, max 936px | paragraph 16px / 160%, rgba(0,0,0,.7), max 696px
-   H1-er majhe Figma + Webflow circle (HeroDuo: 1em = heading font-size), "More" ar "Memorable"-er majhe. */
+   H1-er majhe Figma + Dribbble circle (HeroDuo: 1em = heading font-size), "More" ar "Memorable"-er majhe.
+   Header-er upore faka (pt) home Hero-r ekoi formula (var(--h)), --h ashe page.tsx-er wrapper theke. */
 
 /* Reveal timeline (ms) /projects-er moto-i: header -> breadcrumb -> heading (word by word) -> duo -> paragraph */
 const HEADING_START = 250;
@@ -20,7 +21,7 @@ const leadCount = HEADING_LEAD.split(" ").length; // 8 ta word, tarpor duo, tarp
 
 export function ServicesHero() {
   return (
-    <section className="pb-10 pt-10 md:pb-[4.375rem]">
+    <section className="pb-10 pt-10 md:pb-[4.375rem] md:pt-[clamp(1.25rem,calc(var(--h)*0.06349_-_32.70px),2.5rem)]">
       <Container>
         <Header />
 

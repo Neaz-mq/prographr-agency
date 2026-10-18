@@ -446,8 +446,9 @@ body {
   }
 }
 /* ===== Preloader (components/layout/Preloader.tsx) =====
-   Logo-r protita vector alada animate hoy. Natural (animation chara) style = shesh state, tai reduced-motion / JS chara-o logo thik dekhay.
-   Animation `backwards` fill: delay-r shomoy shuru-r (lukano) state-e thake. Shudhu transform / opacity / stroke animate (GPU-friendly). */
+   Logo mark-er animation Dribbble reference ("Prographr Logo Icon") theke frame-by-frame measure kore banano. Color shobsomoy `currentColor` (kalo #121212).
+   Natural (animation chara) style = shesh state, tai reduced-motion / JS chara-o logo thik dekhay.
+   Animation `backwards` fill: delay-r shomoy shuru-r (lukano) state-e thake. Shudhu transform / opacity animate (GPU-friendly). */
 .preloader {
   --pl-bg: #ffffff;
   --pl-fg: #121212;
@@ -472,6 +473,13 @@ body {
 .pl-lockup {
   --pl-fs: 2.75rem; /* wordmark font-size */
   --pl-gap: 0.9rem;
+  /* mark majhkhane thakle wordmark-er (4.794em, measured) + gap-er ordhek dane thake. Mark ar word duitor-i pl-slide eta use kore, tai parent-e */
+  --pl-shift: calc((var(--pl-gap) + 4.794 * var(--pl-fs)) / 2);
+  /* Mark, word wrapper ar text, tinta-i ek-i duration + easing + delay use kore. Tai text-er net movement (wrapper bame - text dane)
+     ekta-i smooth curve hoy, kono dip/jhnak thake na, ar logo jotota bame jay text thik totota dane jay (mirror). Eta bodlate hole shudhu ekhane bodlao. */
+  --pl-slide-dur: 1150ms;
+  --pl-slide-ease: cubic-bezier(0.65, 0, 0.35, 1);
+  --pl-slide-delay: 1600ms;
   display: flex;
   align-items: center;
   column-gap: var(--pl-gap);
@@ -482,13 +490,11 @@ body {
   width: 3.5rem;
   height: 3.5rem;
   flex: none;
-  /* mark majhkhane thakle wordmark-er (4.794em, measured) + gap-er ordhek dane thake */
-  --pl-shift: calc((var(--pl-gap) + 4.794 * var(--pl-fs)) / 2);
   will-change: transform;
-  animation: pl-slide 1100ms cubic-bezier(0.76, 0, 0.24, 1) 1800ms backwards;
+  animation: pl-slide var(--pl-slide-dur) var(--pl-slide-ease) var(--pl-slide-delay) backwards;
 }
 
-/* Protita vector nijer alada SVG layer, jate transform/opacity GPU-te cholte pare */
+/* Protita vector nijer alada layer, jate transform/opacity GPU-te cholte pare */
 .pl-layer {
   position: absolute;
   inset: 0;
@@ -498,23 +504,68 @@ body {
   backface-visibility: hidden;
 }
 
-.pl-l-fill {
-  will-change: opacity;
-  animation: pl-fill 800ms cubic-bezier(0.45, 0, 0.55, 1) 1100ms backwards;
+/* L shape = duita bar (oporer bar + bamer bar), duitor kon (inner corner) ekta fixed jayga-y thake (mark-er thik majhkhane).
+   Bar-er baire-r dhar (outer edge) kon theke baire soreh jay, tai L ta "patla line" theke puro mota hoye ashe.
+   Oporer bar dan-niche kon theke, bamer bar-o nijer dan-niche kon theke scale hoy (transform-origin 100% 100%). */
+.pl-bar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: currentColor;
+  transform-origin: 100% 100%;
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
-.pl-l-stroke {
-  stroke-dasharray: 120;
-  stroke-dashoffset: 0;
-  stroke-opacity: 0;
-  stroke-linejoin: miter;
-  animation: pl-trim 2000ms linear 100ms backwards;
+.pl-bar-top {
+  width: 100%;
+  height: 50%;
+  animation: pl-bar-top 450ms cubic-bezier(0.2, 0.8, 0.2, 1) 1135ms backwards;
+}
+
+.pl-bar-left {
+  width: 50%;
+  height: 100%;
+  animation: pl-bar-left 450ms cubic-bezier(0.2, 0.8, 0.2, 1) 1135ms backwards;
+}
+
+/* Kon-er piece + dot ekshathe ekta group: group majhkhane (kon theke) soriye abar nijer jayga-y fire ashe.
+   Dot ta thake arc-er kendro-te (mark-er thik majhkhane), tai group-er shathe-i sore. 1 unit = mark-er 1/30 = 3.3333% */
+.pl-corner-move {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+  animation: pl-corner-move 467ms linear 600ms backwards;
 }
 
 .pl-corner {
   transform-origin: 100% 100%;
   will-change: transform, opacity;
-  animation: pl-pop 1200ms cubic-bezier(0.22, 1.25, 0.36, 1) 1450ms backwards;
+  animation: pl-corner-in 550ms linear 200ms backwards;
+}
+
+.pl-dot {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 6.6667%;
+  aspect-ratio: 1;
+  margin: -3.3333% 0 0 -3.3333%;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0; /* natural state: lukano (shudhu animation-er shomoy dekha jay) */
+  will-change: transform, opacity;
+  animation: pl-dot 285ms linear 700ms backwards;
+}
+
+/* Wordmark: logo-r pashe theke bam theke dane beriye ashe (slot theke tape-er moto).
+   .pl-word       = mark-er shathe ek-i pl-slide (tai mark ar word-er majher gap kokhono bodlay na).
+   .pl-word-inner = clip window: bam dhar ta thik logo-r dane-r dhar-e (gap-er porjonto barano, margin diye layout ager moto).
+   .pl-word-text  = asol text: logo-r pichone (clip-er baire, bam-e) theke dane slide kore nijer jayga-y ashe.
+   Shob transform diye (GPU), layout property animate hoy na. Exit-e letter gulo ager moto upore uthe jay (.pl-letter). */
+.pl-word {
+  will-change: transform;
+  animation: pl-slide var(--pl-slide-dur) var(--pl-slide-ease) var(--pl-slide-delay) backwards;
 }
 
 .pl-word-inner {
@@ -522,46 +573,240 @@ body {
   white-space: nowrap;
   padding-block: 0.3em;
   margin-block: -0.3em;
+  padding-inline-start: var(--pl-gap);
+  margin-inline-start: calc(var(--pl-gap) * -1);
   font-size: var(--pl-fs);
   font-weight: 500;
   line-height: 1.25;
 }
 
+.pl-word-text {
+  display: block;
+  will-change: transform;
+  animation: pl-word-in var(--pl-slide-dur) var(--pl-slide-ease) var(--pl-slide-delay) backwards;
+}
+
 .pl-letter {
   display: inline-block;
   will-change: transform;
-  animation: pl-letter-in 1100ms cubic-bezier(0.22, 1, 0.36, 1) calc(2100ms + var(--i) * 75ms) backwards;
 }
 
-@keyframes pl-trim {
-  0% {
-    stroke-dashoffset: 120;
-    stroke-opacity: 1;
-    animation-timing-function: cubic-bezier(0.6, 0, 0.3, 1);
+/* Oporer bar: width = 0.5 -> 1, height = 0 -> 1 (outer edge kon theke baire soreh jay) */
+@keyframes pl-bar-top {
+  from {
+    transform: scale(0.5, 0);
   }
-  66% {
-    stroke-dashoffset: 0;
-    stroke-opacity: 1;
+}
+
+/* Bamer bar: width = 0 -> 1, height = 0.5 -> 1 */
+@keyframes pl-bar-left {
+  from {
+    transform: scale(0, 0.5);
+  }
+}
+
+/* Kon-er piece: kon theke ghire ghire fade + scale, tarpor druto boro hoye puro size */
+@keyframes pl-corner-in {
+  0% {
+    transform: scale(0.2);
+    opacity: 0;
+  }
+  6% {
+    transform: scale(0.21);
+    opacity: 0.03;
+  }
+  9.091% {
+    transform: scale(0.22);
+    opacity: 0.06;
+  }
+  12.182% {
+    transform: scale(0.23);
+    opacity: 0.09;
+  }
+  15.091% {
+    transform: scale(0.24);
+    opacity: 0.12;
+  }
+  18.182% {
+    transform: scale(0.25);
+    opacity: 0.17;
+  }
+  21.273% {
+    transform: scale(0.26);
+    opacity: 0.24;
+  }
+  24.182% {
+    transform: scale(0.27);
+    opacity: 0.33;
+  }
+  27.273% {
+    transform: scale(0.285);
+    opacity: 0.48;
+  }
+  30.364% {
+    transform: scale(0.3);
+    opacity: 0.72;
+  }
+  33.273% {
+    transform: scale(0.32);
+    opacity: 0.96;
+  }
+  36.364% {
+    transform: scale(0.343);
+    opacity: 1;
+  }
+  45.455% {
+    transform: scale(0.397);
+    opacity: 1;
+  }
+  54.545% {
+    transform: scale(0.466);
+    opacity: 1;
+  }
+  63.636% {
+    transform: scale(0.579);
+    opacity: 1;
+  }
+  72.727% {
+    transform: scale(0.743);
+    opacity: 1;
+  }
+  81.818% {
+    transform: scale(0.892);
+    opacity: 1;
+  }
+  90.909% {
+    transform: scale(0.98);
+    opacity: 1;
   }
   100% {
-    stroke-dashoffset: 0;
-    stroke-opacity: 0;
-  }
-}
-
-@keyframes pl-fill {
-  from {
-    opacity: 0;
-  }
-}
-
-@keyframes pl-pop {
-  from {
-    opacity: 0;
-    transform: scale(0) rotate(-60deg);
-  }
-  30% {
+    transform: scale(1);
     opacity: 1;
+  }
+}
+
+/* Piece + dot group: majhkhane (up-left) soriye abar kon-e fire ashe */
+@keyframes pl-corner-move {
+  0% {
+    transform: translate3d(0.0%, 0.0%, 0);
+  }
+  7.066% {
+    transform: translate3d(-1.47%, -1.47%, 0);
+  }
+  14.347% {
+    transform: translate3d(-3.33%, -3.33%, 0);
+  }
+  21.413% {
+    transform: translate3d(-5.2%, -5.2%, 0);
+  }
+  28.48% {
+    transform: translate3d(-6.53%, -6.53%, 0);
+  }
+  32.12% {
+    transform: translate3d(-6.67%, -6.67%, 0);
+  }
+  42.827% {
+    transform: translate3d(-6.27%, -6.27%, 0);
+  }
+  49.893% {
+    transform: translate3d(-5.6%, -5.6%, 0);
+  }
+  57.173% {
+    transform: translate3d(-4.8%, -4.8%, 0);
+  }
+  64.24% {
+    transform: translate3d(-3.87%, -3.87%, 0);
+  }
+  71.306% {
+    transform: translate3d(-2.8%, -2.8%, 0);
+  }
+  78.587% {
+    transform: translate3d(-1.87%, -1.87%, 0);
+  }
+  85.653% {
+    transform: translate3d(-1.07%, -1.07%, 0);
+  }
+  92.719% {
+    transform: translate3d(-0.4%, -0.4%, 0);
+  }
+  100% {
+    transform: translate3d(0.0%, 0.0%, 0);
+  }
+}
+
+/* Dot: puro size-e fade-in, tarpor choto hoye mishe jay */
+@keyframes pl-dot {
+  0% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  5.965% {
+    opacity: 0.05;
+    transform: scale(1);
+  }
+  11.579% {
+    opacity: 0.09;
+    transform: scale(1);
+  }
+  17.544% {
+    opacity: 0.17;
+    transform: scale(1);
+  }
+  23.509% {
+    opacity: 0.27;
+    transform: scale(1);
+  }
+  29.123% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  35.088% {
+    opacity: 0.57;
+    transform: scale(1);
+  }
+  41.053% {
+    opacity: 0.78;
+    transform: scale(1);
+  }
+  46.667% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  52.632% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  58.596% {
+    opacity: 0.99;
+    transform: scale(0.92);
+  }
+  64.211% {
+    opacity: 0.97;
+    transform: scale(0.81);
+  }
+  70.175% {
+    opacity: 0.95;
+    transform: scale(0.67);
+  }
+  76.14% {
+    opacity: 0.91;
+    transform: scale(0.51);
+  }
+  81.754% {
+    opacity: 0.65;
+    transform: scale(0.35);
+  }
+  87.719% {
+    opacity: 0.41;
+    transform: scale(0.2);
+  }
+  93.684% {
+    opacity: 0.2;
+    transform: scale(0.08);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0);
   }
 }
 
@@ -571,24 +816,25 @@ body {
   }
 }
 
-@keyframes pl-letter-in {
+/* Text puro clip-er baire bam-e (logo-r pichone) theke shuru, dane nijer jayga-y ashe: shesh akkhor "r" age beriye ashe */
+@keyframes pl-word-in {
   from {
-    transform: translate3d(0, 130%, 0);
+    transform: translate3d(calc(-100% - var(--pl-gap)), 0, 0);
   }
 }
 
 /* Exit: akkhor gulo upore uthe mishe jay, mark choto hoye fade, tarpor puro overlay fade out */
 .preloader[data-state="exit"] {
   pointer-events: none;
-  animation: pl-out 900ms cubic-bezier(0.45, 0, 0.55, 1) 800ms forwards;
+  animation: pl-out 600ms cubic-bezier(0.45, 0, 0.55, 1) 350ms forwards;
 }
 
 .preloader[data-state="exit"] .pl-letter {
-  animation: pl-letter-out 900ms cubic-bezier(0.64, 0, 0.78, 0) calc(var(--i) * 45ms) forwards;
+  animation: pl-letter-out 550ms cubic-bezier(0.64, 0, 0.78, 0) calc(var(--i) * 25ms) forwards;
 }
 
 .preloader[data-state="exit"] .pl-mark {
-  animation: pl-mark-out 900ms cubic-bezier(0.45, 0, 0.55, 1) 450ms forwards;
+  animation: pl-mark-out 550ms cubic-bezier(0.45, 0, 0.55, 1) 200ms forwards;
 }
 
 @keyframes pl-letter-out {
@@ -643,10 +889,6 @@ body {
   .preloader * {
     animation: none !important;
   }
-
-  .pl-l-stroke {
-    stroke-opacity: 0;
-  }
 }
 
 /* Tailwind v4 preflight button-er cursor "default" kore dey. Shob clickable element-e pointer cursor, disabled-e not-allowed. */
@@ -676,4 +918,36 @@ body {
 .gallery-in { animation: gallery-in 450ms cubic-bezier(0.22, 1, 0.36, 1) both; }
 @media (prefers-reduced-motion: reduce) {
   .gallery-in { animation: none; }
+}
+
+/* Figma: first screen-er niche FloatingNav-er pichone porer section blur + fade hoye dekha jay.
+   Fixed overlay (nav-er niche, z-40), page scroll shuru hole (root scroll-timeline) mile jay, tai porer section-e kono blur thake na.
+   Shudhu tall + desktop screen-e, jekhane hero + strip puro fit hoy (choto screen-e hero-r content-e blur porbe). Scroll-timeline na thakle (purono browser) dekhay-i na. */
+.first-screen-blur {
+  display: none;
+}
+@keyframes first-screen-blur-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+@media (min-width: 768px) and (min-height: 940px) {
+  @supports (animation-timeline: scroll()) {
+    .first-screen-blur {
+      display: block;
+      position: fixed;
+      inset-inline: 0;
+      bottom: 0;
+      height: 5.75rem;
+      z-index: 40;
+      pointer-events: none;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      background: linear-gradient(to top, rgb(250 250 250 / 0.85), rgb(250 250 250 / 0));
+      mask-image: linear-gradient(to top, #000 45%, transparent);
+      -webkit-mask-image: linear-gradient(to top, #000 45%, transparent);
+      animation: first-screen-blur-out linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 8rem;
+    }
+  }
 }

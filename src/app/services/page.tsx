@@ -16,10 +16,14 @@ export default function ServicesPage() {
   return (
     <>
       <main>
-        <ServicesHero />
+        {/* --h = home page-er moto usable height (100svh - nav-er jonno 5.75rem). Hero-r header-er pt ar TrustedBy-r height
+            ei variable-er upor nirbhor kore. Eta na thakle TrustedBy strip bhenge jay, header-o nimne boshe. */}
+        <div className="[--h:calc(100svh-5.75rem)]">
+          <ServicesHero />
 
-        {/* Brand section: home/projects page-er ekoi TrustedBy (Figma: hero-r pore) */}
-        <TrustedBy />
+          {/* Brand section: home/projects page-er ekoi TrustedBy (Figma: hero-r pore) */}
+          <TrustedBy />
+        </div>
 
         {/* UI/UX, Brand Identity, Web development, Mobile App (Figma: Desktop - 2014, 1440 x 2296) */}
         <ServicesShowcase />

@@ -16,10 +16,14 @@ export default function ProjectsPage() {
   return (
     <>
       <main>
-        <ProjectsHero />
+        {/* --h = home page-er moto usable height (100svh - nav-er jonno 5.75rem). Hero-r header-er pt ar TrustedBy-r height
+            ei variable-er upor nirbhor kore (clamp + var(--h)). Eta na thakle ei duto invalid hoye TrustedBy strip bhenge jay, header-o nimne boshe. */}
+        <div className="[--h:calc(100svh-5.75rem)]">
+          <ProjectsHero />
 
-        {/* Brand section: home page-er ekoi TrustedBy (Figma: hero-r pore) */}
-        <TrustedBy />
+          {/* Brand section: home page-er ekoi TrustedBy (Figma: hero-r pore) */}
+          <TrustedBy />
+        </div>
 
         {/* Filter chip + shob project (Figma: Desktop - 2014) */}
         <ProjectsGallery />

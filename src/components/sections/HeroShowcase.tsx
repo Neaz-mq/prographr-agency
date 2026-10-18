@@ -154,11 +154,11 @@ function CardSet({ hidden = false }: { hidden?: boolean }) {
 
 export function HeroShowcase() {
   return (
-    <div className="mt-10 md:mt-[3.75rem]">
+    <div className="mt-10 md:mt-[clamp(2rem,calc(var(--h)*0.06349_-_20.70px),3.25rem)]">
       {/* Full-bleed marquee. Mobile-e card choto (em scale), 768px+ e Figma-r size.
           Direction: left -> right (`marquee-track-reverse`). Eta -50% theke shuru hoy, tai prothom screen-e DUI number set dekha jay.
           Ei karone real set (priority image shoho) dui number-e, ar hidden copy age. Visual-e kono parthokko nai (dui set ek-i). */}
-      <div className="marquee overflow-hidden text-[0.8125rem] md:text-base" suppressHydrationWarning>
+      <div className="marquee overflow-hidden text-[0.8125rem] md:text-[length:max(clamp(0.65rem,calc(var(--h)*0.01778_-_4.36px),1rem),min(2.75rem,calc(var(--h)*0.035_-_24.1px)))]" suppressHydrationWarning>
         <div className="marquee-track-reverse flex w-max">
           <CardSet hidden />
           <CardSet />
@@ -166,7 +166,7 @@ export function HeroShowcase() {
       </div>
 
       <Container>
-        <div className="mt-8 flex flex-col items-center gap-3 text-center md:mt-[3.5625rem] lg:flex-row lg:justify-center lg:gap-12 xl:gap-[12.7rem]">
+        <div className="mt-8 flex flex-col items-center gap-3 text-center md:mt-[clamp(2.75rem,calc(var(--h)*0.01587_+_30.83px),3.062rem)] lg:flex-row lg:justify-center lg:gap-12 xl:gap-[12.7rem]">
           <p className="flex items-center gap-[0.5625rem] text-base leading-[1.2] text-ink/70 md:text-xl">
             {/* Plain block container (grid na). Ring ar core dui-i left/top 50% + nijer aadha size-er negative margin diye center kora,
                 tai ring container-er cheye boro hole-o position nare na. */}
