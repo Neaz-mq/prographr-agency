@@ -103,83 +103,50 @@ function ToggleIcon({ open }: { open: boolean }) {
   );
 }
 
-/* Desktop-e image-er visible area: 1134 x 402 (2.82 : 1). ratio er cheye kom hole image height-fit hoy, beshi hole width-fit */
-const FRAME_RATIO = 1134 / 402;
+/* Image ratio na dile default: ~1134 x 402 (2.82 : 1), Brand Identity / UI UX-er wide image-er ratio */
+const DEFAULT_RATIO = 1134 / 402;
 
 function ServiceMedia({ service, open }: { service: Service; open: boolean }) {
   const image = service.image;
   const [loaded, setLoaded] = useState(false);
-  /* Frame-er cheye "uchu" image (ratio < frame ratio): frame-er height image-er sathe barbe, jate side padding chhoto thake ar upor-niche kata na jay */
-  const growFrame = !!image?.ratio && image.ratio < FRAME_RATIO;
 
   /* Cache-e thakle onLoad fire hoy na-o hote pare, tai mount-e `complete` check kori */
   const markIfComplete = useCallback((img: HTMLImageElement | null) => {
     if (img?.complete && img.naturalWidth > 0) setLoaded(true);
   }, []);
 
+  if (!image) {
+    /* PLACEHOLDER: service-er image ashle service.image set korlei eta chole jabe */
+    return (
+      <div className="relative grid aspect-[4/3] w-full place-items-center overflow-hidden rounded-[1.25rem] bg-ink p-6 text-center sm:aspect-[1200/488] md:rounded-[1.875rem]">
+        <p className="text-2xl font-medium leading-[1.2] text-white/20 sm:text-4xl lg:text-[3.75rem]">{service.title}</p>
+      </div>
+    );
+  }
+
   return (
-    /* Figma: Image Wrapper 1200 x 488, radius 30px, bg #121212. Sob service-er frame ek-i size */
+    /* Black background nai, padding-o nai: image tags row-er moto puro width-e (left/right edge tags-er sathe align) boshe.
+       Desktop (sm+) e frame image-er nijer ratio-te hoy (width 100%, height auto), tai kono ongsho kate na.
+       Mobile-e 4:3 frame-e cover. */
     <div
-      className={cn(
-        "relative aspect-[4/3] w-full overflow-hidden rounded-[1.25rem] bg-ink md:rounded-[1.875rem]",
-        growFrame ? "sm:aspect-auto" : "sm:aspect-[1200/488]"
-      )}
+      style={{ "--service-ratio": image.ratio ?? DEFAULT_RATIO } as React.CSSProperties}
+      className="relative aspect-[4/3] w-full overflow-hidden rounded-[1.25rem] sm:[aspect-ratio:var(--service-ratio)] md:rounded-[1.875rem]"
     >
-      {image ? (
-        /* Bhitore 1181 x 449 image (~0.8% x 4%).
-           preFramed (Brand Identity): image-e-i black bg + padding + rounded ache, tai shorashori fill.
-           Baki raw image: code theke black panel + padding (~24px) + rounded corner, Brand-er moto look.
-           Raw image-er visible area ~1134 x 402 (2.82 : 1), ei ratio-r image hole kono ongsho kate na */
-        <div
-          className={cn(
-            "absolute inset-[4%]",
-            /* growFrame: sm+ e normal flow, charidik-e ek-i 0.8% margin (side padding-er shathe top/bottom-o soman) */
-            growFrame ? "sm:relative sm:inset-auto sm:m-[0.8%]" : "sm:inset-x-[0.8%] sm:inset-y-[4%]"
-          )}
-        >
-          <div
-            className={cn(
-              "size-full",
-              growFrame && "sm:h-auto",
-              !image.preFramed && "bg-black p-[3%] sm:p-[2%]",
-              !!image.ratio && "sm:flex sm:items-center sm:justify-center"
-            )}
-          >
-            {/* ratio dile sm+ e wrapper nijei image-er ratio-te hoy (height auto), tai kono ongsho kate na ar rounded corner image-er-i thake */}
-            <div
-              style={image.ratio ? { aspectRatio: image.ratio } : undefined}
-              className={cn(
-                "relative size-full overflow-hidden",
-                /* Duto case-i width-fit: image pura width nei, height ratio theke ashe. Wide image-e frame fixed (uporniche black), uchu image-e frame barbe */
-                !!image.ratio && "sm:h-auto",
-                !!image.ratio && !growFrame && "sm:max-h-full",
-                !image.preFramed && "rounded-xl sm:rounded-[1.3rem]"
-              )}
-            >
-              <Image
-                ref={markIfComplete}
-                src={image.src}
-                alt={image.alt}
-                loader={cloudinaryLoader}
-                fill
-                sizes={MEDIA_SIZES}
-                onLoad={() => setLoaded(true)}
-                style={image.position ? { objectPosition: image.position } : undefined}
-                className={cn(
-                  "object-cover transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none",
-                  loaded ? "opacity-100" : "opacity-0", // dark frame theke smooth fade-in, kono pop/flash nai
-                  open ? "scale-100" : "scale-[1.05]"
-                )}
-              />
-            </div>
-          </div>
-        </div>
-      ) : (
-        /* PLACEHOLDER: service-er image ashle service.image set korlei eta chole jabe */
-        <div className="absolute inset-0 grid place-items-center p-6 text-center">
-          <p className="text-2xl font-medium leading-[1.2] text-white/20 sm:text-4xl lg:text-[3.75rem]">{service.title}</p>
-        </div>
-      )}
+      <Image
+        ref={markIfComplete}
+        src={image.src}
+        alt={image.alt}
+        loader={cloudinaryLoader}
+        fill
+        sizes={MEDIA_SIZES}
+        onLoad={() => setLoaded(true)}
+        style={image.position ? { objectPosition: image.position } : undefined}
+        className={cn(
+          "object-cover transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none",
+          loaded ? "opacity-100" : "opacity-0", // smooth fade-in, kono pop/flash nai
+          open ? "scale-100" : "scale-[1.05]"
+        )}
+      />
     </div>
   );
 }
