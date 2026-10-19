@@ -6,6 +6,6 @@ export const siteConfig = {
     { label: "Project", href: "/projects", mobile: true, menu: "projects" as const },
     { label: "Services", href: "/services", mobile: false, menu: "services" as const },
     { label: "Pricing", href: "/pricing", mobile: false },
-    { label: "More", href: "/#faq", mobile: false },
+    { label: "Contact Us", href: "/contact", mobile: false },
   ],
 };

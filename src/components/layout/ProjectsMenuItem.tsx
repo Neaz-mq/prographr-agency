@@ -5,7 +5,8 @@ import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { CloudImage } from "@/components/ui/CloudImage";
 import { images } from "@/lib/images";
-import { PROJECT_FILTER_EVENT, projectFilterHref, type ProjectFilter } from "@/lib/project-filter";
+import { resetBackdropMotion, setBackdropMotion } from "@/lib/menu-backdrop";
+import { PROJECT_FILTER_EVENT, markScrollToFilters, projectFilterHref, type ProjectFilter } from "@/lib/project-filter";
 import { easeInOutCubic, scrollToElement } from "@/lib/smooth-scroll";
 import { cn } from "@/lib/utils";
 import { NavLink } from "./NavLink";
@@ -201,6 +202,32 @@ export function ProjectsMenuItem({
     };
   }, []);
 
+  /* Menu khola (ar fade-out cholar) shomoy <html data-nav-menu> boshay: globals.css-e tokhon marquee hover-e thame na.
+     Na hole panel theke mouse berolei niche-r marquee hover hoye ~0.5s freeze hoto. Shudhu "projects" instance (overlay-er malik) eta kore,
+     jeno duto menu ekshathe attribute niye race na kore. Fade-out (300ms / quick 150ms) shesh hole-i tule nei. */
+  useEffect(() => {
+    if (variant !== "projects") return;
+    const root = document.documentElement;
+    if (active !== null) {
+      root.setAttribute("data-nav-menu", "");
+      /* Blur fade-in (300ms)-er shathe pechoner marquee/animation dhire thame jay: blur-er niche pixel bodlay na, tai protita frame-e puro screen abar blur korte hoy na (jitter-er mul karon) */
+      setBackdropMotion(false, 300);
+      return;
+    }
+    /* Blur fade-out-er shathe shathe abar dhire chalu (jekhane thamechilo sekhan theke) */
+    setBackdropMotion(true, quick ? 150 : 300);
+    const id = window.setTimeout(() => root.removeAttribute("data-nav-menu"), quick ? 250 : 450);
+    return () => window.clearTimeout(id);
+  }, [active, quick, variant]);
+
+  useEffect(() => {
+    if (variant !== "projects") return;
+    return () => {
+      document.documentElement.removeAttribute("data-nav-menu");
+      resetBackdropMotion();
+    };
+  }, [variant]);
+
   /* Page bodlale (jemon Project click-er por) panel bondho */
   useEffect(() => {
     closeSelf();
@@ -311,6 +338,9 @@ export function ProjectsMenuItem({
                           /* Already /projects-e thakle page remount hoy na, tai gallery-ke direct janai */
                           if (pathname === "/projects") {
                             window.dispatchEvent(new CustomEvent(PROJECT_FILTER_EVENT, { detail: item.title }));
+                          } else {
+                            /* Onno page theke ashchi: notun page-e gallery mount hole chip row-e scroll korte hobe (purono scrollY-er upor nirbhor na kore) */
+                            markScrollToFilters();
                           }
                         }}
                         className="flex min-h-[6.5rem] flex-col gap-1.5 rounded-2xl bg-[#FAFAFA] p-4 transition-colors duration-300 hover:bg-[#F0F0F0] focus-visible:bg-[#F0F0F0]"
@@ -344,6 +374,14 @@ export function ProjectsMenuItem({
                           alt=""
                           fill
                           sizes="200px"
+                          /* eager + age-i decode: panel prothom bar khulle image decode-er jonno atke na jay (armed hole idle-e-i load hoy) */
+                          loading="eager"
+                          fetchPriority="low"
+                          decoding="async"
+                          onLoad={(e) => {
+                            const img = e.currentTarget;
+                            if (typeof img.decode === "function") img.decode().catch(() => {});
+                          }}
                           draggable={false}
                           className="select-none object-cover"
                         />

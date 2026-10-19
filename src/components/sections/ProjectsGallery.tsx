@@ -6,6 +6,8 @@ import { ProjectCard } from "@/components/sections/Projects";
 import { allProjects, projects } from "@/lib/projects";
 import {
   PROJECT_FILTER_EVENT,
+  clearScrollToFilters,
+  hasScrollToFilters,
   isProjectFilter,
   projectFilterHref,
   projectFilters,
@@ -23,6 +25,53 @@ const recentSlugs = new Set(projects.map((p) => p.slug));
 
 /* Menu theke ashle filter chip row-er upore ei koto px jayga rekhe thambe (chip-er upor-er faka dekha jay, chip kata jay na) */
 const SCROLL_OFFSET = -40;
+
+/* Menu theke onno page (/services...) theke ashle chip row-e NISCHITO vabe pouchhai.
+   Shomosya chhilo duto:
+   1. Purono page-er scrollY new page-e theke jay (Next/Lenis shathe shathe reset kore na), tai "scrollY < target" check-e scroll skip hoye jeto.
+   2. Mount-er shomoy layout final na (font, hero text reveal, image load), tai ek bar scroll korle chip row pore sore jay.
+   Fix: mount-er por kichu frame dhore chip row-er asol position dekhi, sore gele abar immediate scroll kori; kichukkhon position sthir thakle (ba user nije scroll korle) thami. */
+function scrollToFiltersWhenStable(getEl: () => HTMLElement | null, onFinish: (userTookOver: boolean) => void) {
+  let raf = 0;
+  let stopped = false;
+  let stableFrames = 0;
+  const startedAt = performance.now();
+  const STABLE_FRAMES = 24; // ~0.4s ekdom sthir
+  const MAX_MS = 2000; // kono obosthay-i er beshi chesta kori na
+
+  const userEvents = ["wheel", "touchstart", "keydown", "mousedown"] as const;
+  const onUser = () => stop(true, true);
+
+  function stop(finish: boolean, userTookOver = false) {
+    if (stopped) return;
+    stopped = true;
+    cancelAnimationFrame(raf);
+    userEvents.forEach((evt) => window.removeEventListener(evt, onUser));
+    if (finish) onFinish(userTookOver);
+  }
+
+  const step = () => {
+    if (stopped) return;
+    const el = getEl();
+    if (el) {
+      const target = el.getBoundingClientRect().top + window.scrollY + SCROLL_OFFSET;
+      if (Math.abs(window.scrollY - target) > 2) {
+        scrollToElement(el, { offset: SCROLL_OFFSET, immediate: true });
+        stableFrames = 0;
+      } else {
+        stableFrames++;
+      }
+    }
+    if (stableFrames >= STABLE_FRAMES || performance.now() - startedAt > MAX_MS) stop(true);
+    else raf = requestAnimationFrame(step);
+  };
+
+  userEvents.forEach((evt) => window.addEventListener(evt, onUser, { passive: true }));
+  raf = requestAnimationFrame(step);
+
+  /* Effect cleanup: flag na muchhe shudhu thamai (StrictMode-e effect abar chalu hole flag lagbe) */
+  return () => stop(false);
+}
 
 export function ProjectsGallery() {
   const [active, setActive] = useState<ProjectFilter>("Explore All");
@@ -45,15 +94,27 @@ export function ProjectsGallery() {
 
     const initial = readProjectFilterFromUrl();
     setActive(initial ?? "Explore All");
-    const el = filtersRef.current;
-    if (initial && el) {
-      const target = el.getBoundingClientRect().top + window.scrollY + SCROLL_OFFSET;
-      if (window.scrollY < target) scrollToElement(el, { offset: SCROLL_OFFSET, immediate: true });
+
+    let cancelScroll: (() => void) | undefined;
+    if (hasScrollToFilters()) {
+      /* Menu theke onno page theke ashchi: scrollY ja-i hok chip row-e jabo (ar layout sthir na howa porjonto position thik rakhbo) */
+      cancelScroll = scrollToFiltersWhenStable(
+        () => filtersRef.current,
+        () => clearScrollToFilters()
+      );
+    } else {
+      const el = filtersRef.current;
+      if (initial && el) {
+        /* Shorashori URL / refresh: age thekei chip row-er niche thakle (browser-er restore kora scroll) kichu kori na */
+        const target = el.getBoundingClientRect().top + window.scrollY + SCROLL_OFFSET;
+        if (window.scrollY < target) scrollToElement(el, { offset: SCROLL_OFFSET, immediate: true });
+      }
     }
 
     window.addEventListener(PROJECT_FILTER_EVENT, onFilterEvent);
     window.addEventListener("popstate", fromUrl);
     return () => {
+      cancelScroll?.();
       window.removeEventListener(PROJECT_FILTER_EVENT, onFilterEvent);
       window.removeEventListener("popstate", fromUrl);
     };

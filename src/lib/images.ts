@@ -27,7 +27,7 @@ export const images = {
 
   /* Services section (Cloudinary public ID, extension chara) */
   serviceUiUx: "843c323a-9c0a-4cca-b08a-74197bf88f2a_mnkepw",
-  serviceBrandIdentity: "image_6349883_ejobk8",
+  serviceBrandIdentity: "Brand_Identity-01_dhl6py",
   serviceWeb: "Software_ufaqbi",
   serviceMobile: "mobile_app_ptoy9i",
   serviceProducts: "product_solution_quye9z",

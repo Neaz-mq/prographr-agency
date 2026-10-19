@@ -39,7 +39,7 @@ export const services: Service[] = [
     id: "brand-identity-design",
     title: "Brand Identity Design",
     tags: ["Logo Design", "Brand Guideline", "Stationery Design", "2D, 3D Illustration Design"],
-    image: { src: images.serviceBrandIdentity, alt: "Cultt brand identity design: logo, social stories and brand pattern", preFramed: true },
+    image: { src: images.serviceBrandIdentity, alt: "Filamento brand identity design: logo, typography, product poster and interior photography" }, // raw image (frame nai): baki service-er moto code theke black panel + rounded corner dey
   },
   {
     id: "web-development",

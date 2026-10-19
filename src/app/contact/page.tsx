@@ -1,0 +1,32 @@
+import type { Metadata } from "next";
+import { ContactHero } from "@/components/sections/ContactHero";
+import { TrustedBy } from "@/components/sections/TrustedBy";
+import { Contact } from "@/components/sections/Contact";
+import { Footer } from "@/components/layout/Footer";
+
+export const metadata: Metadata = {
+  title: "Contact Us — Prographr",
+  description:
+    "Get in touch with Prographr. Book a free 20-minute call to talk about your project, goals and the digital experience you want to build.",
+};
+
+export default function ContactPage() {
+  return (
+    <>
+      <main>
+        {/* --h = home page-er moto usable height (100svh - nav-er jonno 5.75rem). ContactHero-r header-er pt ar TrustedBy-r height
+            ei variable-er upor nirbhor kore, tai duto-i ei wrapper-er bhitore thakte hobe. (/services, /pricing-er ekoi structure: min-height/flex nai, tai hero ar strip-er majhe extra gap hoy na) */}
+        <div className="[--h:calc(100svh-5.75rem)]">
+          <ContactHero />
+
+          {/* Brand section: home/projects/services/pricing page-er ekoi TrustedBy (Figma: hero-r pore) */}
+          <TrustedBy />
+        </div>
+
+        {/* "Let's Talk About Your Project" booking section (home page-er ekoi, #contact). Footer-er "Contact" link-o ekhane kaj korbe */}
+        <Contact />
+      </main>
+      <Footer />
+    </>
+  );
+}

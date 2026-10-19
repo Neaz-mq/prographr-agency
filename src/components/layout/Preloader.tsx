@@ -11,13 +11,22 @@ import { PreloaderController } from "./PreloaderController";
      700-985   Dot: arc-er kendro-te fade-in, tarpor choto hoye mishe jay
      1135-1585 L (duita bar): patla line theke mota hoye puro L hoy (kon fixed, baire-r dhar baire soreh)
      1600-2750 Mark bame soriye jay, ek-i shomoy "Prographr" text logo-r pashe theke dane slide kore beriye ashe.
-               Duita-i ek-i duration + easing (--pl-slide-*), tai mirror-er moto smooth: logo jotota bame, text totota dane */
+               Duita-i ek-i duration + easing (--pl-slide-*), tai mirror-er moto smooth: logo jotota bame, text totota dane
+   Exit (page + font load + minimum time hole, PreloaderController data-state="exit" dey; timeline globals.css-e) = entry-r ulto:
+     0-1150    Text logo-r pichone dhuke jay (je jayga theke beriyechhilo), ek-i shomoy logo majhkhane ashe
+     1150-1300 Logo majhkhane ektu thame
+     1300-2150 Logo majhkhane theke upor-bam kone Header-er logo-r jayga-y uriye jay (ar choto hoy), tar shathe shathe...
+     1450-2550 Safed curtain upor theke niche soriye jay (soft edge), home page uncover hoy ar hero-r reveal wipe-er shathe upor theke niche phute othe
+     2150      Logo Header-er logo-r jayga-y pouchhe jay ar oitai Header-er logo hoye jay, tarpor "Prographr" text logo-r pichon theke bere ashe
+   Header (ba page-er scroll) na thakle logo-morph bad, logo majhkhane choto hoye vanish hoy (fallback). Controller-e "setupMorph". */
 
 const WORD = "Prographr";
 
 export function Preloader() {
   return (
     <div id="preloader" className="preloader" role="status" aria-label="Loading Prographr">
+      {/* Safed curtain: exit-e upor theke niche soriye home page uncover kore (globals.css ".pl-curtain") */}
+      <div className="pl-curtain" aria-hidden="true" />
       <div className="pl-lockup" aria-hidden="true">
         <div className="pl-mark">
           {/* L shape: duita bar (oporer + bamer), duita-i nijer kon (bottom-right) theke scale hoy */}

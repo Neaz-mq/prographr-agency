@@ -6,6 +6,7 @@ import { CloudImage } from "@/components/ui/CloudImage";
 import { ChevronRightIcon, LinkedinIcon, VerifyBoldIcon } from "@/components/ui/icons";
 import { team } from "@/lib/team";
 import { reveal } from "@/lib/reveal";
+import { isBackdropFrozen } from "@/lib/menu-backdrop";
 import { cn } from "@/lib/utils";
 
 type EmblaApi = NonNullable<ReturnType<typeof useEmblaCarousel>[1]>;
@@ -118,7 +119,8 @@ export function TeamCarousel() {
         return;
       }
 
-      const paused = hovered || focused || dragging || document.hidden;
+      /* Nav menu (Project / Services) khola thakle autoplay ruke thake: pechone slide/progress bar nore na, tai blur-er niche kono extra frame toiri hoy na */
+      const paused = hovered || focused || dragging || document.hidden || isBackdropFrozen();
       if (!paused) elapsed += dt;
 
       if (elapsed >= AUTOPLAY_MS) {

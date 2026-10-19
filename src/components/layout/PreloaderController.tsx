@@ -4,8 +4,8 @@ import { useEffect } from "react";
 
 const MIN_VISIBLE = 3400; // entry animation shesh hobar por-o ektu thake, jate logo ta bhalo kore dekha jay
 const MAX_VISIBLE = 6000; // internet khub slow hole-o ete-i chole jabe, user atke thakbe na
-const REVEAL_LEAD_MS = 150; // overlay-r fade-out shuru howar koto ms pore page-er reveal animation shuru hobe (overlay-r shathe crossfade)
-const EXIT_FALLBACK_MS = 2000; // overlay-r `pl-out` animationend kono karone na fire hole eto pore-i zor kore shesh kora hobe
+const REVEAL_LEAD_MS = 250; // curtain soro shuru howar koto ms pore page-er reveal animation shuru hobe (curtain-er edge upore header-er jayga chhariye jawar por, jate reveal ta curtain-er niche na hariye jay)
+const EXIT_FALLBACK_MS = 3500; // overlay-r `pl-out` animationend kono karone na fire hole eto pore-i zor kore shesh kora hobe (exit animation ~2550ms, tai ekhane tar cheye beshi)
 
 /* Preloader-er "brain":
    - Page load + font ready + minimum time, tinta-i hole exit animation chalay
@@ -59,6 +59,42 @@ export function PreloaderController() {
       window.removeEventListener("scroll", onScroll);
     };
 
+    /* Logo-morph: preloader-er logo majhkhane theke Header-er logo-r jayga-y uriye giye oitai Header-er logo hoye jay.
+       Target-er jayga browser-er theke maapi (getBoundingClientRect), tai kono viewport / font / layout-e hardcode nai.
+       Kono shomoshya hole (Header nai, page niche scroll kora, target screen-er baire) morph bad, ager moto vanish-e fallback. */
+    let morphActive = false;
+    let landed = false;
+    const setupMorph = () => {
+      const mark = el.querySelector<HTMLElement>(".pl-mark");
+      const target = document.querySelector<HTMLElement>("[data-pl-logo] .logo-mark");
+      if (!mark || !target || window.scrollY > 4) return;
+
+      // Age flag boshai: eta Header wrapper-er slide-in animation bondho kore, tai transform chhara asol jayga maapa jay
+      root.setAttribute("data-pl-morph", "");
+      const t = target.getBoundingClientRect();
+      const m = mark.getBoundingClientRect(); // entry shesh, tai kono transform nai: mark-er asol (natural) jayga
+      const o = el.getBoundingClientRect();
+      const inView = t.width > 0 && m.width > 0 && t.left >= 0 && t.top >= 0 && t.right <= o.width && t.bottom <= o.height;
+      if (!inView) {
+        root.removeAttribute("data-pl-morph");
+        return;
+      }
+      // Landing-er distance mark-er MAAPA position theke (font / --pl-shift-er upor nirbhor na kore), tai kokhono 1px-o off hoy na
+      el.style.setProperty("--pl-fx", `${t.left + t.width / 2 - (m.left + m.width / 2)}px`);
+      el.style.setProperty("--pl-fy", `${t.top + t.height / 2 - (m.top + m.height / 2)}px`);
+      el.style.setProperty("--pl-fscale", String(t.width / m.width));
+      el.dataset.morph = "";
+      morphActive = true;
+    };
+
+    // Logo Header-er jayga-y pouchhe gele: Header-er asol logo dekhao (crossfade), preloader-er mark lukao, text beriye ashbe
+    const land = () => {
+      if (!morphActive || landed) return;
+      landed = true;
+      root.setAttribute("data-pl-landed", "");
+      el.dataset.landed = "";
+    };
+
     const finish = () => {
       if (finished) return;
       finished = true;
@@ -70,19 +106,19 @@ export function PreloaderController() {
       }
       const done = () => {
         el.hidden = true;
+        land(); // animationend kono karone na fire hole-o Header-er logo jeno lukiye na thake
         release();
       };
+      setupMorph();
       // Overlay-r fade-out (`pl-out`) shuru hole-i page-er reveal shuru kori, overlay puro mishe jawar opekkha kori na.
       // Ager moto shesh howar por shuru hole nav/button age dekha jeto, logo + hero pore ashto, majhkhane faka lagto.
       el.addEventListener("animationstart", (e) => {
         if (e.target === el && e.animationName === "pl-out") timers.push(window.setTimeout(unpause, REVEAL_LEAD_MS));
       });
-      el.addEventListener(
-        "animationend",
-        (e) => {
-          if (e.target === el && e.animationName === "pl-out") done();
-        }
-      );
+      el.addEventListener("animationend", (e) => {
+        if (e.target === el && e.animationName === "pl-out") done();
+        else if (e.animationName === "pl-mark-fly") land();
+      });
       el.dataset.state = "exit";
       timers.push(window.setTimeout(done, EXIT_FALLBACK_MS));
     };
