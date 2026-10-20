@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { ContactHero } from "@/components/sections/ContactHero";
 import { TrustedBy } from "@/components/sections/TrustedBy";
-import { Contact } from "@/components/sections/Contact";
+import { ContactFormSection } from "@/components/sections/ContactFormSection";
 import { Footer } from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
@@ -23,8 +23,8 @@ export default function ContactPage() {
           <TrustedBy />
         </div>
 
-        {/* "Let's Talk About Your Project" booking section (home page-er ekoi, #contact). Footer-er "Contact" link-o ekhane kaj korbe */}
-        <Contact />
+        {/* "Have a Project in Mind? Let's Talk" form section (Figma: Desktop - 2014, #contact). Footer-er "Contact" link-o ekhane kaj korbe */}
+        <ContactFormSection />
       </main>
       <Footer />
     </>
