@@ -5,16 +5,22 @@ import nodemailer from "nodemailer";
 
    POST /api/contact
    body: { name, email, whatsapp?, service, budget?, details, website? }
-   -> Contact form-er message CONTACT_TO_EMAIL-e (default neazmorshed666@gmail.com) pathay. Client-er email-e Reply dile sorasori client-er kache jay.
+   -> Contact form-er message duita email-e (default neazmorshed666@gmail.com + contact.prographr@gmail.com) pathay. Client-er email-e Reply dile sorasori client-er kache jay.
 
    Env (shob server-side, shudhu .env.local ar Vercel Environment Variables-e, kokhono browser/chat-e na):
      SMTP_USER        = je Gmail theke mail pathabe (jemon neazmorshed666@gmail.com)
      SMTP_PASS        = oi Gmail-er "App password" (16 okkhor, Google Account > Security > 2-Step Verification > App passwords). Normal password na.
-     CONTACT_TO_EMAIL = (optional) jekhane mail jabe. Na dile neazmorshed666@gmail.com
+     CONTACT_TO_EMAIL = (optional) jekhane mail jabe, comma diye ekadhik (a@x.com,b@y.com). Na dile upore-r duto default email
      SMTP_HOST / SMTP_PORT / SMTP_SECURE = (optional) Gmail chara onno SMTP hole. Default smtp.gmail.com / 465 / true
    SMTP_USER ba SMTP_PASS na thakle 501 return kore. */
 
-const DEFAULT_TO = "neazmorshed666@gmail.com";
+/* Default receiver (duijon-i mail pay). Env CONTACT_TO_EMAIL-e comma diye alada kore onno email dile seta-i use hobe */
+const DEFAULT_TO = ["neazmorshed666@gmail.com", "contact.prographr@gmail.com"];
+
+const recipients = () => {
+  const list = (process.env.CONTACT_TO_EMAIL ?? "").split(",").map((e) => e.trim()).filter(Boolean);
+  return list.length ? list : DEFAULT_TO;
+};
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 /* Simple in-memory rate limit (per IP, 5 request / 10 min). Serverless-e best-effort. */
@@ -91,15 +97,21 @@ export async function POST(req: Request) {
     auth: { user, pass },
   });
 
+  const to = recipients();
   try {
-    await transporter.sendMail({
+    const info = await transporter.sendMail({
       from: `"Prographr Contact Form" <${user}>`,
-      to: process.env.CONTACT_TO_EMAIL?.trim() || DEFAULT_TO,
+      to,
       replyTo: name ? { name, address: email } : email, // Reply dile sorasori client-er kache jabe
       subject: `New inquiry: ${service} — ${name || email}`,
       text: plain,
       html,
     });
+    /* SMTP server prottek receiver-ke accept korechhe ki na check kori. Ekjon-o reject hole success dekhai na (kono mail chupchap harabe na) */
+    if (info.rejected.length > 0 || info.accepted.length < to.length) {
+      console.error("[contact] recipient rejected:", info.rejected);
+      return NextResponse.json({ error: "send_failed" }, { status: 502 });
+    }
   } catch (err) {
     console.error("[contact] sendMail failed:", err instanceof Error ? err.message : err);
     return NextResponse.json({ error: "send_failed" }, { status: 502 });
