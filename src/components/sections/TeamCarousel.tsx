@@ -222,6 +222,7 @@ export function TeamCarousel() {
                     fill
                     sizes="(min-width: 1024px) 35rem, 100vw"
                     className="object-cover"
+                    style={member.imagePosition ? { objectPosition: member.imagePosition } : undefined}
                     draggable={false}
                   />
                 </div>

@@ -34,10 +34,13 @@ export const images = {
   serviceSoftware: "Software_Development_ddz8u4",
   serviceMaintenance: "software_maintenance_mgobxm",
 
-  /* Team section (Cloudinary public ID, version/extension chara). 3 ta portrait, kichu member-er ekoi chobi reuse hoy */
-  teamPortraitA: "b0c34c33f3bd3fd2aed0324546eb717420231082_xxdrvz",
-  teamPortraitB: "14f98afedf6fe06782685cfc949b6560fa1e5d01_evdbsx",
-  teamPortraitC: "0d5879c075743a1f06645eae23a444feb78fd48f_yc9wdv",
+  /* Team section (Cloudinary version + public ID, extension chara). Protita member-er nijer chobi (Figma portrait, 1..6) */
+  teamMember1: "v1792487445/a714bc0c-39ea-46aa-b1ab-d37693a0fe74_1_dlp5tl", // Mahamudul Islam
+  teamMember2: "v1792487478/b2973fc2-10e9-42ec-b7d4-b6919042eeef_2_swhcfy", // Neaz
+  teamMember3: "v1792487671/4201cd3e-f79f-4861-813a-58d0b4041c44_2_ypsgdj", // Raihan Uddin
+  teamMember4: "v1792487260/a4f692b3-c6e7-490d-8da2-7e033e2325ee_1_tkvp0d", // Kawsar Ahmed
+  teamMember5: "v1792485062/unnamed_8_zosz7i", // Nahid Hasan
+  teamMember6: "v1792485147/eb9f59fa-d3ab-4f73-a5cb-ca56079e40be_1_nfbmjl", // Ali Hasan Sagor
 
   /* Showcase marquee section (Cloudinary public ID, version/extension chara). Desktop design (border CSS diye ShowcaseMarquee-te boshano hoy), phone-er PNG-te nijer border ache */
   showcaseDashboard: "Desktop_-_93_wnmdkq",

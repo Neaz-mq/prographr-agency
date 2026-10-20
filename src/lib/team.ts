@@ -4,37 +4,27 @@ import { images } from "@/lib/images";
 export type TeamMember = {
   name: string;
   role: string;
-  image: string; // Cloudinary public ID
-  imageStyle: CSSProperties; // Figma-r image size/position (card-er majhkhane center kora)
-  captionLow?: boolean; // Figma: Kawsar-er card-e bottom padding 12px (baki 20px)
+  image: string; // Cloudinary public ID (version shoho)
+  imageStyle: CSSProperties; // Figma-r image size/position (card-er bhitore)
+  imagePosition?: string; // object-position (shudhu fill/cover framing-e kaje lage). Default center
+  fadeTop?: number; // px: image-er upor-er edge-e ei porjonto fade (source photo-te matha-r upore faka na thakle flat cut lukanor jonno)
+  captionLow?: boolean; // optional: caption-er bottom padding 12px (default 20px, Figma-r shob card-e 20px)
   linkedin: string;
 };
 
-/* Figma-te protita portrait card-er theke horizontally CENTER kora (left = (302 - width) / 2). Tai left % na diye 50% + translate use kora hoyeche.
-   Image-er size (rem) ar top fix, aspect-ratio thik thake. Card choto/boro hole matha kate na.
-   Card Figma-r 302px-er cheye choura hole image proportionally boro hoy (max(100%, designW)), tai kono dike faka thake na. */
-const frame = (width: number, height: number, top: number): CSSProperties => ({
-  left: "50%",
-  top: `${top / 16}rem`,
-  width: `max(100%, ${width / 16}rem)`,
-  aspectRatio: `${width} / ${height}`,
-  transform: "translateX(-50%)",
-});
+/* Framing: image gulo card-e puro bhore (cover) boshe, matha-r headroom image-er nijer theke ashe (Figma-r card export, caption chhara).
+   fillShift(dy): image-ke dy px niche (+) ba upore (-) soray, kono dike faka rakhe na. Shobar matha ek line-e na hole shudhu oi member-er dy bodlalei hobe. */
+const fillShift = (dy: number): CSSProperties =>
+  dy >= 0
+    ? { left: 0, top: `${dy}px`, width: "100%", height: "100%" }
+    : { left: 0, top: `${dy}px`, width: "100%", height: `calc(100% + ${-dy}px)` };
 
-/* Protita portrait-er Figma framing (width, height, top). Same image onno member-e reuse hole same framing.
-   UP = browser-e matha ektu niche dekhacchilo, tai protita top-e kichu px upore tola hoyeche. Aro upore chaile UP baro, niche chaile komao. */
-const UP = { A: 9, B: 26, C: 22 };
-const framingA = frame(549, 549, 0 - UP.A); // image 6350928
-const framingB = frame(337, 451, -23 - UP.B); // image 6350930
-const framingC = frame(331, 498, 0 - UP.C); // image 6350926
-const framingB2 = frame(337, 451, -25.47 - UP.B); // Kawsar: frame (top -4) + image (top -21.47)
-
-/* TODO: LinkedIn profile URL gula boshao ("#" placeholder) */
+/* TODO: LinkedIn profile URL gula boshao ("#" placeholder). */
 export const team: TeamMember[] = [
-  { name: "Mahamudul Islam", role: "CEO at Prographr", image: images.teamPortraitA, imageStyle: framingA, linkedin: "#" },
-  { name: "Neaz Morshed", role: "Web App Developer", image: images.teamPortraitB, imageStyle: framingB, linkedin: "#" },
-  { name: "Raihan Uddin", role: "Sr. Graphic Designer", image: images.teamPortraitC, imageStyle: framingC, linkedin: "#" },
-  { name: "Kawsar Ahmed", role: "UI UX Designer", image: images.teamPortraitB, imageStyle: framingB2, captionLow: true, linkedin: "#" },
-  { name: "Nahid Hasan", role: "Graphic Designer", image: images.teamPortraitA, imageStyle: framingA, linkedin: "#" },
-  { name: "Ali Hasan Sagor", role: "Presentation Designer", image: images.teamPortraitC, imageStyle: framingC, linkedin: "#" },
+  { name: "Mahamudul Islam", role: "CEO at Prographr", image: images.teamMember1, imageStyle: fillShift(0), imagePosition: "center top", linkedin: "#" },
+  { name: "Neaz Morshed", role: "Web App Developer", image: images.teamMember2, imageStyle: fillShift(0), imagePosition: "center top", linkedin: "#" },
+  { name: "Raihan Uddin", role: "Sr. Graphic Designer", image: images.teamMember3, imageStyle: fillShift(0), imagePosition: "center top", linkedin: "#" },
+  { name: "Kawsar Ahmed", role: "UI UX Designer", image: images.teamMember4, imageStyle: fillShift(0), imagePosition: "center top", linkedin: "#" },
+  { name: "Nahid Hasan", role: "Graphic Designer", image: images.teamMember5, imageStyle: fillShift(2.2), imagePosition: "center top", linkedin: "#" },
+  { name: "Ali Hasan Sagor", role: "Presentation Designer", image: images.teamMember6, imageStyle: fillShift(11.7), imagePosition: "center top", linkedin: "#" },
 ];
