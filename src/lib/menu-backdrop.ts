@@ -41,6 +41,8 @@ function loopingAnimations(): Animation[] {
     const effect = animation.effect as KeyframeEffect | null;
     const target = effect?.target;
     if (!effect || !target || !target.matches(LOOPING_TARGETS)) return false;
+    /* Menu panel-er nijer collage marquee (data-keep-running) kokhono thamano hobe na: hover korleo chole thakbe */
+    if (target.closest("[data-keep-running]")) return false;
     return effect.getComputedTiming().iterations === Infinity;
   });
 }

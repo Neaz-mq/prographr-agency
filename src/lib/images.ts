@@ -27,7 +27,7 @@ export const images = {
 
   /* Services section (Cloudinary public ID, extension chara) */
   serviceUiUx: "843c323a-9c0a-4cca-b08a-74197bf88f2a_mnkepw",
-  serviceBrandIdentity: "Brand_Identity-01_dhl6py",
+  serviceBrandIdentity: "v1792479689/Brand_Identity-01_zwddpa", // notun Brand Identity image (Cloudinary version + public id; loader f_auto/w_ nijei boshay)
   serviceWeb: "Software_ufaqbi",
   serviceMobile: "mobile_app_ptoy9i",
   serviceProducts: "product_solution_quye9z",

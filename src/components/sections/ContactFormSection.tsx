@@ -5,6 +5,7 @@ import { SparkleIcon } from "@/components/ui/icons";
 import { ContactForm } from "@/components/sections/ContactForm";
 import { images } from "@/lib/images";
 import { reveal } from "@/lib/reveal";
+import { cn } from "@/lib/utils";
 
 /* Figma: "Desktop - 2014" (1440 x 1105), bg #FAFAFA, padding 100px 80px.
    Frame (1280 x 905, gap 20): white card (1280 x 814, radius 30, padding 40, gap 60) -> banner pill (1280 x 71, #F0F0F0).
@@ -23,29 +24,58 @@ function TickCircleIcon() {
   );
 }
 
-/* Figma: Frame 2147237442 (471 x 306, #F0F0F0, radius 20, overflow clip). Row-er left/top px Figma-r moto (box-er bhitore),
-   tile height 135, gap 11.02. Tile-gulo Figma export (images.menuCollage*, white border + radius shoho), bam/dan-e kete jay.
-   Row 3 (top 305) shudhu 1px dekha jay, tai bad. Row 1: Cuisine, Header, Cuisine. Row 2: 3 ta dashboard. */
-const COLLAGE_ROWS: { left: number; top: number; tiles: { src: string; width: number }[] }[] = [
-  {
-    left: -7.94,
-    top: 13,
-    tiles: [
-      { src: images.menuCollage2, width: 174.73 },
-      { src: images.menuCollage1, width: 194.19 },
-      { src: images.menuCollage2, width: 174.73 },
-    ],
-  },
-  {
-    left: -20,
-    top: 159.01,
-    tiles: [
-      { src: images.menuCollage3, width: 176.71 },
-      { src: images.menuCollage4, width: 192.41 },
-      { src: images.menuCollage6, width: 163.92 },
-    ],
-  },
+/* Figma: Frame 2147237442 (471 x 306, #F0F0F0, radius 20, overflow clip). Tile height 135, gap 11.02.
+   Ekhon duita row automatic marquee: upor-er row dan-e (left -> right), niche-r row bam-e (right -> left). Home-er ShowcaseMarquee-r moto
+   pure CSS (.marquee-track / .marquee-track-reverse, globals.css), tai GPU-te smooth, JS lage na.
+   Seamless loop: protita set-er width container (471px)-er cheye boro (>= 700px), duita copy, -50% translate.
+   Seam-e duita ekoi tile pashapashi na ashe, tai set-er shesh ar shuru-r tile alada (Cuisine/Header, ar 3/4/6/5). */
+type Tile = { src: string; width: number };
+
+const ROW_TOP: Tile[] = [
+  { src: images.menuCollage2, width: 174.73 }, // Cuisine
+  { src: images.menuCollage1, width: 194.19 }, // Header
+  { src: images.menuCollage2, width: 174.73 },
+  { src: images.menuCollage1, width: 194.19 },
 ];
+
+const ROW_BOTTOM: Tile[] = [
+  { src: images.menuCollage3, width: 176.71 },
+  { src: images.menuCollage4, width: 192.41 },
+  { src: images.menuCollage6, width: 163.92 },
+  { src: images.menuCollage5, width: 189.64 },
+];
+
+/* Ekta marquee row. Duita ekoi set, -50% porjonto giye abar shuru (seamless). reverse = left -> right */
+function CollageRow({ tiles, reverse = false, duration }: { tiles: Tile[]; reverse?: boolean; duration: string }) {
+  const set = (copy: number) => (
+    <ul className="flex shrink-0 items-center gap-[11.02px] pr-[11.02px]">
+      {tiles.map((tile, i) => (
+        <li key={`${copy}-${tile.src}-${i}`} className="relative h-[135px] shrink-0" style={{ width: tile.width }}>
+          <CloudImage
+            src={tile.src}
+            alt=""
+            fill
+            sizes="200px"
+            loading="eager"
+            fetchPriority="low"
+            decoding="async"
+            draggable={false}
+            className="select-none object-fill"
+          />
+        </li>
+      ))}
+    </ul>
+  );
+
+  return (
+    <div className="marquee fade-edges overflow-hidden" suppressHydrationWarning>
+      <div className={cn("flex w-max", reverse ? "marquee-track-reverse" : "marquee-track")} style={{ animationDuration: duration }}>
+        {set(0)}
+        {set(1)}
+      </div>
+    </div>
+  );
+}
 
 export function ContactFormSection() {
   return (
@@ -86,17 +116,10 @@ export function ContactFormSection() {
                 </ul>
               </div>
 
-              {/* Collage: decorative */}
-              <div aria-hidden="true" className="relative h-[306px] w-full overflow-hidden rounded-[1.25rem] bg-chip">
-                {COLLAGE_ROWS.map((row) => (
-                  <div key={row.top} className="absolute flex items-center gap-[11.02px]" style={{ left: row.left, top: row.top }}>
-                    {row.tiles.map((tile, i) => (
-                      <div key={`${tile.src}-${i}`} className="relative h-[135px] shrink-0" style={{ width: tile.width }}>
-                        <CloudImage src={tile.src} alt="" fill sizes="200px" className="object-fill" />
-                      </div>
-                    ))}
-                  </div>
-                ))}
+              {/* Collage: decorative. Upor-er row dan-e, niche-r row bam-e automatic cholbe (hover-e thame, screen-er baire pause) */}
+              <div aria-hidden="true" className="flex h-[306px] w-full flex-col justify-center gap-[11px] overflow-hidden rounded-[1.25rem] bg-chip">
+                <CollageRow tiles={ROW_TOP} reverse duration="45s" />
+                <CollageRow tiles={ROW_BOTTOM} duration="55s" />
               </div>
             </div>
 

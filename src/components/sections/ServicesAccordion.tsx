@@ -103,8 +103,9 @@ function ToggleIcon({ open }: { open: boolean }) {
   );
 }
 
-/* Image ratio na dile default: ~1134 x 402 (2.82 : 1), Brand Identity / UI UX-er wide image-er ratio */
-const DEFAULT_RATIO = 1134 / 402;
+/* Shob service-er image frame-er ekoi ratio (2557 x 1035 = ~2.47 : 1, Brand Identity image-er ratio), tai shob image-er height soman.
+   Image frame-e `cover` hoy: onno ratio-r image-er sudhu ektu dan-bam ba upor-niche kete jay. Kono service-er alada ratio dorkar hole service.image.ratio dao. */
+const DEFAULT_RATIO = 2557 / 1035;
 
 function ServiceMedia({ service, open }: { service: Service; open: boolean }) {
   const image = service.image;

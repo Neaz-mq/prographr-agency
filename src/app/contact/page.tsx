@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ContactHero } from "@/components/sections/ContactHero";
 import { TrustedBy } from "@/components/sections/TrustedBy";
 import { ContactFormSection } from "@/components/sections/ContactFormSection";
+import { Faq } from "@/components/sections/Faq";
 import { Footer } from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
@@ -25,6 +26,10 @@ export default function ContactPage() {
 
         {/* "Have a Project in Mind? Let's Talk" form section (Figma: Desktop - 2014, #contact). Footer-er "Contact" link-o ekhane kaj korbe */}
         <ContactFormSection />
+
+        {/* FAQ: home/services/pricing/projects-er ekoi section (Figma: Contact form-er pore, footer-er age). Ei page-e nijer form-i ache,
+            tai home-er moto alada "Contact" CTA section lage na. FAQ-er "Let's start talk" button (#contact) ei page-er form-e smooth scroll kore niye jay. */}
+        <Faq />
       </main>
       <Footer />
     </>

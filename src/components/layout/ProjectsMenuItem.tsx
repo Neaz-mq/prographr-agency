@@ -69,34 +69,70 @@ const serviceMenuItems: { title: string; description: string; href: string }[] =
 
 /* Protita card click korle /projects page-e oi filter (title = /projects-er chip-er naam) selected obosthay khole */
 
-/* Collage: Figma-r exact row position (left/top px, 351 x 452 box-er bhitor) ar tile width (height sob 135).
-   6 ta image Figma theke export kora (images.menuCollage1..6), tai Figma-r moto-i bam/dan edge-e kete jay (clip hoy overflow-hidden-e). */
-const collageRows: { left: number; top: number; tiles: { src: string; width: number }[] }[] = [
-  {
-    left: -7.94,
-    top: 13,
-    tiles: [
-      { src: images.menuCollage1, width: 194.19 },
-      { src: images.menuCollage2, width: 174.73 },
-    ],
-  },
-  {
-    left: -20,
-    top: 159.01,
-    tiles: [
-      { src: images.menuCollage3, width: 176.71 },
-      { src: images.menuCollage4, width: 192.41 },
-    ],
-  },
-  {
-    left: -8,
-    top: 305.01,
-    tiles: [
-      { src: images.menuCollage5, width: 189.64 },
-      { src: images.menuCollage6, width: 163.92 },
-    ],
-  },
+/* Collage: Figma-r moto 351 x 452 box-e 3 ta row (tile height 135, gap 11.02, prothom 3 ta view Figma-r moto-i: 1,2 / 3,4 / 5,6).
+   Ekhon protita row automatic marquee (Contact page-er collage-er moto ekoi feel, pure CSS .marquee-track):
+   row 1 dan-e (left -> right), row 2 bam-e (right -> left), row 3 abar dan-e. Image 6 ta Figma export (images.menuCollage1..6).
+   Seamless loop: set-er width (>= 560px) box (351px)-er cheye boro, duita copy, -50% translate.
+   Seam-e duita ekoi tile pashapashi na ashe (row-er shesh tile ar prothom tile alada). */
+type CollageTile = { src: string; width: number };
+
+const T1: CollageTile = { src: images.menuCollage1, width: 194.19 };
+const T2: CollageTile = { src: images.menuCollage2, width: 174.73 };
+const T3: CollageTile = { src: images.menuCollage3, width: 176.71 };
+const T4: CollageTile = { src: images.menuCollage4, width: 192.41 };
+const T5: CollageTile = { src: images.menuCollage5, width: 189.64 };
+const T6: CollageTile = { src: images.menuCollage6, width: 163.92 };
+
+const collageRows: { tiles: CollageTile[]; reverse: boolean; duration: string }[] = [
+  { tiles: [T1, T2, T6], reverse: true, duration: "38s" }, // dan-e
+  { tiles: [T3, T4, T1], reverse: false, duration: "46s" }, // bam-e
+  { tiles: [T5, T6, T2], reverse: true, duration: "42s" }, // dan-e
 ];
+
+/* Ekta marquee row. playing = panel khola thakle chole, bondho thakle pause (hidden panel-e shudhu shudhu animate na kore).
+   Inline animationPlayState .marquee:hover-er pause-ke override kore, tai collage-er upor mouse thakleo cholte thake (menu-te card click-i main interaction) */
+function CollageMarquee({ row, playing }: { row: (typeof collageRows)[number]; playing: boolean }) {
+  const set = (copy: number) => (
+    <ul className="flex shrink-0 items-center gap-[0.6888rem] pr-[0.6888rem]">
+      {row.tiles.map((tile, i) => (
+        <li
+          key={`${copy}-${tile.src}-${i}`}
+          className="relative h-[8.4375rem] shrink-0 overflow-hidden rounded-md bg-white"
+          style={{ width: `${tile.width}px` }}
+        >
+          <CloudImage
+            src={tile.src}
+            alt=""
+            fill
+            sizes="200px"
+            /* eager + age-i decode: panel prothom bar khulle image decode-er jonno atke na jay (armed hole idle-e-i load hoy) */
+            loading="eager"
+            fetchPriority="low"
+            decoding="async"
+            onLoad={(e) => {
+              const img = e.currentTarget;
+              if (typeof img.decode === "function") img.decode().catch(() => {});
+            }}
+            draggable={false}
+            className="select-none object-cover"
+          />
+        </li>
+      ))}
+    </ul>
+  );
+
+  return (
+    <div className="marquee fade-edges overflow-hidden" data-keep-running="" suppressHydrationWarning>
+      <div
+        className={cn("flex w-max", row.reverse ? "marquee-track-reverse" : "marquee-track")}
+        style={{ animationDuration: row.duration, animationPlayState: playing ? "running" : "paused" }}
+      >
+        {set(0)}
+        {set(1)}
+      </div>
+    </div>
+  );
+}
 
 /* Shared menu state (Project + Services ekshathe): shudhu EKTA panel khola thake.
    Ek menu theke onno menu-te jawar shomoy (instant = true) ager panel ar notun panel CROSSFADE kore na, ek frame-e swap hoy
@@ -354,41 +390,9 @@ export function ProjectsMenuItem({
 
             <div
               aria-hidden="true"
-              className="relative h-[28.25rem] w-[21.9375rem] shrink-0 overflow-hidden rounded-[1.25rem] bg-[#F0F0F0]"
+              className="flex h-[28.25rem] w-[21.9375rem] shrink-0 flex-col justify-center gap-[0.6888rem] overflow-hidden rounded-[1.25rem] bg-[#F0F0F0]"
             >
-              {armed &&
-                collageRows.map((row, i) => (
-                  <div
-                    key={i}
-                    className="absolute flex h-[8.4375rem] items-center gap-[0.6888rem]"
-                    style={{ left: `${row.left}px`, top: `${row.top}px` }}
-                  >
-                    {row.tiles.map((tile) => (
-                      <div
-                        key={tile.src}
-                        className="relative h-full shrink-0 overflow-hidden rounded-md bg-white"
-                        style={{ width: `${tile.width}px` }}
-                      >
-                        <CloudImage
-                          src={tile.src}
-                          alt=""
-                          fill
-                          sizes="200px"
-                          /* eager + age-i decode: panel prothom bar khulle image decode-er jonno atke na jay (armed hole idle-e-i load hoy) */
-                          loading="eager"
-                          fetchPriority="low"
-                          decoding="async"
-                          onLoad={(e) => {
-                            const img = e.currentTarget;
-                            if (typeof img.decode === "function") img.decode().catch(() => {});
-                          }}
-                          draggable={false}
-                          className="select-none object-cover"
-                        />
-                      </div>
-                    ))}
-                  </div>
-                ))}
+              {armed && collageRows.map((row, i) => <CollageMarquee key={i} row={row} playing={open} />)}
             </div>
 
             {/* Figma "Polygon 17": panel-er niche white tikon, "Project" button-er dike point kore */}
