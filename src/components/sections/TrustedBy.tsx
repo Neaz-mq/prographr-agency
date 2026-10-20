@@ -5,16 +5,23 @@ import Image from "next/image";
 /* White panel-er slanted edge (Figma: Vector 7818 + Vector 7855). viewBox = panel size 559.12 x 112.47 */
 const PANEL_PATH = "M0 0H559.12C545 0 533 9 526 24L514 52C504 76 493 92 480 102C473 107 468 112.47 458 112.47H0Z";
 
-/* Logo gula public/logos/ e ache. Figma theke SVG export kore same naam-e replace korle pixel-perfect hobe */
+/* Logo gula public/logos/ e ache. Notun brand logo (Cuisine, Filamento, Lock & Load It, Storied Data Inc, WR-01) ekhane.
+   Fail-er naame space ar "&" ache (Lock & Load It.svg), tai path encodeURIComponent diye banano, noile URL bhenge jay.
+   Pore naam shohoj korte chaile (jemon lock-and-load-it.svg) public/logos/-e rename kore ekhane file naam-ta bodle dilei hobe.
+   Image-er size: height fixed (30px, Figma-r moto), width auto, tai SVG-r nijer ratio thake, kono logo thele/chepte jay na.
+   Kono logo onno-gulo-r cheye boro/choto dekhale shudhu oi logo-r `h` (px) bodlao. */
+const logoSrc = (file: string) => `/logos/${encodeURIComponent(file)}`;
+
 const logos = [
-  { src: "/logos/google-pay.svg", alt: "Google Pay", width: 76, height: 30, widthClass: "w-[4.73rem]" },
-  { src: "/logos/aws.svg", alt: "Amazon Web Services", width: 43, height: 30, widthClass: "w-[2.7rem]" },
-  { src: "/logos/blockbank.svg", alt: "BlockBank", width: 153, height: 30, widthClass: "w-[9.55rem]" },
-  { src: "/logos/contentful.svg", alt: "Contentful", width: 151, height: 29, widthClass: "w-[9.46rem]" },
+  { file: "Cuisine.svg", alt: "Cuisine", h: 30 },
+  { file: "Filamento.svg", alt: "Filamento", h: 30 },
+  { file: "Lock & Load It.svg", alt: "Lock & Load It", h: 30 },
+  { file: "Storied Data Inc.svg", alt: "Storied Data Inc", h: 30 },
+  { file: "WR-01.svg", alt: "WR-01", h: 30 },
 ];
 
 /* Marquee: logo-set ek-i jinis kotobar repeat kora. Track -50% porjonto jay, tai seamless hote half >= region-er width lagbe.
-   Ek set ~840px, region boro screen-e ~1800px porjonto hoy, tai 6 set (half = 3 set ~ 2500px) rakhi. */
+   Ek set kom-pokkhe ~700px+ hole 6 set (half = 3 set) region-er (boro screen-e ~1800px) cheye boro thake; set choto hole SET_COUNT barhao. */
 const SET_COUNT = 6;
 const MARQUEE_SECONDS = 50; // boro = dhire. Hero marquee-r speed-er kachakachi (~50px/s)
 
@@ -23,13 +30,15 @@ function LogoSet({ hidden = false }: { hidden?: boolean }) {
     /* gap == pr, tai set-er shesh ar porer set-er shuru-r majhe gap ekoi thake (seamless) */
     <ul aria-hidden={hidden || undefined} className="flex shrink-0 items-center gap-10 pr-10 xl:gap-[6.5rem] xl:pr-[6.5rem]">
       {logos.map((logo) => (
-        <li key={logo.src} className="flex shrink-0 items-center">
+        <li key={logo.file} className="flex shrink-0 items-center">
           <Image
-            src={logo.src}
+            src={logoSrc(logo.file)}
             alt={hidden ? "" : logo.alt}
-            width={logo.width}
-            height={logo.height}
-            className={`h-auto ${logo.widthClass}`}
+            width={0}
+            height={0}
+            unoptimized
+            style={{ height: `${logo.h / 16}rem`, width: "auto" }}
+            className="block max-w-none"
           />
         </li>
       ))}

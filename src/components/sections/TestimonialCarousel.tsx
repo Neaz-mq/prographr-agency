@@ -229,7 +229,7 @@ export function TestimonialCarousel() {
                 <div className="flex min-w-0 flex-1 flex-col justify-between gap-5">
                   <div className="flex flex-col gap-4">
                     <p className="flex items-center gap-2 text-base font-medium leading-tight text-ink md:text-xl">
-                      <AsteriskIcon className="size-5 shrink-0 text-accent md:size-6" />
+                      <AsteriskIcon className="size-5 shrink-0 text-accent md:size-[1.5625rem]" />
                       {t.duration}
                     </p>
                     <ul className="flex flex-wrap gap-2">
@@ -318,10 +318,14 @@ export function TestimonialCarousel() {
   );
 }
 
+/* Figma: 25 x 25 asterisk, fill #0B76F3 (= text-accent). Figma export-er 4-ta path (lomba + ara + dui tirjok), clip-path gulo puro size-er, tai bad. */
 function AsteriskIcon({ className }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" aria-hidden="true">
-      <path d="M12 2.5v19M3.8 7.25l16.4 9.5M3.8 16.75l16.4-9.5" />
+    <svg className={className} width="25" height="25" viewBox="0 0 25 25" fill="currentColor" aria-hidden="true">
+      <path d="M10.2591 0H14.654L13.3223 6.22614V12.4523V18.6784L14.654 24.9045H10.2591L11.5908 18.6784V12.4523V6.22614L10.2591 0Z" />
+      <path d="M-6.0843e-05 14.6488L-6.10352e-05 10.2539L6.22607 11.5857H12.4522H18.6783L24.9045 10.2539V14.6488L18.6783 13.3171H12.4522H6.22607L-6.0843e-05 14.6488Z" />
+      <path d="M5.20344 22.8116L2.09576 19.7039L7.44003 16.2431L11.8426 11.8405L16.2452 7.43801L19.706 2.09375L22.8136 5.20143L17.4693 8.66224L13.0668 13.0648L8.66427 17.4674L5.20344 22.8116Z" />
+      <path d="M22.8136 19.7039L19.706 22.8116L16.2452 17.4673L11.8426 13.0648L7.44003 8.66225L2.09576 5.20143L5.20344 2.09375L8.66427 7.43802L13.0668 11.8406L17.4693 16.243L22.8136 19.7039Z" />
     </svg>
   );
 }

@@ -2,6 +2,7 @@ import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { RevealWords } from "@/components/ui/RevealWords";
 import { Header } from "@/components/layout/Header";
+import { HeroStripes } from "@/components/ui/HeroStripes";
 import { reveal } from "@/lib/reveal";
 import { HeroShowcase } from "./HeroShowcase";
 import { HeroDuo } from "./HeroDuo";
@@ -17,8 +18,11 @@ export function Hero() {
   return (
     /* flex-auto: page.tsx-er wrapper (min-h-svh) screen-er cheye lomba hole extra jayga ei section nei.
        Text block header ar showcase-er majhe majhkhane boshe. Choto screen-e extra jayga nai, tai layout ager moto-i thake. */
-    <section className="flex flex-auto flex-col pb-10 pt-10 md:pt-[clamp(1.25rem,calc(var(--h)*0.06349_-_32.70px),2.5rem)] md:pb-[clamp(2.5rem,calc(var(--h)*0.09524_-_39.05px),4.375rem)]">
-      <Container className="flex flex-auto flex-col">
+    <section className="relative flex flex-auto flex-col pb-10 pt-10 md:pt-[clamp(1.25rem,calc(var(--h)*0.06349_-_32.70px),2.5rem)] md:pb-[clamp(2.5rem,calc(var(--h)*0.09524_-_39.05px),4.375rem)]">
+      {/* Figma background stripes (decorative, shob hero-te ekoi). Content ar showcase-er pichone */}
+      <HeroStripes />
+
+      <Container className="relative flex flex-auto flex-col">
         <Header />
 
         <div className="mt-10 flex flex-auto flex-col items-center md:mt-[clamp(1.75rem,calc(var(--h)*0.15238_-_98.48px),4.75rem)]">
@@ -60,7 +64,7 @@ export function Hero() {
       </Container>
 
       {/* Boro block: blur chara, shudhu fade + niche theke uthe ashe (performance) */}
-      <div className="reveal-up" style={reveal(1000, { duration: 900, y: 24 })}>
+      <div className="reveal-up relative" style={reveal(1000, { duration: 900, y: 24 })}>
         <HeroShowcase />
       </div>
     </section>

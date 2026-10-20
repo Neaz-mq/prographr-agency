@@ -3,6 +3,7 @@ import { Container } from "@/components/ui/Container";
 import { RevealWords } from "@/components/ui/RevealWords";
 import { ChevronRightIcon } from "@/components/ui/icons";
 import { Header } from "@/components/layout/Header";
+import { HeroStripes } from "@/components/ui/HeroStripes";
 import { reveal } from "@/lib/reveal";
 import { HeroDuo } from "./HeroDuo";
 
@@ -21,8 +22,11 @@ const leadCount = HEADING_LEAD.split(" ").length; // 6 ta word, tarpor duo, tarp
 
 export function ProjectsHero() {
   return (
-    <section className="pb-10 pt-10 md:pb-[4.375rem] md:pt-[clamp(1.25rem,calc(var(--h)*0.06349_-_32.70px),2.5rem)]">
-      <Container>
+    <section className="relative pb-10 pt-10 md:pb-[4.375rem] md:pt-[clamp(1.25rem,calc(var(--h)*0.06349_-_32.70px),2.5rem)]">
+      {/* Figma background stripes (decorative, shob hero-te ekoi). Content-er pichone (Container `relative` hole upore thake) */}
+      <HeroStripes />
+
+      <Container className="relative">
         <Header />
 
         <div className="mt-10 flex flex-col items-center gap-6 md:mt-[3.75rem]">

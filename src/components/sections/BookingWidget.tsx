@@ -300,8 +300,21 @@ export function BookingWidget() {
         <div className="flex flex-col gap-3">
           <div className="flex flex-col gap-[0.6875rem]">
             {HOST.avatar ? (
-              <span className="relative size-[1.875rem] overflow-hidden rounded-full border border-white">
-                <CloudImage src={HOST.avatar} alt="" fill sizes="30px" className="object-cover" />
+              /* Figma: "Frame 2147258221" 30 x 30, bg #FFF, radius 100, kono border nai. Bhitore avatar export (26 x 29), circle-er majhkhane.
+                 Shada bg ALADA ekta layer-e (0.5px bhitore, edge-e pouchay na): bg ar photo ek-i clip-e thakle bakano edge-e shada rim (fringe) dekha jay.
+                 Photo ta 30.6px lomba, ektu bairey (bottom -0.3px) rakha, jeno circle-er niche-r edge-e kono faka na thake. Width = height x 26/29 (ratio thik).
+                 sizes 78px: retina-te sharp thake (Cloudinary 3x porjonto width dey) */
+              <span className="relative size-[1.875rem] shrink-0 overflow-hidden rounded-full">
+                <span aria-hidden="true" className="absolute inset-[0.5px] rounded-full bg-white" />
+                <CloudImage
+                  src={HOST.avatar}
+                  alt=""
+                  width={26}
+                  height={29}
+                  sizes="78px"
+                  quality={90}
+                  className="absolute inset-x-0 bottom-[-0.3px] mx-auto h-[30.6px] w-[27.4px] max-w-none object-cover"
+                />
               </span>
             ) : (
               <span aria-hidden="true" className="grid size-[1.875rem] place-items-center rounded-full border border-white bg-[#2B2B2B] text-sm font-semibold text-[#F3F3F3]">
@@ -313,9 +326,9 @@ export function BookingWidget() {
             </p>
           </div>
           <h3 className="max-w-[17.1rem] text-[1.575rem] font-semibold leading-[2.1875rem] text-[#C9C9C9]">{MEETING.title}</h3>
-          <div className="flex flex-col gap-4 text-[1.0963rem] font-medium leading-[1.5625rem] text-[#C9C9C9]">
+          <div className="flex flex-col gap-4 text-[1.0963rem] font-normal leading-[1.5625rem] text-[#C9C9C9]">
             <p>
-              <strong className="font-bold">Hard to imagine the scope?</strong> No worries, I’ll walk you through our workflow and share some client
+              <strong className="font-semibold">Hard to imagine the scope?</strong> No worries, I’ll walk you through our workflow and share some client
               examples to give you a better idea!
             </p>
             <p>Let’s talk about your project! 👋</p>
@@ -371,7 +384,7 @@ export function BookingWidget() {
             <div className="flex flex-col gap-[1.37rem]">
               <div className="grid grid-cols-7 gap-[0.34rem]" aria-hidden="true">
                 {WEEKDAYS.map((w) => (
-                  <span key={w} className="text-center text-[0.8rem] font-bold leading-[1.125rem] tracking-[0.077em] text-[#C9C9C9] sm:text-[0.89rem]">
+                  <span key={w} className="text-center text-[0.8rem] font-medium leading-[1.125rem] tracking-[0.077em] text-[#C9C9C9] sm:text-[0.89rem]">
                     {w}
                   </span>
                 ))}

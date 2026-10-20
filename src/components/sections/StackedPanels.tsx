@@ -163,11 +163,12 @@ export function StackedPanels({ children, className }: { children: ReactNode; cl
     <ul ref={listRef} className={cn("flex w-full flex-col gap-6 md:gap-8", className)}>
       {panels.map((panel, i) => (
         <li key={i} className="md:sticky md:top-10 md:motion-reduce:static" style={{ zIndex: i + 1 }}>
-          {/* Kono border / padding / radius nai (Figma-te card-er bairer frame nai). `bg-[#FAFAFA]` (section-er bg-r ekoi color) rakha hoyeche,
-              jate porer panel uthe ashle ager panel-er card-gulo opaque vabe dhaka pore, kintu bg ta dekha jay na */}
+          {/* Kono border / padding / radius / background nai (Figma-te card-er bairer frame nai). Layer-er bg TRANSPARENT: age ekhane opaque #FAFAFA chhilo,
+              tai porer panel uthe ashle oi shada rectangle duto card-er majher gap ar card-er rounded kon-e ager panel-er upor shada strip hoye dekha jeto.
+              Card gulo nijera opaque (article bg-white + image area bg-chip), tai ager panel-er card thik moto dhaka pore. */}
           <div
             data-stack-layer
-            className="relative [transform-origin:50%_0] md:bg-[#FAFAFA] md:will-change-transform md:[backface-visibility:hidden]"
+            className="relative [transform-origin:50%_0] md:will-change-transform md:[backface-visibility:hidden]"
           >
             {panel}
           </div>

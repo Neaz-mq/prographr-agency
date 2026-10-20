@@ -4,7 +4,7 @@ import { siteConfig } from "@/lib/site";
 export const HOST = {
   name: "Mahamudul",
   handle: "@Prographr",
-  avatar: undefined as string | undefined, // Cloudinary public ID dile photo dekhabe, na dile "M" okkhor
+  avatar: "v1792495032/a714bc0c-39ea-46aa-b1ab-d37693a0fe74_2_ea1sf1" as string | undefined, // Cloudinary public ID (Figma "image 6350863" avatar export, 30px circle-er jonno). undefined dile "M" okkhor dekhabe
 };
 
 export const MEETING = {

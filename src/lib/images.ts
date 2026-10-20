@@ -35,7 +35,7 @@ export const images = {
   serviceMaintenance: "software_maintenance_mgobxm",
 
   /* Team section (Cloudinary version + public ID, extension chara). Protita member-er nijer chobi (Figma portrait, 1..6) */
-  teamMember1: "v1792487445/a714bc0c-39ea-46aa-b1ab-d37693a0fe74_1_dlp5tl", // Mahamudul Islam
+  teamMember1: "v1792487445/a714bc0c-39ea-46aa-b1ab-d37693a0fe74_1_dlp5tl", // Mahmudul Hasan
   teamMember2: "v1792487478/b2973fc2-10e9-42ec-b7d4-b6919042eeef_2_swhcfy", // Neaz
   teamMember3: "v1792487671/4201cd3e-f79f-4861-813a-58d0b4041c44_2_ypsgdj", // Raihan Uddin
   teamMember4: "v1792487260/a4f692b3-c6e7-490d-8da2-7e033e2325ee_1_tkvp0d", // Kawsar Ahmed
