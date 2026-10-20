@@ -444,7 +444,7 @@ function PlanCard({ plan, index }: { plan: Plan; index: number }) {
             </div>
 
             <RollButton
-              href="#contact"
+              href="/contact#contact" /* /contact page-er form section-e (id="contact") direct niye jay, pricing page-er nicher CTA-te na */
               className={cn(
                 "w-full justify-between pr-1.5! h-[2.875rem]!",
                 plan.popular ? "bg-black!" : "bg-[#FAFAFA]! text-black!"
