@@ -25,11 +25,18 @@ const bricolage = Bricolage_Grotesque({
 // export
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://prographr.com"),
   title: "Prographr — Product Design and Development Agency",
   description:
     "Prographr is a product design and development agency crafting intuitive digital products, stunning websites, and scalable solutions.",
-  // TODO: launch-er din eta muche dite hobe, nahole Google-e site index hobe na
-  robots: { index: false, follow: false },
+  openGraph: {
+    type: "website",
+    siteName: "Prographr",
+    title: "Prographr — Product Design and Development Agency",
+    description:
+      "Prographr is a product design and development agency crafting intuitive digital products, stunning websites, and scalable solutions.",
+  },
+  // Live hoyar por noindex shoriye deya hoyeche, ekhon Google index korbe
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
