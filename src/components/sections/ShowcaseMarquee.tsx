@@ -28,9 +28,13 @@ type FramedShot = { kind: "framed"; src: string; alt: string; widthClass: string
 /* Phone card: PNG-te nijer border ache. Height fixed (em), width natural aspect onujayi auto, tai kono faka thake na */
 type PlainShot = { kind: "plain"; src: string; alt: string; width: number; height: number; heightClass: string; sizes: string };
 
-type Shot = FramedShot | PlainShot;
+/* Desktop card (notun): ei image-gulo-r PNG-te nijer black border + rounded corner baked ache (phone-er moto), tai CSS border/radius ar dewa hoy na (dile dui border dekhay).
+   Height fixed (29.5544em), width image-er nijer ratio onujayi auto. Charpashe-r baked shadow/faka Cloudinary e_trim diye kete dey (default tolerance 30, tuning niche) */
+type AutoFramedShot = { kind: "auto"; src: string; alt: string; sizes: string; trim?: boolean | number };
 
-/* Phone card: loop-er seam-eo (set-er shesh o notun set-er shuru) duto dashboard pashapashi na ashe, tai phone protita dashboard-er majhe boshe */
+type Shot = FramedShot | PlainShot | AutoFramedShot;
+
+/* Phone card: health insurance phone (showcasePhone) 2 bar dekhay. Loop-er seam-e (shesh -> shuru) jeno duto dashboard pashapashi na ashe, tai set phone diye shesh hoy */
 const phoneShot: PlainShot = {
   kind: "plain",
   src: images.showcasePhone, // iPhone 13 mini (218.44 x 473)
@@ -41,7 +45,23 @@ const phoneShot: PlainShot = {
   sizes: "(min-width: 768px) 219px, 137px",
 };
 
-/* Sequence: Dashboard, Phone, Dashboard, Phone, (loop) Dashboard, Phone ... */
+/* Notun phone image-gulo-r dimension jani na, tai ager phone-er (218 x 473) moto dhora. Height fixed (em), width natural ratio-te auto, tai size-e kono somoshya nai */
+const phoneOf = (src: string, alt: string): PlainShot => ({ ...phoneShot, src, alt });
+
+/* Phone B (travel app) ar health phone (phoneShot) 2 bar kore dekhay: dui dashboard pashapashi na asar jonno majhe boshano hoyeche */
+const phoneB = phoneOf(images.showcasePhoneB, "Travel booking mobile app design");
+
+/* Phone C (StudyGo): FinPilot ar Filamento-er majhe boshano hoyeche, ar Business-er pore-o ache */
+const phoneC = phoneOf(images.showcasePhoneC, "Mobile app design");
+
+const autoDesktop = (src: string, alt: string): AutoFramedShot => ({
+  kind: "auto",
+  src,
+  alt,
+  sizes: "(min-width: 768px) 760px, 480px",
+});
+
+/* Sequence: MoneyBoard, Health phone, FinPilot, Phone B, Filamento, Phone B, Business, Phone C, Education, Health phone, Cuisine, Phone D, (loop). Dashboard ar phone ekdom alternate, seam-eo */
 const shots: Shot[] = [
   {
     kind: "framed",
@@ -60,7 +80,15 @@ const shots: Shot[] = [
     innerClassName: "inset-0",
     sizes: "(min-width: 768px) 700px, 440px",
   },
-  phoneShot,
+  phoneC, // FinPilot ar Filamento-er majhe: ekhon StudyGo phone (showcasePhoneC / image_6350950)
+  autoDesktop(images.showcaseFilamento, "Filamento e-commerce web app design case study"),
+  phoneB,
+  autoDesktop(images.showcaseBusiness, "Business management dashboard web design"),
+  phoneC,
+  autoDesktop(images.showcaseEducation, "Education dashboard web design"),
+  phoneShot, // repeat: Education ar Cuisine-er majhe
+  autoDesktop(images.showcaseCuisine, "Cuisine restaurant web app design case study"),
+  phoneOf(images.showcasePhoneD, "Mobile app design"),
 ];
 
 /* Ekta marquee row. Duita copy (duitar width soman) rakhle -50% translate-e seamless loop hoy. Dwitiyo copy screen reader theke lukano */
@@ -112,7 +140,24 @@ function ShotSet({ hidden }: { hidden: boolean }) {
     <ul aria-hidden={hidden || undefined} className="flex shrink-0 items-center gap-[2.5em] pr-[2.5em]">
       {shots.map((shot, index) => (
         <li key={`${shot.src}-${index}`} className="flex shrink-0">
-          {shot.kind === "framed" ? (
+          {shot.kind === "auto" ? (
+            <div className="relative isolate h-[29.5544em] min-w-[30em] shrink-0">
+              <CloudImage
+                src={shot.src}
+                alt={hidden ? "" : shot.alt}
+                width={0}
+                height={0}
+                sizes={shot.sizes}
+                trim={shot.trim ?? 30}
+                loading="eager"
+                fetchPriority="low"
+                decoding="async"
+                draggable={false}
+                style={{ height: "100%", width: "auto" }}
+                className="block max-w-none select-none"
+              />
+            </div>
+          ) : shot.kind === "framed" ? (
             <div className={cn("relative isolate box-border h-[29.5544em] shrink-0 overflow-hidden rounded-[1.4647em] border-[0.3138em] border-black bg-white", shot.widthClass)}>
               <div className={cn("absolute", shot.innerClassName)}>
                 <CloudImage

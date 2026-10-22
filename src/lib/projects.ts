@@ -61,21 +61,6 @@ export type Project = {
 /* TODO: case study page ready hole href gula "/projects/<slug>" kore dao */
 export const projects: Project[] = [
   {
-    slug: "paynex",
-    categories: ["Web Design", "Saas Product", "Artificial Intelligent"],
-    title: "AI Client Management Web Design",
-    description: "Paynex is a modern smart banking and financial management platform designed...",
-    tags: [
-      { label: "AI Automation", icon: MagicPenIcon },
-      { label: "Client Management", icon: UsersIcon },
-      { label: "Smart Dashboard", icon: DashboardIcon },
-    ],
-    name: "Paynex",
-    image: images.projectPaynex,
-    imageAlt: "Paynex crypto wallet website design",
-    href: "#",
-  },
-  {
     slug: "cuisine",
     categories: ["Web Design", "Dashboard", "Saas Product"],
     title: "Restaurant Management Web App",
@@ -88,6 +73,21 @@ export const projects: Project[] = [
     name: "Cuisine",
     image: images.projectCuisine,
     imageAlt: "Cuisine restaurant management web app design",
+    href: "#",
+  },
+  {
+    slug: "filamento",
+    categories: ["Web Design", "Dashboard", "Saas Product"],
+    title: "E-commerce Webapp",
+    description: "Filamento is a modern e-commerce management platform designed to help owners...",
+    tags: [
+      { label: "Smart Dashboard", icon: DashboardIcon },
+      { label: "Order Management", icon: GavelIcon },
+      { label: "Analytics", icon: ChartUpIcon },
+    ],
+    name: "Filamento",
+    image: images.projectFilamento,
+    imageAlt: "Filamento e-commerce web app design case study",
     href: "#",
   },
   {
@@ -118,6 +118,36 @@ export const projects: Project[] = [
     name: "NexBank",
     image: images.projectNexbank,
     imageAlt: "NexBank smart banking website design",
+    href: "#",
+  },
+  {
+    slug: "mintora",
+    categories: ["Dashboard"],
+    title: "Business Management Dashboard",
+    description: "Mintora is a modern e-commerce management platform designed to help owners...",
+    tags: [
+      { label: "Smart Dashboard", icon: DashboardIcon },
+      { label: "Order Management", icon: GavelIcon },
+      { label: "Analytics", icon: ChartUpIcon },
+    ],
+    name: "Mintora",
+    image: images.projectBusiness,
+    imageAlt: "Mintora business management dashboard design",
+    href: "#",
+  },
+  {
+    slug: "topper",
+    categories: ["EduTech"],
+    title: "Education Dashboard",
+    description: "Topper is a modern education management platform designed to help owners...",
+    tags: [
+      { label: "Smart Dashboard", icon: DashboardIcon },
+      { label: "AI Insights", icon: MagicPenIcon },
+      { label: "Analytics", icon: ChartUpIcon },
+    ],
+    name: "Topper",
+    image: images.projectEducation,
+    imageAlt: "Topper education dashboard design",
     href: "#",
   },
   {
@@ -227,12 +257,12 @@ export const moreProjects: Project[] = [
   },
 ];
 
-/* /projects page: Figma-r order (10 ta card, 2 ta kore row):
-   Paynex | Cuisine, MoneyBoard | FlowBank, MoodMap | Finora, SolvexAI | NexBank, PrographrAI | RiseCap.
+/* /projects page: Figma-r order (10 ta card) + shesh-e notun 2 ta (Mintora | Topper), 2 ta kore row:
+   Cuisine | Filamento, MoneyBoard | FlowBank, MoodMap | Finora, SolvexAI | NexBank, PrographrAI | RiseCap, Mintora | Topper.
    Home-e shudhu `projects` (6 ta) dekhay, tai oita bodlay ni */
 const galleryOrder = [
-  "paynex",
   "cuisine",
+  "filamento",
   "moneyboard",
   "flowbank",
   "moodmap",
@@ -241,6 +271,8 @@ const galleryOrder = [
   "nexbank",
   "prographr-ai",
   "risecap",
+  "mintora",
+  "topper",
 ];
 const bySlug = new Map([...projects, ...moreProjects].map((p) => [p.slug, p]));
 export const allProjects: Project[] = galleryOrder.map((slug) => bySlug.get(slug)!);

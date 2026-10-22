@@ -12,7 +12,7 @@ export function Header() {
         <Logo />
       </div>
       <div className="slide-in-left" style={reveal(0, { duration: 600, x: 14 })}>
-        <RollButton href="#contact" size="sm">
+        <RollButton href="#contact">
           Book a call
         </RollButton>
       </div>

@@ -56,10 +56,40 @@ type ImageCardProps = {
   fit?: "cover" | "contain";
   /** true hole Cloudinary image-er charpashe-r white/faka margin kete dey (e_trim), tai image-er asol design (plate) card-er edge porjonto bhore.
       Shudhu jei image-e white margin ache segulote dao (jemon heroGalleryA). Margin na thakle kono effect nai */
-  trim?: boolean;
+  trim?: boolean | number;
+  /** true hole height fixed (card-er moto) thake, kintu width image-er nijer ratio onujayi auto hoy, tai image kothao kate na (width boro hole somoshya nai).
+      Ei mode-e `widthClass`-e `w-` na diye `min-w-[...]` dao (image load howar age card jeno 0 width-e na jay). `sizes` generous rakho (boro width-er hishab) */
+  autoWidth?: boolean;
+  /** (autoWidth mode-e image shob shomoy loading="eager", `priority` prop-er dorkar nai: marquee-r majhe thaka image lazy hole reload-e faka jayga dekhay) */
+  /** true hole card-er #F0F0F0 background thake na. Image-er transparent charpash (jemon rounded frame-er kon/margin) tokhon page-er rong (shada) dekhay,
+      tai image-er bairer "gray border" dekha jay na. Shudhu transparent PNG-r jonno (autoWidth-er shathe) */
+  transparent?: boolean;
+  /** autoWidth image-er upor-niche transparent/halka margin thakle dashboard onno card-er cheye chhoto dekhay.
+      bleed (em) dile image upor ar niche-e oi poriman boro hoye card-er bhitore clip hoy, tai frame card-er puro height-e bhore jay (width-o ratio onujayi barhe).
+      0.3 = ~5px kore. Ekhono chhoto lagle 0.4/0.5, beshi kata gele 0.2 koro */
+  bleed?: number;
 };
 
-function ImageCard({ src, alt, widthClass, sizes, priority, fit = "cover", trim = false }: ImageCardProps) {
+function ImageCard({ src, alt, widthClass, sizes, priority, fit = "cover", trim = false, autoWidth = false, transparent = false, bleed = 0 }: ImageCardProps) {
+  if (autoWidth) {
+    return (
+      <div className={cn("relative h-[20.3125em] shrink-0 overflow-hidden rounded-[1.25em]", transparent ? "bg-transparent" : "bg-chip", widthClass)}>
+        <CloudImage
+          src={src}
+          alt={alt}
+          width={0}
+          height={0}
+          sizes={sizes}
+          loading="eager"
+          decoding="async"
+          trim={trim}
+          style={{ height: `calc(100% + ${bleed * 2}em)`, width: "auto", marginTop: `${-bleed}em` }}
+          className="block max-w-none"
+        />
+      </div>
+    );
+  }
+
   return (
     <div className={cn("relative h-[20.3125em] shrink-0 overflow-hidden rounded-[1.25em] bg-chip", widthClass)}>
       <CloudImage
@@ -79,23 +109,17 @@ function ImageCard({ src, alt, widthClass, sizes, priority, fit = "cover", trim 
    Figma-te ei 3 tar width alada hole ekhane bodlao (302 = w-[18.875em], 422 = w-[26.375em], 458 = w-[28.625em]) */
 const GALLERY_WIDTH_CLASS = "w-[26.375em]";
 const GALLERY_SIZES = sizesFor(422);
+/* autoWidth image-er asol width ~420-520px (height 325px-e ratio onujayi). Age 900px dhorechilam, tai Cloudinary boro (1080-1920w) e_trim image toiri korto, reload-e dheri hoto.
+   600 mane 1x-e 640w, retina-te 1200w, kom size, tai tara-tari load hoy. Blur dekhale 700 koro */
+const AUTO_WIDTH_SIZES = "(min-width: 768px) 600px, 480px";
 
 /* Order: protita stat card-er age ar pore image thake, duto stat card pashapashi hoy na.
-   Team, Cuisine, Total Clients, Paynex, Experience, [MoneyBoard], Total Project, [Image C], tarpor loop */
+   Cuisine, Total Clients, Filamento, Experience, [MoneyBoard], Total Project, [Image C], [Business Dashboard], Happy Clients, [Education Dashboard], Success Rate, tarpor loop */
 function CardSet({ hidden = false }: { hidden?: boolean }) {
   const galleryAlt = hidden ? "" : "Prographr project design showcase";
 
   return (
     <ul aria-hidden={hidden || undefined} className="flex shrink-0 gap-[1.5em] pr-[1.5em]">
-      <li className="flex">
-        <ImageCard
-          src={images.heroTeam}
-          alt={hidden ? "" : "The Prographr team working together"}
-          widthClass="w-[18.875em]"
-          sizes={sizesFor(302)}
-          priority={!hidden}
-        />
-      </li>
       <li className="flex">
         <ImageCard
           src={images.heroCuisine}
@@ -116,8 +140,8 @@ function CardSet({ hidden = false }: { hidden?: boolean }) {
       </li>
       <li className="flex">
         <ImageCard
-          src={images.heroPaynex}
-          alt={hidden ? "" : "Paynex crypto wallet website design"}
+          src={images.heroFilamento}
+          alt={hidden ? "" : "Filamento case study website design"}
           widthClass="w-[28.625em]"
           sizes={sizesFor(458)}
         />
@@ -133,7 +157,7 @@ function CardSet({ hidden = false }: { hidden?: boolean }) {
       </li>
       <li className="flex">
         {/* MoneyBoard dashboard (heroGalleryA), Experience-er pore. Original-e charpashe ~100px white margin ache (3086x2402 -> trim-er pore 2886x2202, ratio ~1.31 = card-er ratio),
-            tai trim diye margin kete cover kora: plate card-er edge porjonto bhore, Cuisine/Paynex-er moto full-bleed dekhay */}
+            tai trim diye margin kete cover kora: plate card-er edge porjonto bhore, Cuisine/Filamento-er moto full-bleed dekhay */}
         <ImageCard src={images.heroGalleryA} alt={galleryAlt} widthClass={GALLERY_WIDTH_CLASS} sizes={GALLERY_SIZES} trim />
       </li>
       <li className="flex">
@@ -147,6 +171,48 @@ function CardSet({ hidden = false }: { hidden?: boolean }) {
       </li>
       <li className="flex">
         <ImageCard src={images.heroGalleryC} alt={galleryAlt} widthClass={GALLERY_WIDTH_CLASS} sizes={GALLERY_SIZES} />
+      </li>
+      <li className="flex">
+        <ImageCard
+          src={images.heroBusinessDashboard}
+          alt={hidden ? "" : "Business management dashboard design"}
+          widthClass="min-w-[26.375em]"
+          sizes={AUTO_WIDTH_SIZES}
+          autoWidth
+          transparent
+          bleed={0.3}
+          trim={30}
+        />
+      </li>
+      <li className="flex">
+        <StatCard
+          variant="light"
+          icon={<CardIcon src="/icons/profile-2user.svg" />}
+          label="Happy Clients"
+          value="220+"
+          description="Building lasting partnerships through great digital experiences."
+        />
+      </li>
+      <li className="flex">
+        <ImageCard
+          src={images.heroEducationDashboard}
+          alt={hidden ? "" : "Education dashboard design"}
+          widthClass="min-w-[26.375em]"
+          sizes={AUTO_WIDTH_SIZES}
+          autoWidth
+          transparent
+          bleed={0.3}
+          trim={30}
+        />
+      </li>
+      <li className="flex">
+        <StatCard
+          variant="light"
+          icon={<CardIcon src="/icons/cup.svg" />}
+          label="Success Rate"
+          value="98%"
+          description="Delivering quality solutions that exceed expectations."
+        />
       </li>
     </ul>
   );
@@ -178,7 +244,7 @@ export function HeroShowcase() {
             </span>
             Open for new project and collaboration
           </p>
-          <p className="text-base leading-[1.2] text-ink/70 md:text-xl">Get discount up to 60%, booking this month</p>
+          <p className="text-base leading-[1.2] text-ink/70 md:text-xl">This Month&rsquo;s Best Deals Are Here</p>
         </div>
       </Container>
     </div>

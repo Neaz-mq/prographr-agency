@@ -23,6 +23,9 @@ type Service = {
   /* Figma: panel width / top (%). White border + radius PNG-r bhitorei ache, tai CSS-e dewa hoy na */
   imageWidth: number;
   imageTop: number;
+  /* true = image raw (square corner) thake, tai code theke upore-r dui kon rounded kore deya hoy (baki PNG-gulo-te rounded corner + white border baked ache).
+     Radius image-er width-er ~2.7% (container query unit), tai desktop-e ~20px, mobile-e proportionally choto */
+  roundTop?: boolean;
 };
 
 const services: Service[] = [
@@ -51,7 +54,7 @@ const services: Service[] = [
       { label: "Corporate Identity Design", icon: "mobile" },
       { label: "Content Design", icon: "trend" },
     ],
-    image: "v1792250384/image_6349884_zamyaa.png",
+    image: "v1792659041/Brand_Identity-02_1_p8jlb7", // notun Brand Identity image (Cloudinary version + public id, extension chara). Rounded corner image-er bhitorei ache
     alt: "Brand identity preview: logo, colour and photography board for a brand",
     imageWidth: 93.14,
     imageTop: 5.75,
@@ -195,7 +198,9 @@ export function ServicesShowcase() {
                   {/* Right: grey panel, screenshot upor theke ~35px niche, niche kete jay (overflow-hidden) */}
                   <div className="relative aspect-[802/479] overflow-hidden rounded-[1.25rem] bg-[#F0F0F0]">
                     <div
-                      className="absolute left-1/2 -translate-x-1/2"
+                      className={`absolute left-1/2 -translate-x-1/2${
+                        service.roundTop ? " overflow-hidden rounded-t-[2.7cqw] [container-type:inline-size]" : ""
+                      }`}
                       style={{ width: `${service.imageWidth}%`, top: `${service.imageTop}%` }}
                     >
                       <CloudImage

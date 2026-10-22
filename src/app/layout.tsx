@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
 import { FloatingNav } from "@/components/layout/FloatingNav";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
@@ -10,6 +11,14 @@ const clashGrotesk = localFont({
   src: "../fonts/ClashGrotesk-Variable.woff2",
   weight: "200 700",
   variable: "--font-clash",
+  display: "swap",
+});
+
+/* Testimonial card-er rating (5.0 / 4.9) Figma-te Bricolage Grotesque-e */
+const bricolage = Bricolage_Grotesque({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-bricolage",
   display: "swap",
 });
 
@@ -25,7 +34,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={clashGrotesk.variable} data-preloading="">
+    <html lang="en" className={`${clashGrotesk.variable} ${bricolage.variable}`} data-preloading="">
+      <head>
+        {/* Cloudinary-r shathe connection age-i khule rakhe (DNS + TLS), tai reload-e image gulo-r prothom byte tara-tari ashe */}
+        <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://res.cloudinary.com" />
+      </head>
       <body suppressHydrationWarning>
         <SmoothScroll />
         <ScrollPerf />

@@ -1,17 +1,22 @@
 export const images = {
-  heroTeam: "b189953db309ffacc48c86d618b3e68d2131e4d1_jqec1j",
   heroCuisine: "cca88fbccf6e9c6b28995c8742bd18502f831724_czzvb6",
-  heroPaynex: "238ba26a8cfb7fd325973084e0642403c7936fb4_z2zzvi",
+  heroFilamento: "v1792646307/Filamento_Case_Study_n1ezb2", // Filamento case study (Cloudinary version + public id; loader f_auto/w_ nijei boshay)
   /* Hero marquee-r notun 3 ta image: Experience-er age, Experience ar Total Project-er majhe, Total Project-er pore */
   heroGalleryA: "b6361a2a965ace4794dfdf4fa575d42456a2fac7_r9j3ko",
   heroGalleryB: "c660b374e9d3666776a8fad13ef595d86ce91527_xqot4b",
   heroGalleryC: "0d5bb38545d5f3801931b4d93feae351f9144af9_uoe0jh",
+  /* Hero marquee-r aro 2 ta dashboard image (Cloudinary version + public id). Total Project-er pore, Happy Clients / Success Rate card-er age */
+  heroBusinessDashboard: "v1792648659/Bussniss_Managmaent_Deshboard_xabu2w",
+  heroEducationDashboard: "v1792647461/Education_Deshboard_izwq1c",
 
   /* Recent Projects section (Cloudinary public ID, extension chara). f_auto diye browser-e WebP/AVIF jay, tai PNG/WebP jai hok kono somoshya nai */
   projectPaynex: "1st_eefezx",
   projectCuisine: "Cuisine_Case_Study_aer8zr",
+  projectFilamento: "v1792649612/Filamento_Case_Study_fayrab", // Filamento case study (Cloudinary version + public id; loader f_auto/w_ nijei boshay)
   projectSolvex: "Header_4_wiyxaj",
   projectNexbank: "Header_lr9zw0",
+  projectBusiness: "v1792659385/Bussniss_Managmaent_Deshboard_jj0qnx", // Business management dashboard (Cloudinary version + public id)
+  projectEducation: "v1792659435/Education_Deshboard_lp1rld", // Education dashboard (Cloudinary version + public id)
   projectMoodmap: "Untitled_1_1_yobyfr",
   projectFinora: "image_6350932_g6kft0",
   /* /projects page-er extra card (MoneyBoard 576 x 440, FlowBank 573 x 402, white border + rounded export) */
@@ -23,7 +28,7 @@ export const images = {
   /* Testimonial section: client-er website screenshot (Cloudinary public ID, extension chara) */
   testimonialA: "Frame_2147235337_ajjky7",
   testimonialB: "Desktop_-_39_rxl49t",
-  testimonialC: "Home_knz5bd",
+  testimonialC: "v1792652883/new_cslhtg", // notun image (Cloudinary version + public id; loader f_auto/w_ nijei boshay)
 
   /* Services section (Cloudinary public ID, extension chara) */
   serviceUiUx: "843c323a-9c0a-4cca-b08a-74197bf88f2a_mnkepw",
@@ -46,6 +51,14 @@ export const images = {
   showcaseDashboard: "Desktop_-_93_wnmdkq",
   showcasePhone: "iPhone_13_mini_-_1488_k12fpo",
   showcaseFinPilot: "Desktop_-_57_sjchnw",
+  /* Showcase marquee-r aro 7 ta image (Cloudinary version + public id). Desktop, Phone, Desktop, Phone, Desktop, Phone, Desktop order-e */
+  showcaseFilamento: "v1792649893/Filamento_Case_Study_egxgba",
+  showcasePhoneB: "v1792649922/image_6350952_pa1rmq",
+  showcaseBusiness: "v1792649959/Bussniss_Managmaent_Deshboard_ozwu1r",
+  showcasePhoneC: "v1792649993/image_6350950_zpouur",
+  showcaseEducation: "v1792650029/Education_Deshboard_zykzim",
+  showcasePhoneD: "v1792650068/image_6350951_chgc9y",
+  showcaseCuisine: "v1792650165/Cuisine_Case_Study_o0qynd",
 
   /* Floating nav "Project" hover menu-r collage (Figma theke export kora 6 ta tile, row onujayi: 1-2, 3-4, 5-6). Cloudinary public ID, extension chara */
   menuCollage1: "Header_kxrate",

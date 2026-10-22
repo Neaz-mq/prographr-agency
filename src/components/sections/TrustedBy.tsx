@@ -8,16 +8,16 @@ const PANEL_PATH = "M0 0H559.12C545 0 533 9 526 24L514 52C504 76 493 92 480 102C
 /* Logo gula public/logos/ e ache. Notun brand logo (Cuisine, Filamento, Lock & Load It, Storied Data Inc, WR-01) ekhane.
    Fail-er naame space ar "&" ache (Lock & Load It.svg), tai path encodeURIComponent diye banano, noile URL bhenge jay.
    Pore naam shohoj korte chaile (jemon lock-and-load-it.svg) public/logos/-e rename kore ekhane file naam-ta bodle dilei hobe.
-   Image-er size: height fixed (30px, Figma-r moto), width auto, tai SVG-r nijer ratio thake, kono logo thele/chepte jay na.
+   Image-er size: height fixed (ekhon 40-48px, ager 30px chhilo choto lagto), width auto, tai SVG-r nijer ratio thake, kono logo thele/chepte jay na.
    Kono logo onno-gulo-r cheye boro/choto dekhale shudhu oi logo-r `h` (px) bodlao. */
 const logoSrc = (file: string) => `/logos/${encodeURIComponent(file)}`;
 
 const logos = [
-  { file: "Cuisine.svg", alt: "Cuisine", h: 30 },
-  { file: "Filamento.svg", alt: "Filamento", h: 30 },
-  { file: "Lock & Load It.svg", alt: "Lock & Load It", h: 30 },
-  { file: "Storied Data Inc.svg", alt: "Storied Data Inc", h: 30 },
-  { file: "WR-01.svg", alt: "WR-01", h: 30 },
+  { file: "Cuisine.svg", alt: "Cuisine", h: 40 },
+  { file: "Filamento.svg", alt: "Filamento", h: 40 },
+  { file: "Lock & Load It.svg", alt: "Lock & Load It", h: 44 },
+  { file: "Storied Data Inc.svg", alt: "Storied Data Inc", h: 48 },
+  { file: "WR-01.svg", alt: "WR-01", h: 48 },
 ];
 
 /* Marquee: logo-set ek-i jinis kotobar repeat kora. Track -50% porjonto jay, tai seamless hote half >= region-er width lagbe.
@@ -48,7 +48,7 @@ function LogoSet({ hidden = false }: { hidden?: boolean }) {
 
 export function TrustedBy() {
   return (
-    <section aria-label="Companies we collaborate with" className="bg-[#FAFAFA]">
+    <section id="trusted-by" aria-label="Companies we collaborate with" className="scroll-mt-20 bg-[#FAFAFA]">
       {/* Mobile/tablet: stacked. xl (1280px+): Figma-r row layout, height 112.47px */}
       <div className="mx-auto flex max-w-[90rem] flex-col xl:h-[clamp(5.5rem,calc(var(--h)*0.07768_+_23.52px),7.029rem)] xl:flex-row xl:items-center xl:gap-[4.1231rem]">
         {/* Left: white panel + text */}

@@ -209,59 +209,71 @@ export function TestimonialCarousel() {
               role="group"
               aria-roledescription="slide"
               aria-label={`${i + 1} of ${testimonials.length}`}
-              className="min-w-0 shrink-0 grow-0 basis-[88%] pl-4 md:basis-[49.8rem] md:pl-[2.8rem]"
+              className="min-w-0 shrink-0 grow-0 basis-[88%] pl-4 md:basis-[52.6094rem] md:pl-[2.8rem]"
             >
-              {/* Figma: 797 x 398, bg #FAFAFA, radius 25, padding 37, gap 16 */}
-              <article className="flex h-full flex-col gap-4 rounded-[1.5rem] bg-[#FAFAFA] p-4 sm:p-6 md:min-h-[24.9rem] md:flex-row md:p-[2.3rem]">
-                {/* Screenshot frame: 228 x 324, white, radius 20. Page-er upor-er ongsho dekha jay */}
-                <div className="relative h-56 shrink-0 overflow-hidden rounded-[1.25rem] bg-white md:h-auto md:w-[14.25rem] md:self-stretch">
-                  <CloudImage
-                    src={t.screenshot}
-                    alt={`${t.name}, ${t.role}: website screenshot`}
-                    fill
-                    sizes="(min-width: 768px) 14.25rem, 80vw"
-                    loading="eager" /* lazy hole offscreen/peek card-er image pore load hoy, left card faka dekhay */
-                    className="object-cover object-top"
-                    draggable={false}
-                  />
+              {/* Figma "Frame 2147237309": 796.95 x 398.47, bg #FAFAFA, radius 24.9, padding 37.36, gap 16.19.
+                  li-er basis = card width (796.95) + slide-er gap (2.8rem pl), tai article thik 796.95px hoy (ager basis-e padding-o dhora chhilo, article 752px hoye jachchilo) */}
+              <article className="flex h-full flex-col gap-4 rounded-[1.5rem] bg-[#FAFAFA] p-4 sm:p-6 md:min-h-[24.9044rem] md:flex-row md:gap-[1.0119rem] md:rounded-[1.5565rem] md:p-[2.3348rem]">
+                {/* Figma "Frame 2147237305": 227.88 x 323.76, white, radius 19.92. Bhitore page-er frame (185.54 wide) charpashe ~21px faka diye boshe,
+                    left = (227.88 - 185.54) / 2 = 21.17px (= 9.29%, tai width 81.42% + center), top = 20.8px. Page lomba (185.54 x 852), niche frame-e kete jay (overflow-hidden), radius 8.48 */}
+                <div className="relative h-56 shrink-0 overflow-hidden rounded-[1.25rem] bg-white md:h-auto md:w-[14.2425rem] md:self-stretch md:rounded-[1.2452rem]">
+                  <div className="absolute left-1/2 top-[1.3rem] w-[81.42%] -translate-x-1/2 overflow-hidden rounded-[0.53rem]">
+                    <CloudImage
+                      src={t.screenshot}
+                      alt={`${t.name}, ${t.role}: website screenshot`}
+                      width={0}
+                      height={0}
+                      sizes="(min-width: 768px) 372px, 80vw"
+                      loading="eager" /* lazy hole offscreen/peek card-er image pore load hoy, left card faka dekhay */
+                      style={{ width: "100%", height: "auto" }}
+                      className="block max-w-none select-none"
+                      draggable={false}
+                    />
+                  </div>
                 </div>
 
-                <div className="flex min-w-0 flex-1 flex-col justify-between gap-5">
-                  <div className="flex flex-col gap-4">
-                    <p className="flex items-center gap-2 text-base font-medium leading-tight text-ink md:text-xl">
-                      <AsteriskIcon className="size-5 shrink-0 text-accent md:size-[1.5625rem]" />
+                {/* Figma "Frame 2147237303": 478.17 x 319.35, card-er majhe vertically center. Header(71.81) -24.9- quote(128 = 4 line x 32) -54.79- author(39.85) */}
+                <div className="flex min-w-0 flex-1 flex-col justify-center gap-5 md:gap-0">
+                  <div className="flex flex-col gap-[1.245rem]">
+                    <p className="flex items-center gap-[0.6226rem] text-base font-medium leading-[1.2] text-black md:text-xl">
+                      <AsteriskIcon className="size-5 shrink-0 text-accent md:size-[1.5563rem]" />
                       {t.duration}
                     </p>
-                    <ul className="flex flex-wrap gap-2">
+                    <ul className="flex flex-wrap gap-[0.4669rem]">
                       {t.services.map((service) => (
-                        <li key={service} className="rounded-full bg-white px-2.5 py-0.5 text-sm leading-[1.6] text-black">
+                        <li key={service} className="rounded-full bg-white px-[0.6226rem] py-[0.1556rem] text-sm leading-[1.6] text-black">
                           {service}
                         </li>
                       ))}
                     </ul>
                   </div>
 
-                  <blockquote className="text-base leading-[1.6] text-black md:text-xl">{t.quote}</blockquote>
+                  {/* min-h 8rem = 4 line, tai quote 3 line holeo author-er position soman thake */}
+                  <blockquote className="text-base leading-[1.6] text-black md:mt-[1.5563rem] md:min-h-[8rem] md:text-xl">{t.quote}</blockquote>
 
-                  <div className="flex items-end justify-between gap-4">
-                    <div className="flex min-w-0 items-center gap-2">
+                  <div className="flex items-end justify-between gap-4 md:mt-[3.4244rem]">
+                    <div className="flex min-w-0 items-center gap-[0.4669rem]">
                       {t.avatar ? (
-                        <span className="relative size-10 shrink-0 overflow-hidden rounded-full bg-[#D9D9D9]">
+                        <span className="relative size-[2.4906rem] shrink-0 overflow-hidden rounded-full bg-[#D9D9D9]">
                           <CloudImage src={t.avatar} alt="" fill sizes="2.5rem" className="object-cover" />
                         </span>
                       ) : (
-                        <span aria-hidden="true" className="grid size-10 shrink-0 place-items-center rounded-full bg-[#D9D9D9] text-sm font-medium text-black/70">
+                        <span aria-hidden="true" className="grid size-[2.4906rem] shrink-0 place-items-center rounded-full bg-[#D9D9D9] text-sm font-medium text-black/70">
                           {t.name.charAt(0)}
                         </span>
                       )}
-                      <div className="flex min-w-0 flex-col gap-1">
-                        <p className="truncate text-base font-medium leading-[1.2] text-black md:text-[1.0875rem]">{t.name}</p>
-                        <p className="truncate text-sm leading-[1.2] text-black/70 md:text-[0.855rem]">{t.role}</p>
+                      <div className="flex min-w-0 flex-col gap-[0.2337rem]">
+                        <p className="truncate text-base font-medium leading-[1.2] text-black">{t.name}</p>
+                        <p className="truncate text-xs leading-[1.2] text-black/70">{t.role}</p>
                       </div>
                     </div>
-                    <p className="flex shrink-0 items-center gap-1 text-xl leading-[1.2] text-black">
+                    {/* Figma: Bricolage Grotesque 19.92px / 120%, star 14.94px #FFD43B, gap 3.74px */}
+                    <p
+                      className="flex shrink-0 items-center gap-[0.2337rem] text-[1.2452rem] leading-[1.2] text-black"
+                      style={{ fontFamily: "var(--font-bricolage), var(--font-clash), ui-sans-serif, system-ui, sans-serif" }}
+                    >
                       {t.rating}
-                      <StarIcon className="size-[0.9375rem] text-[#FFD43B]" />
+                      <StarIcon className="size-[0.9338rem] text-[#FFD43B]" />
                     </p>
                   </div>
                 </div>

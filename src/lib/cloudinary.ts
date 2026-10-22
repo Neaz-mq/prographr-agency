@@ -23,3 +23,23 @@ export function cloudinaryTrimLoader({ src, width, quality }: LoaderArgs) {
   const q = quality ? `q_${quality}` : "q_auto:good";
   return `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/e_trim/f_auto,${q},c_limit,w_${width}/${id}`;
 }
+
+/**
+ * Shadow-shoho image-er jonno: e_trim:<tolerance>. Default e_trim (tolerance 10) shudhu ekdom shada/transparent edge kate,
+ * kintu soft shadow-r halka pixel gulo kate na. Tolerance barale (0-100) shadow-o kete jay. Boro korle image-er bhitore-r halka rong-o kete jete pare, tai 20 -> 30 -> 40 kore dekho.
+ * Loader gulo cache kora, jeno protibar notun function reference toiri hoye next/image re-render na kore.
+ */
+const trimLoaders = new Map<number, (args: LoaderArgs) => string>();
+
+export function cloudinaryTrimLoaderWith(tolerance: number) {
+  let loader = trimLoaders.get(tolerance);
+  if (!loader) {
+    loader = ({ src, width, quality }: LoaderArgs) => {
+      const id = src.replace(/^\//, "");
+      const q = quality ? `q_${quality}` : "q_auto:good";
+      return `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/e_trim:${tolerance}/f_auto,${q},c_limit,w_${width}/${id}`;
+    };
+    trimLoaders.set(tolerance, loader);
+  }
+  return loader;
+}
