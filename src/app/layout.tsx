@@ -29,6 +29,8 @@ export const metadata: Metadata = {
   title: "Prographr — Product Design and Development Agency",
   description:
     "Prographr is a product design and development agency crafting intuitive digital products, stunning websites, and scalable solutions.",
+  /* "./" mane proti page-er nijer URL canonical hoy (/projects -> https://prographr.com/projects). www noy, shobshomoy non-www */
+  alternates: { canonical: "./" },
   openGraph: {
     type: "website",
     siteName: "Prographr",
@@ -36,7 +38,6 @@ export const metadata: Metadata = {
     description:
       "Prographr is a product design and development agency crafting intuitive digital products, stunning websites, and scalable solutions.",
   },
-  // Live hoyar por noindex shoriye deya hoyeche, ekhon Google index korbe
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
