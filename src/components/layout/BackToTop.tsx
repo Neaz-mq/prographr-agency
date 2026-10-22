@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 
 /* Industry standard: page-er shuru-te "Back to top" dekhay na (ekhane to already top-e). Hero + prothom section par hole (~1.5 screen niche)
    dhire fade/slide-in hoy. Jayga ta niye rakhi (opacity/transform), tai dekhale bake nav-er position nore na, layout shift nai.
-   Hidden thakle click/Tab-o kora jay na (pointer-events + tabIndex + aria-hidden). */
+   Hidden thakle click/Tab-o kora jay na ok (pointer-events + tabIndex + aria-hidden). */
 const SHOW_AFTER_VIEWPORTS = 1.5;
 
 export function BackToTop() {
