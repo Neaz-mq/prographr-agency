@@ -89,7 +89,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "send_failed" }, { status: 502 });
   }
 
-  /* 2) Welcome email subscriber-ke. Fail hole shudhu log (subscribe already team-er kache pouchhe geche) */
+  /* 2) Welcome email subscriber-ke. Fail hole shudhu log (subscribe already team-er kache pouchhe geche akn) */
   try {
     await transporter.sendMail({
       from: `"Prographr" <${user}>`,
