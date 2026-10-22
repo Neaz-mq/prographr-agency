@@ -2,7 +2,7 @@ import { siteConfig } from "@/lib/site";
 
 /* Booking section-er shob config ekhane. Figma: "Frame 2147237397" (Let's Talk About Your Project) */
 export const HOST = {
-  name: "Mahamudul",
+  name: "Mahmudul",
   handle: "@Prographr",
   avatar: "v1792495032/a714bc0c-39ea-46aa-b1ab-d37693a0fe74_2_ea1sf1" as string | undefined, // Cloudinary public ID (Figma "image 6350863" avatar export, 30px circle-er jonno). undefined dile "M" okkhor dekhabe
 };
