@@ -44,6 +44,24 @@ function text(v: unknown, max: number, multiline = false): string {
   return s.trim().slice(0, max);
 }
 
+/* WhatsApp number porishkar kori.
+   Form pathay "+880 01785286936" (country code + space + local number, local-e shuru-r 0 shoho).
+   Country code-er pore shuru-r 0 thake na, tai oita bad diye "+8801785286936" banai.
+   - "+CODE REST" hole: REST theke space/dash/bracket shoriye, shuru-r 0 bad diye "+CODEREST" ferot dei.
+   - Country code chhara shudhu number ashle (+ diye shuru na hole) kichu jore na, shudhu space/dash shoriye dei. */
+function cleanWhatsapp(raw: string): string {
+  const s = raw.trim();
+  if (!s) return "";
+  const m = s.match(/^\+(\d{1,4})\s+(.+)$/);
+  if (m) {
+    const code = m[1];
+    const rest = m[2].replace(/\D/g, "").replace(/^0+/, "");
+    return rest ? `+${code}${rest}` : "";
+  }
+  if (s.startsWith("+")) return "+" + s.slice(1).replace(/\D/g, "");
+  return s.replace(/[\s\-().]/g, "");
+}
+
 export async function POST(req: Request) {
   const user = process.env.SMTP_USER?.trim();
   const pass = process.env.SMTP_PASS?.replace(/\s+/g, ""); // Google app password space shoho dey, space shoriye nei
@@ -60,7 +78,7 @@ export async function POST(req: Request) {
 
   const name = text(body.name, 100);
   const email = text(body.email, 200);
-  const whatsapp = text(body.whatsapp, 40);
+  const whatsapp = cleanWhatsapp(text(body.whatsapp, 40));
   const service = text(body.service, 100);
   const budget = text(body.budget, 60);
   const details = text(body.details, 5000, true);
