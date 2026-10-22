@@ -1,9 +1,20 @@
-   import type { NextConfig } from "next";
+import type { NextConfig } from "next";
 
-   const nextConfig: NextConfig = {
-     /* config options here */
-     cacheComponents: true,
-     partialPrefetching: true,
-   };
+const nextConfig: NextConfig = {
+  /* config options here */
+  cacheComponents: true,
+  partialPrefetching: true,
 
-   export default nextConfig;
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.prographr.com" }],
+        destination: "https://prographr.com/:path*",
+        permanent: true,
+      },
+    ];
+  },
+};
+
+export default nextConfig;
