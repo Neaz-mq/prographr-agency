@@ -12,9 +12,11 @@ type ButtonProps = {
 
 export function Button({ href, children, variant = "dark", size = "md", className }: ButtonProps) {
   if (variant === "light") {
+    const isExternal = /^https?:\/\//i.test(href);
     return (
       <Link
         href={href}
+        {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
         className={cn(
           "inline-flex h-[2.625rem] items-center rounded-xl bg-chip px-4 text-sm font-medium leading-[1.2] text-black transition-colors duration-300 hover:bg-[#e6e6e6]",
           className

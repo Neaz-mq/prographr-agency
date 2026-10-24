@@ -73,7 +73,7 @@ export const projects: Project[] = [
     name: "Cuisine",
     image: images.projectCuisine,
     imageAlt: "Cuisine restaurant management web app design",
-    href: "#",
+    href: "https://www.behance.net/gallery/257439563/Restaurant-Management-Web-App-UIUX-Case-Study",
   },
   {
     slug: "filamento",

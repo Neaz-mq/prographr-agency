@@ -170,8 +170,11 @@ export function RollButton({ href, type = "button", disabled, children, size = "
     </>
   );
 
+  /* http(s) link (jemon Behance) hole notun tab-e khole, noile normal internal <Link> */
+  const isExternal = href !== undefined && /^https?:\/\//i.test(href);
+
   return href !== undefined ? (
-    <Link href={href} {...rootProps}>
+    <Link href={href} {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})} {...rootProps}>
       {inner}
     </Link>
   ) : (
