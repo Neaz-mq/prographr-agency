@@ -2,10 +2,10 @@
 
 import { useEffect } from "react";
 
-const MIN_VISIBLE = 3400; // entry animation shesh hobar por-o ektu thake, jate logo ta bhalo kore dekha jay
-const MAX_VISIBLE = 6000; // internet khub slow hole-o ete-i chole jabe, user atke thakbe na
-const REVEAL_LEAD_MS = 250; // curtain soro shuru howar koto ms pore page-er reveal animation shuru hobe (curtain-er edge upore header-er jayga chhariye jawar por, jate reveal ta curtain-er niche na hariye jay)
-const EXIT_FALLBACK_MS = 3500; // overlay-r `pl-out` animationend kono karone na fire hole eto pore-i zor kore shesh kora hobe (exit animation ~2550ms, tai ekhane tar cheye beshi)
+const MIN_VISIBLE = 2900; // entry animation shesh hobar por-o ektu thake, jate logo ta bhalo kore dekha jay
+const MAX_VISIBLE = 5100; // internet khub slow hole-o ete-i chole jabe, user atke thakbe na
+const REVEAL_LEAD_MS = 210; // curtain soro shuru howar koto ms pore page-er reveal animation shuru hobe (curtain-er edge upore header-er jayga chhariye jawar por, jate reveal ta curtain-er niche na hariye jay)
+const EXIT_FALLBACK_MS = 2975; // overlay-r `pl-out` animationend kono karone na fire hole eto pore-i zor kore shesh kora hobe (exit animation ~2170ms, tai ekhane tar cheye beshi)
 
 /* Preloader-er "brain":
    - Page load + font ready + minimum time, tinta-i hole exit animation chalay

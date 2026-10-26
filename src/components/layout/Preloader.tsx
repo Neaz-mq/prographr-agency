@@ -6,18 +6,18 @@ import { PreloaderController } from "./PreloaderController";
    Color shobsomoy currentColor (--pl-fg: kalo #121212), tai ekhane kono color nai.
 
    Timeline (ms):
-     200-750   Kon-er piece: kon theke fade-in + scale hoye boro hoy
-     600-1067  Piece (+ dot) majhkhane soriye abar kon-e fire ashe
-     700-985   Dot: arc-er kendro-te fade-in, tarpor choto hoye mishe jay
-     1135-1585 L (duita bar): patla line theke mota hoye puro L hoy (kon fixed, baire-r dhar baire soreh)
-     1600-2750 Mark bame soriye jay, ek-i shomoy "Prographr" text logo-r pashe theke dane slide kore beriye ashe.
+     170-640   Kon-er piece: kon theke fade-in + scale hoye boro hoy
+     510-907   Piece (+ dot) majhkhane soriye abar kon-e fire ashe
+     595-837   Dot: arc-er kendro-te fade-in, tarpor choto hoye mishe jay
+     965-1350  L (duita bar): patla line theke mota hoye puro L hoy (kon fixed, baire-r dhar baire soreh)
+     1360-2340 Mark bame soriye jay, ek-i shomoy "Prographr" text logo-r pashe theke dane slide kore beriye ashe.
                Duita-i ek-i duration + easing (--pl-slide-*), tai mirror-er moto smooth: logo jotota bame, text totota dane
    Exit (page + font load + minimum time hole, PreloaderController data-state="exit" dey; timeline globals.css-e) = entry-r ulto:
-     0-1150    Text logo-r pichone dhuke jay (je jayga theke beriyechhilo), ek-i shomoy logo majhkhane ashe
-     1150-1300 Logo majhkhane ektu thame
-     1300-2150 Logo majhkhane theke upor-bam kone Header-er logo-r jayga-y uriye jay (ar choto hoy), tar shathe shathe...
-     1450-2550 Safed curtain upor theke niche soriye jay (soft edge), home page uncover hoy ar hero-r reveal wipe-er shathe upor theke niche phute othe
-     2150      Logo Header-er logo-r jayga-y pouchhe jay ar oitai Header-er logo hoye jay, tarpor "Prographr" text logo-r pichon theke bere ashe
+     0-980     Text logo-r pichone dhuke jay (je jayga theke beriyechhilo), ek-i shomoy logo majhkhane ashe
+     980-1108  Logo majhkhane ektu thame
+     1108-1832 Logo majhkhane theke upor-bam kone Header-er logo-r jayga-y uriye jay (ar choto hoy), tar shathe shathe...
+     1232-2167 Safed curtain upor theke niche soriye jay (soft edge), home page uncover hoy ar hero-r reveal wipe-er shathe upor theke niche phute othe
+     1832      Logo Header-er logo-r jayga-y pouchhe jay ar oitai Header-er logo hoye jay, tarpor "Prographr" text logo-r pichon theke bere ashe
    Header (ba page-er scroll) na thakle logo-morph bad, logo majhkhane choto hoye vanish hoy (fallback). Controller-e "setupMorph". */
 
 const WORD = "Prographr";

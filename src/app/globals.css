@@ -535,9 +535,9 @@ body {
   --pl-shift: calc((var(--pl-gap) + 4.794 * var(--pl-fs)) / 2);
   /* Mark, word wrapper ar text, tinta-i ek-i duration + easing + delay use kore. Tai text-er net movement (wrapper bame - text dane)
      ekta-i smooth curve hoy, kono dip/jhnak thake na, ar logo jotota bame jay text thik totota dane jay (mirror). Eta bodlate hole shudhu ekhane bodlao. */
-  --pl-slide-dur: 1150ms;
+  --pl-slide-dur: 980ms;
   --pl-slide-ease: cubic-bezier(0.65, 0, 0.35, 1);
-  --pl-slide-delay: 1600ms;
+  --pl-slide-delay: 1360ms;
   position: relative;
   z-index: 1; /* curtain-er upore */
   display: flex;
@@ -580,13 +580,13 @@ body {
 .pl-bar-top {
   width: 100%;
   height: 50%;
-  animation: pl-bar-top 450ms cubic-bezier(0.2, 0.8, 0.2, 1) 1135ms backwards;
+  animation: pl-bar-top 385ms cubic-bezier(0.2, 0.8, 0.2, 1) 965ms backwards;
 }
 
 .pl-bar-left {
   width: 50%;
   height: 100%;
-  animation: pl-bar-left 450ms cubic-bezier(0.2, 0.8, 0.2, 1) 1135ms backwards;
+  animation: pl-bar-left 385ms cubic-bezier(0.2, 0.8, 0.2, 1) 965ms backwards;
 }
 
 /* Kon-er piece + dot ekshathe ekta group: group majhkhane (kon theke) soriye abar nijer jayga-y fire ashe.
@@ -595,13 +595,13 @@ body {
   position: absolute;
   inset: 0;
   will-change: transform;
-  animation: pl-corner-move 467ms linear 600ms backwards;
+  animation: pl-corner-move 397ms linear 510ms backwards;
 }
 
 .pl-corner {
   transform-origin: 100% 100%;
   will-change: transform, opacity;
-  animation: pl-corner-in 550ms linear 200ms backwards;
+  animation: pl-corner-in 467ms linear 170ms backwards;
 }
 
 .pl-dot {
@@ -615,7 +615,7 @@ body {
   background: currentColor;
   opacity: 0; /* natural state: lukano (shudhu animation-er shomoy dekha jay) */
   will-change: transform, opacity;
-  animation: pl-dot 285ms linear 700ms backwards;
+  animation: pl-dot 242ms linear 595ms backwards;
 }
 
 /* Wordmark: logo-r pashe theke bam theke dane beriye ashe (slot theke tape-er moto).
@@ -887,10 +887,10 @@ body {
    Text je jayga theke beriyechhilo (logo-r pashe, clip window-er bam dhar), sekhane-i abar dhuke jay (logo-r pichone lukay),
    ek-i shomoy logo majhkhane ashe. Entry-r moto-i ek-i duration + easing (--pl-slide-*), tai logo jotota dane jay text totota bame dhuke jay.
    Timeline (ms, exit shuru theke) - shesh ongsho ata dhire kora, jate home page jhat kore na ashe, logo-r shesh howar por smooth crossfade hoy:
-     0-1150     Logo majhkhane ashe + text logo-r vitor dhuke jay (.pl-word dane, .pl-word-text bame clip-er vitor)
-     1150-1300  Logo majhkhane ektu thame (hold), jate "pouchhe gelo" feel ta ashe
-     1300-1800  Logo majhkhane dhire choto hoye vanish
-     1450-2550  Curtain upor theke niche soriye jay (1100ms, soft edge), home page uncover hoy. Ar tokhon (animationstart + REVEAL_LEAD_MS,
+     0-980      Logo majhkhane ashe + text logo-r vitor dhuke jay (.pl-word dane, .pl-word-text bame clip-er vitor)
+     980-1108   Logo majhkhane ektu thame (hold), jate "pouchhe gelo" feel ta ashe
+     1108-1534  Logo majhkhane dhire choto hoye vanish
+     1232-2167  Curtain upor theke niche soriye jay (935ms, soft edge), home page uncover hoy. Ar tokhon (animationstart + REVEAL_LEAD_MS,
                 PreloaderController) hero-r reveal shuru hoy: header -> heading -> button -> showcase, ThIK wipe-er order-e (upor theke niche),
                 tai user protita ongsho "phute otha" dekhe, overlay-r niche hariye jay na
    Shob transform / opacity (GPU). Timing bodlate hole shudhu ei block (ar PreloaderController-er EXIT_FALLBACK_MS) bodlao. */
@@ -898,19 +898,19 @@ body {
   pointer-events: none;
   /* Eta shudhu timer: PreloaderController `pl-out`-er animationstart / animationend e bind kora. Curtain-er shathe ek-i delay + duration,
      shesh hole overlay visibility:hidden hoy. Dekhano-r kaj .pl-curtain kore. */
-  animation: pl-out 1100ms linear 1450ms forwards;
+  animation: pl-out 935ms linear 1232ms forwards;
 }
 
 .preloader[data-state="exit"] .pl-curtain {
-  animation: pl-curtain-out 1100ms cubic-bezier(0.65, 0, 0.35, 1) 1450ms forwards;
+  animation: pl-curtain-out 935ms cubic-bezier(0.65, 0, 0.35, 1) 1232ms forwards;
 }
 
 /* ===== Logo-morph (PreloaderController "setupMorph") =====
    Controller target (Header-er logo) maape ar --pl-fx / --pl-fy (center theke distance, px) + --pl-fscale (size-er onupat) boshay, ar data-morph dey.
    Tokhon mark majhkhane thame thakar por Header-er logo-r jayga-y uriye jay (vanish na), ar landing-e Header-er asol logo dekha dey.
-   Timeline (exit shuru theke, ms): 0-1150 majhkhane ashe | 1150-1300 hold | 1300-2150 Header-er logo-r jayga-y ure jay (850ms) | 2150 landing */
+   Timeline (exit shuru theke, ms): 0-980 majhkhane ashe | 980-1108 hold | 1108-1832 Header-er logo-r jayga-y ure jay (724ms) | 1832 landing */
 .preloader[data-state="exit"][data-morph] .pl-mark {
-  animation: pl-mark-fly 2150ms linear forwards;
+  animation: pl-mark-fly 1832ms linear forwards;
 }
 
 @keyframes pl-mark-fly {
@@ -919,10 +919,10 @@ body {
     animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1); /* entry-r moto-i, word-er shathe mile */
   }
   53.49% {
-    transform: translate3d(var(--pl-shift), 0, 0) scale(1); /* 1150ms: majhkhane */
+    transform: translate3d(var(--pl-shift), 0, 0) scale(1); /* 980ms: majhkhane */
   }
   60.47% {
-    transform: translate3d(var(--pl-shift), 0, 0) scale(1); /* 1300ms: ektu thame */
+    transform: translate3d(var(--pl-shift), 0, 0) scale(1); /* 1108ms: ektu thame */
     animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1); /* shuru-shesh slow, majhkhane druto */
   }
   100% {
@@ -930,10 +930,10 @@ body {
   }
 }
 
-/* Landing: preloader-er mark halka mishe jay (160ms), ek-i shomoy Header-er asol logo dekha dey, jate duto-r majhe kono jhat-ka na lage */
+/* Landing: preloader-er mark halka mishe jay (135ms), ek-i shomoy Header-er asol logo dekha dey, jate duto-r majhe kono jhat-ka na lage */
 .preloader[data-landed] .pl-mark {
   opacity: 0;
-  transition: opacity 160ms linear;
+  transition: opacity 135ms linear;
 }
 
 /* Header-er logo: morph cholar shomoy slide-in off (preloader-er logo-i oikhane uriye ashe), icon + text ashe landing-er por.
@@ -943,7 +943,7 @@ html[data-pl-morph] [data-pl-logo] {
 }
 
 html[data-pl-morph] [data-pl-logo] .logo-mark {
-  transition: opacity 160ms linear;
+  transition: opacity 135ms linear;
 }
 
 html[data-pl-morph]:not([data-pl-landed]) [data-pl-logo] .logo-mark,
@@ -953,7 +953,7 @@ html[data-pl-morph]:not([data-pl-landed]) [data-pl-logo] .logo-text {
 
 /* Text logo-r pichon theke beriye ashe (preloader-er entry-r moto: left theke clip khule dane slide) */
 html[data-pl-landed] [data-pl-logo] .logo-text {
-  animation: logo-text-in 800ms cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  animation: logo-text-in 680ms cubic-bezier(0.22, 1, 0.36, 1) backwards;
 }
 
 @keyframes logo-text-in {
@@ -986,7 +986,7 @@ html[data-pl-landed] [data-pl-logo] .logo-text {
 }
 
 .preloader[data-state="exit"] .pl-mark {
-  animation: pl-mark-exit 1800ms linear forwards;
+  animation: pl-mark-exit 1534ms linear forwards;
 }
 
 @keyframes pl-word-exit {
@@ -1003,8 +1003,8 @@ html[data-pl-landed] [data-pl-logo] .logo-text {
 }
 
 /* Mark: prothome majhkhane ashe (--pl-shift = entry-te jotota bam-e chhilo, totota dane), ektu thame, tarpor oikhanei dhire choto hoye mishe jay.
-   Ek-i animation-e tinta dhap, jate transform-e animation-er conflict na hoy. Total 1800ms:
-   0 -> 63.9% (1150ms = --pl-slide-dur, ekdom word-er shathe mile) move, 63.9 -> 72.2% (150ms) hold, 72.2 -> 100% (500ms) vanish */
+   Ek-i animation-e tinta dhap, jate transform-e animation-er conflict na hoy. Total 1534ms:
+   0 -> 63.9% (980ms = --pl-slide-dur, ekdom word-er shathe mile) move, 63.9 -> 72.2% (128ms) hold, 72.2 -> 100% (426ms) vanish */
 @keyframes pl-mark-exit {
   0% {
     transform: translate3d(0, 0, 0) scale(1);
