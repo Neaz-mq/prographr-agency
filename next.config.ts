@@ -13,6 +13,11 @@ const nextConfig: NextConfig = {
         destination: "https://prographr.com/:path*",
         permanent: true,
       },
+      {
+        source: "/home",
+        destination: "/",
+        permanent: true,
+      },
     ];
   },
 };
