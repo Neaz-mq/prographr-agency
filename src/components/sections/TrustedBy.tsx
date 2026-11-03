@@ -65,7 +65,7 @@ export function TrustedBy() {
           <span aria-hidden="true" className="absolute right-full top-0 hidden h-full w-screen bg-white xl:block" />
 
           <p className="relative text-center text-xl font-medium leading-[1.2] text-ink sm:text-2xl xl:-translate-x-[0.6rem] xl:-translate-y-[0.36rem] xl:whitespace-nowrap xl:text-[1.5rem]">
-            We collaborate with <span className="text-accent">300+</span> company
+            We collaborate with <span className="text-accent">300+</span> companies
           </p>
         </div>
 
